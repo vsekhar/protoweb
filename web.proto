@@ -12,7 +12,7 @@ message KeyValue {
 
 message Request {
     enum Method {
-        UNUSED = 0;
+        UNUSED_METHOD = 0;
         GET = 1;
         HEAD = 2;
         POST = 3;
@@ -62,11 +62,12 @@ message Request {
         }
         string Referer = 24;
 
-        enum TransferEncodings {
+        enum Transfer_Encodings_Value {
             // only trailers is supported in HTTP/2
-            TRAILERS = 0;
+            UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
+            TRAILERS = 1;
         }
-        repeated TransferEncodings TE = 25;
+        repeated Transfer_Encodings_Value TE = 25;
 
         string User_Agent = 26;
         repeated string Via = 27;
@@ -75,13 +76,15 @@ message Request {
         // common non-standard fields
 
         enum X_Requested_With_Value {
-            XMLHTTPREQUEST = 0;
+            UNUSED_X_REQUESTED_WITH_VALUE = 0;
+            XMLHTTPREQUEST = 1;
         }
         X_Requested_With_Value X_Requested_With = 29;
 
         enum DNT_Value {
-            DISABLED = 0;
-            ENABLED = 1;
+            UNUSED_DNT_VALUE = 0;
+            DISABLED = 1;
+            ENABLED = 2;
         }
         DNT_Value DNT = 30;
         // next field number = 31
@@ -92,7 +95,7 @@ message Request {
 
 message Response {
     enum Codes {
-        UNUSED = 0;
+        UNUSED_CODE = 0;
         OK = 200;
     }
     Codes Code = 1;
@@ -100,8 +103,9 @@ message Response {
     message Headers {
         string Access_Control_Allow_Origins = 1;
         enum Access_Control_Allow_Credentials_Value {
-            FALSE = 0;
-            TRUE = 1;
+            UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
+            FALSE = 1;
+            TRUE = 2;
         }
         Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 2;
         repeated string Access_Control_Expose_Headers = 3;
