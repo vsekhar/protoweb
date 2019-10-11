@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+	"strings"
 
 	"github.com/golang/protobuf/proto"
 
@@ -19,6 +20,27 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 		return nil, fmt.Errorf("bad method: %s", req.Method)
 	}
 	ret.Method = web.Request_Method(method)
+	ret.Uri = req.URL.String()
+	ret.Headers = new(web.Request_Headers)
+	for header, values := range req.Header {
+		header = strings.ToLower(header)
+		lastvalue := ""
+		if len(values) > 0 {
+			lastvalue = values[len(values)-1]
+		}
+		switch header {
+		case "host":
+			ret.Headers.Host = lastvalue
+		case "user-agent":
+			ret.Headers.User_Agent = lastvalue
+		case "if-none-match":
+			ret.Headers.If_None_Match = lastvalue
+		case "accept-encoding":
+			ret.Headers.Accept_Encoding = lastvalue
+		default:
+			return nil, fmt.Errorf("unknown header: %s:%s", header, values)
+		}
+	}
 	return ret, nil
 }
 
