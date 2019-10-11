@@ -1,18 +1,109 @@
 syntax = "proto3";
 
-package web;
+import "google/protobuf/timestamp.proto";
 
-message keyValue {
+package web;
+option go_package = "github.com/vsekhar/protoweb/web";
+
+message KeyValue {
     string key = 1;
-    string optional value = 2;
+    string value = 2;
 }
 
 message Request {
-    string hostname = 1;
-    string path = 2;
-    keyValue query = 3;
-}
+    enum Method {
+        UNUSED = 0;
+        GET = 1;
+        HEAD = 2;
+        POST = 3;
+        PUT = 4;
+        DELETE = 5;
+        CONNECT = 6;
+        OPTIONS = 7;
+        TRACE = 8;
+    }
+    Method method = 1;
+
+    // Unset URI implies server-wide "*" request, i.e. for OPTIONS
+    // TODO: separate absolute vs. relative?
+    string uri = 2;
+    repeated KeyValue query = 3;
+
+    message Headers {
+        string Accept = 1;
+        string Accept_Charset = 2;
+        string Accept_Datetime = 3;
+        string Accept_Encoding = 4;
+        string Accept_Language = 5;
+        Method Access_Control_Request_Method = 6;
+        Headers Access_Control_Request_Headers = 7;
+        string Authorization = 8;
+        string Expect = 9;
+        repeated KeyValue Forwarded = 10;
+        string From = 11;
+        string Host = 12;
+        string HTTP2_Settings = 13;
+        string If_Match = 14;
+        google.protobuf.Timestamp If_Modified_Since = 15;
+        string If_None_Match = 16;
+        string If_Range = 17;
+        google.protobuf.Timestamp If_Unmodified_Since = 18;
+        uint64 Max_Forwards = 19;
+        string Origin = 20;
+        string Pragma = 21;
+        string Proxy_Authorization = 22;
+
+        message ByteRange {
+            uint64 start = 1;
+            uint64 end = 2;
+        }
+        oneof Range {
+            ByteRange bytes = 23;
+        }
+        string Referer = 24;
+
+        enum TransferEncodings {
+            // only trailers is supported in HTTP/2
+            TRAILERS = 0;
+        }
+        repeated TransferEncodings TE = 25;
+
+        string User_Agent = 26;
+        repeated string Via = 27;
+        string Warning = 28;
+
+        // common non-standard fields
+
+        enum X_Requested_With_Value {
+            XMLHTTPREQUEST = 0;
+        }
+        X_Requested_With_Value X_Requested_With = 29;
+
+        enum DNT_Value {
+            DISABLED = 0;
+            ENABLED = 1;
+        }
+        DNT_Value DNT = 30;
+        // next field number = 31
+    }
+    Headers headers = 4;
+
+} // message request
 
 message Response {
-    
+    enum Codes {
+        UNUSED = 0;
+        OK = 200;
+    }
+    Codes Code = 1;
+
+    message Headers {
+        string Access_Control_Allow_Origins = 1;
+        enum Access_Control_Allow_Credentials_Value {
+            FALSE = 0;
+            TRUE = 1;
+        }
+        Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 2;
+        repeated string Access_Control_Expose_Headers = 3;
+    }
 }
