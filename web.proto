@@ -3,7 +3,9 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 package web;
-option go_package = "github.com/vsekhar/protoweb/web";
+
+// This line prevents updates to the local generated .go file.
+// option go_package = "github.com/vsekhar/protoweb/web";
 
 message KeyValue {
     string key = 1;
