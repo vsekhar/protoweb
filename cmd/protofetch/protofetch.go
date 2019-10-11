@@ -69,5 +69,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Request bytes:", len(rawresp))
+	log.Println("Response bytes - raw:", len(rawresp))
 }
