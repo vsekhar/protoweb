@@ -12,6 +12,19 @@ message KeyValue {
     string value = 2;
 }
 
+message StringListOrWildcard {
+    enum Wildcard_Type {
+        STAR = 0;
+    }
+    message StringList {
+        repeated string Strings = 1;
+    }
+    oneof StringListOrWildcard {
+        Wildcard_Type Wildcard = 1;
+        StringList Strings = 2;
+    }
+}
+
 message Request {
     enum Method {
         UNUSED_METHOD = 0;
@@ -103,7 +116,7 @@ message Response {
     Codes Code = 1;
 
     message Headers {
-        string Access_Control_Allow_Origins = 1;
+        StringListOrWildcard Access_Control_Allow_Origin = 1;
         enum Access_Control_Allow_Credentials_Value {
             UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
             FALSE = 1;
@@ -111,5 +124,6 @@ message Response {
         }
         Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 2;
         repeated string Access_Control_Expose_Headers = 3;
+        StringListOrWildcard Vary = 4;
     }
 }
