@@ -44,10 +44,20 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 	return ret, nil
 }
 
+func resp2proto(resp *http.Response) (*web.Response, error) {
+	ret := new(web.Response)
+	if _, ok := web.Response_Codes_name[int32(resp.StatusCode)]; !ok {
+		return nil, fmt.Errorf("unknown response code: %d", resp.StatusCode)
+	}
+	ret.Code = web.Response_Codes(resp.StatusCode)
+	return ret, nil
+}
+
 func main() {
 	var (
 		dumprawrequest   = flag.Bool("dumprawrequest", false, "dump raw request")
 		dumpprotorequest = flag.Bool("dumpprotorequest", false, "dump proto request")
+		dumprawresponse  = flag.Bool("dumprawresponse", false, "dump raw response")
 	)
 	flag.Parse()
 
@@ -92,4 +102,19 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Println("Response bytes - raw:", len(rawresp))
+	if *dumprawresponse {
+		log.Printf("Response Headers:")
+		for k, v := range resp.Header {
+			log.Printf("%s: %s", k, v)
+		}
+	}
+	protoresp, err := resp2proto(resp)
+	if err != nil {
+		log.Fatal(err)
+	}
+	protorespbytes, err := proto.Marshal(protoresp)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Println("Response bytes - proto:", len(protorespbytes))
 }
