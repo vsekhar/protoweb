@@ -3,12 +3,15 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httputil"
 	"strings"
+	"time"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/ptypes"
 
 	web "github.com/vsekhar/protoweb"
 )
@@ -44,12 +47,102 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 	return ret, nil
 }
 
-func resp2proto(resp *http.Response) (*web.Response, error) {
+func resp2Proto(resp *http.Response) (*web.Response, error) {
 	ret := new(web.Response)
-	if _, ok := web.Response_Codes_name[int32(resp.StatusCode)]; !ok {
+	if _, ok := web.Response_Code_Value_name[int32(resp.StatusCode)]; !ok {
 		return nil, fmt.Errorf("unknown response code: %d", resp.StatusCode)
 	}
-	ret.Code = web.Response_Codes(resp.StatusCode)
+	ret.Code = web.Response_Code_Value(resp.StatusCode)
+	ret.Headers = new(web.Response_Headers)
+	for header, values := range resp.Header {
+		header = strings.ToLower(header)
+		lastvalue := ""
+		if len(values) > 0 {
+			lastvalue = values[len(values)-1]
+		}
+		switch header {
+		case "date":
+			date, err := time.Parse(time.RFC1123, lastvalue)
+			if err != nil {
+				return nil, fmt.Errorf("bad date: %s", values)
+			}
+			datepb, err := ptypes.TimestampProto(date)
+			if err != nil {
+				return nil, fmt.Errorf("unable to create timestamp proto: %s", err)
+			}
+			ret.Headers.Date = datepb
+		case "server":
+			ret.Headers.Server = lastvalue
+		case "x-xss-protection":
+			ret.Headers.X_XSS_Protection = lastvalue
+		case "x-frame-options":
+			value := strings.ToUpper(lastvalue)
+			optionnumber, ok := web.Response_Headers_X_Frame_Options_Value_value[value]
+			if !ok {
+				return nil, fmt.Errorf("unknown value for X-Frame-Options: %s", lastvalue)
+			}
+			ret.Headers.X_Frame_Options = web.Response_Headers_X_Frame_Options_Value(optionnumber)
+		case "expires":
+			date, err := time.Parse(time.RFC1123, lastvalue)
+			if err != nil {
+				datepb, err := ptypes.TimestampProto(date)
+				if err != nil {
+					return nil, fmt.Errorf("unable to create timestamp proto: %s", err)
+				}
+				ret.Headers.Expires = &web.Response_Headers_Expires_Date{Expires_Date: datepb}
+			} else {
+				ret.Headers.Expires = &web.Response_Headers_Expires_Already{}
+			}
+		case "content-type":
+			// TODO: parse type/subtype;parameter=value
+			// TODO: enumerate MIME types: https://www.iana.org/assignments/media-types/media-types.xhtml
+			parts := strings.Split(lastvalue, ";")
+			if len(parts) == 0 || len(parts) > 2 {
+				return nil, fmt.Errorf("bad Content-Type: %s", lastvalue)
+			}
+			contentType := strings.TrimSpace(parts[0])
+			ret.Headers.Content_Type = &web.Response_Headers_Content_Type_Message{}
+			mimeTypeNumber, ok := web.Response_Headers_Content_Type_Message_Common_MIME_Types_value[contentType]
+			if ok {
+				ret.Headers.Content_Type.Content_Type_Message = &web.Response_Headers_Content_Type_Message_Common_MIME_Type{
+					Common_MIME_Type: web.Response_Headers_Content_Type_Message_Common_MIME_Types(mimeTypeNumber),
+				}
+			} else {
+				ret.Headers.Content_Type.Content_Type_Message = &web.Response_Headers_Content_Type_Message_Other{
+					Other: contentType,
+				}
+			}
+			if len(parts) > 1 {
+				nameValue := strings.Split(parts[1], "=")
+				if len(nameValue) > 0 {
+					ret.Headers.Content_Type.Parameter = &web.KeyValue{
+						Key: nameValue[0],
+					}
+					if len(nameValue) > 1 {
+						ret.Headers.Content_Type.Parameter.Value = nameValue[1]
+					}
+				}
+			}
+		case "set-cookie":
+			setcookie := &web.Response_Headers_Set_Cookie_Message{}
+			_ = setcookie
+			for _, s := range values {
+				log.Println(s)
+			}
+		case "cache-control":
+
+		case "p3p":
+			// ignored
+		default:
+			return nil, fmt.Errorf("unknown header: %s:%s", header, values)
+		}
+	}
+	bodybytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %s", err)
+	}
+	ret.Body = bodybytes
+
 	return ret, nil
 }
 
@@ -108,7 +201,7 @@ func main() {
 			log.Printf("%s: %s", k, v)
 		}
 	}
-	protoresp, err := resp2proto(resp)
+	protoresp, err := resp2Proto(resp)
 	if err != nil {
 		log.Fatal(err)
 	}

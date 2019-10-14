@@ -8,21 +8,46 @@ package web;
 // option go_package = "github.com/vsekhar/protoweb/web";
 
 message KeyValue {
-    string key = 1;
-    string value = 2;
+    string Key = 1;
+    string Value = 2;
 }
 
-message StringListOrWildcard {
-    enum Wildcard_Type {
-        STAR = 0;
+// for use in oneof's only
+message StringList { repeated string Strings = 1; } // oneof's can't have repeated fields
+enum Wildcard { STAR = 0; }                         // don't need UNUSED_* = 0 value for onof use
+enum Already { ALREADY = 0; }
+enum Clear { CLEAR = 0; }
+
+message Cache_Control_Request {
+    enum Directives {
+        UNUSED_DIRECTIVE = 0;
+        MAX_AGE = 1;
+        MAX_STALE = 2;
+        MIN_FRESH = 3;
+        NO_CACHE = 4;
+        NO_STORE = 5;
+        NO_TRANSFORM = 6;
+        ONLY_OF_CACHED = 7;
     }
-    message StringList {
-        repeated string Strings = 1;
+    Directives Directive = 1;
+    uint64 Seconds = 2;
+}
+
+message Cache_Control_Request {
+    enum Directives {
+        UNUSED_DIRECTIVE = 0;
+        MUST_REVALIDATE = 1;
+        NO_CACHE = 2;
+        NO_STORE = 3;
+        NO_TRANSFORM = 4;
+        PUBLIC = 5;
+        PRIVATE = 6;
+        PROXY_REVALIDATE = 7;
+        MAX_AGE = 8;
+        S_MAXAGE = 9;
     }
-    oneof StringListOrWildcard {
-        Wildcard_Type Wildcard = 1;
-        StringList Strings = 2;
-    }
+    Directives Directive = 1;
+    uint64 Seconds = 2;
 }
 
 message Request {
@@ -69,18 +94,17 @@ message Request {
         string Proxy_Authorization = 22;
 
         message ByteRange {
-            uint64 start = 1;
-            uint64 end = 2;
+            uint64 Start = 1;
+            uint64 End = 2;
         }
         oneof Range {
-            ByteRange bytes = 23;
+            ByteRange Bytes = 23;
         }
         string Referer = 24;
 
         enum Transfer_Encodings_Value {
-            // only trailers is supported in HTTP/2
             UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
-            TRAILERS = 1;
+            TRAILERS = 1; // only trailers is supported in HTTP/2
         }
         repeated Transfer_Encodings_Value TE = 25;
 
@@ -109,21 +133,91 @@ message Request {
 } // message request
 
 message Response {
-    enum Codes {
+    enum Code_Value {
         UNUSED_CODE = 0;
         OK = 200;
     }
-    Codes Code = 1;
+    Code_Value Code = 1;
 
     message Headers {
-        StringListOrWildcard Access_Control_Allow_Origin = 1;
+        oneof Access_Control_Allow_Origin {
+            Wildcard Access_Control_Allow_Origin_All = 1;
+            StringList Access_Control_Allow_Origin_Origins = 2;
+        }
         enum Access_Control_Allow_Credentials_Value {
             UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
             FALSE = 1;
             TRUE = 2;
         }
-        Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 2;
-        repeated string Access_Control_Expose_Headers = 3;
-        StringListOrWildcard Vary = 4;
+        Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 3;
+        repeated string Access_Control_Expose_Headers = 4;
+
+        message Alt_Svc_Message {
+            message Service {
+                string Name = 1;
+                string Host_Name = 2;
+                uint32 Port = 3;
+            }
+            repeated Service Services = 1;
+            uint64 Max_Age = 2;
+            bool Persist = 3;
+        }
+        oneof Alt_Svc {
+            Clear Alt_Svc_Clear = 5;
+            Alt_Svc_Message Service = 6;
+        }
+
+        message Content_Type_Message {
+            // Explicitly encoding the most common MIME types saves space on the wire
+            enum Common_MIME_Types {
+                UNUSED_MIME_TYPE = 0;
+                APPLICATION_OCTET_STREAM = 1;
+                TEXT_HTML = 2;
+            }
+            oneof Content_Type_Message {
+                Common_MIME_Types Common_MIME_Type = 1;
+                string Other = 2;
+            }
+            KeyValue Parameter = 3;
+        }
+        Content_Type_Message Content_Type = 7;
+        google.protobuf.Timestamp Date = 8;
+        oneof Expires {
+            Already Expires_Already = 9;
+            google.protobuf.Timestamp Expires_Date = 10;
+        }
+        string Server = 11;
+        oneof Vary {
+            Wildcard Vary_All = 12;
+            StringList Vary_Headers = 13;
+        }
+        enum X_Frame_Options_Value {
+            UNUSED_X_FRAME_OPTIONS_VALUE = 0;
+            DENY = 1;
+            SAMEORIGIN = 2;
+        }
+        X_Frame_Options_Value X_Frame_Options = 14;
+        string X_XSS_Protection = 15;
+
+        message Set_Cookie_Message {
+            string Name = 1;
+            string Value = 2;
+            google.protobuf.Timestamp Expires = 3;
+            int64 Max_Age = 4;
+            string Domain = 5;
+            string Path = 6;
+            bool Secure = 7;
+            bool HttpOnly = 8;
+            enum SameSite_Value {
+                UNUSED_SAMESITE_VALUE = 0;
+                STRICT = 1;
+                LAX = 2;
+                NONE = 3;
+            }
+            SameSite_Value SameSite = 9;
+        }
+        repeated Set_Cookie_Message Set_Cookie = 16;
     }
+    Headers headers = 2;
+    bytes Body = 3;
 }
