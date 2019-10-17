@@ -33,7 +33,7 @@ message Cache_Control_Request {
     uint64 Seconds = 2;
 }
 
-message Cache_Control_Request {
+message Cache_Control_Response {
     enum Directives {
         UNUSED_DIRECTIVE = 0;
         MUST_REVALIDATE = 1;
@@ -64,10 +64,12 @@ message Request {
     }
     Method method = 1;
 
-    // Unset URI implies server-wide "*" request, i.e. for OPTIONS
     // TODO: separate absolute vs. relative?
-    string uri = 2;
-    repeated KeyValue query = 3;
+    oneof URI {
+        Wildcard URI_Wildcard = 2; // server-wide "*" request, i.e. OPTIONS
+        string URI_String = 3;
+    }
+    repeated KeyValue query = 4;
 
     message Headers {
         string Accept = 1;
@@ -128,7 +130,7 @@ message Request {
         DNT_Value DNT = 30;
         // next field number = 31
     }
-    Headers headers = 4;
+    Headers headers = 5;
 
 } // message request
 

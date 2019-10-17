@@ -23,7 +23,11 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 		return nil, fmt.Errorf("bad method: %s", req.Method)
 	}
 	ret.Method = web.Request_Method(method)
-	ret.Uri = req.URL.String()
+	if req.URL.String() == "*" {
+		ret.URI = &web.Request_URI_Wildcard{}
+	} else {
+		ret.URI = &web.Request_URI_String{URI_String: req.URL.String()}
+	}
 	ret.Headers = new(web.Request_Headers)
 	for header, values := range req.Header {
 		header = strings.ToLower(header)
