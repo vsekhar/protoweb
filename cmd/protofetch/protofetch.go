@@ -18,16 +18,20 @@ import (
 
 func req2Proto(req *http.Request) (*web.Request, error) {
 	ret := new(web.Request)
+	parsedFields := []string{}
+	parsed := func(s string) { parsedFields = append(parsedFields, s) }
 	method, ok := web.Request_Method_value[req.Method]
 	if !ok {
 		return nil, fmt.Errorf("bad method: %s", req.Method)
 	}
 	ret.Method = web.Request_Method(method)
+	parsed("method")
 	if req.URL.String() == "*" {
 		ret.URI = &web.Request_URI_Wildcard{}
 	} else {
 		ret.URI = &web.Request_URI_String{URI_String: req.URL.String()}
 	}
+	parsed("uri")
 	ret.Headers = new(web.Request_Headers)
 	for header, values := range req.Header {
 		header = strings.ToLower(header)
@@ -35,6 +39,7 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 		if len(values) > 0 {
 			lastvalue = values[len(values)-1]
 		}
+		knownHeader := true
 		switch header {
 		case "host":
 			ret.Headers.Host = lastvalue
@@ -45,7 +50,13 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 		case "accept-encoding":
 			ret.Headers.Accept_Encoding = lastvalue
 		default:
-			return nil, fmt.Errorf("unknown header: %s:%s", header, values)
+			knownHeader = false
+			for _, v := range values {
+				ret.Headers.Other = append(ret.Headers.Other, &web.KeyValue{Key: header, Value: v})
+			}
+		}
+		if knownHeader {
+			parsed(header)
 		}
 	}
 	return ret, nil
@@ -53,10 +64,13 @@ func req2Proto(req *http.Request) (*web.Request, error) {
 
 func resp2Proto(resp *http.Response) (*web.Response, error) {
 	ret := new(web.Response)
+	parsedFields := []string{}
+	parsed := func(s string) { parsedFields = append(parsedFields, s) }
 	if _, ok := web.Response_Code_Value_name[int32(resp.StatusCode)]; !ok {
 		return nil, fmt.Errorf("unknown response code: %d", resp.StatusCode)
 	}
 	ret.Code = web.Response_Code_Value(resp.StatusCode)
+	parsed("code")
 	ret.Headers = new(web.Response_Headers)
 	for header, values := range resp.Header {
 		header = strings.ToLower(header)
@@ -64,6 +78,7 @@ func resp2Proto(resp *http.Response) (*web.Response, error) {
 		if len(values) > 0 {
 			lastvalue = values[len(values)-1]
 		}
+		knownHeader := true
 		switch header {
 		case "date":
 			date, err := time.Parse(time.RFC1123, lastvalue)
@@ -138,7 +153,13 @@ func resp2Proto(resp *http.Response) (*web.Response, error) {
 		case "p3p":
 			// ignored
 		default:
-			return nil, fmt.Errorf("unknown header: %s:%s", header, values)
+			knownHeader = false
+			for _, v := range values {
+				ret.Headers.Other = append(ret.Headers.Other, &web.KeyValue{Key: header, Value: v})
+			}
+		}
+		if knownHeader {
+			parsed(header)
 		}
 	}
 	bodybytes, err := ioutil.ReadAll(resp.Body)

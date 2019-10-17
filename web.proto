@@ -128,11 +128,13 @@ message Request {
             ENABLED = 2;
         }
         DNT_Value DNT = 30;
-        // next field number = 31
-    }
+        repeated KeyValue Other = 31;
+
+        // next field number = 32
+    } // message Headers
     Headers headers = 5;
 
-} // message request
+} // message Request
 
 message Response {
     enum Code_Value {
@@ -219,7 +221,8 @@ message Response {
             SameSite_Value SameSite = 9;
         }
         repeated Set_Cookie_Message Set_Cookie = 16;
-    }
+        repeated KeyValue Other = 17;
+    } // message Headers
     Headers headers = 2;
     bytes Body = 3;
-}
+} // message Response
