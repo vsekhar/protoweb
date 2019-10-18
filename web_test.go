@@ -1,4 +1,4 @@
-package web
+package web_test // https://medium.com/@benbjohnson/structuring-tests-in-go-46ddee7a25c
 
 import (
 	"bytes"
@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	proto "github.com/golang/protobuf/proto"
+	web "github.com/vsekhar/protoweb"
 )
 
 func makeRequest() *http.Request {
@@ -21,7 +22,7 @@ func makeRequest() *http.Request {
 
 func makeRequestProto() []byte {
 	req := makeRequest()
-	protoreq, err := Req2Proto(req)
+	protoreq, err := web.Req2Proto(req)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,7 +55,7 @@ func BenchmarkRequestSerialization(b *testing.B) {
 
 func BenchmarkProtoRequestSerialization(b *testing.B) {
 	req := makeRequest()
-	reqproto, err := Req2Proto(req)
+	reqproto, err := web.Req2Proto(req)
 	if err != nil {
 		b.Fatal(err)
 	}
