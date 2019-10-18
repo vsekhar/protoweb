@@ -42,6 +42,7 @@ func BenchmarkRequestSerialization(b *testing.B) {
 	if err := req.Write(buf); err != nil {
 		b.Fatal(err)
 	}
+	b.ReportMetric(float64(buf.Len()), "wirebytes/op")
 	buf.Reset()
 	for i := 0; i < b.N; i++ {
 		if err := req.Write(buf); err != nil {
@@ -62,6 +63,8 @@ func BenchmarkProtoRequestSerialization(b *testing.B) {
 	if err := buf.Marshal(reqproto); err != nil {
 		b.Fatal(err)
 	}
+	bufbytes := buf.Bytes()
+	b.ReportMetric(float64(len(bufbytes)), "wirebytes/op")
 	buf.Reset()
 	for i := 0; i < b.N; i++ {
 		if err := buf.Marshal(reqproto); err != nil {
