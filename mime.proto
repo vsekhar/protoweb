@@ -11,13 +11,20 @@ extend google.protobuf.EnumValueOptions {
 }
 
 enum MIME_Types {
-    option allow_alias = true;
+    MIME_TYPE_UNUSED = 0 [(httpequiv)=""];
+
     // Common MIME types
     //
     // Tag numbers 1-127 are reserved for the most common MIME types to allow them
     // to use one-byte varint encoding.
-    MIME_TYPE_UNUSED = 0 [(httpequiv)=""];
-    reserved 1 to 127;
+    APPLICATION_JAVASCRIPT = 5 [(httpequiv)="application/javascript"];
+    APPLICATION_OCTET_STREAM = 4 [(httpequiv)="application/octet-stream"];
+    APPLICATION_XML = 6 [(httpequiv)="application/xml"];
+    APPLICATION_ZIP = 7 [(httpequiv)="application/zip"];
+    TEXT_CSS = 3 [(httpequiv)="text/html"];
+    TEXT_HTML = 2 [(httpequiv)="text/html"];
+    TEXT_PLAIN = 1 [(httpequiv)="text/plain"];
+    reserved 8 to 127;
 
     // Uncommon MIME types
     //
@@ -41,12 +48,12 @@ enum MIME_Types {
     // also have no knowledge the type is eligible to be promoted. Clients that see
     // a MIME type with tag <128 and do not understand it should definitely update
     // themselves.
+    MIME_TYPE_UNUSED_UNCOMMON = 128 [(httpequiv)="",(commonalias)=0];
 }
 
 message MIME_Type {
     oneof MIME_Type {
-        Common_MIME_Types Common = 1;
-        MIME_Types Uncommon = 2;
-        string Other = 3;
+        MIME_Types Type = 1;
+        string Other = 2;
     }
 }
