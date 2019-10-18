@@ -148,10 +148,6 @@ func resp2Proto(resp *http.Response) (*web.Response, error) {
 			for _, s := range values {
 				log.Println(s)
 			}
-		case "cache-control":
-
-		case "p3p":
-			// ignored
 		default:
 			knownHeader = false
 			for _, v := range values {
@@ -200,20 +196,28 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Unparsed headers (included in Other): %v", protoreq.Headers.Other)
 	protoreqbytes, err := proto.Marshal(protoreq)
 	if err != nil {
 		log.Fatal(err)
 	}
-	// TODO: why is this empty?
 	if *dumpprotorequest {
 		log.Printf("Proto request: %x", protoreqbytes)
 	}
 	log.Println("Request bytes - proto:", len(protoreqbytes))
 
+	log.Printf("--- Fetching ---")
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Fatal(err)
+	}
+	// strip (large) internal headers
+	for header := range resp.Header {
+		header = strings.ToLower(header)
+		if strings.HasPrefix(header, "x-google-") {
+			resp.Header.Del(header)
+		}
 	}
 	rawresp, err := httputil.DumpResponse(resp, true)
 	if err != nil {
@@ -230,6 +234,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Unparsed headers (included in Other): %v", protoresp.Headers.Other)
 	protorespbytes, err := proto.Marshal(protoresp)
 	if err != nil {
 		log.Fatal(err)
