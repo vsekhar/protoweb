@@ -1,0 +1,52 @@
+// TODO: generate me, add refresh to Makefile
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.EnumValueOptions {
+    string httpequiv = 7987671;
+    uint32 commonalias = 7981968;
+}
+
+enum MIME_Types {
+    option allow_alias = true;
+    // Common MIME types
+    //
+    // Tag numbers 1-127 are reserved for the most common MIME types to allow them
+    // to use one-byte varint encoding.
+    MIME_TYPE_UNUSED = 0 [(httpequiv)=""];
+    reserved 1 to 127;
+
+    // Uncommon MIME types
+    //
+    // All other MIME types start with tag numbers 128 and up. A new MIME type is
+    // added here first. If it gains lots of usage, it is aliased into the common list
+    // above with the following steps:
+    //
+    //   1. Reserve a tag number above for the promoted MIME type. E.g.
+    //           reserved 42; // for "APPLICATION_AWESOME_APP"
+    //   2. Add a commonalias option to the entry in the uncommon list. E.g.
+    //           APPLICATION_AWESOME_APP = 7376 [(commonalias)=42];
+    //   3. Wait for this definition version to propagate
+    //   4. Add the type to the common list at the reserved tag number. E.g.
+    //           APPLICATION_AWESOME_APP = 42;
+    //
+    // Some clients may know of the type only in the uncommon list, but can use the
+    // commonalias value to interpret unknown values in the common list until their
+    // definitions are upgraded.
+    //
+    // Some very old clients may know of the type only in the uncommon list and may
+    // also have no knowledge the type is eligible to be promoted. Clients that see
+    // a MIME type with tag <128 and do not understand it should definitely update
+    // themselves.
+}
+
+message MIME_Type {
+    oneof MIME_Type {
+        Common_MIME_Types Common = 1;
+        MIME_Types Uncommon = 2;
+        string Other = 3;
+    }
+}
