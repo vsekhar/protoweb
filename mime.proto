@@ -5,37 +5,40 @@ package web;
 
 import "google/protobuf/descriptor.proto";
 
+// HTTP_MIME_Type represents information about how a MIME type is represented
+// on the wire in HTTP.
+message MIME_Type_Descriptor {
+    string http_string = 1;
+    uint32 commonalias = 2;
+}
+
 extend google.protobuf.EnumValueOptions {
-    string httpequiv = 7987671;
-    uint32 commonalias = 7981968;
+    MIME_Type_Descriptor mime_descriptor = 7987671;
 }
 
 enum MIME_Types {
-    MIME_TYPE_UNUSED = 0 [(httpequiv)=""];
+    MIME_TYPE_UNUSED = 0 [(mime_descriptor).http_string=""];
 
-    // Common MIME types
-    //
-    // Tag numbers 1-127 are reserved for the most common MIME types to allow them
-    // to use one-byte varint encoding.
-    APPLICATION_JAVASCRIPT = 5 [(httpequiv)="application/javascript"];
-    APPLICATION_OCTET_STREAM = 4 [(httpequiv)="application/octet-stream"];
-    APPLICATION_XML = 6 [(httpequiv)="application/xml"];
-    APPLICATION_ZIP = 7 [(httpequiv)="application/zip"];
-    TEXT_CSS = 3 [(httpequiv)="text/html"];
-    TEXT_HTML = 2 [(httpequiv)="text/html"];
-    TEXT_PLAIN = 1 [(httpequiv)="text/plain"];
+    // Common MIME types: tag numbers 1-127 are reserved for the most common MIME
+    // types to allow them to use one-byte varint encoding.
+    APPLICATION_JAVASCRIPT = 5 [(mime_descriptor).http_string="application/javascript"];
+    APPLICATION_OCTET_STREAM = 4 [(mime_descriptor).http_string="application/octet-stream"];
+    APPLICATION_XML = 6 [(mime_descriptor).http_string="application/xml"];
+    APPLICATION_ZIP = 7 [(mime_descriptor).http_string="application/zip"];
+    TEXT_CSS = 3 [(mime_descriptor).http_string="text/html"];
+    TEXT_HTML = 2 [(mime_descriptor).http_string="text/html"];
+    TEXT_PLAIN = 1 [(mime_descriptor).http_string="text/plain"];
     reserved 8 to 127;
 
-    // Uncommon MIME types
+    // Uncommon MIME types: all other MIME types start with tag numbers 128 and up.
     //
-    // All other MIME types start with tag numbers 128 and up. A new MIME type is
-    // added here first. If it gains lots of usage, it is aliased into the common list
-    // above with the following steps:
+    // A new MIME type is added here first. If it gains lots of usage, it is aliased
+    // into the common list above with the following steps:
     //
     //   1. Reserve a tag number above for the promoted MIME type. E.g.
     //           reserved 42; // for "APPLICATION_AWESOME_APP"
     //   2. Add a commonalias option to the entry in the uncommon list. E.g.
-    //           APPLICATION_AWESOME_APP = 7376 [(commonalias)=42];
+    //           APPLICATION_AWESOME_APP = 7376 [(mime_descriptor).commonalias=42];
     //   3. Wait for this definition version to propagate
     //   4. Add the type to the common list at the reserved tag number. E.g.
     //           APPLICATION_AWESOME_APP = 42;
@@ -48,7 +51,7 @@ enum MIME_Types {
     // also have no knowledge the type is eligible to be promoted. Clients that see
     // a MIME type with tag <128 and do not understand it should definitely update
     // themselves.
-    MIME_TYPE_UNUSED_UNCOMMON = 128 [(httpequiv)="",(commonalias)=0];
+    MIME_TYPE_UNUSED_UNCOMMON = 128 [(mime_descriptor)={http_string: ""; commonalias: 0}];
 }
 
 message MIME_Type {

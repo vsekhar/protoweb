@@ -6,6 +6,7 @@ package web
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	math "math"
 )
 
@@ -20,41 +21,65 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Common_MIME_Types int32
-
-const (
-	Common_MIME_Types_COMMON_MIME_TYPE_UNUSED Common_MIME_Types = 0
-)
-
-var Common_MIME_Types_name = map[int32]string{
-	0: "COMMON_MIME_TYPE_UNUSED",
-}
-
-var Common_MIME_Types_value = map[string]int32{
-	"COMMON_MIME_TYPE_UNUSED": 0,
-}
-
-func (x Common_MIME_Types) String() string {
-	return proto.EnumName(Common_MIME_Types_name, int32(x))
-}
-
-func (Common_MIME_Types) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_1e03494e12603071, []int{0}
-}
-
-// TODO: Do common MIME types appear here? Always? Only if promoted? Never (no).
 type MIME_Types int32
 
 const (
 	MIME_Types_MIME_TYPE_UNUSED MIME_Types = 0
+	// Common MIME types: tag numbers 1-127 are reserved for the most common MIME
+	// types to allow them to use one-byte varint encoding.
+	MIME_Types_APPLICATION_JAVASCRIPT   MIME_Types = 5
+	MIME_Types_APPLICATION_OCTET_STREAM MIME_Types = 4
+	MIME_Types_APPLICATION_XML          MIME_Types = 6
+	MIME_Types_APPLICATION_ZIP          MIME_Types = 7
+	MIME_Types_TEXT_CSS                 MIME_Types = 3
+	MIME_Types_TEXT_HTML                MIME_Types = 2
+	MIME_Types_TEXT_PLAIN               MIME_Types = 1
+	// Uncommon MIME types: all other MIME types start with tag numbers 128 and up.
+	//
+	// A new MIME type is added here first. If it gains lots of usage, it is aliased
+	// into the common list above with the following steps:
+	//
+	//   1. Reserve a tag number above for the promoted MIME type. E.g.
+	//           reserved 42; // for "APPLICATION_AWESOME_APP"
+	//   2. Add a commonalias option to the entry in the uncommon list. E.g.
+	//           APPLICATION_AWESOME_APP = 7376 [(mime_descriptor).commonalias=42];
+	//   3. Wait for this definition version to propagate
+	//   4. Add the type to the common list at the reserved tag number. E.g.
+	//           APPLICATION_AWESOME_APP = 42;
+	//
+	// Some clients may know of the type only in the uncommon list, but can use the
+	// commonalias value to interpret unknown values in the common list until their
+	// definitions are upgraded.
+	//
+	// Some very old clients may know of the type only in the uncommon list and may
+	// also have no knowledge the type is eligible to be promoted. Clients that see
+	// a MIME type with tag <128 and do not understand it should definitely update
+	// themselves.
+	MIME_Types_MIME_TYPE_UNUSED_UNCOMMON MIME_Types = 128
 )
 
 var MIME_Types_name = map[int32]string{
-	0: "MIME_TYPE_UNUSED",
+	0:   "MIME_TYPE_UNUSED",
+	5:   "APPLICATION_JAVASCRIPT",
+	4:   "APPLICATION_OCTET_STREAM",
+	6:   "APPLICATION_XML",
+	7:   "APPLICATION_ZIP",
+	3:   "TEXT_CSS",
+	2:   "TEXT_HTML",
+	1:   "TEXT_PLAIN",
+	128: "MIME_TYPE_UNUSED_UNCOMMON",
 }
 
 var MIME_Types_value = map[string]int32{
-	"MIME_TYPE_UNUSED": 0,
+	"MIME_TYPE_UNUSED":          0,
+	"APPLICATION_JAVASCRIPT":    5,
+	"APPLICATION_OCTET_STREAM":  4,
+	"APPLICATION_XML":           6,
+	"APPLICATION_ZIP":           7,
+	"TEXT_CSS":                  3,
+	"TEXT_HTML":                 2,
+	"TEXT_PLAIN":                1,
+	"MIME_TYPE_UNUSED_UNCOMMON": 128,
 }
 
 func (x MIME_Types) String() string {
@@ -62,13 +87,62 @@ func (x MIME_Types) String() string {
 }
 
 func (MIME_Types) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_1e03494e12603071, []int{1}
+	return fileDescriptor_1e03494e12603071, []int{0}
+}
+
+// HTTP_MIME_Type represents information about how a MIME type is represented
+// on the wire in HTTP.
+type MIME_Type_Descriptor struct {
+	HttpString           string   `protobuf:"bytes,1,opt,name=http_string,json=httpString,proto3" json:"http_string,omitempty"`
+	Commonalias          uint32   `protobuf:"varint,2,opt,name=commonalias,proto3" json:"commonalias,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MIME_Type_Descriptor) Reset()         { *m = MIME_Type_Descriptor{} }
+func (m *MIME_Type_Descriptor) String() string { return proto.CompactTextString(m) }
+func (*MIME_Type_Descriptor) ProtoMessage()    {}
+func (*MIME_Type_Descriptor) Descriptor() ([]byte, []int) {
+	return fileDescriptor_1e03494e12603071, []int{0}
+}
+
+func (m *MIME_Type_Descriptor) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MIME_Type_Descriptor.Unmarshal(m, b)
+}
+func (m *MIME_Type_Descriptor) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MIME_Type_Descriptor.Marshal(b, m, deterministic)
+}
+func (m *MIME_Type_Descriptor) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MIME_Type_Descriptor.Merge(m, src)
+}
+func (m *MIME_Type_Descriptor) XXX_Size() int {
+	return xxx_messageInfo_MIME_Type_Descriptor.Size(m)
+}
+func (m *MIME_Type_Descriptor) XXX_DiscardUnknown() {
+	xxx_messageInfo_MIME_Type_Descriptor.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MIME_Type_Descriptor proto.InternalMessageInfo
+
+func (m *MIME_Type_Descriptor) GetHttpString() string {
+	if m != nil {
+		return m.HttpString
+	}
+	return ""
+}
+
+func (m *MIME_Type_Descriptor) GetCommonalias() uint32 {
+	if m != nil {
+		return m.Commonalias
+	}
+	return 0
 }
 
 type MIME_Type struct {
 	// Types that are valid to be assigned to MIME_Type:
-	//	*MIME_Type_Common
-	//	*MIME_Type_Uncommon
+	//	*MIME_Type_Type
+	//	*MIME_Type_Other
 	MIME_Type            isMIME_Type_MIME_Type `protobuf_oneof:"MIME_Type"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
@@ -79,7 +153,7 @@ func (m *MIME_Type) Reset()         { *m = MIME_Type{} }
 func (m *MIME_Type) String() string { return proto.CompactTextString(m) }
 func (*MIME_Type) ProtoMessage()    {}
 func (*MIME_Type) Descriptor() ([]byte, []int) {
-	return fileDescriptor_1e03494e12603071, []int{0}
+	return fileDescriptor_1e03494e12603071, []int{1}
 }
 
 func (m *MIME_Type) XXX_Unmarshal(b []byte) error {
@@ -104,17 +178,17 @@ type isMIME_Type_MIME_Type interface {
 	isMIME_Type_MIME_Type()
 }
 
-type MIME_Type_Common struct {
-	Common Common_MIME_Types `protobuf:"varint,1,opt,name=Common,proto3,enum=web.Common_MIME_Types,oneof"`
+type MIME_Type_Type struct {
+	Type MIME_Types `protobuf:"varint,1,opt,name=Type,proto3,enum=web.MIME_Types,oneof"`
 }
 
-type MIME_Type_Uncommon struct {
-	Uncommon MIME_Types `protobuf:"varint,2,opt,name=Uncommon,proto3,enum=web.MIME_Types,oneof"`
+type MIME_Type_Other struct {
+	Other string `protobuf:"bytes,2,opt,name=Other,proto3,oneof"`
 }
 
-func (*MIME_Type_Common) isMIME_Type_MIME_Type() {}
+func (*MIME_Type_Type) isMIME_Type_MIME_Type() {}
 
-func (*MIME_Type_Uncommon) isMIME_Type_MIME_Type() {}
+func (*MIME_Type_Other) isMIME_Type_MIME_Type() {}
 
 func (m *MIME_Type) GetMIME_Type() isMIME_Type_MIME_Type {
 	if m != nil {
@@ -123,46 +197,77 @@ func (m *MIME_Type) GetMIME_Type() isMIME_Type_MIME_Type {
 	return nil
 }
 
-func (m *MIME_Type) GetCommon() Common_MIME_Types {
-	if x, ok := m.GetMIME_Type().(*MIME_Type_Common); ok {
-		return x.Common
-	}
-	return Common_MIME_Types_COMMON_MIME_TYPE_UNUSED
-}
-
-func (m *MIME_Type) GetUncommon() MIME_Types {
-	if x, ok := m.GetMIME_Type().(*MIME_Type_Uncommon); ok {
-		return x.Uncommon
+func (m *MIME_Type) GetType() MIME_Types {
+	if x, ok := m.GetMIME_Type().(*MIME_Type_Type); ok {
+		return x.Type
 	}
 	return MIME_Types_MIME_TYPE_UNUSED
+}
+
+func (m *MIME_Type) GetOther() string {
+	if x, ok := m.GetMIME_Type().(*MIME_Type_Other); ok {
+		return x.Other
+	}
+	return ""
 }
 
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*MIME_Type) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
-		(*MIME_Type_Common)(nil),
-		(*MIME_Type_Uncommon)(nil),
+		(*MIME_Type_Type)(nil),
+		(*MIME_Type_Other)(nil),
 	}
 }
 
+var E_MimeDescriptor = &proto.ExtensionDesc{
+	ExtendedType:  (*descriptor.EnumValueOptions)(nil),
+	ExtensionType: (*MIME_Type_Descriptor)(nil),
+	Field:         7987671,
+	Name:          "web.mime_descriptor",
+	Tag:           "bytes,7987671,opt,name=mime_descriptor",
+	Filename:      "mime.proto",
+}
+
 func init() {
-	proto.RegisterEnum("web.Common_MIME_Types", Common_MIME_Types_name, Common_MIME_Types_value)
 	proto.RegisterEnum("web.MIME_Types", MIME_Types_name, MIME_Types_value)
+	proto.RegisterType((*MIME_Type_Descriptor)(nil), "web.MIME_Type_Descriptor")
 	proto.RegisterType((*MIME_Type)(nil), "web.MIME_Type")
+	proto.RegisterExtension(E_MimeDescriptor)
 }
 
 func init() { proto.RegisterFile("mime.proto", fileDescriptor_1e03494e12603071) }
 
 var fileDescriptor_1e03494e12603071 = []byte{
-	// 158 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xca, 0xcd, 0xcc, 0x4d,
-	0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x2e, 0x4f, 0x4d, 0x52, 0xaa, 0xe4, 0xe2, 0xf4,
-	0xf5, 0xf4, 0x75, 0x8d, 0x0f, 0xa9, 0x2c, 0x48, 0x15, 0x32, 0xe0, 0x62, 0x73, 0xce, 0xcf, 0xcd,
-	0xcd, 0xcf, 0x93, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x33, 0x12, 0xd3, 0x2b, 0x4f, 0x4d, 0xd2, 0x83,
-	0x08, 0xc5, 0xc3, 0x95, 0x15, 0x7b, 0x30, 0x04, 0x41, 0xd5, 0x09, 0xe9, 0x72, 0x71, 0x84, 0xe6,
-	0x25, 0x43, 0xf4, 0x30, 0x81, 0xf5, 0xf0, 0x83, 0xf5, 0xa0, 0x28, 0x86, 0x2b, 0x71, 0xe2, 0x46,
-	0xb2, 0x4d, 0xcb, 0x80, 0x4b, 0x10, 0xc3, 0x68, 0x21, 0x69, 0x2e, 0x71, 0x67, 0x7f, 0x5f, 0x5f,
-	0x7f, 0x3f, 0xa8, 0x60, 0x64, 0x80, 0x6b, 0x7c, 0xa8, 0x5f, 0x68, 0xb0, 0xab, 0x8b, 0x00, 0x83,
-	0x96, 0x12, 0x17, 0x17, 0x92, 0x52, 0x11, 0x2e, 0x01, 0x4c, 0x35, 0x49, 0x6c, 0x60, 0xcf, 0x19,
-	0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0x60, 0xcf, 0xb3, 0x52, 0xea, 0x00, 0x00, 0x00,
+	// 490 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x92, 0xdd, 0x6a, 0xd3, 0x60,
+	0x18, 0xc7, 0x9b, 0x7e, 0x6c, 0xed, 0x13, 0x5d, 0xdf, 0xbd, 0x48, 0xc9, 0x02, 0x5b, 0xb3, 0xc2,
+	0xa0, 0x28, 0xa6, 0x30, 0x8f, 0x14, 0x3c, 0x88, 0x59, 0xa0, 0x91, 0xe6, 0x83, 0x24, 0x9d, 0x9b,
+	0x27, 0x21, 0xad, 0xaf, 0x6d, 0x24, 0x5f, 0x24, 0x6f, 0xdd, 0xf4, 0x44, 0x2f, 0xc1, 0x1b, 0xf0,
+	0x46, 0xc4, 0x33, 0x2f, 0xc2, 0x4b, 0xf0, 0x36, 0xe4, 0x4d, 0xb0, 0x8d, 0x63, 0x47, 0xe1, 0x79,
+	0x9e, 0xdf, 0xef, 0x0f, 0x79, 0xf9, 0x03, 0xc4, 0x61, 0x4c, 0xe4, 0x2c, 0x4f, 0x69, 0x8a, 0x5b,
+	0x37, 0x64, 0x21, 0x4a, 0xab, 0x34, 0x5d, 0x45, 0x64, 0x52, 0xae, 0x16, 0x9b, 0xf7, 0x93, 0x77,
+	0xa4, 0x58, 0xe6, 0x61, 0x46, 0xd3, 0xbc, 0xc2, 0x46, 0xd7, 0xf0, 0xc8, 0xd0, 0x0d, 0xcd, 0xf7,
+	0x3e, 0x65, 0xc4, 0xbf, 0xd8, 0x5e, 0xf1, 0x10, 0xf8, 0x35, 0xa5, 0x99, 0x5f, 0xd0, 0x3c, 0x4c,
+	0x56, 0x02, 0x27, 0x71, 0xe3, 0x9e, 0x03, 0x6c, 0xe5, 0x96, 0x1b, 0x2c, 0x01, 0xbf, 0x4c, 0xe3,
+	0x38, 0x4d, 0x82, 0x28, 0x0c, 0x0a, 0xa1, 0x29, 0x71, 0xe3, 0x87, 0x4e, 0x7d, 0x35, 0x7a, 0x03,
+	0xbd, 0x6d, 0x34, 0x3e, 0x83, 0x36, 0xfb, 0x96, 0x41, 0x07, 0xe7, 0x7d, 0xf9, 0x86, 0x2c, 0xe4,
+	0xed, 0xb5, 0x98, 0x36, 0x9c, 0xf2, 0x8c, 0x07, 0xd0, 0xb1, 0xe8, 0x9a, 0xe4, 0x65, 0x5e, 0x6f,
+	0xda, 0x70, 0xaa, 0xf1, 0x15, 0x5f, 0xcb, 0x7a, 0xfc, 0xad, 0x05, 0xb0, 0x73, 0xf1, 0x31, 0xa0,
+	0x6a, 0xba, 0xb6, 0x35, 0x7f, 0x6e, 0xce, 0x5d, 0xed, 0x02, 0x35, 0xc4, 0xfd, 0x1f, 0xdf, 0x7f,
+	0x9e, 0x34, 0xa1, 0x81, 0x9f, 0xc3, 0x40, 0xb1, 0xed, 0x99, 0xae, 0x2a, 0x9e, 0x6e, 0x99, 0xfe,
+	0x6b, 0xe5, 0x52, 0x71, 0x55, 0x47, 0xb7, 0x3d, 0xd4, 0x11, 0x8f, 0x19, 0x24, 0xc0, 0x20, 0xc8,
+	0xb2, 0x28, 0x5c, 0x06, 0x34, 0x4c, 0x93, 0xc9, 0x87, 0xe0, 0x63, 0x50, 0x3d, 0x03, 0x7e, 0x09,
+	0x42, 0x5d, 0xb5, 0x54, 0x4f, 0xf3, 0x7c, 0xd7, 0x73, 0x34, 0xc5, 0x40, 0x6d, 0x71, 0xc8, 0x64,
+	0x11, 0x84, 0xba, 0x9c, 0x2e, 0x29, 0xa1, 0x4f, 0x0b, 0x9a, 0x93, 0x20, 0xc6, 0x4f, 0xa0, 0x5f,
+	0xd7, 0xaf, 0x8c, 0x19, 0xda, 0x13, 0x07, 0xcc, 0x3a, 0x84, 0x7e, 0xdd, 0xba, 0x8d, 0xa3, 0xbb,
+	0xf0, 0x5b, 0xdd, 0x46, 0xfb, 0xf7, 0xc2, 0x9f, 0xc3, 0x0c, 0x9f, 0x40, 0xd7, 0xd3, 0xae, 0x3c,
+	0x5f, 0x75, 0x5d, 0xd4, 0x12, 0x11, 0xa3, 0x78, 0xe8, 0x51, 0x72, 0x4b, 0x27, 0x6b, 0x1a, 0x47,
+	0x78, 0x08, 0xbd, 0xf2, 0x3e, 0xf5, 0x8c, 0x19, 0x6a, 0xde, 0x03, 0x9c, 0x02, 0x94, 0x80, 0x3d,
+	0x53, 0x74, 0x13, 0x71, 0xe2, 0x21, 0x23, 0x1e, 0x00, 0x94, 0x44, 0x16, 0x05, 0x61, 0x82, 0xcf,
+	0xe0, 0xe8, 0xee, 0xb3, 0xfa, 0x73, 0x53, 0xb5, 0x0c, 0xc3, 0x32, 0xd1, 0x57, 0x4e, 0xec, 0x30,
+	0xa5, 0x31, 0x6a, 0x77, 0xbb, 0xe8, 0xcb, 0x8b, 0x35, 0xf4, 0x59, 0xf7, 0xfc, 0x5d, 0xbf, 0xf0,
+	0xa9, 0x5c, 0x95, 0x4f, 0xfe, 0x57, 0x3e, 0x59, 0x4b, 0x36, 0xf1, 0x65, 0x10, 0x6d, 0x88, 0x95,
+	0xb1, 0x3f, 0x29, 0x84, 0xdf, 0xbf, 0xfe, 0xb4, 0x24, 0x6e, 0xcc, 0x9f, 0x1f, 0xfd, 0xdf, 0x87,
+	0x5a, 0x11, 0x9d, 0x03, 0x96, 0xbb, 0x9b, 0x17, 0x7b, 0x65, 0xdc, 0xb3, 0xbf, 0x01, 0x00, 0x00,
+	0xff, 0xff, 0xf4, 0xd1, 0xb8, 0x3b, 0xec, 0x02, 0x00, 0x00,
 }
