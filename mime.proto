@@ -9,7 +9,7 @@ import "google/protobuf/descriptor.proto";
 // on the wire in HTTP.
 message MIME_Type_Descriptor {
     string http_string = 1;
-    uint32 commonalias = 2;
+    repeated uint32 aliases = 2;
 }
 
 extend google.protobuf.EnumValueOptions {
@@ -28,7 +28,8 @@ enum MIME_Types {
     TEXT_CSS = 3 [(mime_descriptor).http_string="text/html"];
     TEXT_HTML = 2 [(mime_descriptor).http_string="text/html"];
     TEXT_PLAIN = 1 [(mime_descriptor).http_string="text/plain"];
-    reserved 8 to 127;
+    reserved 8 to 127;     // one-byte varint encodings
+    reserved 128 to 16383; // two-byte varint encodings (there are <2000 MIME types registered)
 
     // Uncommon MIME types: all other MIME types start with tag numbers 128 and up.
     //
@@ -37,21 +38,21 @@ enum MIME_Types {
     //
     //   1. Reserve a tag number above for the promoted MIME type. E.g.
     //           reserved 42; // for "APPLICATION_AWESOME_APP"
-    //   2. Add a commonalias option to the entry in the uncommon list. E.g.
-    //           APPLICATION_AWESOME_APP = 7376 [(mime_descriptor).commonalias=42];
+    //   2. Add a aliases option to the entry in the uncommon list. E.g.
+    //           APPLICATION_AWESOME_APP = 7376 [(mime_descriptor).aliases=42];
     //   3. Wait for this definition version to propagate
     //   4. Add the type to the common list at the reserved tag number. E.g.
     //           APPLICATION_AWESOME_APP = 42;
     //
     // Some clients may know of the type only in the uncommon list, but can use the
-    // commonalias value to interpret unknown values in the common list until their
+    // aliases value to interpret unknown values in the common list until their
     // definitions are upgraded.
     //
     // Some very old clients may know of the type only in the uncommon list and may
     // also have no knowledge the type is eligible to be promoted. Clients that see
     // a MIME type with tag <128 and do not understand it should definitely update
     // themselves.
-    MIME_TYPE_UNUSED_UNCOMMON = 128 [(mime_descriptor)={http_string: ""; commonalias: 0}];
+    MIME_TYPE_UNUSED_UNCOMMON = 128 [(mime_descriptor)={http_string: ""; aliases: [0]}];
 }
 
 message MIME_Type {
