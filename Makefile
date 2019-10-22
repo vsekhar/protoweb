@@ -14,7 +14,7 @@ mimeproto: mimecheck
 		-mimefile=mimetypes.csv \
 		-protofile=mime2.proto
 
-mimecheck: cmd/updatemimetypes/mimetypes.csv
+mimecheck: mimetypes.csv
 	$(GO) run $(UMT)/updatemimetypes.go \
 		-mimefile=mimetypes.csv
 
