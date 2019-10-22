@@ -11,14 +11,13 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strconv"
 	"text/template"
 )
 
 var mimeFilename = flag.String("mimefile", "", "mime file containing existing types & numbers")
 var inURL = flag.String("url", "", "url of IANA-formatted XML list of MIME types (default is list at IANA website)")
-var force = flag.Bool("force", false, "generate MIME file without checking for updates")
+var force = flag.Bool("force", false, "generate files from downloaded list, ignoring existing files and numbering")
 var protoFile = flag.String("protofile", "", "proto definition file to output")
 
 const defaultIANAURL = "https://www.iana.org/assignments/media-types/media-types.xml"
@@ -61,18 +60,8 @@ var commonMIMETypes = map[string]uint32{
 
 func main() {
 	log.SetOutput(os.Stderr) // tool output often piped to a file
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
 	flag.Parse()
-	flag.Usage = func() {
-		execName := filepath.Base(os.Args[0])
-		fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s <command> [flags]\n\n", execName)
-		fmt.Fprintf(flag.CommandLine.Output(), "Commands: updatetypes generateproto\n\n")
-		fmt.Fprintf(flag.CommandLine.Output(), "Flags:\n\n")
-		flag.PrintDefaults()
-	}
-	if flag.NArg() != 1 {
-		flag.Usage()
-		os.Exit(1)
-	}
 
 	// internal sanity checks
 	if len(commonMIMETypes) > 127 {
@@ -92,14 +81,28 @@ func main() {
 		}
 	}
 
-	if !*force {
-		// check for updates
-		buf := &bytes.Buffer{}
-		csvbuf := csv.NewWriter(buf)
-		n := updateTypes(csvbuf)
-		if n > 0 {
-			// print updates and exit
-			csvbuf.Flush()
+	// generate update
+	buf := &bytes.Buffer{}
+	csvbuf := csv.NewWriter(buf)
+	n := updateTypes(csvbuf, *force)
+	csvbuf.Flush()
+	if n > 0 {
+		// existing mimetypes file needs to be updated
+		if *force {
+			if *mimeFilename != "" {
+				// dump entire update to the file
+				mf, err := os.Create(*mimeFilename)
+				if err != nil {
+					log.Fatal(err)
+				}
+				defer mf.Close()
+				if _, err := io.Copy(mf, buf); err != nil {
+					log.Fatal(err)
+				}
+			}
+		} else {
+			// existing mimetypes file needs to be updated,
+			// print the required updates and exit
 			if _, err := io.Copy(os.Stdout, buf); err != nil {
 				log.Fatal(err)
 			}
@@ -170,16 +173,15 @@ func loadMimeFile(filename string) (uint32, map[string]uint32) {
 
 type recordWriter interface {
 	Write([]string) error
-	Flush()
 }
 
-func updateTypes(rw recordWriter) int {
-	if *mimeFilename == "" && !*force {
-		log.Print("existing MIME file required, use -mimefile")
+func updateTypes(rw recordWriter, force bool) int {
+	if *mimeFilename == "" && !force {
+		log.Print("existing MIME file required, specify with -mimefile or regenerate with -force")
 		flag.Usage()
 		os.Exit(1)
 	}
-	if *force {
+	if force {
 		log.Printf("*** regenerating MIME file, numbering may change ***")
 	}
 
