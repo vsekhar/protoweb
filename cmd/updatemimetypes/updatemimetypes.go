@@ -1,28 +1,31 @@
-// updatemimetypes prints a diff against
+// updatemimetypes outputs new MIME types with their numbers
 package main
 
 import (
+	"bytes"
 	"encoding/csv"
 	"encoding/xml"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strconv"
 	"text/template"
 )
 
-var mimeFilename = flag.String("mimefile", "", "mime file to update")
-var inURL = flag.String("url", "", "url of IANA-formatted XML list of MIME types")
-var forceRegenerate = flag.Bool("forceregenerate", false, "regenerate mime file (WARNING: this may renumber MIME types and is not backward compatible)")
-var writeProto = flag.String("writeproto", "", "proto definition file to output")
+var mimeFilename = flag.String("mimefile", "", "mime file containing existing types & numbers")
+var inURL = flag.String("url", "", "url of IANA-formatted XML list of MIME types (default is list at IANA website)")
+var force = flag.Bool("force", false, "generate MIME file without checking for updates")
+var protoFile = flag.String("protofile", "", "proto definition file to output")
 
 const defaultIANAURL = "https://www.iana.org/assignments/media-types/media-types.xml"
 
-type Registry struct {
+type registry struct {
 	Title      string     `xml:"title"`
-	Registries []Registry `xml:"registry"`
+	Registries []registry `xml:"registry"`
 	Records    []struct {
 		Name  string `xml:"name"`
 		XRefs []struct {
@@ -33,6 +36,10 @@ type Registry struct {
 	} `xml:"record"`
 }
 
+// MIME types known at time of creation to be common are encoded with tags
+// 1-127. This permits one-byte varint encoding of their values. Other MIME
+// types (up to tag 16,383) are encoded with two bytes, so the savings is
+// small.
 var commonMIMETypes = map[string]uint32{
 	"application/javascript":   4,
 	"application/octet-stream": 5,
@@ -53,12 +60,23 @@ var commonMIMETypes = map[string]uint32{
 }
 
 func main() {
-	flag.Parse()
 	log.SetOutput(os.Stderr) // tool output often piped to a file
+	flag.Parse()
+	flag.Usage = func() {
+		execName := filepath.Base(os.Args[0])
+		fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s <command> [flags]\n\n", execName)
+		fmt.Fprintf(flag.CommandLine.Output(), "Commands: updatetypes generateproto\n\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "Flags:\n\n")
+		flag.PrintDefaults()
+	}
+	if flag.NArg() != 1 {
+		flag.Usage()
+		os.Exit(1)
+	}
 
-	// sanity checks
+	// internal sanity checks
 	if len(commonMIMETypes) > 127 {
-		log.Fatal("too many common types: %d", len(commonMIMETypes))
+		log.Fatalf("too many common types: %d", len(commonMIMETypes))
 	}
 	typesByTag := make(map[uint32]string)
 	for name, tag := range commonMIMETypes {
@@ -74,30 +92,39 @@ func main() {
 		}
 	}
 
-	if *inURL == "" {
-		*inURL = defaultIANAURL
-	}
-	resp, err := http.Get(*inURL)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close()
-	dec := xml.NewDecoder(resp.Body)
-	reg := &Registry{}
-	if err := dec.Decode(reg); err != nil {
-		log.Fatal(err)
-	}
-
-	if *mimeFilename == "" && !*forceRegenerate {
-		log.Fatal("existing MIME file required, use -mimefile")
+	if !*force {
+		// check for updates
+		buf := &bytes.Buffer{}
+		csvbuf := csv.NewWriter(buf)
+		n := updateTypes(csvbuf)
+		if n > 0 {
+			// print updates and exit
+			csvbuf.Flush()
+			if _, err := io.Copy(os.Stdout, buf); err != nil {
+				log.Fatal(err)
+			}
+			os.Exit(1)
+		}
 	}
 
-	var nextTagNo uint32 = 0
+	if *protoFile != "" {
+		// generate protofile
+		pf, err := os.Create(*protoFile)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer pf.Close()
+		generateProto(pf)
+	}
+}
+
+func loadMimeFile(filename string) (uint32, map[string]uint32) {
 	typesByName := make(map[string]uint32)
+	var nextTagNo uint32
 
 	// collect existing mime types and tag numbers
-	if *mimeFilename != "" && !*forceRegenerate {
-		mimeFile, err := os.Open(*mimeFilename)
+	if *mimeFilename != "" && !*force {
+		mimeFile, err := os.Open(filename)
 		if err != nil {
 			log.Fatalf("could not open %s: %s", *mimeFilename, err)
 		}
@@ -118,23 +145,17 @@ func main() {
 			tagno64, err := strconv.ParseUint(record[1], 10, 32)
 			tagno := uint32(tagno64)
 			if err != nil {
-				log.Fatalf("%s:%d bad tag number: %s - %s", *mimeFile, i+1, record[1], err)
+				log.Fatalf("%s:%d bad tag number: %s - %s", *mimeFilename, i+1, record[1], err)
 			}
 
-			// ensure name and tag uniqueness
+			// ensure names are unique
 			if existingTag, ok := typesByName[name]; ok {
 				if existingTag != tagno {
 					log.Fatalf("tag mismatch in MIME file for '%s' (expected %d, got %d)", name, existingTag, tagno)
 				}
 			}
-			if existingName, ok := typesByTag[tagno]; ok {
-				if existingName != name {
-					log.Fatalf("duplicate name in MIME file for tag %d (%s and %s)", tagno, existingName, name)
-				}
-			}
 
 			typesByName[name] = tagno
-			typesByTag[tagno] = name
 			if tagno > nextTagNo {
 				nextTagNo = tagno
 			}
@@ -144,10 +165,45 @@ func main() {
 	if nextTagNo < 128 {
 		nextTagNo = 128
 	}
+	return nextTagNo, typesByName
+}
 
-	w := csv.NewWriter(os.Stdout)
-	defer w.Flush()
+type recordWriter interface {
+	Write([]string) error
+	Flush()
+}
 
+func updateTypes(rw recordWriter) int {
+	if *mimeFilename == "" && !*force {
+		log.Print("existing MIME file required, use -mimefile")
+		flag.Usage()
+		os.Exit(1)
+	}
+	if *force {
+		log.Printf("*** regenerating MIME file, numbering may change ***")
+	}
+
+	if *inURL == "" {
+		*inURL = defaultIANAURL
+	}
+	resp, err := http.Get(*inURL)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	dec := xml.NewDecoder(resp.Body)
+	reg := &registry{}
+	if err := dec.Decode(reg); err != nil {
+		log.Fatal(err)
+	}
+
+	var nextTagNo uint32
+	typesByName := make(map[string]uint32)
+	if *mimeFilename != "" {
+		nextTagNo, typesByName = loadMimeFile(*mimeFilename)
+	}
+
+	newTypes := 0
 	// ensure common types match existing file, or output new common type
 	for name, tag := range commonMIMETypes {
 		if mimeFileTag, ok := typesByName[name]; ok {
@@ -156,7 +212,8 @@ func main() {
 			}
 		} else {
 			// new common MIME type
-			w.Write([]string{name, fmt.Sprint(tag)})
+			rw.Write([]string{name, fmt.Sprint(tag)})
+			newTypes++
 		}
 	}
 
@@ -170,16 +227,20 @@ func main() {
 			if _, ok := typesByName[name]; ok {
 				continue
 			}
-			w.Write([]string{name, fmt.Sprint(nextTagNo)})
+			rw.Write([]string{name, fmt.Sprint(nextTagNo)})
+			newTypes++
 			nextTagNo++
 		}
 	}
+	return newTypes
+}
 
+func generateProto(w io.Writer) {
 	t := template.New("mimetypes")
 	if _, err := t.Parse(protoTemplate); err != nil {
 		log.Fatal(err)
 	}
-
+	// TODO: generate proto file and write to w
 }
 
 type mimeTypeDescriptor struct {
@@ -188,22 +249,12 @@ type mimeTypeDescriptor struct {
 	Aliases    []uint32
 }
 
-// TODO: make number assignments stable in this repo. create a list and store
-// it here, hit the network to check all official ones are on the list.
-// TODO: choose 127 most common MIME types to optimize varint usage
-
-// two lists: common mime types (max 127), other mime types
-// few types are promoted to common, spots reserved for future popular ones
-// *all* mime types appear in other mime types
-// for a non-common mime type: server must encode other
-// for a common mime type: server must encode common
-// protobuf includes oneof for common or other
-// mime types that start uncommon but are promoted to common appear in *both* lists
-// clients that don't recognize a mime type can't be expected to handle it
-
 const protoTemplate = `
-// generated by cmd/updatemimetypes ; DO NOT EDIT
-
+//
+// DO NOT EDIT: generated file
+//
+// Update this file by running: make mimeproto
+//
 syntax = "proto3";
 
 package web;
