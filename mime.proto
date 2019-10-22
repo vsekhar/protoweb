@@ -29,7 +29,6 @@ enum MIME_Types {
     TEXT_HTML = 2 [(mime_descriptor).http_string="text/html"];
     TEXT_PLAIN = 1 [(mime_descriptor).http_string="text/plain"];
     reserved 8 to 127;     // one-byte varint encodings
-    reserved 128 to 16383; // two-byte varint encodings (there are <2000 MIME types registered)
 
     // Uncommon MIME types: all other MIME types start with tag numbers 128 and up.
     //
@@ -53,6 +52,7 @@ enum MIME_Types {
     // a MIME type with tag <128 and do not understand it should definitely update
     // themselves.
     MIME_TYPE_UNUSED_UNCOMMON = 128 [(mime_descriptor)={http_string: ""; aliases: [0]}];
+    reserved 129 to 16383; // two-byte varint encodings (there are <2000 MIME types registered)
 }
 
 message MIME_Type {

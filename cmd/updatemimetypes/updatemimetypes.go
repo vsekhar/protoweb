@@ -18,7 +18,7 @@ import (
 var mimeFilename = flag.String("mimefile", "", "mime file containing existing types & numbers")
 var inURL = flag.String("url", "", "url of IANA-formatted XML list of MIME types (default is list at IANA website)")
 var force = flag.Bool("force", false, "generate files from downloaded list, ignoring existing files and numbering")
-var protoFile = flag.String("protofile", "", "proto definition file to output")
+var protoFile = flag.String("proto_out", "", "proto definition file to output")
 
 const defaultIANAURL = "https://www.iana.org/assignments/media-types/media-types.xml"
 

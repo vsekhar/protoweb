@@ -1,22 +1,26 @@
 GO=go
 UMT=cmd/updatemimetypes
 
-.PHONY: mimeregenerate
+.PHONY: mimeregenerate mimecheck dist
+
+all: webproto
+
+webproto: web.proto mime.proto
+	protoc --go_out=. web.proto mime.proto
 
 mimeregenerate:
 	$(GO) run $(UMT)/updatemimetypes.go \
 		-mimefile=mimetypes.csv \
-		-protofile=mime.proto \
+		-proto_out=mime.proto \
 		-force
 
-mimeproto: mimecheck
-	$(GO) run $(UMT)/updatemimetypes.go \
-		-mimefile=mimetypes.csv \
-		-protofile=mime2.proto
-
-mimecheck: mimetypes.csv
+mimecheck:
 	$(GO) run $(UMT)/updatemimetypes.go \
 		-mimefile=mimetypes.csv
 
-mime.proto: mimecheck
-	echo generate mime.proto
+mime.proto: mimetypes.csv
+	$(GO) run $(UMT)/updatemimetypes.go \
+		-mimefile=mimetypes.csv \
+		-proto_out=mime.proto
+
+dist: mime.proto
