@@ -126,6 +126,7 @@ func main() {
 		for _, typereg := range reg.Registries {
 			for _, record := range typereg.Records {
 				name := typereg.Title + "/" + record.Name
+				name = strings.Split(name, " ")[0]
 				if _, ok := typesByName[name]; !ok {
 					log.Printf("%s,%d", name, nextTagNo)
 					nextTagNo++
