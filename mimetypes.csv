@@ -1,17 +1,49 @@
-image/svg+xml,12
-text/css,3
-text/richtext,13
-application/zip,7
-text/plain,1
-application/javascript,4
+####################################################################
+# This file contains stable mappings from MIME types to protobuf   #
+# tag numbers and should be edited carefully to maintain backward  #
+# compatibility.                                                   #
+####################################################################
+#
+# Common MIME types are given a fixed assignment of low value
+# (<127) tag numbers to guarantee they receive one-byte varint
+# encoding on the wire. All other MIME types (up to 16,383)
+# receive two-byte varint encodings.
+#
+# Common MIME types are determined via HTTP Archive as of
+# Oct 22 2019:
+# https://console.cloud.google.com/bigquery?sq=543311606937:a35a4995c87c40e58576da3e26a47221
+#
+# The common MIME types listed here cover 99+% of response MIME
+# types in HTTP Archive.
+#
+application/font-woff,1
+application/font-woff2,2
+application/javascript,3
+application/json,4
 application/octet-stream,5
-application/xml,15
-image/jpeg,10
-text/html,2
-image/tiff,14
-application/xhtml+xml,11
-image/bmp,8
-image/gif,9
+application/x-font-woff,6
+application/x-javascript,7
+font/ttf,8
+font/woff,9
+font/woff2,10
+image/gif,11
+image/jpeg,12
+image/png,13
+image/svg+xml,14
+image/vnd.microsoft.icon,15
+image/webp,16
+image/x-icon,17
+text/css,18
+text/html,19
+text/javascript,20
+text/plain,21
+video/mp4,22
+#
+# Remaining MIME types start with tag number 128.
+#
+# All MIME types drawn from IANA XML listing as of Oct 22 2019:
+# https://www.iana.org/assignments/media-types/media-types.xml
+#
 application/1d-interleaved-parityfec,128
 application/3gpdash-qoe-report+xml,129
 application/3gpp-ims+xml,130
@@ -167,7 +199,6 @@ application/jf2feed+json,279
 application/jose,280
 application/jose+json,281
 application/jrd+json,282
-application/json,283
 application/json-patch+json,284
 application/json-seq,285
 application/jwk+json,286
@@ -1368,7 +1399,9 @@ application/xcap-ns+xml,1480
 application/xcon-conference-info-diff+xml,1481
 application/xcon-conference-info+xml,1482
 application/xenc+xml,1483
+application/xhtml+xml,1955
 application/xliff+xml,1484
+application/xml,1953
 application/xml-dtd,1485
 application/xml-external-parsed-entity,1486
 application/xml-patch+xml,1487
@@ -1382,6 +1415,7 @@ application/yang-data+xml,1494
 application/yang-patch+json,1495
 application/yang-patch+xml,1496
 application/yin+xml,1497
+application/zip,1952
 application/zlib,1498
 application/zstd,1499
 audio/1d-interleaved-parityfec,1500
@@ -1540,12 +1574,10 @@ audio/vorbis-config,1652
 font/collection,1653
 font/otf,1654
 font/sfnt,1655
-font/ttf,1656
-font/woff,1657
-font/woff2,1658
 image/aces,1659
 image/avci,1660
 image/avcs,1661
+image/bmp,1956
 image/cgm,1662
 image/dicom-rle,1663
 image/emf,1664
@@ -1574,11 +1606,11 @@ image/jxsi,1686
 image/jxss,1687
 image/ktx,1688
 image/naplps,1689
-image/png,1690
 image/prs.btif,1691
 image/prs.pti,1692
 image/pwg-raster,1693
 image/t38,1694
+image/tiff,1954
 image/tiff-fx,1695
 image/vnd.adobe.photoshop,1696
 image/vnd.airzip.accelerator.azv,1697
@@ -1594,7 +1626,6 @@ image/vnd.fst,1706
 image/vnd.fujixerox.edmics-mmr,1707
 image/vnd.fujixerox.edmics-rlc,1708
 image/vnd.globalgraphics.pgb,1709
-image/vnd.microsoft.icon,1710
 image/vnd.mix,1711
 image/vnd.ms-modi,1712
 image/vnd.mozilla.apng,1713
@@ -1703,6 +1734,7 @@ text/prs.lines.tag,1815
 text/prs.prop.logic,1816
 text/raptorfec,1817
 text/RED,1818
+text/richtext,1951
 text/rfc822-headers,1819
 text/rtf,1820
 text/rtp-enc-aescm128,1821
@@ -1778,7 +1810,6 @@ video/mj2,1890
 video/MP1S,1891
 video/MP2P,1892
 video/MP2T,1893
-video/mp4,1894
 video/MP4V-ES,1895
 video/MPV,1896
 video/mpeg,1897
