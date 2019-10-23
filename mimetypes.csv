@@ -14,7 +14,9 @@
 # https://console.cloud.google.com/bigquery?sq=543311606937:a35a4995c87c40e58576da3e26a47221
 #
 # The common MIME types listed here cover 99+% of response MIME
-# types in HTTP Archive.
+# types in HTTP Archive. Some are x-* types or deprecated types that
+# are not part of the current IANA list, but are common in the wild
+# nevertheless.
 #
 application/font-woff,1
 application/font-woff2,2
@@ -164,9 +166,8 @@ application/fhir+json,244
 application/fhir+xml,245
 application/fits,246
 application/flexfec,247
-application/font-sfnt - DEPRECATED in favor of font/sfnt,248
+application/font-sfnt,248
 application/font-tdpfr,249
-application/font-woff - DEPRECATED in favor of font/woff,250
 application/framework-attributes+xml,251
 application/geo+json,252
 application/geo+json-seq,253
@@ -379,7 +380,7 @@ application/simple-message-summary,460
 application/simpleSymbolContainer,461
 application/sipc,462
 application/slate,463
-application/smil - OBSOLETED in favor of application/smil+xml,464
+application/smil,464
 application/smil+xml,465
 application/smpte336m,466
 application/soap+fastinfoset,467
@@ -452,7 +453,7 @@ application/vnd.3gpp.mcptt-ue-config+xml,533
 application/vnd.3gpp.mcptt-ue-init-config+xml,534
 application/vnd.3gpp.mcptt-user-profile+xml,535
 application/vnd.3gpp.mcvideo-affiliation-command+xml,536
-application/vnd.3gpp.mcvideo-affiliation-info+xml - OBSOLETED in favor of application/vnd.3gpp.mcvideo-info+xml,537
+application/vnd.3gpp.mcvideo-affiliation-info+xml,537
 application/vnd.3gpp.mcvideo-info+xml,538
 application/vnd.3gpp.mcvideo-location-info+xml,539
 application/vnd.3gpp.mcvideo-mbms-usage-info+xml,540
@@ -523,7 +524,7 @@ application/vnd.apple.keynote,604
 application/vnd.apple.mpegurl,605
 application/vnd.apple.numbers,606
 application/vnd.apple.pages,607
-application/vnd.arastra.swi - OBSOLETED in favor of application/vnd.aristanetworks.swi,608
+application/vnd.arastra.swi,608
 application/vnd.aristanetworks.swi,609
 application/vnd.artisan+json,610
 application/vnd.artsquare,611
@@ -737,8 +738,8 @@ application/vnd.futoin+cbor,818
 application/vnd.futoin+json,819
 application/vnd.fuzzysheet,820
 application/vnd.genomatix.tuxedo,821
-application/vnd.geo+json (OBSOLETED by  in favor of application/geo+json),822
-application/vnd.geocube+xml - OBSOLETED by request,823
+application/vnd.geo+json,822
+application/vnd.geocube+xml,823
 application/vnd.geogebra.file,824
 application/vnd.geogebra.tool,825
 application/vnd.geometry-explorer,826
@@ -748,7 +749,7 @@ application/vnd.geospace,829
 application/vnd.gerber,830
 application/vnd.globalplatform.card-content-mgt,831
 application/vnd.globalplatform.card-content-mgt-response,832
-application/vnd.gmx - DEPRECATED,833
+application/vnd.gmx,833
 application/vnd.google-earth.kml+xml,834
 application/vnd.google-earth.kmz,835
 application/vnd.gov.sk.e-form+xml,836
@@ -784,10 +785,10 @@ application/vnd.hyper-item+json,865
 application/vnd.hyper+json,866
 application/vnd.hyperdrive+json,867
 application/vnd.hzn-3d-crossword,868
-application/vnd.ibm.afplinedata - OBSOLETED in favor of vnd.afpc.afplinedata,869
+application/vnd.ibm.afplinedata,869
 application/vnd.ibm.electronic-media,870
 application/vnd.ibm.MiniPay,871
-application/vnd.ibm.modcap - OBSOLETED in favor of application/vnd.afpc.modca,872
+application/vnd.ibm.modcap,872
 application/vnd.ibm.rights-management,873
 application/vnd.ibm.secure-container,874
 application/vnd.iccprofile,875
@@ -809,7 +810,7 @@ application/vnd.ims.lti.v2.toolsettings.simple+json,890
 application/vnd.informedcontrol.rms+xml,891
 application/vnd.infotech.project,892
 application/vnd.infotech.project+xml,893
-application/vnd.informix-visionary - OBSOLETED in favor of application/vnd.visionary,894
+application/vnd.informix-visionary,894
 application/vnd.innopath.wamp.notification,895
 application/vnd.insors.igm,896
 application/vnd.intercon.formnet,897
@@ -987,7 +988,7 @@ application/vnd.nokia.landmarkcollection+xml,1068
 application/vnd.nokia.ncd,1069
 application/vnd.nokia.n-gage.ac+xml,1070
 application/vnd.nokia.n-gage.data,1071
-application/vnd.nokia.n-gage.symbian.install - OBSOLETE; no replacement given,1072
+application/vnd.nokia.n-gage.symbian.install,1072
 application/vnd.nokia.pcd+wbxml,1073
 application/vnd.nokia.pcd+xml,1074
 application/vnd.nokia.radio-preset,1075
@@ -1372,7 +1373,7 @@ application/vnd.yamaha.through-ngn,1453
 application/vnd.yamaha.tunnel-udpencap,1454
 application/vnd.yaoweme,1455
 application/vnd.yellowriver-custom-menu,1456
-application/vnd.youtube.yt - OBSOLETED in favor of video/vnd.youtube.yt,1457
+application/vnd.youtube.yt,1457
 application/vnd.zul,1458
 application/vnd.zzazz.deck+xml,1459
 application/voicexml+xml,1460
@@ -1564,7 +1565,7 @@ audio/vnd.nuera.ecelp7470,1642
 audio/vnd.nuera.ecelp9600,1643
 audio/vnd.octel.sbc,1644
 audio/vnd.presonus.multitrack,1645
-audio/vnd.qcelp - DEPRECATED in favor of audio/qcelp,1646
+audio/vnd.qcelp,1646
 audio/vnd.rhetorex.32kadpcm,1647
 audio/vnd.rip,1648
 audio/vnd.sealedmedia.softseal.mpeg,1649
@@ -1641,8 +1642,8 @@ image/vnd.wap.wbmp,1722
 image/vnd.xiff,1723
 image/vnd.zbrush.pcx,1724
 image/wmf,1725
-image/x-emf - DEPRECATED in favor of image/emf,1726
-image/x-wmf - DEPRECATED in favor of image/wmf,1727
+image/x-emf,1726
+image/x-wmf,1727
 message/CPIM,1728
 message/delivery-status,1729
 message/disposition-notification,1730
@@ -1655,14 +1656,14 @@ message/global-disposition-notification,1736
 message/global-headers,1737
 message/http,1738
 message/imdn+xml,1739
-message/news - OBSOLETED by RFC5537,1740
+message/news,1740
 message/partial,1741
 message/rfc822,1742
 message/s-http,1743
 message/sip,1744
 message/sipfrag,1745
 message/tracking-status,1746
-message/vnd.si.simp - OBSOLETED by request,1747
+message/vnd.si.simp,1747
 message/vnd.wfa.wsc,1748
 model/3mf,1749
 model/example,1750
@@ -1712,16 +1713,15 @@ text/cache-manifest,1793
 text/calendar,1794
 text/csv,1795
 text/csv-schema,1796
-text/directory - DEPRECATED by RFC6350,1797
+text/directory,1797
 text/dns,1798
-text/ecmascript - OBSOLETED in favor of application/ecmascript,1799
+text/ecmascript,1799
 text/encaprtp,1800
 text/enriched,1801
 text/example,1802
 text/flexfec,1803
 text/fwdred,1804
 text/grammar-ref-list,1805
-text/javascript - OBSOLETED in favor of application/javascript,1806
 text/jcr-cnd,1807
 text/markdown,1808
 text/mizar,1809
@@ -1773,7 +1773,7 @@ text/vnd.ms-mediapackage,1853
 text/vnd.net2phone.commcenter.command,1854
 text/vnd.radisys.msml-basic-layout,1855
 text/vnd.senx.warpscript,1856
-text/vnd.si.uricatalogue - OBSOLETED by request,1857
+text/vnd.si.uricatalogue,1857
 text/vnd.sun.j2me.app-descriptor,1858
 text/vnd.sosi,1859
 text/vnd.trolltech.linguist,1860

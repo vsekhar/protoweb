@@ -24,6 +24,6 @@ dist: test webproto
 # manually trigger check for updates to mime types from IANA list
 mimecheckforupdates:
 	$(GO) run cmd/mimetool/mimetool.go \
-		-mimefile=mimetypes.csv \
-		-remote \
+		-mimetypes=mimetypes.csv \
+		-checkremote \
 		-quiet
