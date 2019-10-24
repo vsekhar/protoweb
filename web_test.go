@@ -20,17 +20,13 @@ func makeRequest() *http.Request {
 	return req
 }
 
-func makeRequestProto() []byte {
+func TestReq2Proto(t *testing.T) {
 	req := makeRequest()
-	protoreq, err := web.Req2Proto(req)
+	reqproto, err := web.Req2Proto(req)
 	if err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	}
-	protoreqbytes, err := proto.Marshal(protoreq)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return protoreqbytes
+	_ = reqproto
 }
 
 // TODO: makeResponse, makeProtoResponse, capture actual server response
