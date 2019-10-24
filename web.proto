@@ -14,7 +14,7 @@ message KeyValue {
 
 // for use in oneof's only
 message StringList { repeated string Strings = 1; } // oneof's can't have repeated fields
-enum Wildcard { STAR = 0; }                         // don't need UNUSED_* = 0 value for onof use
+enum Wildcard { STAR = 0; }                         // don't need UNUSED_* = 0 value for oneof use
 enum Already { ALREADY = 0; }
 enum Clear { CLEAR = 0; }
 
