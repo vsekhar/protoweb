@@ -15,20 +15,16 @@ import (
 // returns an error.
 func Req2Proto(req *http.Request) (*Request, error) {
 	ret := new(Request)
-	parsedFields := []string{}
-	parsed := func(s string) { parsedFields = append(parsedFields, s) }
 	method, ok := Request_Method_value[req.Method]
 	if !ok {
 		return nil, fmt.Errorf("bad method: %s", req.Method)
 	}
 	ret.Method = Request_Method(method)
-	parsed("method")
 	if req.URL.String() == "*" {
 		ret.URI = &Request_URI_Wildcard{}
 	} else {
 		ret.URI = &Request_URI_String{URI_String: req.URL.String()}
 	}
-	parsed("uri")
 	ret.Headers = new(Request_Headers)
 	for header, values := range req.Header {
 		header = strings.ToLower(header)
@@ -36,7 +32,6 @@ func Req2Proto(req *http.Request) (*Request, error) {
 		if len(values) > 0 {
 			lastvalue = values[len(values)-1]
 		}
-		knownHeader := true
 		switch header {
 		case "host":
 			ret.Headers.Host = lastvalue
@@ -47,13 +42,9 @@ func Req2Proto(req *http.Request) (*Request, error) {
 		case "accept-encoding":
 			ret.Headers.Accept_Encoding = lastvalue
 		default:
-			knownHeader = false
 			for _, v := range values {
 				ret.Headers.Other = append(ret.Headers.Other, &KeyValue{Key: header, Value: v})
 			}
-		}
-		if knownHeader {
-			parsed(header)
 		}
 	}
 	return ret, nil
@@ -63,13 +54,10 @@ func Req2Proto(req *http.Request) (*Request, error) {
 // or returns an error.
 func Resp2Proto(resp *http.Response) (*Response, error) {
 	ret := new(Response)
-	parsedFields := []string{}
-	parsed := func(s string) { parsedFields = append(parsedFields, s) }
 	if _, ok := Response_Code_Value_name[int32(resp.StatusCode)]; !ok {
 		return nil, fmt.Errorf("unknown response code: %d", resp.StatusCode)
 	}
 	ret.Code = Response_Code_Value(resp.StatusCode)
-	parsed("code")
 	ret.Headers = new(Response_Headers)
 	for header, values := range resp.Header {
 		header = strings.ToLower(header)
@@ -77,7 +65,6 @@ func Resp2Proto(resp *http.Response) (*Response, error) {
 		if len(values) > 0 {
 			lastvalue = values[len(values)-1]
 		}
-		knownHeader := true
 		switch header {
 		case "date":
 			date, err := time.Parse(time.RFC1123, lastvalue)
@@ -113,7 +100,6 @@ func Resp2Proto(resp *http.Response) (*Response, error) {
 			}
 		case "content-type":
 			// TODO: parse type/subtype;parameter=value
-			// TODO: enumerate MIME types: https://www.iana.org/assignments/media-types/media-types.xhtml
 			parts := strings.Split(lastvalue, ";")
 			if len(parts) == 0 || len(parts) > 2 {
 				return nil, fmt.Errorf("bad Content-Type: %s", lastvalue)
@@ -148,13 +134,9 @@ func Resp2Proto(resp *http.Response) (*Response, error) {
 				log.Println(s)
 			}
 		default:
-			knownHeader = false
 			for _, v := range values {
 				ret.Headers.Other = append(ret.Headers.Other, &KeyValue{Key: header, Value: v})
 			}
-		}
-		if knownHeader {
-			parsed(header)
 		}
 	}
 	bodybytes, err := ioutil.ReadAll(resp.Body)
