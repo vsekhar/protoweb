@@ -12,9 +12,12 @@ message KeyValue {
     string Value = 2;
 }
 
+message StringList {
+    repeated string Strings = 1;
+}
+
 // for use in oneof's only
-message StringList { repeated string Strings = 1; } // oneof's can't have repeated fields
-enum Wildcard { STAR = 0; }                         // don't need UNUSED_* = 0 value for oneof use
+enum Wildcard { STAR = 0; }   // don't need UNUSED_* = 0 value for oneof use
 enum Already { ALREADY = 0; }
 enum Clear { CLEAR = 0; }
 
@@ -88,7 +91,7 @@ message Request {
         string HTTP2_Settings = 13;
         string If_Match = 14;
         google.protobuf.Timestamp If_Modified_Since = 15;
-        string If_None_Match = 16;
+        StringList If_None_Match = 16;
         string If_Range = 17;
         google.protobuf.Timestamp If_Unmodified_Since = 18;
         uint64 Max_Forwards = 19;
@@ -133,7 +136,7 @@ message Request {
 
         // next field number = 33
     } // message Headers
-    Headers headers = 5;
+    Headers Header = 5;
 
 } // message Request
 
@@ -228,6 +231,6 @@ message Response {
 
         // next field number = 19
     } // message Headers
-    Headers headers = 2;
+    Headers Header = 2;
     bytes Body = 3;
 } // message Response
