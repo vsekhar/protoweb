@@ -39,9 +39,9 @@ func Req2Proto(req *http.Request) (*Request, error) {
 			ret.Header.User_Agent = lastvalue
 		case "if-none-match":
 			if ret.Header.If_None_Match == nil {
-				ret.Header.If_None_Match = &StringList{}
+				ret.Header.If_None_Match = make([]string, 0, len(values))
 			}
-			ret.Header.If_None_Match.Strings = append(ret.Header.If_None_Match.Strings, values...)
+			ret.Header.If_None_Match = append(ret.Header.If_None_Match, values...)
 		case "accept-encoding":
 			ret.Header.Accept_Encoding = lastvalue
 		default:

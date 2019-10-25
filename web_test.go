@@ -42,8 +42,8 @@ func TestReq2Proto(t *testing.T) {
 	if reqproto.Header.Other != nil {
 		t.Errorf("unparsed headers: %v", reqproto.Header.Other)
 	}
-	if !equalStringSlices(reqproto.Header.If_None_Match.Strings, header["If-None-Match"]) {
-		t.Errorf("bad header If-None-Match: %v", reqproto.Header.If_None_Match.Strings)
+	if !equalStringSlices(reqproto.Header.If_None_Match, header["If-None-Match"]) {
+		t.Errorf("bad header If-None-Match: %v", reqproto.Header.If_None_Match)
 	}
 }
 
