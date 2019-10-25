@@ -147,7 +147,7 @@ func main() {
 	replacements := []string{
 		"/", "_",
 		".", "_",
-		"+", "_plus_", // audio/AMR_WB and audio/amr_wb+ cause protoc error after replacement
+		"+", "_PLUS_", // audio/AMR_WB and audio/amr_wb+ cause protoc error after replacement
 		" ", "_",
 		"-", "_",
 		"(", "_",
@@ -217,9 +217,8 @@ extend google.protobuf.EnumValueOptions {
 
 enum MIME_Types {
     MIME_TYPE_UNUSED = 0 [(mime_descriptor).http_string=""];
-{{ range $_, $entry := . }}	{{ $entry.EnumName }} = {{ $entry.Tag }} [(mime_descriptor).http_string="{{ $entry.HTTPName }}"];
-{{ end }}
-}
+{{ range $_, $entry := . }}    {{ $entry.EnumName }} = {{ $entry.Tag }} [(mime_descriptor).http_string="{{ $entry.HTTPName }}"];
+{{ end }}}
 
 message MIME_Type {
     oneof MIME_Type {

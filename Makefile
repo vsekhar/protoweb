@@ -2,10 +2,12 @@ GO=go
 
 .PHONY: mimecheckforupdates test
 
-all: webproto
+all: protos
 
-webproto: web.proto mime.proto
-	protoc --go_out=. web.proto mime.proto
+protos: web.pb.go mime.pb.go
+
+%.pb.go: %.proto
+	protoc --go_out=. $<
 
 mimetypesall.csv: mimetypescommon.csv
 
@@ -16,7 +18,7 @@ mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
 		-mimetypes=mimetypes.csv \
 		> $@
 
-test:
+test: all
 	$(GO) test
 
 dist: test webproto
