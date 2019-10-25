@@ -21,7 +21,7 @@ mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
 test: all
 	$(GO) test
 
-dist: test webproto
+dist: test all
 
 # manually trigger check for updates to mime types from IANA list
 mimecheckforupdates:
