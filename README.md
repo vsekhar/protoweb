@@ -6,6 +6,6 @@ Protoweb is a thought experiment to evaluate a QUIC + Protobuf implementation of
 
 Protobufs have several advantages over custom string- and byte-based protocols like HTTP:
 
-  * Machine readable specification
-
-A thought experiment to evaluate a protobuf-based implementation of web standards
+  * Versionable protocol: clients and servers implementing different versions of the protocol can still communicate
+  * Machine readable specification: clients, servers and other tools can analyze the protocol as well as how it is evolving (for example, to check for backward compatibility)
+  * Efficient: common values can be compactly encoded on the wire, with translations available in the protocol specification (kind of like a perfect Huffman code)
