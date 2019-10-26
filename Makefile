@@ -1,5 +1,12 @@
 GO=go
 
+UNAME_S := $(uname -s)
+ifeq ($(UNAME_S), Darwin)
+  CHROME=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+else
+  CHROME=/opt/google/chrome/chrome
+endif
+
 .PHONY: mimecheckforupdates test
 
 all: protos
@@ -32,3 +39,7 @@ mimecheckforupdates:
 
 protocheck:
 	prototool break check
+
+captureheaders: testdata/capture/capture.js
+	cd testdata && \
+	node capture/capture.js --chromepath=$(CHROME)
