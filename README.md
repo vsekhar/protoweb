@@ -10,6 +10,14 @@ Protobufs have several advantages over custom string- and byte-based protocols l
   * Machine readable specification: clients, servers and other tools can analyze the protocol as well as how it is evolving (for example, to check for backward compatibility)
   * Efficient: common values can be compactly encoded on the wire, with translations available in the protocol specification (kind of like a perfect Huffman code)
 
+## Roadmap
+
+  * Capture some real-ish traffic for replay (Puppeteer?)
+  * Define protocol buffers to handle captured traffic
+  * Implement counting transport for benchmarking
+  * Benchmark traffic replays with HTTP, HTTP/2 and protoweb
+  * Implement Go HTTP server and client using protoweb (with HTTP/2 and HTTP fallback)
+
 ## Prerequisites for development
 
 The library can be imported as is via Go programs.
