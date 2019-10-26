@@ -7,7 +7,7 @@ all: protos
 protos: web.pb.go mime.pb.go
 
 %.pb.go: %.proto
-	protoc --go_out=. $<
+	protoc --go_out=plugins=grpc:. $<
 
 mimetypesall.csv: mimetypescommon.csv
 

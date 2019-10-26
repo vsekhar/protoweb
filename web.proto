@@ -13,7 +13,7 @@ message KeyValue {
 }
 
 
-// for use in oneof's only
+// Directives, for use in oneofs only
 message StringList { repeated string Strings = 1; } // no 'repeated' in oneofs
 enum Wildcard { STAR = 0; }   // don't need UNUSED_* = 0 value for oneof use
 enum Already { ALREADY = 0; }
@@ -232,3 +232,8 @@ message Response {
     Headers Header = 2;
     bytes Body = 3;
 } // message Response
+
+service Web {
+    // TODO: should the methods be captured here? separate request/response messages?
+    rpc DO(Request) returns (Response);
+}
