@@ -1,3 +1,17 @@
+var PROTO_PATH = __dirname + '/../../web.proto';
+var grpc = require('grpc');
+var protoLoader = require('@grpc/proto-loader');
+// Suggested options for similarity to existing grpc.load behavior
+var packageDefinition = protoLoader.loadSync(
+    PROTO_PATH,
+    {keepCase: true,
+     longs: String,
+     enums: String,
+     defaults: true,
+     oneofs: true
+    });
+var protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
+
 const puppeteer = require('puppeteer-core');
 const path = require('path');
 const fse = require('fs-extra');
@@ -17,6 +31,7 @@ var argv = require('minimist')(process.argv.slice(2));
     page.on('response', async (response) => {
       // redirects
       if (response.status() >= 300 && response.status() < 400) {
+        // ignore redirects
         return;
       }
       const url = new URL(response.url());

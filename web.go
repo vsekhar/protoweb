@@ -57,10 +57,10 @@ func Req2Proto(req *http.Request) (*Request, error) {
 // or returns an error.
 func Resp2Proto(resp *http.Response) (*Response, error) {
 	ret := new(Response)
-	if _, ok := Response_Code_Value_name[int32(resp.StatusCode)]; !ok {
+	if _, ok := Status_Codes_name[int32(resp.StatusCode)]; !ok {
 		return nil, fmt.Errorf("unknown response code: %d", resp.StatusCode)
 	}
-	ret.Code = Response_Code_Value(resp.StatusCode)
+	ret.Status = Status_Codes(resp.StatusCode)
 	ret.Header = new(Response_Headers)
 	for header, values := range resp.Header {
 		header = strings.ToLower(header)
@@ -109,10 +109,10 @@ func Resp2Proto(resp *http.Response) (*Response, error) {
 			}
 			contentType := strings.TrimSpace(parts[0])
 			ret.Header.Content_Type = &Response_Headers_Content_Type_Message{}
-			mimeTypeNumber, ok := Response_Headers_Content_Type_Message_Common_MIME_Types_value[contentType]
+			mimeTypeNumber, ok := MIME_Types_value[contentType]
 			if ok {
-				ret.Header.Content_Type.Content_Type_Message = &Response_Headers_Content_Type_Message_Common_MIME_Type{
-					Common_MIME_Type: Response_Headers_Content_Type_Message_Common_MIME_Types(mimeTypeNumber),
+				ret.Header.Content_Type.Content_Type_Message = &Response_Headers_Content_Type_Message_MIME_Type{
+					MIME_Type: MIME_Types(mimeTypeNumber),
 				}
 			} else {
 				ret.Header.Content_Type.Content_Type_Message = &Response_Headers_Content_Type_Message_Other{

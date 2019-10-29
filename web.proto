@@ -2,6 +2,9 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
+import "mime.proto";
+import "status.proto";
+
 package web;
 
 // This line prevents updates to the local generated .go file.
@@ -139,11 +142,7 @@ message Request {
 } // message Request
 
 message Response {
-    enum Code_Value {
-        UNUSED_CODE = 0;
-        OK = 200;
-    }
-    Code_Value Code = 1;
+    Status_Codes Status = 1;
 
     message Headers {
         oneof Access_Control_Allow_Origin {
@@ -176,14 +175,8 @@ message Response {
         Cache_Control_Response Cache_Control = 18;
 
         message Content_Type_Message {
-            // Explicitly encoding the most common MIME types saves space on the wire
-            enum Common_MIME_Types {
-                UNUSED_COMMON_MIME_TYPE = 0;
-                APPLICATION_OCTET_STREAM = 1;
-                TEXT_HTML = 2;
-            }
             oneof Content_Type_Message {
-                Common_MIME_Types Common_MIME_Type = 1;
+                MIME_Types MIME_Type = 1;
                 string Other = 2;
             }
             KeyValue Parameter = 3;
