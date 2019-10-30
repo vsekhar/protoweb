@@ -1,4 +1,6 @@
 GO=go
+PROTOS=$(wildcard *.proto)
+PROTOS_GO=$(patsubst %.proto,%.pb.go,$(PROTOS))
 
 UNAME_S := $(uname -s)
 CHROME :=
@@ -13,8 +15,14 @@ endif
 
 all: protos
 
-protos: web.pb.go mime.pb.go status.pb.go
+protos: $(PROTOS)
 	prototool generate
+
+protolint: $(PROTOS)
+	prototool lint
+
+protodescriptor: $(PROTOS)
+	prototool descriptor-set --include-imports --include-source-info
 
 mimetypesall.csv: mimetypescommon.csv
 
@@ -31,7 +39,7 @@ test: all
 bench: all
 	$(GO) 
 
-dist: all test protocheck
+dist: all test protolint protocheck protodescriptor
 
 # manually trigger check for updates to mime types from IANA list
 mimecheckforupdates:

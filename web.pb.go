@@ -25,6 +25,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+// no 'repeated' in oneofs
 type Wildcard int32
 
 const (
@@ -47,6 +48,7 @@ func (Wildcard) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{0}
 }
 
+// don't need UNUSED_* = 0 value for oneof use
 type Already int32
 
 const (
@@ -91,20 +93,20 @@ func (Clear) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{2}
 }
 
-type Cache_Control_Request_Directives int32
+type CacheControlRequest_Directives int32
 
 const (
-	Cache_Control_Request_UNUSED_DIRECTIVE Cache_Control_Request_Directives = 0
-	Cache_Control_Request_MAX_AGE          Cache_Control_Request_Directives = 1
-	Cache_Control_Request_MAX_STALE        Cache_Control_Request_Directives = 2
-	Cache_Control_Request_MIN_FRESH        Cache_Control_Request_Directives = 3
-	Cache_Control_Request_NO_CACHE         Cache_Control_Request_Directives = 4
-	Cache_Control_Request_NO_STORE         Cache_Control_Request_Directives = 5
-	Cache_Control_Request_NO_TRANSFORM     Cache_Control_Request_Directives = 6
-	Cache_Control_Request_ONLY_OF_CACHED   Cache_Control_Request_Directives = 7
+	CacheControlRequest_UNUSED_DIRECTIVE CacheControlRequest_Directives = 0
+	CacheControlRequest_MAX_AGE          CacheControlRequest_Directives = 1
+	CacheControlRequest_MAX_STALE        CacheControlRequest_Directives = 2
+	CacheControlRequest_MIN_FRESH        CacheControlRequest_Directives = 3
+	CacheControlRequest_NO_CACHE         CacheControlRequest_Directives = 4
+	CacheControlRequest_NO_STORE         CacheControlRequest_Directives = 5
+	CacheControlRequest_NO_TRANSFORM     CacheControlRequest_Directives = 6
+	CacheControlRequest_ONLY_OF_CACHED   CacheControlRequest_Directives = 7
 )
 
-var Cache_Control_Request_Directives_name = map[int32]string{
+var CacheControlRequest_Directives_name = map[int32]string{
 	0: "UNUSED_DIRECTIVE",
 	1: "MAX_AGE",
 	2: "MAX_STALE",
@@ -115,7 +117,7 @@ var Cache_Control_Request_Directives_name = map[int32]string{
 	7: "ONLY_OF_CACHED",
 }
 
-var Cache_Control_Request_Directives_value = map[string]int32{
+var CacheControlRequest_Directives_value = map[string]int32{
 	"UNUSED_DIRECTIVE": 0,
 	"MAX_AGE":          1,
 	"MAX_STALE":        2,
@@ -126,30 +128,30 @@ var Cache_Control_Request_Directives_value = map[string]int32{
 	"ONLY_OF_CACHED":   7,
 }
 
-func (x Cache_Control_Request_Directives) String() string {
-	return proto.EnumName(Cache_Control_Request_Directives_name, int32(x))
+func (x CacheControlRequest_Directives) String() string {
+	return proto.EnumName(CacheControlRequest_Directives_name, int32(x))
 }
 
-func (Cache_Control_Request_Directives) EnumDescriptor() ([]byte, []int) {
+func (CacheControlRequest_Directives) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{2, 0}
 }
 
-type Cache_Control_Response_Directives int32
+type CacheControlResponse_Directives int32
 
 const (
-	Cache_Control_Response_UNUSED_DIRECTIVE Cache_Control_Response_Directives = 0
-	Cache_Control_Response_MUST_REVALIDATE  Cache_Control_Response_Directives = 1
-	Cache_Control_Response_NO_CACHE         Cache_Control_Response_Directives = 2
-	Cache_Control_Response_NO_STORE         Cache_Control_Response_Directives = 3
-	Cache_Control_Response_NO_TRANSFORM     Cache_Control_Response_Directives = 4
-	Cache_Control_Response_PUBLIC           Cache_Control_Response_Directives = 5
-	Cache_Control_Response_PRIVATE          Cache_Control_Response_Directives = 6
-	Cache_Control_Response_PROXY_REVALIDATE Cache_Control_Response_Directives = 7
-	Cache_Control_Response_MAX_AGE          Cache_Control_Response_Directives = 8
-	Cache_Control_Response_S_MAXAGE         Cache_Control_Response_Directives = 9
+	CacheControlResponse_UNUSED_DIRECTIVE CacheControlResponse_Directives = 0
+	CacheControlResponse_MUST_REVALIDATE  CacheControlResponse_Directives = 1
+	CacheControlResponse_NO_CACHE         CacheControlResponse_Directives = 2
+	CacheControlResponse_NO_STORE         CacheControlResponse_Directives = 3
+	CacheControlResponse_NO_TRANSFORM     CacheControlResponse_Directives = 4
+	CacheControlResponse_PUBLIC           CacheControlResponse_Directives = 5
+	CacheControlResponse_PRIVATE          CacheControlResponse_Directives = 6
+	CacheControlResponse_PROXY_REVALIDATE CacheControlResponse_Directives = 7
+	CacheControlResponse_MAX_AGE          CacheControlResponse_Directives = 8
+	CacheControlResponse_S_MAXAGE         CacheControlResponse_Directives = 9
 )
 
-var Cache_Control_Response_Directives_name = map[int32]string{
+var CacheControlResponse_Directives_name = map[int32]string{
 	0: "UNUSED_DIRECTIVE",
 	1: "MUST_REVALIDATE",
 	2: "NO_CACHE",
@@ -162,7 +164,7 @@ var Cache_Control_Response_Directives_name = map[int32]string{
 	9: "S_MAXAGE",
 }
 
-var Cache_Control_Response_Directives_value = map[string]int32{
+var CacheControlResponse_Directives_value = map[string]int32{
 	"UNUSED_DIRECTIVE": 0,
 	"MUST_REVALIDATE":  1,
 	"NO_CACHE":         2,
@@ -175,11 +177,11 @@ var Cache_Control_Response_Directives_value = map[string]int32{
 	"S_MAXAGE":         9,
 }
 
-func (x Cache_Control_Response_Directives) String() string {
-	return proto.EnumName(Cache_Control_Response_Directives_name, int32(x))
+func (x CacheControlResponse_Directives) String() string {
+	return proto.EnumName(CacheControlResponse_Directives_name, int32(x))
 }
 
-func (Cache_Control_Response_Directives) EnumDescriptor() ([]byte, []int) {
+func (CacheControlResponse_Directives) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{3, 0}
 }
 
@@ -229,174 +231,174 @@ func (Request_Method) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{4, 0}
 }
 
-type Request_Headers_Transfer_Encodings_Value int32
+type Request_Headers_TransferEncodingsValue int32
 
 const (
-	Request_Headers_UNUSED_TRANSFER_ENCODINGS_VALUE Request_Headers_Transfer_Encodings_Value = 0
-	Request_Headers_TRAILERS                        Request_Headers_Transfer_Encodings_Value = 1
+	Request_Headers_UNUSED_TRANSFER_ENCODINGS_VALUE Request_Headers_TransferEncodingsValue = 0
+	Request_Headers_TRAILERS                        Request_Headers_TransferEncodingsValue = 1
 )
 
-var Request_Headers_Transfer_Encodings_Value_name = map[int32]string{
+var Request_Headers_TransferEncodingsValue_name = map[int32]string{
 	0: "UNUSED_TRANSFER_ENCODINGS_VALUE",
 	1: "TRAILERS",
 }
 
-var Request_Headers_Transfer_Encodings_Value_value = map[string]int32{
+var Request_Headers_TransferEncodingsValue_value = map[string]int32{
 	"UNUSED_TRANSFER_ENCODINGS_VALUE": 0,
 	"TRAILERS":                        1,
 }
 
-func (x Request_Headers_Transfer_Encodings_Value) String() string {
-	return proto.EnumName(Request_Headers_Transfer_Encodings_Value_name, int32(x))
+func (x Request_Headers_TransferEncodingsValue) String() string {
+	return proto.EnumName(Request_Headers_TransferEncodingsValue_name, int32(x))
 }
 
-func (Request_Headers_Transfer_Encodings_Value) EnumDescriptor() ([]byte, []int) {
+func (Request_Headers_TransferEncodingsValue) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{4, 0, 0}
 }
 
-type Request_Headers_X_Requested_With_Value int32
+type Request_Headers_XRequestedWithValue int32
 
 const (
-	Request_Headers_UNUSED_X_REQUESTED_WITH_VALUE Request_Headers_X_Requested_With_Value = 0
-	Request_Headers_XMLHTTPREQUEST                Request_Headers_X_Requested_With_Value = 1
+	Request_Headers_UNUSED_X_REQUESTED_WITH_VALUE Request_Headers_XRequestedWithValue = 0
+	Request_Headers_XMLHTTPREQUEST                Request_Headers_XRequestedWithValue = 1
 )
 
-var Request_Headers_X_Requested_With_Value_name = map[int32]string{
+var Request_Headers_XRequestedWithValue_name = map[int32]string{
 	0: "UNUSED_X_REQUESTED_WITH_VALUE",
 	1: "XMLHTTPREQUEST",
 }
 
-var Request_Headers_X_Requested_With_Value_value = map[string]int32{
+var Request_Headers_XRequestedWithValue_value = map[string]int32{
 	"UNUSED_X_REQUESTED_WITH_VALUE": 0,
 	"XMLHTTPREQUEST":                1,
 }
 
-func (x Request_Headers_X_Requested_With_Value) String() string {
-	return proto.EnumName(Request_Headers_X_Requested_With_Value_name, int32(x))
+func (x Request_Headers_XRequestedWithValue) String() string {
+	return proto.EnumName(Request_Headers_XRequestedWithValue_name, int32(x))
 }
 
-func (Request_Headers_X_Requested_With_Value) EnumDescriptor() ([]byte, []int) {
+func (Request_Headers_XRequestedWithValue) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{4, 0, 1}
 }
 
-type Request_Headers_DNT_Value int32
+type Request_Headers_DNTValue int32
 
 const (
-	Request_Headers_UNUSED_DNT_VALUE Request_Headers_DNT_Value = 0
-	Request_Headers_DISABLED         Request_Headers_DNT_Value = 1
-	Request_Headers_ENABLED          Request_Headers_DNT_Value = 2
+	Request_Headers_UNUSED_DNT_VALUE Request_Headers_DNTValue = 0
+	Request_Headers_DISABLED         Request_Headers_DNTValue = 1
+	Request_Headers_ENABLED          Request_Headers_DNTValue = 2
 )
 
-var Request_Headers_DNT_Value_name = map[int32]string{
+var Request_Headers_DNTValue_name = map[int32]string{
 	0: "UNUSED_DNT_VALUE",
 	1: "DISABLED",
 	2: "ENABLED",
 }
 
-var Request_Headers_DNT_Value_value = map[string]int32{
+var Request_Headers_DNTValue_value = map[string]int32{
 	"UNUSED_DNT_VALUE": 0,
 	"DISABLED":         1,
 	"ENABLED":          2,
 }
 
-func (x Request_Headers_DNT_Value) String() string {
-	return proto.EnumName(Request_Headers_DNT_Value_name, int32(x))
+func (x Request_Headers_DNTValue) String() string {
+	return proto.EnumName(Request_Headers_DNTValue_name, int32(x))
 }
 
-func (Request_Headers_DNT_Value) EnumDescriptor() ([]byte, []int) {
+func (Request_Headers_DNTValue) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{4, 0, 2}
 }
 
-type Response_Headers_Access_Control_Allow_Credentials_Value int32
+type Response_Headers_AccessControlAllowCredentialsValue int32
 
 const (
-	Response_Headers_UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE Response_Headers_Access_Control_Allow_Credentials_Value = 0
-	Response_Headers_FALSE                                         Response_Headers_Access_Control_Allow_Credentials_Value = 1
-	Response_Headers_TRUE                                          Response_Headers_Access_Control_Allow_Credentials_Value = 2
+	Response_Headers_UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE Response_Headers_AccessControlAllowCredentialsValue = 0
+	Response_Headers_FALSE                                         Response_Headers_AccessControlAllowCredentialsValue = 1
+	Response_Headers_TRUE                                          Response_Headers_AccessControlAllowCredentialsValue = 2
 )
 
-var Response_Headers_Access_Control_Allow_Credentials_Value_name = map[int32]string{
+var Response_Headers_AccessControlAllowCredentialsValue_name = map[int32]string{
 	0: "UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE",
 	1: "FALSE",
 	2: "TRUE",
 }
 
-var Response_Headers_Access_Control_Allow_Credentials_Value_value = map[string]int32{
+var Response_Headers_AccessControlAllowCredentialsValue_value = map[string]int32{
 	"UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE": 0,
 	"FALSE": 1,
 	"TRUE":  2,
 }
 
-func (x Response_Headers_Access_Control_Allow_Credentials_Value) String() string {
-	return proto.EnumName(Response_Headers_Access_Control_Allow_Credentials_Value_name, int32(x))
+func (x Response_Headers_AccessControlAllowCredentialsValue) String() string {
+	return proto.EnumName(Response_Headers_AccessControlAllowCredentialsValue_name, int32(x))
 }
 
-func (Response_Headers_Access_Control_Allow_Credentials_Value) EnumDescriptor() ([]byte, []int) {
+func (Response_Headers_AccessControlAllowCredentialsValue) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 0}
 }
 
-type Response_Headers_X_Frame_Options_Value int32
+type Response_Headers_XFrameOptionsValue int32
 
 const (
-	Response_Headers_UNUSED_X_FRAME_OPTIONS_VALUE Response_Headers_X_Frame_Options_Value = 0
-	Response_Headers_DENY                         Response_Headers_X_Frame_Options_Value = 1
-	Response_Headers_SAMEORIGIN                   Response_Headers_X_Frame_Options_Value = 2
+	Response_Headers_UNUSED_X_FRAME_OPTIONS_VALUE Response_Headers_XFrameOptionsValue = 0
+	Response_Headers_DENY                         Response_Headers_XFrameOptionsValue = 1
+	Response_Headers_SAMEORIGIN                   Response_Headers_XFrameOptionsValue = 2
 )
 
-var Response_Headers_X_Frame_Options_Value_name = map[int32]string{
+var Response_Headers_XFrameOptionsValue_name = map[int32]string{
 	0: "UNUSED_X_FRAME_OPTIONS_VALUE",
 	1: "DENY",
 	2: "SAMEORIGIN",
 }
 
-var Response_Headers_X_Frame_Options_Value_value = map[string]int32{
+var Response_Headers_XFrameOptionsValue_value = map[string]int32{
 	"UNUSED_X_FRAME_OPTIONS_VALUE": 0,
 	"DENY":                         1,
 	"SAMEORIGIN":                   2,
 }
 
-func (x Response_Headers_X_Frame_Options_Value) String() string {
-	return proto.EnumName(Response_Headers_X_Frame_Options_Value_name, int32(x))
+func (x Response_Headers_XFrameOptionsValue) String() string {
+	return proto.EnumName(Response_Headers_XFrameOptionsValue_name, int32(x))
 }
 
-func (Response_Headers_X_Frame_Options_Value) EnumDescriptor() ([]byte, []int) {
+func (Response_Headers_XFrameOptionsValue) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 1}
 }
 
-type Response_Headers_Set_Cookie_Message_SameSite_Value int32
+type Response_Headers_SetCookieMessage_SameSiteValue int32
 
 const (
-	Response_Headers_Set_Cookie_Message_UNUSED_SAMESITE_VALUE Response_Headers_Set_Cookie_Message_SameSite_Value = 0
-	Response_Headers_Set_Cookie_Message_STRICT                Response_Headers_Set_Cookie_Message_SameSite_Value = 1
-	Response_Headers_Set_Cookie_Message_LAX                   Response_Headers_Set_Cookie_Message_SameSite_Value = 2
-	Response_Headers_Set_Cookie_Message_NONE                  Response_Headers_Set_Cookie_Message_SameSite_Value = 3
+	Response_Headers_SetCookieMessage_UNUSED_SAMESITE_VALUE Response_Headers_SetCookieMessage_SameSiteValue = 0
+	Response_Headers_SetCookieMessage_STRICT                Response_Headers_SetCookieMessage_SameSiteValue = 1
+	Response_Headers_SetCookieMessage_LAX                   Response_Headers_SetCookieMessage_SameSiteValue = 2
+	Response_Headers_SetCookieMessage_NONE                  Response_Headers_SetCookieMessage_SameSiteValue = 3
 )
 
-var Response_Headers_Set_Cookie_Message_SameSite_Value_name = map[int32]string{
+var Response_Headers_SetCookieMessage_SameSiteValue_name = map[int32]string{
 	0: "UNUSED_SAMESITE_VALUE",
 	1: "STRICT",
 	2: "LAX",
 	3: "NONE",
 }
 
-var Response_Headers_Set_Cookie_Message_SameSite_Value_value = map[string]int32{
+var Response_Headers_SetCookieMessage_SameSiteValue_value = map[string]int32{
 	"UNUSED_SAMESITE_VALUE": 0,
 	"STRICT":                1,
 	"LAX":                   2,
 	"NONE":                  3,
 }
 
-func (x Response_Headers_Set_Cookie_Message_SameSite_Value) String() string {
-	return proto.EnumName(Response_Headers_Set_Cookie_Message_SameSite_Value_name, int32(x))
+func (x Response_Headers_SetCookieMessage_SameSiteValue) String() string {
+	return proto.EnumName(Response_Headers_SetCookieMessage_SameSiteValue_name, int32(x))
 }
 
-func (Response_Headers_Set_Cookie_Message_SameSite_Value) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 2, 0}
+func (Response_Headers_SetCookieMessage_SameSiteValue) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 1, 0}
 }
 
 type KeyValue struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=Key,proto3" json:"Key,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=Value,proto3" json:"Value,omitempty"`
+	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -443,7 +445,7 @@ func (m *KeyValue) GetValue() string {
 
 // Directives, for use in oneofs only
 type StringList struct {
-	Strings              []string `protobuf:"bytes,1,rep,name=Strings,proto3" json:"Strings,omitempty"`
+	Strings              []string `protobuf:"bytes,1,rep,name=strings,proto3" json:"strings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -481,94 +483,94 @@ func (m *StringList) GetStrings() []string {
 	return nil
 }
 
-type Cache_Control_Request struct {
-	Directive            Cache_Control_Request_Directives `protobuf:"varint,1,opt,name=Directive,proto3,enum=web.Cache_Control_Request_Directives" json:"Directive,omitempty"`
-	Seconds              uint64                           `protobuf:"varint,2,opt,name=Seconds,proto3" json:"Seconds,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
-	XXX_unrecognized     []byte                           `json:"-"`
-	XXX_sizecache        int32                            `json:"-"`
+type CacheControlRequest struct {
+	Directive            CacheControlRequest_Directives `protobuf:"varint,1,opt,name=directive,proto3,enum=web.CacheControlRequest_Directives" json:"directive,omitempty"`
+	Seconds              uint64                         `protobuf:"varint,2,opt,name=seconds,proto3" json:"seconds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
 }
 
-func (m *Cache_Control_Request) Reset()         { *m = Cache_Control_Request{} }
-func (m *Cache_Control_Request) String() string { return proto.CompactTextString(m) }
-func (*Cache_Control_Request) ProtoMessage()    {}
-func (*Cache_Control_Request) Descriptor() ([]byte, []int) {
+func (m *CacheControlRequest) Reset()         { *m = CacheControlRequest{} }
+func (m *CacheControlRequest) String() string { return proto.CompactTextString(m) }
+func (*CacheControlRequest) ProtoMessage()    {}
+func (*CacheControlRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{2}
 }
 
-func (m *Cache_Control_Request) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Cache_Control_Request.Unmarshal(m, b)
+func (m *CacheControlRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CacheControlRequest.Unmarshal(m, b)
 }
-func (m *Cache_Control_Request) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Cache_Control_Request.Marshal(b, m, deterministic)
+func (m *CacheControlRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CacheControlRequest.Marshal(b, m, deterministic)
 }
-func (m *Cache_Control_Request) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Cache_Control_Request.Merge(m, src)
+func (m *CacheControlRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CacheControlRequest.Merge(m, src)
 }
-func (m *Cache_Control_Request) XXX_Size() int {
-	return xxx_messageInfo_Cache_Control_Request.Size(m)
+func (m *CacheControlRequest) XXX_Size() int {
+	return xxx_messageInfo_CacheControlRequest.Size(m)
 }
-func (m *Cache_Control_Request) XXX_DiscardUnknown() {
-	xxx_messageInfo_Cache_Control_Request.DiscardUnknown(m)
+func (m *CacheControlRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CacheControlRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Cache_Control_Request proto.InternalMessageInfo
+var xxx_messageInfo_CacheControlRequest proto.InternalMessageInfo
 
-func (m *Cache_Control_Request) GetDirective() Cache_Control_Request_Directives {
+func (m *CacheControlRequest) GetDirective() CacheControlRequest_Directives {
 	if m != nil {
 		return m.Directive
 	}
-	return Cache_Control_Request_UNUSED_DIRECTIVE
+	return CacheControlRequest_UNUSED_DIRECTIVE
 }
 
-func (m *Cache_Control_Request) GetSeconds() uint64 {
+func (m *CacheControlRequest) GetSeconds() uint64 {
 	if m != nil {
 		return m.Seconds
 	}
 	return 0
 }
 
-type Cache_Control_Response struct {
-	Directive            Cache_Control_Response_Directives `protobuf:"varint,1,opt,name=Directive,proto3,enum=web.Cache_Control_Response_Directives" json:"Directive,omitempty"`
-	Seconds              uint64                            `protobuf:"varint,2,opt,name=Seconds,proto3" json:"Seconds,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
-	XXX_unrecognized     []byte                            `json:"-"`
-	XXX_sizecache        int32                             `json:"-"`
+type CacheControlResponse struct {
+	Directive            CacheControlResponse_Directives `protobuf:"varint,1,opt,name=directive,proto3,enum=web.CacheControlResponse_Directives" json:"directive,omitempty"`
+	Seconds              uint64                          `protobuf:"varint,2,opt,name=seconds,proto3" json:"seconds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
 }
 
-func (m *Cache_Control_Response) Reset()         { *m = Cache_Control_Response{} }
-func (m *Cache_Control_Response) String() string { return proto.CompactTextString(m) }
-func (*Cache_Control_Response) ProtoMessage()    {}
-func (*Cache_Control_Response) Descriptor() ([]byte, []int) {
+func (m *CacheControlResponse) Reset()         { *m = CacheControlResponse{} }
+func (m *CacheControlResponse) String() string { return proto.CompactTextString(m) }
+func (*CacheControlResponse) ProtoMessage()    {}
+func (*CacheControlResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{3}
 }
 
-func (m *Cache_Control_Response) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Cache_Control_Response.Unmarshal(m, b)
+func (m *CacheControlResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CacheControlResponse.Unmarshal(m, b)
 }
-func (m *Cache_Control_Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Cache_Control_Response.Marshal(b, m, deterministic)
+func (m *CacheControlResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CacheControlResponse.Marshal(b, m, deterministic)
 }
-func (m *Cache_Control_Response) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Cache_Control_Response.Merge(m, src)
+func (m *CacheControlResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CacheControlResponse.Merge(m, src)
 }
-func (m *Cache_Control_Response) XXX_Size() int {
-	return xxx_messageInfo_Cache_Control_Response.Size(m)
+func (m *CacheControlResponse) XXX_Size() int {
+	return xxx_messageInfo_CacheControlResponse.Size(m)
 }
-func (m *Cache_Control_Response) XXX_DiscardUnknown() {
-	xxx_messageInfo_Cache_Control_Response.DiscardUnknown(m)
+func (m *CacheControlResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CacheControlResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Cache_Control_Response proto.InternalMessageInfo
+var xxx_messageInfo_CacheControlResponse proto.InternalMessageInfo
 
-func (m *Cache_Control_Response) GetDirective() Cache_Control_Response_Directives {
+func (m *CacheControlResponse) GetDirective() CacheControlResponse_Directives {
 	if m != nil {
 		return m.Directive
 	}
-	return Cache_Control_Response_UNUSED_DIRECTIVE
+	return CacheControlResponse_UNUSED_DIRECTIVE
 }
 
-func (m *Cache_Control_Response) GetSeconds() uint64 {
+func (m *CacheControlResponse) GetSeconds() uint64 {
 	if m != nil {
 		return m.Seconds
 	}
@@ -580,11 +582,12 @@ type Request struct {
 	// TODO: separate absolute vs. relative?
 	//
 	// Types that are valid to be assigned to URI:
-	//	*Request_URI_Wildcard
-	//	*Request_URI_String
-	URI                  isRequest_URI    `protobuf_oneof:"URI"`
-	Query                []*KeyValue      `protobuf:"bytes,4,rep,name=query,proto3" json:"query,omitempty"`
-	Header               *Request_Headers `protobuf:"bytes,5,opt,name=Header,proto3" json:"Header,omitempty"`
+	//	*Request_UriWildcard
+	//	*Request_UriString
+	URI   isRequest_URI `protobuf_oneof:"URI"`
+	Query []*KeyValue   `protobuf:"bytes,4,rep,name=query,proto3" json:"query,omitempty"`
+	// message Headers
+	Header               *Request_Headers `protobuf:"bytes,5,opt,name=header,proto3" json:"header,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -626,17 +629,17 @@ type isRequest_URI interface {
 	isRequest_URI()
 }
 
-type Request_URI_Wildcard struct {
-	URI_Wildcard Wildcard `protobuf:"varint,2,opt,name=URI_Wildcard,json=URIWildcard,proto3,enum=web.Wildcard,oneof"`
+type Request_UriWildcard struct {
+	UriWildcard Wildcard `protobuf:"varint,2,opt,name=uri_wildcard,json=uriWildcard,proto3,enum=web.Wildcard,oneof"`
 }
 
-type Request_URI_String struct {
-	URI_String string `protobuf:"bytes,3,opt,name=URI_String,json=URIString,proto3,oneof"`
+type Request_UriString struct {
+	UriString string `protobuf:"bytes,3,opt,name=uri_string,json=uriString,proto3,oneof"`
 }
 
-func (*Request_URI_Wildcard) isRequest_URI() {}
+func (*Request_UriWildcard) isRequest_URI() {}
 
-func (*Request_URI_String) isRequest_URI() {}
+func (*Request_UriString) isRequest_URI() {}
 
 func (m *Request) GetURI() isRequest_URI {
 	if m != nil {
@@ -645,16 +648,16 @@ func (m *Request) GetURI() isRequest_URI {
 	return nil
 }
 
-func (m *Request) GetURI_Wildcard() Wildcard {
-	if x, ok := m.GetURI().(*Request_URI_Wildcard); ok {
-		return x.URI_Wildcard
+func (m *Request) GetUriWildcard() Wildcard {
+	if x, ok := m.GetURI().(*Request_UriWildcard); ok {
+		return x.UriWildcard
 	}
 	return Wildcard_STAR
 }
 
-func (m *Request) GetURI_String() string {
-	if x, ok := m.GetURI().(*Request_URI_String); ok {
-		return x.URI_String
+func (m *Request) GetUriString() string {
+	if x, ok := m.GetURI().(*Request_UriString); ok {
+		return x.UriString
 	}
 	return ""
 }
@@ -676,49 +679,49 @@ func (m *Request) GetHeader() *Request_Headers {
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*Request) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
-		(*Request_URI_Wildcard)(nil),
-		(*Request_URI_String)(nil),
+		(*Request_UriWildcard)(nil),
+		(*Request_UriString)(nil),
 	}
 }
 
 type Request_Headers struct {
-	Accept                         string                 `protobuf:"bytes,1,opt,name=Accept,proto3" json:"Accept,omitempty"`
-	Accept_Charset                 string                 `protobuf:"bytes,2,opt,name=Accept_Charset,json=AcceptCharset,proto3" json:"Accept_Charset,omitempty"`
-	Accept_Datetime                string                 `protobuf:"bytes,3,opt,name=Accept_Datetime,json=AcceptDatetime,proto3" json:"Accept_Datetime,omitempty"`
-	Accept_Encoding                string                 `protobuf:"bytes,4,opt,name=Accept_Encoding,json=AcceptEncoding,proto3" json:"Accept_Encoding,omitempty"`
-	Accept_Language                string                 `protobuf:"bytes,5,opt,name=Accept_Language,json=AcceptLanguage,proto3" json:"Accept_Language,omitempty"`
-	Access_Control_Request_Method  Request_Method         `protobuf:"varint,6,opt,name=Access_Control_Request_Method,json=AccessControlRequestMethod,proto3,enum=web.Request_Method" json:"Access_Control_Request_Method,omitempty"`
-	Access_Control_Request_Headers *Request_Headers       `protobuf:"bytes,7,opt,name=Access_Control_Request_Headers,json=AccessControlRequestHeaders,proto3" json:"Access_Control_Request_Headers,omitempty"`
-	Authorization                  string                 `protobuf:"bytes,8,opt,name=Authorization,proto3" json:"Authorization,omitempty"`
-	Cache_Control                  *Cache_Control_Request `protobuf:"bytes,32,opt,name=Cache_Control,json=CacheControl,proto3" json:"Cache_Control,omitempty"`
-	Expect                         string                 `protobuf:"bytes,9,opt,name=Expect,proto3" json:"Expect,omitempty"`
-	Forwarded                      []*KeyValue            `protobuf:"bytes,10,rep,name=Forwarded,proto3" json:"Forwarded,omitempty"`
-	From                           string                 `protobuf:"bytes,11,opt,name=From,proto3" json:"From,omitempty"`
-	Host                           string                 `protobuf:"bytes,12,opt,name=Host,proto3" json:"Host,omitempty"`
-	HTTP2_Settings                 string                 `protobuf:"bytes,13,opt,name=HTTP2_Settings,json=HTTP2Settings,proto3" json:"HTTP2_Settings,omitempty"`
-	If_Match                       string                 `protobuf:"bytes,14,opt,name=If_Match,json=IfMatch,proto3" json:"If_Match,omitempty"`
-	If_Modified_Since              *timestamp.Timestamp   `protobuf:"bytes,15,opt,name=If_Modified_Since,json=IfModifiedSince,proto3" json:"If_Modified_Since,omitempty"`
-	If_None_Match                  []string               `protobuf:"bytes,16,rep,name=If_None_Match,json=IfNoneMatch,proto3" json:"If_None_Match,omitempty"`
-	If_Range                       string                 `protobuf:"bytes,17,opt,name=If_Range,json=IfRange,proto3" json:"If_Range,omitempty"`
-	If_Unmodified_Since            *timestamp.Timestamp   `protobuf:"bytes,18,opt,name=If_Unmodified_Since,json=IfUnmodifiedSince,proto3" json:"If_Unmodified_Since,omitempty"`
-	Max_Forwards                   uint64                 `protobuf:"varint,19,opt,name=Max_Forwards,json=MaxForwards,proto3" json:"Max_Forwards,omitempty"`
-	Origin                         string                 `protobuf:"bytes,20,opt,name=Origin,proto3" json:"Origin,omitempty"`
-	Pragma                         string                 `protobuf:"bytes,21,opt,name=Pragma,proto3" json:"Pragma,omitempty"`
-	Proxy_Authorization            string                 `protobuf:"bytes,22,opt,name=Proxy_Authorization,json=ProxyAuthorization,proto3" json:"Proxy_Authorization,omitempty"`
+	Accept                      string               `protobuf:"bytes,1,opt,name=accept,proto3" json:"accept,omitempty"`
+	AcceptCharset               string               `protobuf:"bytes,2,opt,name=accept_charset,json=acceptCharset,proto3" json:"accept_charset,omitempty"`
+	AcceptDatetime              string               `protobuf:"bytes,3,opt,name=accept_datetime,json=acceptDatetime,proto3" json:"accept_datetime,omitempty"`
+	AcceptEncoding              string               `protobuf:"bytes,4,opt,name=accept_encoding,json=acceptEncoding,proto3" json:"accept_encoding,omitempty"`
+	AcceptLanguage              string               `protobuf:"bytes,5,opt,name=accept_language,json=acceptLanguage,proto3" json:"accept_language,omitempty"`
+	AccessControlRequestMethod  Request_Method       `protobuf:"varint,6,opt,name=access_control_request_method,json=accessControlRequestMethod,proto3,enum=web.Request_Method" json:"access_control_request_method,omitempty"`
+	AccessControlRequestHeaders *Request_Headers     `protobuf:"bytes,7,opt,name=access_control_request_headers,json=accessControlRequestHeaders,proto3" json:"access_control_request_headers,omitempty"`
+	Authorization               string               `protobuf:"bytes,8,opt,name=authorization,proto3" json:"authorization,omitempty"`
+	CacheControl                *CacheControlRequest `protobuf:"bytes,32,opt,name=cache_control,json=cacheControl,proto3" json:"cache_control,omitempty"`
+	Expect                      string               `protobuf:"bytes,9,opt,name=expect,proto3" json:"expect,omitempty"`
+	Forwarded                   []*KeyValue          `protobuf:"bytes,10,rep,name=forwarded,proto3" json:"forwarded,omitempty"`
+	From                        string               `protobuf:"bytes,11,opt,name=from,proto3" json:"from,omitempty"`
+	Host                        string               `protobuf:"bytes,12,opt,name=host,proto3" json:"host,omitempty"`
+	Http2Settings               string               `protobuf:"bytes,13,opt,name=http2_settings,json=http2Settings,proto3" json:"http2_settings,omitempty"`
+	IfMatch                     string               `protobuf:"bytes,14,opt,name=if_match,json=ifMatch,proto3" json:"if_match,omitempty"`
+	IfModifiedSince             *timestamp.Timestamp `protobuf:"bytes,15,opt,name=if_modified_since,json=ifModifiedSince,proto3" json:"if_modified_since,omitempty"`
+	IfNoneMatch                 []string             `protobuf:"bytes,16,rep,name=if_none_match,json=ifNoneMatch,proto3" json:"if_none_match,omitempty"`
+	IfRange                     string               `protobuf:"bytes,17,opt,name=if_range,json=ifRange,proto3" json:"if_range,omitempty"`
+	IfUnmodifiedSince           *timestamp.Timestamp `protobuf:"bytes,18,opt,name=if_unmodified_since,json=ifUnmodifiedSince,proto3" json:"if_unmodified_since,omitempty"`
+	MaxForwards                 uint64               `protobuf:"varint,19,opt,name=max_forwards,json=maxForwards,proto3" json:"max_forwards,omitempty"`
+	Origin                      string               `protobuf:"bytes,20,opt,name=origin,proto3" json:"origin,omitempty"`
+	Pragma                      string               `protobuf:"bytes,21,opt,name=pragma,proto3" json:"pragma,omitempty"`
+	ProxyAuthorization          string               `protobuf:"bytes,22,opt,name=proxy_authorization,json=proxyAuthorization,proto3" json:"proxy_authorization,omitempty"`
 	// Types that are valid to be assigned to Range:
 	//	*Request_Headers_Bytes
-	Range                isRequest_Headers_Range                    `protobuf_oneof:"Range"`
-	Referer              string                                     `protobuf:"bytes,24,opt,name=Referer,proto3" json:"Referer,omitempty"`
-	TE                   []Request_Headers_Transfer_Encodings_Value `protobuf:"varint,25,rep,packed,name=TE,proto3,enum=web.Request_Headers_Transfer_Encodings_Value" json:"TE,omitempty"`
-	User_Agent           string                                     `protobuf:"bytes,26,opt,name=User_Agent,json=UserAgent,proto3" json:"User_Agent,omitempty"`
-	Via                  []string                                   `protobuf:"bytes,27,rep,name=Via,proto3" json:"Via,omitempty"`
-	Warning              string                                     `protobuf:"bytes,28,opt,name=Warning,proto3" json:"Warning,omitempty"`
-	X_Requested_With     Request_Headers_X_Requested_With_Value     `protobuf:"varint,29,opt,name=X_Requested_With,json=XRequestedWith,proto3,enum=web.Request_Headers_X_Requested_With_Value" json:"X_Requested_With,omitempty"`
-	DNT                  Request_Headers_DNT_Value                  `protobuf:"varint,30,opt,name=DNT,proto3,enum=web.Request_Headers_DNT_Value" json:"DNT,omitempty"`
-	Other                []*KeyValue                                `protobuf:"bytes,31,rep,name=Other,proto3" json:"Other,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                   `json:"-"`
-	XXX_unrecognized     []byte                                     `json:"-"`
-	XXX_sizecache        int32                                      `json:"-"`
+	Range                isRequest_Headers_Range                  `protobuf_oneof:"Range"`
+	Referer              string                                   `protobuf:"bytes,24,opt,name=referer,proto3" json:"referer,omitempty"`
+	Te                   []Request_Headers_TransferEncodingsValue `protobuf:"varint,25,rep,packed,name=te,proto3,enum=web.Request_Headers_TransferEncodingsValue" json:"te,omitempty"`
+	UserAgent            string                                   `protobuf:"bytes,26,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	Via                  []string                                 `protobuf:"bytes,27,rep,name=via,proto3" json:"via,omitempty"`
+	Warning              string                                   `protobuf:"bytes,28,opt,name=warning,proto3" json:"warning,omitempty"`
+	XRequestedWith       Request_Headers_XRequestedWithValue      `protobuf:"varint,29,opt,name=x_requested_with,json=xRequestedWith,proto3,enum=web.Request_Headers_XRequestedWithValue" json:"x_requested_with,omitempty"`
+	Dnt                  Request_Headers_DNTValue                 `protobuf:"varint,30,opt,name=dnt,proto3,enum=web.Request_Headers_DNTValue" json:"dnt,omitempty"`
+	Other                []*KeyValue                              `protobuf:"bytes,31,rep,name=other,proto3" json:"other,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
+	XXX_unrecognized     []byte                                   `json:"-"`
+	XXX_sizecache        int32                                    `json:"-"`
 }
 
 func (m *Request_Headers) Reset()         { *m = Request_Headers{} }
@@ -753,44 +756,44 @@ func (m *Request_Headers) GetAccept() string {
 	return ""
 }
 
-func (m *Request_Headers) GetAccept_Charset() string {
+func (m *Request_Headers) GetAcceptCharset() string {
 	if m != nil {
-		return m.Accept_Charset
+		return m.AcceptCharset
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetAccept_Datetime() string {
+func (m *Request_Headers) GetAcceptDatetime() string {
 	if m != nil {
-		return m.Accept_Datetime
+		return m.AcceptDatetime
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetAccept_Encoding() string {
+func (m *Request_Headers) GetAcceptEncoding() string {
 	if m != nil {
-		return m.Accept_Encoding
+		return m.AcceptEncoding
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetAccept_Language() string {
+func (m *Request_Headers) GetAcceptLanguage() string {
 	if m != nil {
-		return m.Accept_Language
+		return m.AcceptLanguage
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetAccess_Control_Request_Method() Request_Method {
+func (m *Request_Headers) GetAccessControlRequestMethod() Request_Method {
 	if m != nil {
-		return m.Access_Control_Request_Method
+		return m.AccessControlRequestMethod
 	}
 	return Request_UNUSED_METHOD
 }
 
-func (m *Request_Headers) GetAccess_Control_Request_Headers() *Request_Headers {
+func (m *Request_Headers) GetAccessControlRequestHeaders() *Request_Headers {
 	if m != nil {
-		return m.Access_Control_Request_Headers
+		return m.AccessControlRequestHeaders
 	}
 	return nil
 }
@@ -802,9 +805,9 @@ func (m *Request_Headers) GetAuthorization() string {
 	return ""
 }
 
-func (m *Request_Headers) GetCache_Control() *Cache_Control_Request {
+func (m *Request_Headers) GetCacheControl() *CacheControlRequest {
 	if m != nil {
-		return m.Cache_Control
+		return m.CacheControl
 	}
 	return nil
 }
@@ -837,51 +840,51 @@ func (m *Request_Headers) GetHost() string {
 	return ""
 }
 
-func (m *Request_Headers) GetHTTP2_Settings() string {
+func (m *Request_Headers) GetHttp2Settings() string {
 	if m != nil {
-		return m.HTTP2_Settings
+		return m.Http2Settings
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetIf_Match() string {
+func (m *Request_Headers) GetIfMatch() string {
 	if m != nil {
-		return m.If_Match
+		return m.IfMatch
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetIf_Modified_Since() *timestamp.Timestamp {
+func (m *Request_Headers) GetIfModifiedSince() *timestamp.Timestamp {
 	if m != nil {
-		return m.If_Modified_Since
+		return m.IfModifiedSince
 	}
 	return nil
 }
 
-func (m *Request_Headers) GetIf_None_Match() []string {
+func (m *Request_Headers) GetIfNoneMatch() []string {
 	if m != nil {
-		return m.If_None_Match
+		return m.IfNoneMatch
 	}
 	return nil
 }
 
-func (m *Request_Headers) GetIf_Range() string {
+func (m *Request_Headers) GetIfRange() string {
 	if m != nil {
-		return m.If_Range
+		return m.IfRange
 	}
 	return ""
 }
 
-func (m *Request_Headers) GetIf_Unmodified_Since() *timestamp.Timestamp {
+func (m *Request_Headers) GetIfUnmodifiedSince() *timestamp.Timestamp {
 	if m != nil {
-		return m.If_Unmodified_Since
+		return m.IfUnmodifiedSince
 	}
 	return nil
 }
 
-func (m *Request_Headers) GetMax_Forwards() uint64 {
+func (m *Request_Headers) GetMaxForwards() uint64 {
 	if m != nil {
-		return m.Max_Forwards
+		return m.MaxForwards
 	}
 	return 0
 }
@@ -900,9 +903,9 @@ func (m *Request_Headers) GetPragma() string {
 	return ""
 }
 
-func (m *Request_Headers) GetProxy_Authorization() string {
+func (m *Request_Headers) GetProxyAuthorization() string {
 	if m != nil {
-		return m.Proxy_Authorization
+		return m.ProxyAuthorization
 	}
 	return ""
 }
@@ -912,7 +915,7 @@ type isRequest_Headers_Range interface {
 }
 
 type Request_Headers_Bytes struct {
-	Bytes *Request_Headers_ByteRange `protobuf:"bytes,23,opt,name=Bytes,proto3,oneof"`
+	Bytes *Request_Headers_ByteRange `protobuf:"bytes,23,opt,name=bytes,proto3,oneof"`
 }
 
 func (*Request_Headers_Bytes) isRequest_Headers_Range() {}
@@ -938,16 +941,16 @@ func (m *Request_Headers) GetReferer() string {
 	return ""
 }
 
-func (m *Request_Headers) GetTE() []Request_Headers_Transfer_Encodings_Value {
+func (m *Request_Headers) GetTe() []Request_Headers_TransferEncodingsValue {
 	if m != nil {
-		return m.TE
+		return m.Te
 	}
 	return nil
 }
 
-func (m *Request_Headers) GetUser_Agent() string {
+func (m *Request_Headers) GetUserAgent() string {
 	if m != nil {
-		return m.User_Agent
+		return m.UserAgent
 	}
 	return ""
 }
@@ -966,16 +969,16 @@ func (m *Request_Headers) GetWarning() string {
 	return ""
 }
 
-func (m *Request_Headers) GetX_Requested_With() Request_Headers_X_Requested_With_Value {
+func (m *Request_Headers) GetXRequestedWith() Request_Headers_XRequestedWithValue {
 	if m != nil {
-		return m.X_Requested_With
+		return m.XRequestedWith
 	}
 	return Request_Headers_UNUSED_X_REQUESTED_WITH_VALUE
 }
 
-func (m *Request_Headers) GetDNT() Request_Headers_DNT_Value {
+func (m *Request_Headers) GetDnt() Request_Headers_DNTValue {
 	if m != nil {
-		return m.DNT
+		return m.Dnt
 	}
 	return Request_Headers_UNUSED_DNT_VALUE
 }
@@ -995,8 +998,8 @@ func (*Request_Headers) XXX_OneofWrappers() []interface{} {
 }
 
 type Request_Headers_ByteRange struct {
-	Start                uint64   `protobuf:"varint,1,opt,name=Start,proto3" json:"Start,omitempty"`
-	End                  uint64   `protobuf:"varint,2,opt,name=End,proto3" json:"End,omitempty"`
+	Start                uint64   `protobuf:"varint,1,opt,name=start,proto3" json:"start,omitempty"`
+	End                  uint64   `protobuf:"varint,2,opt,name=end,proto3" json:"end,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1042,9 +1045,10 @@ func (m *Request_Headers_ByteRange) GetEnd() uint64 {
 }
 
 type Response struct {
-	Status               Status_Codes      `protobuf:"varint,1,opt,name=Status,proto3,enum=web.Status_Codes" json:"Status,omitempty"`
-	Header               *Response_Headers `protobuf:"bytes,2,opt,name=Header,proto3" json:"Header,omitempty"`
-	Body                 []byte            `protobuf:"bytes,3,opt,name=Body,proto3" json:"Body,omitempty"`
+	Status StatusCodes `protobuf:"varint,1,opt,name=status,proto3,enum=web.StatusCodes" json:"status,omitempty"`
+	// message Headers
+	Header               *Response_Headers `protobuf:"bytes,2,opt,name=header,proto3" json:"header,omitempty"`
+	Body                 []byte            `protobuf:"bytes,3,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -1075,11 +1079,11 @@ func (m *Response) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Response proto.InternalMessageInfo
 
-func (m *Response) GetStatus() Status_Codes {
+func (m *Response) GetStatus() StatusCodes {
 	if m != nil {
 		return m.Status
 	}
-	return Status_Codes_STATUS_CODE_UNUSED
+	return StatusCodes_STATUS_CODE_UNUSED
 }
 
 func (m *Response) GetHeader() *Response_Headers {
@@ -1097,35 +1101,35 @@ func (m *Response) GetBody() []byte {
 }
 
 type Response_Headers struct {
-	// Types that are valid to be assigned to Access_Control_Allow_Origin:
-	//	*Response_Headers_Access_Control_Allow_Origin_All
-	//	*Response_Headers_Access_Control_Allow_Origin_Origins
-	Access_Control_Allow_Origin      isResponse_Headers_Access_Control_Allow_Origin          `protobuf_oneof:"Access_Control_Allow_Origin"`
-	Access_Control_Allow_Credentials Response_Headers_Access_Control_Allow_Credentials_Value `protobuf:"varint,3,opt,name=Access_Control_Allow_Credentials,json=AccessControlAllowCredentials,proto3,enum=web.Response_Headers_Access_Control_Allow_Credentials_Value" json:"Access_Control_Allow_Credentials,omitempty"`
-	Access_Control_Expose_Headers    []string                                                `protobuf:"bytes,4,rep,name=Access_Control_Expose_Headers,json=AccessControlExposeHeaders,proto3" json:"Access_Control_Expose_Headers,omitempty"`
+	// Types that are valid to be assigned to AccessControlAllowOrigin:
+	//	*Response_Headers_AccessControlAllowOriginAll
+	//	*Response_Headers_AccessControlAllowOriginOrigins
+	AccessControlAllowOrigin      isResponse_Headers_AccessControlAllowOrigin         `protobuf_oneof:"AccessControlAllowOrigin"`
+	AccessControlAllowCredentials Response_Headers_AccessControlAllowCredentialsValue `protobuf:"varint,3,opt,name=access_control_allow_credentials,json=accessControlAllowCredentials,proto3,enum=web.Response_Headers_AccessControlAllowCredentialsValue" json:"access_control_allow_credentials,omitempty"`
+	AccessControlExposeHeaders    []string                                            `protobuf:"bytes,4,rep,name=access_control_expose_headers,json=accessControlExposeHeaders,proto3" json:"access_control_expose_headers,omitempty"`
 	// Types that are valid to be assigned to Alt_Svc:
-	//	*Response_Headers_Alt_Svc_Clear
+	//	*Response_Headers_AltSvcClear
 	//	*Response_Headers_Service
-	Alt_Svc       isResponse_Headers_Alt_Svc             `protobuf_oneof:"Alt_Svc"`
-	Cache_Control *Cache_Control_Response                `protobuf:"bytes,18,opt,name=Cache_Control,json=CacheControl,proto3" json:"Cache_Control,omitempty"`
-	Content_Type  *Response_Headers_Content_Type_Message `protobuf:"bytes,7,opt,name=Content_Type,json=ContentType,proto3" json:"Content_Type,omitempty"`
-	Date          *timestamp.Timestamp                   `protobuf:"bytes,8,opt,name=Date,proto3" json:"Date,omitempty"`
+	Alt_Svc      isResponse_Headers_Alt_Svc `protobuf_oneof:"Alt_Svc"`
+	CacheControl *CacheControlResponse      `protobuf:"bytes,18,opt,name=cache_control,json=cacheControl,proto3" json:"cache_control,omitempty"`
+	ContentType  *MIMEType                  `protobuf:"bytes,7,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	Date         *timestamp.Timestamp       `protobuf:"bytes,8,opt,name=date,proto3" json:"date,omitempty"`
 	// Types that are valid to be assigned to Expires:
-	//	*Response_Headers_Expires_Already
-	//	*Response_Headers_Expires_Date
+	//	*Response_Headers_ExpiresAlready
+	//	*Response_Headers_ExpiresDate
 	Expires isResponse_Headers_Expires `protobuf_oneof:"Expires"`
-	Server  string                     `protobuf:"bytes,11,opt,name=Server,proto3" json:"Server,omitempty"`
+	Server  string                     `protobuf:"bytes,11,opt,name=server,proto3" json:"server,omitempty"`
 	// Types that are valid to be assigned to Vary:
-	//	*Response_Headers_Vary_All
-	//	*Response_Headers_Vary_Headers
-	Vary                 isResponse_Headers_Vary                `protobuf_oneof:"Vary"`
-	X_Frame_Options      Response_Headers_X_Frame_Options_Value `protobuf:"varint,14,opt,name=X_Frame_Options,json=XFrameOptions,proto3,enum=web.Response_Headers_X_Frame_Options_Value" json:"X_Frame_Options,omitempty"`
-	X_XSS_Protection     string                                 `protobuf:"bytes,15,opt,name=X_XSS_Protection,json=XXSSProtection,proto3" json:"X_XSS_Protection,omitempty"`
-	Set_Cookie           []*Response_Headers_Set_Cookie_Message `protobuf:"bytes,16,rep,name=Set_Cookie,json=SetCookie,proto3" json:"Set_Cookie,omitempty"`
-	Other                []*KeyValue                            `protobuf:"bytes,17,rep,name=Other,proto3" json:"Other,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                               `json:"-"`
-	XXX_unrecognized     []byte                                 `json:"-"`
-	XXX_sizecache        int32                                  `json:"-"`
+	//	*Response_Headers_VaryAll
+	//	*Response_Headers_VaryHeaders
+	Vary                 isResponse_Headers_Vary              `protobuf_oneof:"Vary"`
+	XFrameOptions        Response_Headers_XFrameOptionsValue  `protobuf:"varint,14,opt,name=x_frame_options,json=xFrameOptions,proto3,enum=web.Response_Headers_XFrameOptionsValue" json:"x_frame_options,omitempty"`
+	XXssProtection       string                               `protobuf:"bytes,15,opt,name=x_xss_protection,json=xXssProtection,proto3" json:"x_xss_protection,omitempty"`
+	SetCookie            []*Response_Headers_SetCookieMessage `protobuf:"bytes,16,rep,name=set_cookie,json=setCookie,proto3" json:"set_cookie,omitempty"`
+	Other                []*KeyValue                          `protobuf:"bytes,17,rep,name=other,proto3" json:"other,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
+	XXX_unrecognized     []byte                               `json:"-"`
+	XXX_sizecache        int32                                `json:"-"`
 }
 
 func (m *Response_Headers) Reset()         { *m = Response_Headers{} }
@@ -1153,55 +1157,54 @@ func (m *Response_Headers) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Response_Headers proto.InternalMessageInfo
 
-type isResponse_Headers_Access_Control_Allow_Origin interface {
-	isResponse_Headers_Access_Control_Allow_Origin()
+type isResponse_Headers_AccessControlAllowOrigin interface {
+	isResponse_Headers_AccessControlAllowOrigin()
 }
 
-type Response_Headers_Access_Control_Allow_Origin_All struct {
-	Access_Control_Allow_Origin_All Wildcard `protobuf:"varint,1,opt,name=Access_Control_Allow_Origin_All,json=AccessControlAllowOriginAll,proto3,enum=web.Wildcard,oneof"`
+type Response_Headers_AccessControlAllowOriginAll struct {
+	AccessControlAllowOriginAll Wildcard `protobuf:"varint,1,opt,name=access_control_allow_origin_all,json=accessControlAllowOriginAll,proto3,enum=web.Wildcard,oneof"`
 }
 
-type Response_Headers_Access_Control_Allow_Origin_Origins struct {
-	Access_Control_Allow_Origin_Origins *StringList `protobuf:"bytes,2,opt,name=Access_Control_Allow_Origin_Origins,json=AccessControlAllowOriginOrigins,proto3,oneof"`
+type Response_Headers_AccessControlAllowOriginOrigins struct {
+	AccessControlAllowOriginOrigins *StringList `protobuf:"bytes,2,opt,name=access_control_allow_origin_origins,json=accessControlAllowOriginOrigins,proto3,oneof"`
 }
 
-func (*Response_Headers_Access_Control_Allow_Origin_All) isResponse_Headers_Access_Control_Allow_Origin() {
+func (*Response_Headers_AccessControlAllowOriginAll) isResponse_Headers_AccessControlAllowOrigin() {}
+
+func (*Response_Headers_AccessControlAllowOriginOrigins) isResponse_Headers_AccessControlAllowOrigin() {
 }
 
-func (*Response_Headers_Access_Control_Allow_Origin_Origins) isResponse_Headers_Access_Control_Allow_Origin() {
-}
-
-func (m *Response_Headers) GetAccess_Control_Allow_Origin() isResponse_Headers_Access_Control_Allow_Origin {
+func (m *Response_Headers) GetAccessControlAllowOrigin() isResponse_Headers_AccessControlAllowOrigin {
 	if m != nil {
-		return m.Access_Control_Allow_Origin
+		return m.AccessControlAllowOrigin
 	}
 	return nil
 }
 
-func (m *Response_Headers) GetAccess_Control_Allow_Origin_All() Wildcard {
-	if x, ok := m.GetAccess_Control_Allow_Origin().(*Response_Headers_Access_Control_Allow_Origin_All); ok {
-		return x.Access_Control_Allow_Origin_All
+func (m *Response_Headers) GetAccessControlAllowOriginAll() Wildcard {
+	if x, ok := m.GetAccessControlAllowOrigin().(*Response_Headers_AccessControlAllowOriginAll); ok {
+		return x.AccessControlAllowOriginAll
 	}
 	return Wildcard_STAR
 }
 
-func (m *Response_Headers) GetAccess_Control_Allow_Origin_Origins() *StringList {
-	if x, ok := m.GetAccess_Control_Allow_Origin().(*Response_Headers_Access_Control_Allow_Origin_Origins); ok {
-		return x.Access_Control_Allow_Origin_Origins
+func (m *Response_Headers) GetAccessControlAllowOriginOrigins() *StringList {
+	if x, ok := m.GetAccessControlAllowOrigin().(*Response_Headers_AccessControlAllowOriginOrigins); ok {
+		return x.AccessControlAllowOriginOrigins
 	}
 	return nil
 }
 
-func (m *Response_Headers) GetAccess_Control_Allow_Credentials() Response_Headers_Access_Control_Allow_Credentials_Value {
+func (m *Response_Headers) GetAccessControlAllowCredentials() Response_Headers_AccessControlAllowCredentialsValue {
 	if m != nil {
-		return m.Access_Control_Allow_Credentials
+		return m.AccessControlAllowCredentials
 	}
 	return Response_Headers_UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE
 }
 
-func (m *Response_Headers) GetAccess_Control_Expose_Headers() []string {
+func (m *Response_Headers) GetAccessControlExposeHeaders() []string {
 	if m != nil {
-		return m.Access_Control_Expose_Headers
+		return m.AccessControlExposeHeaders
 	}
 	return nil
 }
@@ -1210,15 +1213,15 @@ type isResponse_Headers_Alt_Svc interface {
 	isResponse_Headers_Alt_Svc()
 }
 
-type Response_Headers_Alt_Svc_Clear struct {
-	Alt_Svc_Clear Clear `protobuf:"varint,5,opt,name=Alt_Svc_Clear,json=AltSvcClear,proto3,enum=web.Clear,oneof"`
+type Response_Headers_AltSvcClear struct {
+	AltSvcClear Clear `protobuf:"varint,5,opt,name=alt_svc_clear,json=altSvcClear,proto3,enum=web.Clear,oneof"`
 }
 
 type Response_Headers_Service struct {
-	Service *Response_Headers_Alt_Svc_Message `protobuf:"bytes,6,opt,name=Service,proto3,oneof"`
+	Service *Response_Headers_AltSvcMessage `protobuf:"bytes,6,opt,name=service,proto3,oneof"`
 }
 
-func (*Response_Headers_Alt_Svc_Clear) isResponse_Headers_Alt_Svc() {}
+func (*Response_Headers_AltSvcClear) isResponse_Headers_Alt_Svc() {}
 
 func (*Response_Headers_Service) isResponse_Headers_Alt_Svc() {}
 
@@ -1229,30 +1232,30 @@ func (m *Response_Headers) GetAlt_Svc() isResponse_Headers_Alt_Svc {
 	return nil
 }
 
-func (m *Response_Headers) GetAlt_Svc_Clear() Clear {
-	if x, ok := m.GetAlt_Svc().(*Response_Headers_Alt_Svc_Clear); ok {
-		return x.Alt_Svc_Clear
+func (m *Response_Headers) GetAltSvcClear() Clear {
+	if x, ok := m.GetAlt_Svc().(*Response_Headers_AltSvcClear); ok {
+		return x.AltSvcClear
 	}
 	return Clear_CLEAR
 }
 
-func (m *Response_Headers) GetService() *Response_Headers_Alt_Svc_Message {
+func (m *Response_Headers) GetService() *Response_Headers_AltSvcMessage {
 	if x, ok := m.GetAlt_Svc().(*Response_Headers_Service); ok {
 		return x.Service
 	}
 	return nil
 }
 
-func (m *Response_Headers) GetCache_Control() *Cache_Control_Response {
+func (m *Response_Headers) GetCacheControl() *CacheControlResponse {
 	if m != nil {
-		return m.Cache_Control
+		return m.CacheControl
 	}
 	return nil
 }
 
-func (m *Response_Headers) GetContent_Type() *Response_Headers_Content_Type_Message {
+func (m *Response_Headers) GetContentType() *MIMEType {
 	if m != nil {
-		return m.Content_Type
+		return m.ContentType
 	}
 	return nil
 }
@@ -1268,17 +1271,17 @@ type isResponse_Headers_Expires interface {
 	isResponse_Headers_Expires()
 }
 
-type Response_Headers_Expires_Already struct {
-	Expires_Already Already `protobuf:"varint,9,opt,name=Expires_Already,json=ExpiresAlready,proto3,enum=web.Already,oneof"`
+type Response_Headers_ExpiresAlready struct {
+	ExpiresAlready Already `protobuf:"varint,9,opt,name=expires_already,json=expiresAlready,proto3,enum=web.Already,oneof"`
 }
 
-type Response_Headers_Expires_Date struct {
-	Expires_Date *timestamp.Timestamp `protobuf:"bytes,10,opt,name=Expires_Date,json=ExpiresDate,proto3,oneof"`
+type Response_Headers_ExpiresDate struct {
+	ExpiresDate *timestamp.Timestamp `protobuf:"bytes,10,opt,name=expires_date,json=expiresDate,proto3,oneof"`
 }
 
-func (*Response_Headers_Expires_Already) isResponse_Headers_Expires() {}
+func (*Response_Headers_ExpiresAlready) isResponse_Headers_Expires() {}
 
-func (*Response_Headers_Expires_Date) isResponse_Headers_Expires() {}
+func (*Response_Headers_ExpiresDate) isResponse_Headers_Expires() {}
 
 func (m *Response_Headers) GetExpires() isResponse_Headers_Expires {
 	if m != nil {
@@ -1287,16 +1290,16 @@ func (m *Response_Headers) GetExpires() isResponse_Headers_Expires {
 	return nil
 }
 
-func (m *Response_Headers) GetExpires_Already() Already {
-	if x, ok := m.GetExpires().(*Response_Headers_Expires_Already); ok {
-		return x.Expires_Already
+func (m *Response_Headers) GetExpiresAlready() Already {
+	if x, ok := m.GetExpires().(*Response_Headers_ExpiresAlready); ok {
+		return x.ExpiresAlready
 	}
 	return Already_ALREADY
 }
 
-func (m *Response_Headers) GetExpires_Date() *timestamp.Timestamp {
-	if x, ok := m.GetExpires().(*Response_Headers_Expires_Date); ok {
-		return x.Expires_Date
+func (m *Response_Headers) GetExpiresDate() *timestamp.Timestamp {
+	if x, ok := m.GetExpires().(*Response_Headers_ExpiresDate); ok {
+		return x.ExpiresDate
 	}
 	return nil
 }
@@ -1312,17 +1315,17 @@ type isResponse_Headers_Vary interface {
 	isResponse_Headers_Vary()
 }
 
-type Response_Headers_Vary_All struct {
-	Vary_All Wildcard `protobuf:"varint,12,opt,name=Vary_All,json=VaryAll,proto3,enum=web.Wildcard,oneof"`
+type Response_Headers_VaryAll struct {
+	VaryAll Wildcard `protobuf:"varint,12,opt,name=vary_all,json=varyAll,proto3,enum=web.Wildcard,oneof"`
 }
 
-type Response_Headers_Vary_Headers struct {
-	Vary_Headers *StringList `protobuf:"bytes,13,opt,name=Vary_Headers,json=VaryHeaders,proto3,oneof"`
+type Response_Headers_VaryHeaders struct {
+	VaryHeaders *StringList `protobuf:"bytes,13,opt,name=vary_headers,json=varyHeaders,proto3,oneof"`
 }
 
-func (*Response_Headers_Vary_All) isResponse_Headers_Vary() {}
+func (*Response_Headers_VaryAll) isResponse_Headers_Vary() {}
 
-func (*Response_Headers_Vary_Headers) isResponse_Headers_Vary() {}
+func (*Response_Headers_VaryHeaders) isResponse_Headers_Vary() {}
 
 func (m *Response_Headers) GetVary() isResponse_Headers_Vary {
 	if m != nil {
@@ -1331,37 +1334,37 @@ func (m *Response_Headers) GetVary() isResponse_Headers_Vary {
 	return nil
 }
 
-func (m *Response_Headers) GetVary_All() Wildcard {
-	if x, ok := m.GetVary().(*Response_Headers_Vary_All); ok {
-		return x.Vary_All
+func (m *Response_Headers) GetVaryAll() Wildcard {
+	if x, ok := m.GetVary().(*Response_Headers_VaryAll); ok {
+		return x.VaryAll
 	}
 	return Wildcard_STAR
 }
 
-func (m *Response_Headers) GetVary_Headers() *StringList {
-	if x, ok := m.GetVary().(*Response_Headers_Vary_Headers); ok {
-		return x.Vary_Headers
+func (m *Response_Headers) GetVaryHeaders() *StringList {
+	if x, ok := m.GetVary().(*Response_Headers_VaryHeaders); ok {
+		return x.VaryHeaders
 	}
 	return nil
 }
 
-func (m *Response_Headers) GetX_Frame_Options() Response_Headers_X_Frame_Options_Value {
+func (m *Response_Headers) GetXFrameOptions() Response_Headers_XFrameOptionsValue {
 	if m != nil {
-		return m.X_Frame_Options
+		return m.XFrameOptions
 	}
 	return Response_Headers_UNUSED_X_FRAME_OPTIONS_VALUE
 }
 
-func (m *Response_Headers) GetX_XSS_Protection() string {
+func (m *Response_Headers) GetXXssProtection() string {
 	if m != nil {
-		return m.X_XSS_Protection
+		return m.XXssProtection
 	}
 	return ""
 }
 
-func (m *Response_Headers) GetSet_Cookie() []*Response_Headers_Set_Cookie_Message {
+func (m *Response_Headers) GetSetCookie() []*Response_Headers_SetCookieMessage {
 	if m != nil {
-		return m.Set_Cookie
+		return m.SetCookie
 	}
 	return nil
 }
@@ -1376,494 +1379,403 @@ func (m *Response_Headers) GetOther() []*KeyValue {
 // XXX_OneofWrappers is for the internal use of the proto package.
 func (*Response_Headers) XXX_OneofWrappers() []interface{} {
 	return []interface{}{
-		(*Response_Headers_Access_Control_Allow_Origin_All)(nil),
-		(*Response_Headers_Access_Control_Allow_Origin_Origins)(nil),
-		(*Response_Headers_Alt_Svc_Clear)(nil),
+		(*Response_Headers_AccessControlAllowOriginAll)(nil),
+		(*Response_Headers_AccessControlAllowOriginOrigins)(nil),
+		(*Response_Headers_AltSvcClear)(nil),
 		(*Response_Headers_Service)(nil),
-		(*Response_Headers_Expires_Already)(nil),
-		(*Response_Headers_Expires_Date)(nil),
-		(*Response_Headers_Vary_All)(nil),
-		(*Response_Headers_Vary_Headers)(nil),
+		(*Response_Headers_ExpiresAlready)(nil),
+		(*Response_Headers_ExpiresDate)(nil),
+		(*Response_Headers_VaryAll)(nil),
+		(*Response_Headers_VaryHeaders)(nil),
 	}
 }
 
-type Response_Headers_Alt_Svc_Message struct {
-	Services             []*Response_Headers_Alt_Svc_Message_Service `protobuf:"bytes,1,rep,name=Services,proto3" json:"Services,omitempty"`
-	Max_Age              uint64                                      `protobuf:"varint,2,opt,name=Max_Age,json=MaxAge,proto3" json:"Max_Age,omitempty"`
-	Persist              bool                                        `protobuf:"varint,3,opt,name=Persist,proto3" json:"Persist,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                    `json:"-"`
-	XXX_unrecognized     []byte                                      `json:"-"`
-	XXX_sizecache        int32                                       `json:"-"`
+type Response_Headers_AltSvcMessage struct {
+	Services             []*Response_Headers_AltSvcMessage_Service `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
+	MaxAge               uint64                                    `protobuf:"varint,2,opt,name=max_age,json=maxAge,proto3" json:"max_age,omitempty"`
+	Persist              bool                                      `protobuf:"varint,3,opt,name=persist,proto3" json:"persist,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                  `json:"-"`
+	XXX_unrecognized     []byte                                    `json:"-"`
+	XXX_sizecache        int32                                     `json:"-"`
 }
 
-func (m *Response_Headers_Alt_Svc_Message) Reset()         { *m = Response_Headers_Alt_Svc_Message{} }
-func (m *Response_Headers_Alt_Svc_Message) String() string { return proto.CompactTextString(m) }
-func (*Response_Headers_Alt_Svc_Message) ProtoMessage()    {}
-func (*Response_Headers_Alt_Svc_Message) Descriptor() ([]byte, []int) {
+func (m *Response_Headers_AltSvcMessage) Reset()         { *m = Response_Headers_AltSvcMessage{} }
+func (m *Response_Headers_AltSvcMessage) String() string { return proto.CompactTextString(m) }
+func (*Response_Headers_AltSvcMessage) ProtoMessage()    {}
+func (*Response_Headers_AltSvcMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 0}
 }
 
-func (m *Response_Headers_Alt_Svc_Message) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message.Unmarshal(m, b)
+func (m *Response_Headers_AltSvcMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage.Unmarshal(m, b)
 }
-func (m *Response_Headers_Alt_Svc_Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message.Marshal(b, m, deterministic)
+func (m *Response_Headers_AltSvcMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage.Marshal(b, m, deterministic)
 }
-func (m *Response_Headers_Alt_Svc_Message) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response_Headers_Alt_Svc_Message.Merge(m, src)
+func (m *Response_Headers_AltSvcMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response_Headers_AltSvcMessage.Merge(m, src)
 }
-func (m *Response_Headers_Alt_Svc_Message) XXX_Size() int {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message.Size(m)
+func (m *Response_Headers_AltSvcMessage) XXX_Size() int {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage.Size(m)
 }
-func (m *Response_Headers_Alt_Svc_Message) XXX_DiscardUnknown() {
-	xxx_messageInfo_Response_Headers_Alt_Svc_Message.DiscardUnknown(m)
+func (m *Response_Headers_AltSvcMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_Response_Headers_AltSvcMessage.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Response_Headers_Alt_Svc_Message proto.InternalMessageInfo
+var xxx_messageInfo_Response_Headers_AltSvcMessage proto.InternalMessageInfo
 
-func (m *Response_Headers_Alt_Svc_Message) GetServices() []*Response_Headers_Alt_Svc_Message_Service {
+func (m *Response_Headers_AltSvcMessage) GetServices() []*Response_Headers_AltSvcMessage_Service {
 	if m != nil {
 		return m.Services
 	}
 	return nil
 }
 
-func (m *Response_Headers_Alt_Svc_Message) GetMax_Age() uint64 {
+func (m *Response_Headers_AltSvcMessage) GetMaxAge() uint64 {
 	if m != nil {
-		return m.Max_Age
+		return m.MaxAge
 	}
 	return 0
 }
 
-func (m *Response_Headers_Alt_Svc_Message) GetPersist() bool {
+func (m *Response_Headers_AltSvcMessage) GetPersist() bool {
 	if m != nil {
 		return m.Persist
 	}
 	return false
 }
 
-type Response_Headers_Alt_Svc_Message_Service struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"`
-	Host_Name            string   `protobuf:"bytes,2,opt,name=Host_Name,json=HostName,proto3" json:"Host_Name,omitempty"`
-	Port                 uint32   `protobuf:"varint,3,opt,name=Port,proto3" json:"Port,omitempty"`
+type Response_Headers_AltSvcMessage_Service struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	HostName             string   `protobuf:"bytes,2,opt,name=host_name,json=hostName,proto3" json:"host_name,omitempty"`
+	Port                 uint32   `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Response_Headers_Alt_Svc_Message_Service) Reset() {
-	*m = Response_Headers_Alt_Svc_Message_Service{}
+func (m *Response_Headers_AltSvcMessage_Service) Reset() {
+	*m = Response_Headers_AltSvcMessage_Service{}
 }
-func (m *Response_Headers_Alt_Svc_Message_Service) String() string { return proto.CompactTextString(m) }
-func (*Response_Headers_Alt_Svc_Message_Service) ProtoMessage()    {}
-func (*Response_Headers_Alt_Svc_Message_Service) Descriptor() ([]byte, []int) {
+func (m *Response_Headers_AltSvcMessage_Service) String() string { return proto.CompactTextString(m) }
+func (*Response_Headers_AltSvcMessage_Service) ProtoMessage()    {}
+func (*Response_Headers_AltSvcMessage_Service) Descriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 0, 0}
 }
 
-func (m *Response_Headers_Alt_Svc_Message_Service) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service.Unmarshal(m, b)
+func (m *Response_Headers_AltSvcMessage_Service) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage_Service.Unmarshal(m, b)
 }
-func (m *Response_Headers_Alt_Svc_Message_Service) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service.Marshal(b, m, deterministic)
+func (m *Response_Headers_AltSvcMessage_Service) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage_Service.Marshal(b, m, deterministic)
 }
-func (m *Response_Headers_Alt_Svc_Message_Service) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service.Merge(m, src)
+func (m *Response_Headers_AltSvcMessage_Service) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response_Headers_AltSvcMessage_Service.Merge(m, src)
 }
-func (m *Response_Headers_Alt_Svc_Message_Service) XXX_Size() int {
-	return xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service.Size(m)
+func (m *Response_Headers_AltSvcMessage_Service) XXX_Size() int {
+	return xxx_messageInfo_Response_Headers_AltSvcMessage_Service.Size(m)
 }
-func (m *Response_Headers_Alt_Svc_Message_Service) XXX_DiscardUnknown() {
-	xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service.DiscardUnknown(m)
+func (m *Response_Headers_AltSvcMessage_Service) XXX_DiscardUnknown() {
+	xxx_messageInfo_Response_Headers_AltSvcMessage_Service.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Response_Headers_Alt_Svc_Message_Service proto.InternalMessageInfo
+var xxx_messageInfo_Response_Headers_AltSvcMessage_Service proto.InternalMessageInfo
 
-func (m *Response_Headers_Alt_Svc_Message_Service) GetName() string {
+func (m *Response_Headers_AltSvcMessage_Service) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *Response_Headers_Alt_Svc_Message_Service) GetHost_Name() string {
+func (m *Response_Headers_AltSvcMessage_Service) GetHostName() string {
 	if m != nil {
-		return m.Host_Name
+		return m.HostName
 	}
 	return ""
 }
 
-func (m *Response_Headers_Alt_Svc_Message_Service) GetPort() uint32 {
+func (m *Response_Headers_AltSvcMessage_Service) GetPort() uint32 {
 	if m != nil {
 		return m.Port
 	}
 	return 0
 }
 
-type Response_Headers_Content_Type_Message struct {
-	// Types that are valid to be assigned to Content_Type_Message:
-	//	*Response_Headers_Content_Type_Message_MIME_Type
-	//	*Response_Headers_Content_Type_Message_Other
-	Content_Type_Message isResponse_Headers_Content_Type_Message_Content_Type_Message `protobuf_oneof:"Content_Type_Message"`
-	Parameter            *KeyValue                                                    `protobuf:"bytes,3,opt,name=Parameter,proto3" json:"Parameter,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                                     `json:"-"`
-	XXX_unrecognized     []byte                                                       `json:"-"`
-	XXX_sizecache        int32                                                        `json:"-"`
+type Response_Headers_SetCookieMessage struct {
+	Name                 string                                          `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Value                string                                          `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Expires              *timestamp.Timestamp                            `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
+	MaxAge               int64                                           `protobuf:"varint,4,opt,name=max_age,json=maxAge,proto3" json:"max_age,omitempty"`
+	Domain               string                                          `protobuf:"bytes,5,opt,name=domain,proto3" json:"domain,omitempty"`
+	Path                 string                                          `protobuf:"bytes,6,opt,name=path,proto3" json:"path,omitempty"`
+	Secure               bool                                            `protobuf:"varint,7,opt,name=secure,proto3" json:"secure,omitempty"`
+	HttpOnly             bool                                            `protobuf:"varint,8,opt,name=http_only,json=httpOnly,proto3" json:"http_only,omitempty"`
+	Samesite             Response_Headers_SetCookieMessage_SameSiteValue `protobuf:"varint,9,opt,name=samesite,proto3,enum=web.Response_Headers_SetCookieMessage_SameSiteValue" json:"samesite,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                        `json:"-"`
+	XXX_unrecognized     []byte                                          `json:"-"`
+	XXX_sizecache        int32                                           `json:"-"`
 }
 
-func (m *Response_Headers_Content_Type_Message) Reset()         { *m = Response_Headers_Content_Type_Message{} }
-func (m *Response_Headers_Content_Type_Message) String() string { return proto.CompactTextString(m) }
-func (*Response_Headers_Content_Type_Message) ProtoMessage()    {}
-func (*Response_Headers_Content_Type_Message) Descriptor() ([]byte, []int) {
+func (m *Response_Headers_SetCookieMessage) Reset()         { *m = Response_Headers_SetCookieMessage{} }
+func (m *Response_Headers_SetCookieMessage) String() string { return proto.CompactTextString(m) }
+func (*Response_Headers_SetCookieMessage) ProtoMessage()    {}
+func (*Response_Headers_SetCookieMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 1}
 }
 
-func (m *Response_Headers_Content_Type_Message) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Response_Headers_Content_Type_Message.Unmarshal(m, b)
+func (m *Response_Headers_SetCookieMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Response_Headers_SetCookieMessage.Unmarshal(m, b)
 }
-func (m *Response_Headers_Content_Type_Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Response_Headers_Content_Type_Message.Marshal(b, m, deterministic)
+func (m *Response_Headers_SetCookieMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Response_Headers_SetCookieMessage.Marshal(b, m, deterministic)
 }
-func (m *Response_Headers_Content_Type_Message) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response_Headers_Content_Type_Message.Merge(m, src)
+func (m *Response_Headers_SetCookieMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response_Headers_SetCookieMessage.Merge(m, src)
 }
-func (m *Response_Headers_Content_Type_Message) XXX_Size() int {
-	return xxx_messageInfo_Response_Headers_Content_Type_Message.Size(m)
+func (m *Response_Headers_SetCookieMessage) XXX_Size() int {
+	return xxx_messageInfo_Response_Headers_SetCookieMessage.Size(m)
 }
-func (m *Response_Headers_Content_Type_Message) XXX_DiscardUnknown() {
-	xxx_messageInfo_Response_Headers_Content_Type_Message.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Response_Headers_Content_Type_Message proto.InternalMessageInfo
-
-type isResponse_Headers_Content_Type_Message_Content_Type_Message interface {
-	isResponse_Headers_Content_Type_Message_Content_Type_Message()
+func (m *Response_Headers_SetCookieMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_Response_Headers_SetCookieMessage.DiscardUnknown(m)
 }
 
-type Response_Headers_Content_Type_Message_MIME_Type struct {
-	MIME_Type MIME_Types `protobuf:"varint,1,opt,name=MIME_Type,json=MIMEType,proto3,enum=web.MIME_Types,oneof"`
-}
+var xxx_messageInfo_Response_Headers_SetCookieMessage proto.InternalMessageInfo
 
-type Response_Headers_Content_Type_Message_Other struct {
-	Other string `protobuf:"bytes,2,opt,name=Other,proto3,oneof"`
-}
-
-func (*Response_Headers_Content_Type_Message_MIME_Type) isResponse_Headers_Content_Type_Message_Content_Type_Message() {
-}
-
-func (*Response_Headers_Content_Type_Message_Other) isResponse_Headers_Content_Type_Message_Content_Type_Message() {
-}
-
-func (m *Response_Headers_Content_Type_Message) GetContent_Type_Message() isResponse_Headers_Content_Type_Message_Content_Type_Message {
-	if m != nil {
-		return m.Content_Type_Message
-	}
-	return nil
-}
-
-func (m *Response_Headers_Content_Type_Message) GetMIME_Type() MIME_Types {
-	if x, ok := m.GetContent_Type_Message().(*Response_Headers_Content_Type_Message_MIME_Type); ok {
-		return x.MIME_Type
-	}
-	return MIME_Types_MIME_TYPE_UNUSED
-}
-
-func (m *Response_Headers_Content_Type_Message) GetOther() string {
-	if x, ok := m.GetContent_Type_Message().(*Response_Headers_Content_Type_Message_Other); ok {
-		return x.Other
-	}
-	return ""
-}
-
-func (m *Response_Headers_Content_Type_Message) GetParameter() *KeyValue {
-	if m != nil {
-		return m.Parameter
-	}
-	return nil
-}
-
-// XXX_OneofWrappers is for the internal use of the proto package.
-func (*Response_Headers_Content_Type_Message) XXX_OneofWrappers() []interface{} {
-	return []interface{}{
-		(*Response_Headers_Content_Type_Message_MIME_Type)(nil),
-		(*Response_Headers_Content_Type_Message_Other)(nil),
-	}
-}
-
-type Response_Headers_Set_Cookie_Message struct {
-	Name                 string                                             `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"`
-	Value                string                                             `protobuf:"bytes,2,opt,name=Value,proto3" json:"Value,omitempty"`
-	Expires              *timestamp.Timestamp                               `protobuf:"bytes,3,opt,name=Expires,proto3" json:"Expires,omitempty"`
-	Max_Age              int64                                              `protobuf:"varint,4,opt,name=Max_Age,json=MaxAge,proto3" json:"Max_Age,omitempty"`
-	Domain               string                                             `protobuf:"bytes,5,opt,name=Domain,proto3" json:"Domain,omitempty"`
-	Path                 string                                             `protobuf:"bytes,6,opt,name=Path,proto3" json:"Path,omitempty"`
-	Secure               bool                                               `protobuf:"varint,7,opt,name=Secure,proto3" json:"Secure,omitempty"`
-	HttpOnly             bool                                               `protobuf:"varint,8,opt,name=HttpOnly,proto3" json:"HttpOnly,omitempty"`
-	SameSite             Response_Headers_Set_Cookie_Message_SameSite_Value `protobuf:"varint,9,opt,name=SameSite,proto3,enum=web.Response_Headers_Set_Cookie_Message_SameSite_Value" json:"SameSite,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                           `json:"-"`
-	XXX_unrecognized     []byte                                             `json:"-"`
-	XXX_sizecache        int32                                              `json:"-"`
-}
-
-func (m *Response_Headers_Set_Cookie_Message) Reset()         { *m = Response_Headers_Set_Cookie_Message{} }
-func (m *Response_Headers_Set_Cookie_Message) String() string { return proto.CompactTextString(m) }
-func (*Response_Headers_Set_Cookie_Message) ProtoMessage()    {}
-func (*Response_Headers_Set_Cookie_Message) Descriptor() ([]byte, []int) {
-	return fileDescriptor_461bb3ac99194e85, []int{5, 0, 2}
-}
-
-func (m *Response_Headers_Set_Cookie_Message) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Response_Headers_Set_Cookie_Message.Unmarshal(m, b)
-}
-func (m *Response_Headers_Set_Cookie_Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Response_Headers_Set_Cookie_Message.Marshal(b, m, deterministic)
-}
-func (m *Response_Headers_Set_Cookie_Message) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Response_Headers_Set_Cookie_Message.Merge(m, src)
-}
-func (m *Response_Headers_Set_Cookie_Message) XXX_Size() int {
-	return xxx_messageInfo_Response_Headers_Set_Cookie_Message.Size(m)
-}
-func (m *Response_Headers_Set_Cookie_Message) XXX_DiscardUnknown() {
-	xxx_messageInfo_Response_Headers_Set_Cookie_Message.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Response_Headers_Set_Cookie_Message proto.InternalMessageInfo
-
-func (m *Response_Headers_Set_Cookie_Message) GetName() string {
+func (m *Response_Headers_SetCookieMessage) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetValue() string {
+func (m *Response_Headers_SetCookieMessage) GetValue() string {
 	if m != nil {
 		return m.Value
 	}
 	return ""
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetExpires() *timestamp.Timestamp {
+func (m *Response_Headers_SetCookieMessage) GetExpires() *timestamp.Timestamp {
 	if m != nil {
 		return m.Expires
 	}
 	return nil
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetMax_Age() int64 {
+func (m *Response_Headers_SetCookieMessage) GetMaxAge() int64 {
 	if m != nil {
-		return m.Max_Age
+		return m.MaxAge
 	}
 	return 0
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetDomain() string {
+func (m *Response_Headers_SetCookieMessage) GetDomain() string {
 	if m != nil {
 		return m.Domain
 	}
 	return ""
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetPath() string {
+func (m *Response_Headers_SetCookieMessage) GetPath() string {
 	if m != nil {
 		return m.Path
 	}
 	return ""
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetSecure() bool {
+func (m *Response_Headers_SetCookieMessage) GetSecure() bool {
 	if m != nil {
 		return m.Secure
 	}
 	return false
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetHttpOnly() bool {
+func (m *Response_Headers_SetCookieMessage) GetHttpOnly() bool {
 	if m != nil {
 		return m.HttpOnly
 	}
 	return false
 }
 
-func (m *Response_Headers_Set_Cookie_Message) GetSameSite() Response_Headers_Set_Cookie_Message_SameSite_Value {
+func (m *Response_Headers_SetCookieMessage) GetSamesite() Response_Headers_SetCookieMessage_SameSiteValue {
 	if m != nil {
-		return m.SameSite
+		return m.Samesite
 	}
-	return Response_Headers_Set_Cookie_Message_UNUSED_SAMESITE_VALUE
+	return Response_Headers_SetCookieMessage_UNUSED_SAMESITE_VALUE
 }
 
 func init() {
 	proto.RegisterEnum("web.Wildcard", Wildcard_name, Wildcard_value)
 	proto.RegisterEnum("web.Already", Already_name, Already_value)
 	proto.RegisterEnum("web.Clear", Clear_name, Clear_value)
-	proto.RegisterEnum("web.Cache_Control_Request_Directives", Cache_Control_Request_Directives_name, Cache_Control_Request_Directives_value)
-	proto.RegisterEnum("web.Cache_Control_Response_Directives", Cache_Control_Response_Directives_name, Cache_Control_Response_Directives_value)
+	proto.RegisterEnum("web.CacheControlRequest_Directives", CacheControlRequest_Directives_name, CacheControlRequest_Directives_value)
+	proto.RegisterEnum("web.CacheControlResponse_Directives", CacheControlResponse_Directives_name, CacheControlResponse_Directives_value)
 	proto.RegisterEnum("web.Request_Method", Request_Method_name, Request_Method_value)
-	proto.RegisterEnum("web.Request_Headers_Transfer_Encodings_Value", Request_Headers_Transfer_Encodings_Value_name, Request_Headers_Transfer_Encodings_Value_value)
-	proto.RegisterEnum("web.Request_Headers_X_Requested_With_Value", Request_Headers_X_Requested_With_Value_name, Request_Headers_X_Requested_With_Value_value)
-	proto.RegisterEnum("web.Request_Headers_DNT_Value", Request_Headers_DNT_Value_name, Request_Headers_DNT_Value_value)
-	proto.RegisterEnum("web.Response_Headers_Access_Control_Allow_Credentials_Value", Response_Headers_Access_Control_Allow_Credentials_Value_name, Response_Headers_Access_Control_Allow_Credentials_Value_value)
-	proto.RegisterEnum("web.Response_Headers_X_Frame_Options_Value", Response_Headers_X_Frame_Options_Value_name, Response_Headers_X_Frame_Options_Value_value)
-	proto.RegisterEnum("web.Response_Headers_Set_Cookie_Message_SameSite_Value", Response_Headers_Set_Cookie_Message_SameSite_Value_name, Response_Headers_Set_Cookie_Message_SameSite_Value_value)
+	proto.RegisterEnum("web.Request_Headers_TransferEncodingsValue", Request_Headers_TransferEncodingsValue_name, Request_Headers_TransferEncodingsValue_value)
+	proto.RegisterEnum("web.Request_Headers_XRequestedWithValue", Request_Headers_XRequestedWithValue_name, Request_Headers_XRequestedWithValue_value)
+	proto.RegisterEnum("web.Request_Headers_DNTValue", Request_Headers_DNTValue_name, Request_Headers_DNTValue_value)
+	proto.RegisterEnum("web.Response_Headers_AccessControlAllowCredentialsValue", Response_Headers_AccessControlAllowCredentialsValue_name, Response_Headers_AccessControlAllowCredentialsValue_value)
+	proto.RegisterEnum("web.Response_Headers_XFrameOptionsValue", Response_Headers_XFrameOptionsValue_name, Response_Headers_XFrameOptionsValue_value)
+	proto.RegisterEnum("web.Response_Headers_SetCookieMessage_SameSiteValue", Response_Headers_SetCookieMessage_SameSiteValue_name, Response_Headers_SetCookieMessage_SameSiteValue_value)
 	proto.RegisterType((*KeyValue)(nil), "web.KeyValue")
 	proto.RegisterType((*StringList)(nil), "web.StringList")
-	proto.RegisterType((*Cache_Control_Request)(nil), "web.Cache_Control_Request")
-	proto.RegisterType((*Cache_Control_Response)(nil), "web.Cache_Control_Response")
+	proto.RegisterType((*CacheControlRequest)(nil), "web.CacheControlRequest")
+	proto.RegisterType((*CacheControlResponse)(nil), "web.CacheControlResponse")
 	proto.RegisterType((*Request)(nil), "web.Request")
 	proto.RegisterType((*Request_Headers)(nil), "web.Request.Headers")
 	proto.RegisterType((*Request_Headers_ByteRange)(nil), "web.Request.Headers.ByteRange")
 	proto.RegisterType((*Response)(nil), "web.Response")
 	proto.RegisterType((*Response_Headers)(nil), "web.Response.Headers")
-	proto.RegisterType((*Response_Headers_Alt_Svc_Message)(nil), "web.Response.Headers.Alt_Svc_Message")
-	proto.RegisterType((*Response_Headers_Alt_Svc_Message_Service)(nil), "web.Response.Headers.Alt_Svc_Message.Service")
-	proto.RegisterType((*Response_Headers_Content_Type_Message)(nil), "web.Response.Headers.Content_Type_Message")
-	proto.RegisterType((*Response_Headers_Set_Cookie_Message)(nil), "web.Response.Headers.Set_Cookie_Message")
+	proto.RegisterType((*Response_Headers_AltSvcMessage)(nil), "web.Response.Headers.AltSvcMessage")
+	proto.RegisterType((*Response_Headers_AltSvcMessage_Service)(nil), "web.Response.Headers.AltSvcMessage.Service")
+	proto.RegisterType((*Response_Headers_SetCookieMessage)(nil), "web.Response.Headers.SetCookieMessage")
 }
 
 func init() { proto.RegisterFile("web.proto", fileDescriptor_461bb3ac99194e85) }
 
 var fileDescriptor_461bb3ac99194e85 = []byte{
-	// 2237 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x58, 0xcd, 0x72, 0xdb, 0xc8,
-	0xf1, 0x17, 0xbf, 0xc9, 0xe6, 0x87, 0xa0, 0xb1, 0xac, 0x85, 0xe9, 0x95, 0x25, 0xd3, 0xff, 0xf5,
-	0x5f, 0xb1, 0x63, 0x79, 0xc3, 0xdd, 0xca, 0x5e, 0x36, 0xb5, 0x81, 0xc0, 0x91, 0x89, 0x5d, 0x12,
-	0x60, 0x06, 0xa0, 0x44, 0x9f, 0x50, 0x30, 0x39, 0xa2, 0x50, 0x21, 0x09, 0x2d, 0x00, 0xd9, 0x52,
-	0xee, 0xa9, 0x4a, 0x2e, 0xc9, 0x43, 0xe4, 0x96, 0x4b, 0x1e, 0x20, 0x97, 0xbc, 0x49, 0x4e, 0x79,
-	0x8f, 0xd4, 0x7c, 0x00, 0xa4, 0x24, 0x5a, 0x76, 0x4e, 0x9c, 0xfe, 0x4d, 0x77, 0x4f, 0x4f, 0x4f,
-	0x7f, 0x81, 0x50, 0xf9, 0x40, 0xdf, 0x1d, 0x5e, 0x84, 0x41, 0x1c, 0xa0, 0xdc, 0x07, 0xfa, 0xae,
-	0xb9, 0x37, 0x0d, 0x82, 0xe9, 0x8c, 0xbe, 0xe6, 0xd0, 0xbb, 0xcb, 0xb3, 0xd7, 0xb1, 0x3f, 0xa7,
-	0x51, 0xec, 0xcd, 0x2f, 0x04, 0x57, 0x13, 0xe6, 0xfe, 0x9c, 0xca, 0x75, 0x2d, 0x8a, 0xbd, 0xf8,
-	0x32, 0x12, 0x54, 0xab, 0x0d, 0xe5, 0x9f, 0xe8, 0xf5, 0x89, 0x37, 0xbb, 0xa4, 0x48, 0x81, 0xdc,
-	0x4f, 0xf4, 0x5a, 0xcd, 0xec, 0x67, 0x0e, 0x2a, 0x84, 0x2d, 0xd1, 0x36, 0x14, 0xf8, 0x96, 0x9a,
-	0xe5, 0x98, 0x20, 0x5a, 0xcf, 0x01, 0xec, 0x38, 0xf4, 0x17, 0xd3, 0x9e, 0x1f, 0xc5, 0x48, 0x85,
-	0x92, 0xa0, 0x22, 0x35, 0xb3, 0x9f, 0x3b, 0xa8, 0x90, 0x84, 0x6c, 0xfd, 0x29, 0x0b, 0x0f, 0x75,
-	0x6f, 0x7c, 0x4e, 0x5d, 0x3d, 0x58, 0xc4, 0x61, 0x30, 0x73, 0x09, 0xfd, 0xf9, 0x92, 0x46, 0x31,
-	0xd2, 0xa1, 0xd2, 0xf1, 0x43, 0x3a, 0x8e, 0xfd, 0xf7, 0x94, 0x9f, 0xd7, 0x68, 0x7f, 0x75, 0xc8,
-	0x2e, 0xb5, 0x96, 0xfd, 0x30, 0xe5, 0x8d, 0xc8, 0x52, 0x8e, 0x1f, 0x4c, 0xc7, 0xc1, 0x62, 0x12,
-	0x71, 0xf3, 0xf2, 0x24, 0x21, 0x5b, 0x7f, 0xcd, 0x00, 0x2c, 0x65, 0xd0, 0x36, 0x28, 0x43, 0x73,
-	0x68, 0xe3, 0x8e, 0xdb, 0x31, 0x08, 0xd6, 0x1d, 0xe3, 0x04, 0x2b, 0x1b, 0xa8, 0x0a, 0xa5, 0xbe,
-	0x36, 0x72, 0xb5, 0x37, 0x58, 0xc9, 0xa0, 0x3a, 0x54, 0x18, 0x61, 0x3b, 0x5a, 0x0f, 0x2b, 0x59,
-	0x4e, 0x1a, 0xa6, 0x7b, 0x4c, 0xb0, 0xdd, 0x55, 0x72, 0xa8, 0x06, 0x65, 0xd3, 0x72, 0x75, 0x4d,
-	0xef, 0x62, 0x25, 0x2f, 0x29, 0xdb, 0xb1, 0x08, 0x56, 0x0a, 0x48, 0x81, 0x9a, 0x69, 0xb9, 0x0e,
-	0xd1, 0x4c, 0xfb, 0xd8, 0x22, 0x7d, 0xa5, 0x88, 0x10, 0x34, 0x2c, 0xb3, 0xf7, 0xd6, 0xb5, 0x8e,
-	0x85, 0x48, 0x47, 0x29, 0xb5, 0xfe, 0x9e, 0x85, 0x9d, 0xdb, 0x77, 0x8b, 0x2e, 0x82, 0x45, 0x44,
-	0x51, 0xe7, 0xae, 0x2f, 0x9e, 0xaf, 0xf5, 0x85, 0xe0, 0xff, 0x9f, 0x9d, 0xf1, 0x8f, 0xcf, 0x71,
-	0xc6, 0x03, 0xd8, 0xec, 0x0f, 0x6d, 0xc7, 0x25, 0xf8, 0x44, 0xeb, 0x19, 0x1d, 0xcd, 0x61, 0x4e,
-	0x59, 0xbd, 0x76, 0xf6, 0xc6, 0xb5, 0x73, 0x77, 0xae, 0x9d, 0x47, 0x00, 0xc5, 0xc1, 0xf0, 0xa8,
-	0x67, 0xe8, 0x4a, 0x81, 0xf9, 0x76, 0x40, 0x8c, 0x13, 0xa6, 0xa6, 0xc8, 0x4e, 0x1c, 0x10, 0x6b,
-	0xf4, 0x76, 0x55, 0x79, 0x69, 0xd5, 0xfd, 0x65, 0xa6, 0xdb, 0x76, 0xfb, 0xda, 0x88, 0x51, 0x95,
-	0xd6, 0x7f, 0x36, 0xa1, 0x94, 0x44, 0xca, 0x4b, 0x28, 0xce, 0x69, 0x7c, 0x1e, 0x4c, 0xa4, 0x6b,
-	0x1e, 0x70, 0xd7, 0x24, 0x81, 0xd1, 0xe7, 0x5b, 0x44, 0xb2, 0xa0, 0x36, 0xd4, 0x86, 0xc4, 0x70,
-	0x4f, 0xfd, 0xd9, 0x64, 0xec, 0x85, 0x13, 0xee, 0x89, 0x46, 0xbb, 0xce, 0x45, 0x12, 0xb0, 0xbb,
-	0x41, 0xaa, 0x43, 0x62, 0x24, 0x24, 0xda, 0x03, 0x60, 0x32, 0x22, 0x66, 0xd5, 0x1c, 0x8b, 0xf3,
-	0xee, 0x06, 0xa9, 0x0c, 0x89, 0x21, 0x20, 0xf4, 0x0c, 0x0a, 0x3f, 0x5f, 0xd2, 0xf0, 0x5a, 0xcd,
-	0xef, 0xe7, 0x0e, 0xaa, 0x52, 0x5b, 0x92, 0x33, 0x44, 0xec, 0xa1, 0x5f, 0x42, 0xb1, 0x4b, 0xbd,
-	0x09, 0x0d, 0xd5, 0xc2, 0x7e, 0xe6, 0xa0, 0xda, 0xde, 0xbe, 0x61, 0xa6, 0xd8, 0x8a, 0x88, 0xe4,
-	0x69, 0xfe, 0xb9, 0x0e, 0x25, 0x89, 0xa1, 0x1d, 0x28, 0x6a, 0xe3, 0x31, 0xbd, 0x88, 0x65, 0xde,
-	0x49, 0x0a, 0x7d, 0x05, 0x0d, 0xb1, 0x72, 0xf5, 0x73, 0x2f, 0x8c, 0x68, 0x2c, 0x73, 0xb0, 0x2e,
-	0x50, 0x09, 0xa2, 0xff, 0x87, 0x4d, 0xc9, 0xd6, 0xf1, 0x62, 0xca, 0xf2, 0x5e, 0xdc, 0x81, 0x48,
-	0xe9, 0x04, 0x5d, 0x61, 0xc4, 0x8b, 0x71, 0x30, 0x61, 0x97, 0xcd, 0xaf, 0x32, 0x26, 0xe8, 0x0a,
-	0x63, 0xcf, 0x5b, 0x4c, 0x2f, 0xbd, 0x29, 0xe5, 0x77, 0x4a, 0x19, 0x13, 0x14, 0x9d, 0xc0, 0x2e,
-	0x43, 0xa2, 0xe8, 0x76, 0xbe, 0xba, 0xe2, 0x59, 0xd4, 0xe2, 0xc7, 0x5f, 0xac, 0x29, 0x24, 0xa5,
-	0xa0, 0xdc, 0x14, 0x7b, 0xe8, 0x2d, 0x3c, 0xf9, 0x88, 0x5e, 0xe9, 0x33, 0xb5, 0x74, 0x8f, 0x8f,
-	0x1f, 0xaf, 0xd3, 0x9c, 0x38, 0xfb, 0xff, 0xa0, 0xae, 0x5d, 0xc6, 0xe7, 0x41, 0xe8, 0xff, 0xc1,
-	0x8b, 0xfd, 0x60, 0xa1, 0x96, 0xa5, 0x4f, 0x57, 0x41, 0xf4, 0x03, 0xd4, 0x6f, 0xe4, 0x9e, 0xba,
-	0xcf, 0xcf, 0x6b, 0x7e, 0xbc, 0x42, 0x91, 0x1a, 0x87, 0x25, 0xca, 0xde, 0x14, 0x5f, 0x5d, 0xd0,
-	0x71, 0xac, 0x56, 0xc4, 0x9b, 0x0a, 0x0a, 0xbd, 0x84, 0xca, 0x71, 0x10, 0x7e, 0xf0, 0xc2, 0x09,
-	0x9d, 0xa8, 0xb0, 0x2e, 0x9c, 0x96, 0xfb, 0x08, 0x41, 0xfe, 0x38, 0x0c, 0xe6, 0x6a, 0x95, 0xab,
-	0xe0, 0x6b, 0x86, 0x75, 0x83, 0x28, 0x56, 0x6b, 0x02, 0x63, 0x6b, 0x16, 0x28, 0x5d, 0xc7, 0x19,
-	0xb4, 0x5d, 0x9b, 0xc6, 0x31, 0x2f, 0xc3, 0x75, 0x71, 0x29, 0x8e, 0x26, 0x20, 0x7a, 0x04, 0x65,
-	0xe3, 0xcc, 0xed, 0x7b, 0xf1, 0xf8, 0x5c, 0x6d, 0x70, 0x86, 0x92, 0x71, 0xc6, 0x49, 0x74, 0x0c,
-	0x5b, 0x6c, 0x2b, 0x98, 0xf8, 0x67, 0x3e, 0x9d, 0xb8, 0xb6, 0xbf, 0x18, 0x53, 0x75, 0x53, 0xde,
-	0x59, 0xb4, 0x96, 0xc3, 0xa4, 0xb5, 0x1c, 0x3a, 0x49, 0x6b, 0x21, 0x9b, 0xc6, 0x59, 0x22, 0xc3,
-	0x45, 0x50, 0x0b, 0xea, 0xc6, 0x99, 0x6b, 0x06, 0x0b, 0x2a, 0xcf, 0x51, 0x78, 0x3f, 0xa8, 0x1a,
-	0x67, 0x0c, 0x13, 0x67, 0x09, 0x33, 0x88, 0xb7, 0x98, 0x52, 0x75, 0x2b, 0x31, 0x83, 0x93, 0xe8,
-	0x47, 0x78, 0x60, 0x9c, 0xb9, 0xc3, 0xc5, 0xfc, 0xa6, 0x21, 0xe8, 0x93, 0x86, 0x6c, 0x19, 0x67,
-	0x4b, 0x29, 0x61, 0xca, 0x53, 0xa8, 0xf5, 0xbd, 0x2b, 0x57, 0x7a, 0x33, 0x52, 0x1f, 0xf0, 0x9a,
-	0x58, 0xed, 0x7b, 0x57, 0x09, 0xc4, 0x1e, 0xc9, 0x0a, 0xfd, 0xa9, 0xbf, 0x50, 0xb7, 0xc5, 0x23,
-	0x09, 0x8a, 0xe1, 0x83, 0xd0, 0x9b, 0xce, 0x3d, 0xf5, 0xa1, 0xc0, 0x05, 0x85, 0x5e, 0xc3, 0x83,
-	0x41, 0x18, 0x5c, 0x5d, 0xbb, 0x37, 0x23, 0x68, 0x87, 0x33, 0x21, 0xbe, 0x75, 0x33, 0x8c, 0x7e,
-	0x0d, 0x85, 0xa3, 0xeb, 0x98, 0x46, 0xea, 0x17, 0xfc, 0x06, 0x4f, 0xd6, 0x85, 0xeb, 0x21, 0xe3,
-	0xe0, 0xd7, 0xef, 0x6e, 0x10, 0xc1, 0xce, 0x4a, 0x39, 0xa1, 0x67, 0x34, 0xa4, 0xa1, 0xaa, 0x0a,
-	0x0f, 0x49, 0x12, 0xfd, 0x06, 0xb2, 0x0e, 0x56, 0x1f, 0xed, 0xe7, 0x0e, 0x1a, 0xed, 0x57, 0x6b,
-	0xd5, 0x39, 0xa1, 0xb7, 0x88, 0xce, 0x68, 0x98, 0x26, 0x79, 0xe4, 0x8a, 0xc0, 0xca, 0x3a, 0x18,
-	0xed, 0x02, 0x0c, 0x23, 0x1a, 0xba, 0xda, 0x94, 0x2e, 0x62, 0xb5, 0xc9, 0x75, 0x57, 0x18, 0xc2,
-	0x01, 0xd6, 0xfe, 0x4f, 0x7c, 0x4f, 0x7d, 0xcc, 0x1f, 0x8d, 0x2d, 0x99, 0x25, 0xa7, 0x5e, 0xb8,
-	0x60, 0xb5, 0xe2, 0x4b, 0x61, 0x89, 0x24, 0xd1, 0x10, 0x94, 0x51, 0x12, 0xfc, 0x74, 0xe2, 0x9e,
-	0xfa, 0xf1, 0xb9, 0xba, 0xcb, 0xd3, 0xfd, 0xe5, 0x5a, 0xbb, 0x6e, 0x33, 0x4b, 0xab, 0x1a, 0xa3,
-	0x14, 0x66, 0x28, 0xfa, 0x1a, 0x72, 0x1d, 0xd3, 0x51, 0x9f, 0x70, 0x4d, 0xeb, 0x1d, 0xd6, 0x31,
-	0x1d, 0x29, 0xcc, 0x58, 0x59, 0x75, 0xb6, 0xe2, 0x73, 0x1a, 0xaa, 0x7b, 0x6b, 0xab, 0x33, 0xdf,
-	0x6b, 0x7e, 0x03, 0x95, 0xd4, 0xcf, 0x6c, 0xa6, 0xb1, 0x63, 0x2f, 0x14, 0xf5, 0x36, 0x4f, 0x04,
-	0xc1, 0x2e, 0x8f, 0x17, 0x13, 0xd9, 0x3b, 0xd9, 0xb2, 0xd5, 0x07, 0xf5, 0x63, 0xde, 0x44, 0xcf,
-	0x60, 0x4f, 0x36, 0x51, 0xd1, 0x01, 0x31, 0x71, 0xb1, 0xa9, 0x5b, 0x1d, 0xc3, 0x7c, 0x63, 0xbb,
-	0x27, 0x5a, 0x6f, 0xc8, 0x7a, 0x6a, 0x0d, 0xca, 0x0e, 0xd1, 0x8c, 0x1e, 0x26, 0xb6, 0x92, 0x69,
-	0x59, 0xb0, 0xb3, 0xde, 0x09, 0xe8, 0x29, 0xec, 0x4a, 0x65, 0x23, 0x97, 0xe0, 0xdf, 0x0d, 0xb1,
-	0xed, 0xe0, 0x8e, 0x7b, 0x6a, 0x38, 0xdd, 0x54, 0x15, 0x82, 0xc6, 0xa8, 0xdf, 0x63, 0x09, 0x2d,
-	0x19, 0x94, 0x4c, 0xeb, 0x7b, 0xa8, 0xa4, 0xbe, 0x58, 0xed, 0xea, 0x0c, 0x5b, 0x5a, 0xd0, 0x31,
-	0x6c, 0xed, 0xa8, 0x87, 0x3b, 0x4a, 0x86, 0x75, 0x5c, 0x6c, 0x0a, 0x22, 0x7b, 0x54, 0x82, 0x02,
-	0x77, 0x47, 0x2b, 0x84, 0xa2, 0xac, 0xbb, 0x5b, 0x50, 0x97, 0x3a, 0xfa, 0xd8, 0xe9, 0x5a, 0x1d,
-	0x65, 0x03, 0x95, 0x20, 0xf7, 0x06, 0x3b, 0x4a, 0x06, 0x95, 0x21, 0xdf, 0xc5, 0x5a, 0x47, 0xc9,
-	0xb2, 0xd5, 0xc0, 0xb2, 0x1d, 0x25, 0xc7, 0x36, 0x07, 0x43, 0x47, 0x74, 0xfe, 0x0e, 0xee, 0x61,
-	0x07, 0x8b, 0xce, 0xaf, 0x5b, 0xa6, 0x89, 0x75, 0x47, 0x29, 0x32, 0xc2, 0x1a, 0x38, 0x86, 0x65,
-	0xda, 0x4a, 0x09, 0x55, 0xa0, 0xe0, 0x10, 0x4d, 0xc7, 0x4a, 0xf9, 0xa8, 0x00, 0xb9, 0x21, 0x31,
-	0x5a, 0xff, 0x44, 0x50, 0x4e, 0xc7, 0xa0, 0x5f, 0x40, 0xd1, 0xe6, 0x83, 0xa9, 0x6c, 0xf4, 0x5b,
-	0xfc, 0x25, 0x05, 0xe4, 0xea, 0xc1, 0x84, 0x46, 0x44, 0x32, 0xa0, 0x57, 0x69, 0xb3, 0xcd, 0xf2,
-	0xcc, 0x7a, 0x28, 0x03, 0x45, 0x0e, 0x48, 0xb7, 0xba, 0x2d, 0x2b, 0x9a, 0x47, 0xc1, 0xe4, 0x9a,
-	0xf7, 0xc5, 0x1a, 0xe1, 0xeb, 0xe6, 0xbf, 0xb6, 0x96, 0x1d, 0x78, 0x08, 0x7b, 0xb7, 0xfa, 0x8d,
-	0x36, 0x9b, 0x05, 0x1f, 0x5c, 0x51, 0x0f, 0x18, 0x21, 0x4d, 0xba, 0x33, 0x48, 0xdc, 0xec, 0x35,
-	0x5c, 0x4a, 0x08, 0x69, 0xb3, 0x19, 0x72, 0xe1, 0xd9, 0x7d, 0x6a, 0xc5, 0x4f, 0x24, 0xaf, 0xb0,
-	0x29, 0x6f, 0x9b, 0x4c, 0xd5, 0xdd, 0x0d, 0xb2, 0xf7, 0x31, 0xe5, 0x52, 0x12, 0xfd, 0x31, 0x03,
-	0xfb, 0x6b, 0x4f, 0xd0, 0x43, 0x3a, 0xa1, 0x8b, 0xd8, 0xf7, 0x66, 0x11, 0xbf, 0x74, 0xa3, 0xfd,
-	0xfd, 0x5a, 0x0f, 0x1d, 0x7e, 0x4a, 0x5a, 0x26, 0xda, 0xee, 0x5d, 0x4b, 0x56, 0x98, 0x90, 0x76,
-	0x67, 0x0e, 0xc0, 0x57, 0x17, 0x41, 0x44, 0xd3, 0x76, 0x9d, 0xe7, 0x15, 0xe5, 0x66, 0xcb, 0x17,
-	0x2c, 0xc9, 0x13, 0x7c, 0x0d, 0x75, 0x6d, 0x16, 0xbb, 0xf6, 0xfb, 0xb1, 0xab, 0xcf, 0xa8, 0x27,
-	0xa6, 0xa8, 0x46, 0x1b, 0x44, 0xc7, 0x65, 0x48, 0x37, 0x43, 0xaa, 0xda, 0x2c, 0xb6, 0xdf, 0x8f,
-	0x39, 0x89, 0x34, 0x36, 0xef, 0x86, 0xef, 0xfd, 0x31, 0xe5, 0x63, 0x46, 0x55, 0x7e, 0x3f, 0xdc,
-	0xbd, 0xa2, 0x54, 0xdb, 0xa7, 0x51, 0xe4, 0x4d, 0x69, 0x37, 0x43, 0x12, 0x39, 0xf4, 0xdb, 0xdb,
-	0x6d, 0x5e, 0x74, 0x9a, 0xc7, 0xf7, 0x0c, 0xdf, 0xb7, 0xfa, 0x7c, 0x1f, 0x6a, 0x6c, 0x49, 0x17,
-	0xb1, 0xeb, 0x5c, 0x5f, 0x50, 0x39, 0x97, 0xbc, 0x58, 0x6f, 0xc9, 0x2a, 0x67, 0x62, 0x0e, 0xa9,
-	0x4a, 0x94, 0x81, 0xe8, 0x10, 0xf2, 0x6c, 0x5c, 0xe3, 0x43, 0xc9, 0xfd, 0x1d, 0x8f, 0xf3, 0xa1,
-	0xef, 0x60, 0x13, 0x5f, 0x5d, 0xf8, 0x21, 0x8d, 0x5c, 0x6d, 0x16, 0x52, 0x6f, 0x72, 0xcd, 0xe7,
-	0x8d, 0x46, 0xbb, 0xc6, 0x2d, 0x90, 0x58, 0x37, 0x4b, 0x1a, 0x92, 0x4d, 0x22, 0xe8, 0x07, 0xa8,
-	0x25, 0x82, 0xfc, 0x40, 0xf8, 0xd4, 0x81, 0xdd, 0x2c, 0xa9, 0x4a, 0x09, 0x7e, 0xf2, 0x0e, 0x14,
-	0x99, 0x17, 0x69, 0x28, 0xa7, 0x13, 0x49, 0xa1, 0x17, 0x50, 0x3e, 0xf1, 0xc2, 0x6b, 0x9e, 0x33,
-	0xb5, 0x75, 0x39, 0x93, 0x23, 0x25, 0xc6, 0xc0, 0xf2, 0xe3, 0x5b, 0xa8, 0x71, 0xde, 0x24, 0x4a,
-	0xea, 0xeb, 0x13, 0x21, 0x47, 0xaa, 0x8c, 0x2d, 0x89, 0x14, 0x1b, 0x36, 0x47, 0xee, 0x71, 0xe8,
-	0xcd, 0xa9, 0x6b, 0x5d, 0xb0, 0x36, 0x1b, 0xf1, 0x69, 0x66, 0xd9, 0x77, 0x6e, 0x79, 0xfd, 0x16,
-	0xb3, 0x8c, 0xe8, 0xfa, 0x88, 0xa3, 0x12, 0x44, 0x07, 0xac, 0x9b, 0x8d, 0x6c, 0xdb, 0x1d, 0x84,
-	0x41, 0xcc, 0x3e, 0x94, 0x82, 0x05, 0x9f, 0x7f, 0x2a, 0xa4, 0x31, 0x1a, 0xd9, 0xf6, 0x12, 0x45,
-	0x6f, 0x00, 0x6c, 0x1a, 0xbb, 0x7a, 0x10, 0xfc, 0xde, 0xa7, 0x7c, 0xbe, 0xa9, 0xb6, 0x0f, 0xd6,
-	0x9f, 0xbc, 0xe4, 0x4b, 0x5f, 0xbb, 0x62, 0xd3, 0x58, 0x40, 0xcb, 0xbe, 0xb5, 0x75, 0x4f, 0xdf,
-	0xfa, 0x77, 0x06, 0x36, 0x6f, 0x05, 0x30, 0x32, 0xa0, 0x2c, 0x03, 0x58, 0x7c, 0x6f, 0x57, 0xd3,
-	0x49, 0xe0, 0xfe, 0xc8, 0x3f, 0x94, 0x52, 0x24, 0x15, 0x47, 0x5f, 0x40, 0x89, 0x0d, 0x49, 0xda,
-	0x94, 0xca, 0xbe, 0x57, 0xec, 0x7b, 0x57, 0xda, 0x94, 0x7f, 0x4c, 0x0e, 0x68, 0x18, 0xf9, 0x51,
-	0xcc, 0xeb, 0x47, 0x99, 0x24, 0x64, 0xd3, 0x4c, 0xd3, 0x8e, 0x95, 0x55, 0xd3, 0x9b, 0x53, 0xf9,
-	0xd9, 0xc2, 0xd7, 0xe8, 0x31, 0x54, 0xd8, 0x4c, 0xea, 0xf2, 0x0d, 0xf1, 0xbd, 0x52, 0x66, 0x00,
-	0xdf, 0x44, 0x90, 0x1f, 0x04, 0xa1, 0x50, 0x59, 0x27, 0x7c, 0xdd, 0xfc, 0x5b, 0x06, 0xb6, 0xd7,
-	0x25, 0x06, 0x3a, 0x64, 0x5f, 0xe0, 0x7d, 0x2c, 0xf2, 0x4a, 0x94, 0x5f, 0x11, 0x1a, 0x29, 0x1a,
-	0x75, 0x37, 0x48, 0x99, 0x51, 0x3c, 0x77, 0x76, 0x12, 0x7f, 0x66, 0xe5, 0x17, 0x9c, 0x20, 0xd9,
-	0xc8, 0x3d, 0xf0, 0xd8, 0x5b, 0xc7, 0x34, 0xe4, 0x27, 0xdf, 0x1d, 0xb9, 0xd3, 0xfd, 0xa3, 0x9d,
-	0xf5, 0xc6, 0x34, 0xff, 0x92, 0x03, 0x74, 0xf7, 0x39, 0xd7, 0x7a, 0x60, 0xed, 0x3f, 0x26, 0xe8,
-	0x5b, 0x28, 0xc9, 0xf4, 0x91, 0x36, 0xdc, 0x97, 0xdc, 0x09, 0xeb, 0xea, 0xfb, 0xb0, 0x4f, 0xb5,
-	0x5c, 0xfa, 0x3e, 0x3b, 0x50, 0xec, 0x04, 0x73, 0xcf, 0x5f, 0xc8, 0x2f, 0x33, 0x49, 0x71, 0x0f,
-	0x7b, 0xf1, 0x39, 0xaf, 0x88, 0x15, 0xc2, 0xd7, 0x22, 0x55, 0xc7, 0x97, 0xa1, 0xa8, 0x4e, 0x65,
-	0x22, 0x29, 0xd4, 0x84, 0x72, 0x37, 0x8e, 0x2f, 0xac, 0xc5, 0xec, 0x9a, 0x17, 0x9c, 0x32, 0x49,
-	0x69, 0x64, 0x43, 0xd9, 0xf6, 0xe6, 0xd4, 0xf6, 0x63, 0x2a, 0x2b, 0xca, 0x77, 0x9f, 0x1b, 0xe3,
-	0x87, 0x89, 0xa0, 0xcc, 0xb4, 0x54, 0x51, 0xeb, 0x47, 0x68, 0xdc, 0xdc, 0x43, 0x8f, 0xe0, 0xa1,
-	0x1c, 0x38, 0x6c, 0xad, 0x8f, 0x6d, 0xc3, 0xc1, 0xe9, 0xe4, 0x02, 0x50, 0xb4, 0x1d, 0x62, 0xe8,
-	0x6c, 0xf6, 0x28, 0x41, 0xae, 0xa7, 0x8d, 0xc4, 0xe8, 0x61, 0x5a, 0x26, 0x56, 0x72, 0xad, 0x0b,
-	0x78, 0xfe, 0x79, 0xbd, 0x0b, 0xfd, 0x0a, 0x5e, 0xc9, 0x33, 0x34, 0x5d, 0xc7, 0xb6, 0xed, 0xea,
-	0x96, 0xe9, 0x10, 0xab, 0xe7, 0x6a, 0xbd, 0x9e, 0x75, 0xea, 0xea, 0x04, 0x77, 0xb0, 0xe9, 0x18,
-	0x5a, 0x6f, 0x39, 0xb7, 0x55, 0xa0, 0x70, 0xac, 0xf5, 0x6c, 0x2c, 0xc6, 0x1e, 0x87, 0x0c, 0xb1,
-	0x92, 0x6d, 0xd9, 0xf0, 0x70, 0x6d, 0x29, 0x41, 0xfb, 0xf0, 0x65, 0x3a, 0xbd, 0x1d, 0x13, 0xad,
-	0x8f, 0x5d, 0x39, 0xf2, 0xa4, 0xfa, 0xca, 0x90, 0xef, 0x60, 0xf3, 0xad, 0x92, 0x41, 0x0d, 0x00,
-	0x76, 0x53, 0x8b, 0x18, 0x6f, 0x0c, 0x53, 0xc9, 0x1e, 0xed, 0xc2, 0xe3, 0x7b, 0x46, 0x84, 0xa3,
-	0x0a, 0x94, 0x64, 0x12, 0xb3, 0xa5, 0x8c, 0x8a, 0xa3, 0x22, 0xe4, 0x59, 0x41, 0x7c, 0xb1, 0x0d,
-	0xe5, 0xf4, 0x4f, 0x8c, 0x32, 0xe4, 0x6d, 0x47, 0x23, 0xca, 0xc6, 0x8b, 0x1d, 0x26, 0x23, 0xaa,
-	0x7c, 0x15, 0x4a, 0x5a, 0x8f, 0x60, 0xad, 0xf3, 0x56, 0xd9, 0x78, 0x81, 0xa0, 0x20, 0x1a, 0x67,
-	0x05, 0x0a, 0x7a, 0x0f, 0x33, 0xde, 0xf6, 0x01, 0xe4, 0x4e, 0xe9, 0x3b, 0xf4, 0x14, 0xb2, 0x1d,
-	0x0b, 0xd5, 0x56, 0xa7, 0xed, 0x66, 0xfd, 0xc6, 0x7b, 0xbf, 0x2b, 0xf2, 0x30, 0xfd, 0xe6, 0xbf,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0xaa, 0x2f, 0xfa, 0xc5, 0x79, 0x14, 0x00, 0x00,
+	// 2232 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x58, 0xcd, 0x72, 0x1b, 0xc7,
+	0xf1, 0x27, 0xbe, 0x81, 0xc6, 0x07, 0x57, 0x43, 0x5a, 0x5e, 0x41, 0xa6, 0x48, 0x43, 0xfe, 0xfb,
+	0xcf, 0x92, 0x62, 0x4a, 0x81, 0x55, 0x49, 0xaa, 0x5c, 0x89, 0x6b, 0x09, 0x2c, 0x05, 0xc4, 0xc0,
+	0x82, 0x99, 0x5d, 0x52, 0xd4, 0x69, 0x6b, 0x09, 0x0c, 0x88, 0x2d, 0x03, 0xbb, 0xf0, 0xce, 0x80,
+	0x04, 0x72, 0x4b, 0x55, 0x2e, 0x39, 0xe5, 0x2d, 0x72, 0xcd, 0xe3, 0xf8, 0x90, 0xca, 0x93, 0xe4,
+	0x92, 0x9a, 0x8f, 0x05, 0x01, 0x12, 0xa4, 0x9c, 0x0b, 0x39, 0xdd, 0xd3, 0xdd, 0x33, 0xdd, 0xd3,
+	0xdd, 0xbf, 0x5e, 0x40, 0xe1, 0x86, 0x5c, 0x1e, 0x4d, 0xa3, 0x90, 0x85, 0x28, 0x75, 0x43, 0x2e,
+	0xab, 0xfb, 0x57, 0x61, 0x78, 0x35, 0x26, 0x6f, 0x04, 0xeb, 0x72, 0x36, 0x7c, 0xc3, 0xfc, 0x09,
+	0xa1, 0xcc, 0x9b, 0x4c, 0xa5, 0x54, 0x15, 0x26, 0xfe, 0x84, 0xa8, 0x75, 0x89, 0x32, 0x8f, 0xcd,
+	0xa8, 0xa4, 0x6a, 0x75, 0xc8, 0xff, 0x40, 0x16, 0xe7, 0xde, 0x78, 0x46, 0x90, 0x06, 0xa9, 0x1f,
+	0xc9, 0x42, 0x4f, 0x1c, 0x24, 0x0e, 0x0b, 0x98, 0x2f, 0xd1, 0x2e, 0x64, 0xae, 0xf9, 0x96, 0x9e,
+	0x14, 0x3c, 0x49, 0xd4, 0xbe, 0x06, 0xb0, 0x59, 0xe4, 0x07, 0x57, 0x1d, 0x9f, 0x32, 0xa4, 0x43,
+	0x8e, 0x0a, 0x8a, 0xea, 0x89, 0x83, 0xd4, 0x61, 0x01, 0xc7, 0x64, 0xed, 0xaf, 0x49, 0xd8, 0x69,
+	0x78, 0xfd, 0x11, 0x69, 0x84, 0x01, 0x8b, 0xc2, 0x31, 0x26, 0x3f, 0xcd, 0x08, 0x65, 0xc8, 0x80,
+	0xc2, 0xc0, 0x8f, 0x48, 0x9f, 0xf9, 0xd7, 0x44, 0x9c, 0x56, 0xa9, 0xbf, 0x3c, 0xe2, 0x2e, 0x6d,
+	0x10, 0x3e, 0x6a, 0xc6, 0x92, 0x14, 0xdf, 0x6a, 0x89, 0x43, 0x49, 0x3f, 0x0c, 0x06, 0x54, 0x5c,
+	0x2d, 0x8d, 0x63, 0xb2, 0xf6, 0xf7, 0x04, 0xc0, 0xad, 0x0e, 0xda, 0x05, 0xed, 0xcc, 0x3a, 0xb3,
+	0xcd, 0xa6, 0xdb, 0x6c, 0x63, 0xb3, 0xe1, 0xb4, 0xcf, 0x4d, 0x6d, 0x0b, 0x15, 0x21, 0xd7, 0x35,
+	0x2e, 0x5c, 0xe3, 0xbd, 0xa9, 0x25, 0x50, 0x19, 0x0a, 0x9c, 0xb0, 0x1d, 0xa3, 0x63, 0x6a, 0x49,
+	0x41, 0xb6, 0x2d, 0xf7, 0x04, 0x9b, 0x76, 0x4b, 0x4b, 0xa1, 0x12, 0xe4, 0xad, 0x9e, 0xdb, 0x30,
+	0x1a, 0x2d, 0x53, 0x4b, 0x2b, 0xca, 0x76, 0x7a, 0xd8, 0xd4, 0x32, 0x48, 0x83, 0x92, 0xd5, 0x73,
+	0x1d, 0x6c, 0x58, 0xf6, 0x49, 0x0f, 0x77, 0xb5, 0x2c, 0x42, 0x50, 0xe9, 0x59, 0x9d, 0x8f, 0x6e,
+	0xef, 0x44, 0xaa, 0x34, 0xb5, 0x5c, 0xed, 0x1f, 0x49, 0xd8, 0x5d, 0xf7, 0x8c, 0x4e, 0xc3, 0x80,
+	0x12, 0x74, 0x7c, 0x3f, 0x0e, 0x5f, 0x6d, 0x88, 0x83, 0x94, 0xfe, 0x9f, 0x03, 0xf1, 0xcf, 0x5f,
+	0x12, 0x88, 0x1d, 0xd8, 0xee, 0x9e, 0xd9, 0x8e, 0x8b, 0xcd, 0x73, 0xa3, 0xd3, 0x6e, 0x1a, 0x0e,
+	0x0f, 0xc8, 0xaa, 0xcb, 0xc9, 0x35, 0x97, 0x53, 0xf7, 0x5c, 0x4e, 0x23, 0x80, 0xec, 0xe9, 0xd9,
+	0x71, 0xa7, 0xdd, 0xd0, 0x32, 0x3c, 0xae, 0xa7, 0xb8, 0x7d, 0xce, 0xcd, 0x64, 0xf9, 0x89, 0xa7,
+	0xb8, 0x77, 0xf1, 0x71, 0xd5, 0x78, 0x6e, 0x35, 0xf4, 0x79, 0x6e, 0xdb, 0x76, 0xbb, 0xc6, 0x05,
+	0xa7, 0x0a, 0xb5, 0x9f, 0xb7, 0x21, 0x17, 0xe7, 0xc8, 0x6b, 0xc8, 0x4e, 0x08, 0x1b, 0x85, 0x03,
+	0x15, 0x98, 0x1d, 0x11, 0x98, 0x38, 0x29, 0xba, 0x62, 0x0b, 0x2b, 0x11, 0x54, 0x87, 0xd2, 0x2c,
+	0xf2, 0xdd, 0x1b, 0x7f, 0x3c, 0xe8, 0x7b, 0xd1, 0x40, 0x44, 0xa2, 0x52, 0x2f, 0x0b, 0x95, 0x0f,
+	0x8a, 0xd9, 0xda, 0xc2, 0xc5, 0x59, 0xe4, 0xc7, 0x24, 0xda, 0x07, 0xe0, 0x3a, 0x32, 0x57, 0xf5,
+	0x14, 0xcf, 0xef, 0xd6, 0x16, 0x2e, 0xcc, 0x22, 0x5f, 0xe6, 0x36, 0x7a, 0x09, 0x99, 0x9f, 0x66,
+	0x24, 0x5a, 0xe8, 0xe9, 0x83, 0xd4, 0x61, 0x51, 0x59, 0x8b, 0x6b, 0x05, 0xcb, 0x3d, 0xf4, 0x2b,
+	0xc8, 0x8e, 0x88, 0x37, 0x20, 0x91, 0x9e, 0x39, 0x48, 0x1c, 0x16, 0xeb, 0xbb, 0x6b, 0xd7, 0x6c,
+	0x89, 0x2d, 0x8a, 0x95, 0x4c, 0xf5, 0x3f, 0x25, 0xc8, 0x29, 0x1e, 0x7a, 0x0a, 0x59, 0xaf, 0xdf,
+	0x27, 0x53, 0xa6, 0xea, 0x4d, 0x51, 0xe8, 0xff, 0xa0, 0x22, 0x57, 0x6e, 0x7f, 0xe4, 0x45, 0x94,
+	0x30, 0x55, 0x7b, 0x65, 0xc9, 0x6d, 0x48, 0x26, 0xfa, 0x7f, 0xd8, 0x56, 0x62, 0x03, 0x8f, 0x11,
+	0x5e, 0xef, 0xd2, 0x07, 0xac, 0xb4, 0x9b, 0x8a, 0xbb, 0x22, 0x48, 0x82, 0x7e, 0x38, 0xe0, 0xce,
+	0xa6, 0x57, 0x05, 0x4d, 0xc5, 0x5d, 0x11, 0x1c, 0x7b, 0xc1, 0xd5, 0xcc, 0xbb, 0x22, 0xc2, 0xa7,
+	0xa5, 0x60, 0x47, 0x71, 0xd1, 0x39, 0xec, 0x71, 0x0e, 0xa5, 0x6e, 0x5f, 0xa6, 0xa8, 0x1b, 0x49,
+	0x7f, 0x5d, 0xf5, 0x62, 0xd9, 0x87, 0x5f, 0xac, 0x2a, 0x35, 0xd7, 0x6b, 0x5c, 0xee, 0xa1, 0x8f,
+	0xf0, 0xe2, 0x01, 0xbb, 0x32, 0x7c, 0x54, 0xcf, 0x3d, 0x12, 0xe3, 0xe7, 0x9b, 0x2c, 0xc7, 0xc1,
+	0xfe, 0x0a, 0xca, 0xde, 0x8c, 0x8d, 0xc2, 0xc8, 0xff, 0xb3, 0xc7, 0xfc, 0x30, 0xd0, 0xf3, 0x2a,
+	0xa6, 0xab, 0x4c, 0xf4, 0x7b, 0x28, 0xf7, 0x79, 0xe5, 0xc5, 0xe7, 0xeb, 0x07, 0xe2, 0x3c, 0xfd,
+	0xa1, 0xde, 0x84, 0x4b, 0xfd, 0x15, 0x26, 0x7f, 0x51, 0x32, 0x9f, 0x92, 0x3e, 0xd3, 0x0b, 0xf2,
+	0x45, 0x25, 0x85, 0x5e, 0x43, 0x61, 0x18, 0x46, 0x37, 0x5e, 0x34, 0x20, 0x03, 0x1d, 0x36, 0x25,
+	0xd3, 0xed, 0x3e, 0x42, 0x90, 0x1e, 0x46, 0xe1, 0x44, 0x2f, 0x0a, 0x13, 0x62, 0xcd, 0x79, 0xa3,
+	0x90, 0x32, 0xbd, 0x24, 0x79, 0x7c, 0xcd, 0xd3, 0x64, 0xc4, 0xd8, 0xb4, 0xee, 0x52, 0xc2, 0x98,
+	0x68, 0xbe, 0x65, 0xe9, 0x92, 0xe0, 0xda, 0x8a, 0x89, 0x9e, 0x41, 0xde, 0x1f, 0xba, 0x13, 0x8f,
+	0xf5, 0x47, 0x7a, 0x45, 0x08, 0xe4, 0xfc, 0x61, 0x97, 0x93, 0xe8, 0x04, 0x9e, 0xf0, 0xad, 0x70,
+	0xe0, 0x0f, 0x7d, 0x32, 0x70, 0xa9, 0x1f, 0xf4, 0x89, 0xbe, 0x2d, 0x3c, 0xae, 0x1e, 0x49, 0x40,
+	0x39, 0x8a, 0x01, 0xe5, 0xc8, 0x89, 0x01, 0x05, 0x6f, 0xfb, 0xc3, 0xae, 0xd2, 0xb1, 0xb9, 0x0a,
+	0xaa, 0x41, 0xd9, 0x1f, 0xba, 0x41, 0x18, 0x10, 0x75, 0x8e, 0x26, 0x50, 0xa0, 0xe8, 0x0f, 0xad,
+	0x30, 0x20, 0xf2, 0x2c, 0x79, 0x8d, 0xc8, 0x0b, 0xae, 0x88, 0xfe, 0x24, 0xbe, 0x06, 0xe6, 0x24,
+	0xfa, 0x23, 0xec, 0xf8, 0x43, 0x77, 0x16, 0xdc, 0xb9, 0x08, 0xfa, 0xe4, 0x45, 0x9e, 0xf8, 0xc3,
+	0xb3, 0xa5, 0x96, 0xbc, 0xca, 0x97, 0x50, 0x9a, 0x78, 0x73, 0x57, 0x45, 0x93, 0xea, 0x3b, 0xa2,
+	0x23, 0x16, 0x27, 0xde, 0xfc, 0x44, 0xb1, 0xf8, 0x23, 0x85, 0x91, 0x7f, 0xe5, 0x07, 0xfa, 0xae,
+	0x7c, 0x24, 0x49, 0x71, 0xfe, 0x34, 0xf2, 0xae, 0x26, 0x9e, 0xfe, 0x99, 0xe4, 0x4b, 0x0a, 0xbd,
+	0x81, 0x9d, 0x69, 0x14, 0xce, 0x17, 0xee, 0x7a, 0xfe, 0x3c, 0x15, 0x42, 0x48, 0x6c, 0x19, 0x6b,
+	0x49, 0xf4, 0x1b, 0xc8, 0x5c, 0x2e, 0x18, 0xa1, 0xfa, 0xe7, 0xc2, 0x83, 0x17, 0x9b, 0x92, 0xf5,
+	0xe8, 0x78, 0xc1, 0x88, 0x70, 0xbf, 0xb5, 0x85, 0xa5, 0x38, 0x6f, 0xe4, 0x11, 0x19, 0x92, 0x88,
+	0x44, 0xba, 0x2e, 0x23, 0xa4, 0x48, 0xf4, 0x1d, 0x24, 0x19, 0xd1, 0x9f, 0x1d, 0xa4, 0x0e, 0x2b,
+	0xf5, 0xd7, 0x1b, 0xcd, 0x39, 0x91, 0x17, 0xd0, 0x21, 0x89, 0xe2, 0x5a, 0xa6, 0x32, 0xad, 0x92,
+	0x8c, 0xa0, 0x3d, 0x80, 0x19, 0x25, 0x91, 0xeb, 0x5d, 0x91, 0x80, 0xe9, 0x55, 0x61, 0xb9, 0xc0,
+	0x39, 0x06, 0x67, 0x70, 0xc8, 0xbf, 0xf6, 0x3d, 0xfd, 0xb9, 0x78, 0x32, 0xbe, 0xe4, 0xf7, 0xb8,
+	0xf1, 0xa2, 0x80, 0xf7, 0x89, 0x2f, 0xe4, 0x3d, 0x14, 0x89, 0x30, 0x68, 0xf3, 0xb8, 0x24, 0xc9,
+	0xc0, 0xbd, 0xf1, 0xd9, 0x48, 0xdf, 0x13, 0xa5, 0x7e, 0xb8, 0xf1, 0x56, 0x17, 0x38, 0x96, 0xfd,
+	0xe0, 0xb3, 0x91, 0xbc, 0x52, 0x65, 0xbe, 0xc6, 0x44, 0x6f, 0x20, 0x35, 0x08, 0x98, 0xfe, 0x42,
+	0x98, 0xd9, 0xdb, 0x68, 0xa6, 0x69, 0x39, 0x52, 0x97, 0x4b, 0xf2, 0xae, 0x1c, 0xb2, 0x11, 0x89,
+	0xf4, 0xfd, 0x8d, 0x5d, 0x59, 0xec, 0x55, 0xbf, 0x85, 0xc2, 0x32, 0xc2, 0x7c, 0x86, 0xa1, 0xcc,
+	0x8b, 0x64, 0x9f, 0x4d, 0x63, 0x49, 0x70, 0xc7, 0x49, 0x30, 0x50, 0x98, 0xc9, 0x97, 0xb5, 0x1f,
+	0xe0, 0xe9, 0xe6, 0x38, 0xa2, 0x97, 0xb0, 0xaf, 0xa0, 0x53, 0xe2, 0x9e, 0x89, 0x5d, 0xd3, 0x6a,
+	0xf4, 0x9a, 0x6d, 0xeb, 0xbd, 0xed, 0x9e, 0x1b, 0x9d, 0x33, 0x8e, 0xa4, 0x25, 0xc8, 0x3b, 0xd8,
+	0x68, 0x77, 0x4c, 0x6c, 0x6b, 0x89, 0x5a, 0x07, 0x76, 0x36, 0xb8, 0x8f, 0xbe, 0x84, 0x3d, 0x65,
+	0xe9, 0xc2, 0xc5, 0xe6, 0x9f, 0xce, 0x4c, 0xdb, 0x31, 0x9b, 0xee, 0x87, 0xb6, 0xd3, 0x5a, 0xda,
+	0x41, 0x50, 0xb9, 0xe8, 0x76, 0x5a, 0x8e, 0x73, 0xaa, 0x04, 0xb4, 0x44, 0xed, 0x3b, 0xc8, 0xc7,
+	0x51, 0x58, 0xc5, 0x71, 0xcb, 0x59, 0x3d, 0xbd, 0xd9, 0xb6, 0x8d, 0xe3, 0x8e, 0xd9, 0xd4, 0x12,
+	0x1c, 0x63, 0x4d, 0x4b, 0x12, 0xc9, 0xe3, 0x1c, 0x64, 0x44, 0x20, 0x6a, 0x11, 0x64, 0x55, 0xa7,
+	0x7d, 0x02, 0x65, 0x65, 0xa3, 0x6b, 0x3a, 0xad, 0x5e, 0x53, 0xdb, 0x42, 0x39, 0x48, 0xbd, 0x37,
+	0x1d, 0x2d, 0x81, 0xf2, 0x90, 0x6e, 0x99, 0x46, 0x53, 0x4b, 0xf2, 0xd5, 0x69, 0xcf, 0x76, 0xb4,
+	0x14, 0xdf, 0x3c, 0x3d, 0x73, 0x24, 0xd6, 0x37, 0xcd, 0x8e, 0xe9, 0x98, 0x12, 0xeb, 0x1b, 0x3d,
+	0xcb, 0x32, 0x1b, 0x8e, 0x96, 0xe5, 0x44, 0xef, 0xd4, 0x69, 0xf7, 0x2c, 0x5b, 0xcb, 0xa1, 0x02,
+	0x64, 0x1c, 0x6c, 0x34, 0x4c, 0x2d, 0x7f, 0x9c, 0x81, 0xd4, 0x19, 0x6e, 0xd7, 0x7e, 0xd6, 0x20,
+	0xbf, 0x1c, 0x7b, 0x0e, 0x21, 0x2b, 0x47, 0x50, 0x05, 0xed, 0x9a, 0x78, 0x43, 0x5b, 0xb0, 0x1a,
+	0xe1, 0x80, 0x50, 0xac, 0xf6, 0xd1, 0x37, 0x4b, 0x74, 0x4d, 0x8a, 0x62, 0xfa, 0x4c, 0x25, 0x88,
+	0x9a, 0x88, 0xee, 0xc0, 0x2b, 0xef, 0x93, 0x97, 0xe1, 0x60, 0x21, 0x80, 0xb0, 0x84, 0xc5, 0xba,
+	0xfa, 0xef, 0xed, 0x5b, 0xc8, 0x3d, 0x83, 0xfd, 0x3b, 0x00, 0xe3, 0x8d, 0xc7, 0xe1, 0x8d, 0x2b,
+	0x5b, 0x00, 0x27, 0xd4, 0x8d, 0xee, 0x4d, 0x0e, 0xeb, 0xe0, 0x62, 0x70, 0xad, 0x9e, 0x50, 0x32,
+	0xc6, 0x63, 0xe4, 0xc2, 0xcb, 0xc7, 0xcc, 0xca, 0x7f, 0x54, 0xb9, 0xb0, 0xad, 0x9c, 0x8d, 0xc7,
+	0xe7, 0xd6, 0x16, 0xde, 0x7f, 0xc8, 0xb8, 0xfc, 0x4b, 0xd1, 0x5f, 0x12, 0x70, 0xb0, 0xf1, 0x84,
+	0x7e, 0x44, 0x06, 0x24, 0x60, 0xbe, 0x37, 0xa6, 0xc2, 0xe9, 0x4a, 0xfd, 0x77, 0x1b, 0x23, 0x74,
+	0x64, 0xdc, 0x3b, 0xa1, 0x71, 0xab, 0x2a, 0x4b, 0x67, 0xcf, 0x7b, 0x4c, 0x06, 0x19, 0xf7, 0x40,
+	0x9f, 0xcc, 0xa7, 0x21, 0x25, 0x4b, 0x6c, 0x4e, 0x8b, 0x16, 0xb2, 0x8e, 0xef, 0xa6, 0x10, 0x89,
+	0xc3, 0xff, 0x16, 0xca, 0xde, 0x98, 0xb9, 0xf4, 0xba, 0xef, 0xf6, 0xc7, 0xc4, 0x93, 0x23, 0x53,
+	0xa5, 0x0e, 0x12, 0x5e, 0x39, 0xa7, 0x95, 0xc0, 0x45, 0x6f, 0xcc, 0xec, 0xeb, 0xbe, 0x20, 0xd1,
+	0xf7, 0x7c, 0xb8, 0x8d, 0xae, 0xfd, 0x3e, 0x11, 0x33, 0x45, 0x51, 0x7d, 0x26, 0xdc, 0x77, 0x4f,
+	0xe8, 0x74, 0x09, 0xa5, 0xde, 0x15, 0x69, 0x25, 0x70, 0xac, 0x85, 0xfe, 0x70, 0x17, 0xd1, 0x25,
+	0xac, 0x3c, 0x7b, 0x70, 0xca, 0xbe, 0x03, 0xe9, 0x6f, 0xa1, 0xc4, 0x35, 0x49, 0xc0, 0x5c, 0xb6,
+	0x98, 0x12, 0x35, 0x80, 0xc8, 0xf4, 0xe8, 0xb6, 0xbb, 0xa6, 0xb3, 0x98, 0x12, 0x5c, 0x54, 0x22,
+	0x9c, 0x40, 0x47, 0x90, 0xe6, 0x03, 0x99, 0x18, 0x30, 0x1e, 0xc7, 0x2f, 0x21, 0x87, 0x7e, 0x0b,
+	0xdb, 0x64, 0x3e, 0xf5, 0x23, 0x42, 0x5d, 0x6f, 0x1c, 0x11, 0x6f, 0xb0, 0x10, 0xd3, 0x43, 0xa5,
+	0x5e, 0x12, 0x87, 0x18, 0x92, 0xd7, 0x4a, 0xe2, 0x8a, 0x12, 0x53, 0x1c, 0xf4, 0x3d, 0x94, 0x62,
+	0x45, 0x71, 0x20, 0x7c, 0xea, 0xc0, 0x56, 0x12, 0x17, 0x95, 0x06, 0x1f, 0x0e, 0x39, 0xe2, 0xf1,
+	0x30, 0x91, 0x48, 0xcd, 0x1a, 0x8a, 0x42, 0xaf, 0x20, 0x7f, 0xed, 0x45, 0x0b, 0x51, 0x0e, 0xa5,
+	0x4d, 0xe5, 0x90, 0xc2, 0x39, 0x2e, 0xc0, 0x53, 0xff, 0x1d, 0x94, 0x84, 0x6c, 0x9c, 0x04, 0xe5,
+	0xcd, 0x39, 0x9e, 0xc2, 0x45, 0x2e, 0x16, 0x27, 0xc2, 0x29, 0x6c, 0xcf, 0xdd, 0x61, 0xe4, 0x4d,
+	0x88, 0x1b, 0x4e, 0x39, 0x68, 0x52, 0x31, 0x9b, 0xdc, 0xe2, 0xc8, 0x9d, 0xe7, 0xbd, 0x38, 0xe1,
+	0xb2, 0x3d, 0x29, 0x2a, 0xb3, 0xb5, 0x3c, 0x5f, 0xe5, 0xa1, 0x43, 0x0e, 0x4d, 0x73, 0x4a, 0x5d,
+	0xee, 0x36, 0xff, 0xe2, 0x09, 0x03, 0x31, 0xca, 0x14, 0x70, 0x65, 0x7e, 0x41, 0xe9, 0xe9, 0x92,
+	0x8b, 0x4c, 0x00, 0x4a, 0x98, 0xdb, 0x0f, 0xc3, 0x1f, 0x7d, 0x22, 0x46, 0x95, 0x62, 0xfd, 0xeb,
+	0xcd, 0xc7, 0xda, 0x84, 0x35, 0x84, 0x98, 0x4a, 0x2c, 0x5c, 0xa0, 0x31, 0xe7, 0x16, 0x86, 0x9e,
+	0x3c, 0x02, 0x43, 0xff, 0x4a, 0x40, 0x79, 0x2d, 0x35, 0xd1, 0x7b, 0xc8, 0xab, 0xd4, 0x94, 0x1f,
+	0xcb, 0xc5, 0x25, 0xa0, 0x3f, 0x96, 0xd1, 0x47, 0xb6, 0xd4, 0xc1, 0x4b, 0x65, 0xf4, 0x39, 0xe4,
+	0xf8, 0xa4, 0xc3, 0x87, 0x74, 0x09, 0x61, 0xd9, 0x89, 0x37, 0x37, 0xae, 0xc4, 0xf7, 0xe0, 0x94,
+	0x44, 0xd4, 0xa7, 0x4c, 0x74, 0x84, 0x3c, 0x8e, 0xc9, 0xaa, 0x05, 0x39, 0x65, 0x87, 0x37, 0xca,
+	0xc0, 0x9b, 0x10, 0xf5, 0xe5, 0x21, 0xd6, 0xe8, 0x39, 0x14, 0xf8, 0x60, 0xe9, 0x8a, 0x0d, 0xf9,
+	0xc9, 0x91, 0xe7, 0x0c, 0x8b, 0x6f, 0x22, 0x48, 0x4f, 0xc3, 0x48, 0x9a, 0x2c, 0x63, 0xb1, 0xae,
+	0xfe, 0x2d, 0x05, 0xda, 0xdd, 0x10, 0x6d, 0xb4, 0xbc, 0xf1, 0x47, 0x04, 0xf4, 0x0e, 0x72, 0x2a,
+	0x1b, 0x85, 0xd5, 0xc7, 0x6b, 0x25, 0x16, 0x5d, 0xf5, 0x9b, 0x7f, 0xc5, 0xa4, 0x96, 0x7e, 0x3f,
+	0x85, 0xec, 0x20, 0x9c, 0x78, 0x7e, 0xa0, 0x3e, 0x5a, 0x14, 0x25, 0x6e, 0xee, 0xb1, 0x91, 0xe8,
+	0x1f, 0x05, 0x2c, 0xd6, 0x32, 0xf3, 0xfb, 0xb3, 0x48, 0xd6, 0x73, 0x1e, 0x2b, 0x4a, 0x84, 0x80,
+	0xb1, 0xa9, 0x1b, 0x06, 0xe3, 0x85, 0x28, 0xe0, 0x3c, 0xce, 0x73, 0x46, 0x2f, 0x18, 0x2f, 0xd0,
+	0x29, 0xe4, 0xa9, 0x37, 0x21, 0xd4, 0x67, 0x44, 0x55, 0xe8, 0xbb, 0x5f, 0x96, 0x36, 0x47, 0xb6,
+	0x37, 0x21, 0xb6, 0xcf, 0x88, 0xcc, 0x8d, 0xa5, 0x95, 0x5a, 0x1b, 0xca, 0x6b, 0x5b, 0xe8, 0x19,
+	0x7c, 0xa6, 0x60, 0xd9, 0x36, 0xba, 0xa6, 0xdd, 0x76, 0xcc, 0x25, 0xbe, 0x03, 0x64, 0x6d, 0x07,
+	0xb7, 0x1b, 0x1c, 0xa1, 0x73, 0x90, 0xea, 0x18, 0x17, 0x12, 0xa0, 0xad, 0x9e, 0x65, 0x6a, 0xa9,
+	0xda, 0x18, 0x6a, 0x9f, 0x6e, 0xf1, 0xe8, 0xd7, 0xf0, 0x8d, 0xb2, 0x6f, 0x34, 0x1a, 0xa6, 0x6d,
+	0xbb, 0x8d, 0x9e, 0xe5, 0xe0, 0x5e, 0xc7, 0x35, 0x3a, 0x9d, 0xde, 0x07, 0xb7, 0x81, 0xcd, 0xa6,
+	0x69, 0x39, 0x6d, 0xa3, 0x73, 0x3b, 0xd5, 0x14, 0x20, 0x73, 0x62, 0x74, 0x6c, 0x53, 0x0e, 0x06,
+	0x0e, 0x3e, 0x33, 0xb5, 0x64, 0xed, 0x14, 0xd0, 0xfd, 0x92, 0x44, 0x07, 0xf0, 0xc5, 0x72, 0xb6,
+	0x39, 0xc1, 0x46, 0xd7, 0x74, 0xd5, 0x44, 0xb0, 0x34, 0x96, 0x87, 0x74, 0xd3, 0xb4, 0x3e, 0x6a,
+	0x09, 0x54, 0x01, 0xe0, 0x2e, 0xf6, 0x70, 0xfb, 0x7d, 0xdb, 0xd2, 0x92, 0xc7, 0x55, 0xd0, 0x8d,
+	0x07, 0x40, 0xf0, 0xb8, 0x00, 0x39, 0x63, 0xcc, 0x5c, 0xfb, 0xba, 0xcf, 0x97, 0xa6, 0x4c, 0x84,
+	0xe3, 0x2c, 0xa4, 0xcf, 0xbd, 0x68, 0xf1, 0x6a, 0x17, 0xf2, 0xcb, 0x4f, 0xfa, 0x3c, 0xa4, 0x6d,
+	0xc7, 0xc0, 0xda, 0xd6, 0xab, 0xa7, 0x5c, 0x47, 0xf6, 0xc9, 0x22, 0xe4, 0x8c, 0x0e, 0x36, 0x8d,
+	0xe6, 0x47, 0x6d, 0xeb, 0x15, 0x82, 0x8c, 0x44, 0x96, 0x02, 0x64, 0x1a, 0x1d, 0x93, 0xcb, 0xd6,
+	0x5f, 0x41, 0xea, 0x03, 0xb9, 0x44, 0x2f, 0x21, 0xd9, 0xec, 0xa1, 0xd2, 0xea, 0x08, 0x5a, 0x2d,
+	0xaf, 0xbd, 0xf0, 0xdb, 0xc4, 0x65, 0x56, 0xe4, 0xe6, 0xb7, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff,
+	0xf2, 0x89, 0x18, 0xdf, 0x81, 0x13, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1879,7 +1791,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type WebClient interface {
 	// TODO: should the methods be captured here? separate request/response messages?
-	DO(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error)
+	DO(ctx context.Context, in *Request, opts ...grpc.CallOption) (Web_DOClient, error)
 }
 
 type webClient struct {
@@ -1890,60 +1802,87 @@ func NewWebClient(cc *grpc.ClientConn) WebClient {
 	return &webClient{cc}
 }
 
-func (c *webClient) DO(ctx context.Context, in *Request, opts ...grpc.CallOption) (*Response, error) {
-	out := new(Response)
-	err := c.cc.Invoke(ctx, "/web.Web/DO", in, out, opts...)
+func (c *webClient) DO(ctx context.Context, in *Request, opts ...grpc.CallOption) (Web_DOClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Web_serviceDesc.Streams[0], "/web.Web/DO", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &webDOClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Web_DOClient interface {
+	Recv() (*Response, error)
+	grpc.ClientStream
+}
+
+type webDOClient struct {
+	grpc.ClientStream
+}
+
+func (x *webDOClient) Recv() (*Response, error) {
+	m := new(Response)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 // WebServer is the server API for Web service.
 type WebServer interface {
 	// TODO: should the methods be captured here? separate request/response messages?
-	DO(context.Context, *Request) (*Response, error)
+	DO(*Request, Web_DOServer) error
 }
 
 // UnimplementedWebServer can be embedded to have forward compatible implementations.
 type UnimplementedWebServer struct {
 }
 
-func (*UnimplementedWebServer) DO(ctx context.Context, req *Request) (*Response, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DO not implemented")
+func (*UnimplementedWebServer) DO(req *Request, srv Web_DOServer) error {
+	return status.Errorf(codes.Unimplemented, "method DO not implemented")
 }
 
 func RegisterWebServer(s *grpc.Server, srv WebServer) {
 	s.RegisterService(&_Web_serviceDesc, srv)
 }
 
-func _Web_DO_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Request)
-	if err := dec(in); err != nil {
-		return nil, err
+func _Web_DO_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Request)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
 	}
-	if interceptor == nil {
-		return srv.(WebServer).DO(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/web.Web/DO",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(WebServer).DO(ctx, req.(*Request))
-	}
-	return interceptor(ctx, in, info, handler)
+	return srv.(WebServer).DO(m, &webDOServer{stream})
+}
+
+type Web_DOServer interface {
+	Send(*Response) error
+	grpc.ServerStream
+}
+
+type webDOServer struct {
+	grpc.ServerStream
+}
+
+func (x *webDOServer) Send(m *Response) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 var _Web_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "web.Web",
 	HandlerType: (*WebServer)(nil),
-	Methods: []grpc.MethodDesc{
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "DO",
-			Handler:    _Web_DO_Handler,
+			StreamName:    "DO",
+			Handler:       _Web_DO_Handler,
+			ServerStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "web.proto",
 }

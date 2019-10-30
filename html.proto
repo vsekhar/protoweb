@@ -1,0 +1,38 @@
+// HTML documents are represented as a parse tree of Nodes
+// inspired by https://godoc.org/golang.org/x/net/html.
+
+syntax = "proto3";
+
+package web;
+
+enum NodeType {
+  NODE_TYPE_UNSPECIFIED = 0;
+  TEXT_NODE = 1;
+  DOCUMENT_NODE = 2;
+  ELEMENT_NODE = 3;
+  COMMENT_NODE = 4;
+  DOCTYPE_NODE = 5;
+}
+
+enum Atom {
+  ATOM_UNSPECIFIED = 0;
+}
+
+message Attribute {
+  enum CommonAttributes {
+    COMMON_ATTRIBUTE_UNSPECIFIED = 0;
+    P = 1;
+  }
+  string namespace = 1;
+  string key = 2;
+  string value = 3;
+}
+
+message Node {
+  repeated Node children = 1;
+  NodeType type = 2;
+  oneof data {
+    string string = 4;
+  }
+  repeated Attribute attributes = 3;
+}

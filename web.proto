@@ -1,232 +1,229 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
+package web;
 
+import "google/protobuf/timestamp.proto";
 import "mime.proto";
 import "status.proto";
-
-package web;
 
 // This line prevents updates to the local generated .go file.
 // option go_package = "github.com/vsekhar/protoweb/web";
 
 message KeyValue {
-    string Key = 1;
-    string Value = 2;
+  string key = 1;
+  string value = 2;
 }
-
 
 // Directives, for use in oneofs only
-message StringList { repeated string Strings = 1; } // no 'repeated' in oneofs
-enum Wildcard { STAR = 0; }   // don't need UNUSED_* = 0 value for oneof use
-enum Already { ALREADY = 0; }
-enum Clear { CLEAR = 0; }
-
-message Cache_Control_Request {
-    enum Directives {
-        UNUSED_DIRECTIVE = 0;
-        MAX_AGE = 1;
-        MAX_STALE = 2;
-        MIN_FRESH = 3;
-        NO_CACHE = 4;
-        NO_STORE = 5;
-        NO_TRANSFORM = 6;
-        ONLY_OF_CACHED = 7;
-    }
-    Directives Directive = 1;
-    uint64 Seconds = 2;
+message StringList {
+  repeated string strings = 1;
 }
 
-message Cache_Control_Response {
-    enum Directives {
-        UNUSED_DIRECTIVE = 0;
-        MUST_REVALIDATE = 1;
-        NO_CACHE = 2;
-        NO_STORE = 3;
-        NO_TRANSFORM = 4;
-        PUBLIC = 5;
-        PRIVATE = 6;
-        PROXY_REVALIDATE = 7;
-        MAX_AGE = 8;
-        S_MAXAGE = 9;
-    }
-    Directives Directive = 1;
-    uint64 Seconds = 2;
+// no 'repeated' in oneofs
+enum Wildcard {
+  STAR = 0;
+}
+
+// don't need UNUSED_* = 0 value for oneof use
+enum Already {
+  ALREADY = 0;
+}
+
+enum Clear {
+  CLEAR = 0;
+}
+
+message CacheControlRequest {
+  enum Directives {
+    UNUSED_DIRECTIVE = 0;
+    MAX_AGE = 1;
+    MAX_STALE = 2;
+    MIN_FRESH = 3;
+    NO_CACHE = 4;
+    NO_STORE = 5;
+    NO_TRANSFORM = 6;
+    ONLY_OF_CACHED = 7;
+  }
+  Directives directive = 1;
+  uint64 seconds = 2;
+}
+
+message CacheControlResponse {
+  enum Directives {
+    UNUSED_DIRECTIVE = 0;
+    MUST_REVALIDATE = 1;
+    NO_CACHE = 2;
+    NO_STORE = 3;
+    NO_TRANSFORM = 4;
+    PUBLIC = 5;
+    PRIVATE = 6;
+    PROXY_REVALIDATE = 7;
+    MAX_AGE = 8;
+    S_MAXAGE = 9;
+  }
+  Directives directive = 1;
+  uint64 seconds = 2;
 }
 
 message Request {
-    enum Method {
-        UNUSED_METHOD = 0;
-        GET = 1;
-        HEAD = 2;
-        POST = 3;
-        PUT = 4;
-        DELETE = 5;
-        CONNECT = 6;
-        OPTIONS = 7;
-        TRACE = 8;
+  enum Method {
+    UNUSED_METHOD = 0;
+    GET = 1;
+    HEAD = 2;
+    POST = 3;
+    PUT = 4;
+    DELETE = 5;
+    CONNECT = 6;
+    OPTIONS = 7;
+    TRACE = 8;
+  }
+  Method method = 1;
+  // TODO: separate absolute vs. relative?
+  oneof URI {
+    Wildcard uri_wildcard = 2; // server-wide "*" request, i.e. OPTIONS
+    string uri_string = 3;
+  }
+  repeated KeyValue query = 4;
+  message Headers {
+    string accept = 1;
+    string accept_charset = 2;
+    string accept_datetime = 3;
+    string accept_encoding = 4;
+    string accept_language = 5;
+    Method access_control_request_method = 6;
+    Headers access_control_request_headers = 7;
+    string authorization = 8;
+    CacheControlRequest cache_control = 32;
+    string expect = 9;
+    repeated KeyValue forwarded = 10;
+    string from = 11;
+    string host = 12;
+    string http2_settings = 13;
+    string if_match = 14;
+    google.protobuf.Timestamp if_modified_since = 15;
+    repeated string if_none_match = 16;
+    string if_range = 17;
+    google.protobuf.Timestamp if_unmodified_since = 18;
+    uint64 max_forwards = 19;
+    string origin = 20;
+    string pragma = 21;
+    string proxy_authorization = 22;
+    message ByteRange {
+      uint64 start = 1;
+      uint64 end = 2;
     }
-    Method method = 1;
-
-    // TODO: separate absolute vs. relative?
-    oneof URI {
-        Wildcard URI_Wildcard = 2; // server-wide "*" request, i.e. OPTIONS
-        string URI_String = 3;
+    oneof Range {
+      ByteRange bytes = 23;
     }
-    repeated KeyValue query = 4;
+    string referer = 24;
+    enum TransferEncodingsValue {
+      UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
+      TRAILERS = 1; // only trailers is supported in HTTP/2
+    }
+    repeated TransferEncodingsValue te = 25;
+    string user_agent = 26;
+    repeated string via = 27;
+    string warning = 28;
+    // common non-standard fields
 
-    message Headers {
-        string Accept = 1;
-        string Accept_Charset = 2;
-        string Accept_Datetime = 3;
-        string Accept_Encoding = 4;
-        string Accept_Language = 5;
-        Method Access_Control_Request_Method = 6;
-        Headers Access_Control_Request_Headers = 7;
-        string Authorization = 8;
-        Cache_Control_Request Cache_Control = 32;
-        string Expect = 9;
-        repeated KeyValue Forwarded = 10;
-        string From = 11;
-        string Host = 12;
-        string HTTP2_Settings = 13;
-        string If_Match = 14;
-        google.protobuf.Timestamp If_Modified_Since = 15;
-        repeated string If_None_Match = 16;
-        string If_Range = 17;
-        google.protobuf.Timestamp If_Unmodified_Since = 18;
-        uint64 Max_Forwards = 19;
-        string Origin = 20;
-        string Pragma = 21;
-        string Proxy_Authorization = 22;
+    enum XRequestedWithValue {
+      UNUSED_X_REQUESTED_WITH_VALUE = 0;
+      XMLHTTPREQUEST = 1;
+    }
+    XRequestedWithValue x_requested_with = 29;
+    enum DNTValue {
+      UNUSED_DNT_VALUE = 0;
+      DISABLED = 1;
+      ENABLED = 2;
+    }
+    DNTValue dnt = 30;
+    repeated KeyValue other = 31;
+    // next field number = 33
 
-        message ByteRange {
-            uint64 Start = 1;
-            uint64 End = 2;
-        }
-        oneof Range {
-            ByteRange Bytes = 23;
-        }
-        string Referer = 24;
+  }
+  // message Headers
+  Headers header = 5;
+}
 
-        enum Transfer_Encodings_Value {
-            UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
-            TRAILERS = 1; // only trailers is supported in HTTP/2
-        }
-        repeated Transfer_Encodings_Value TE = 25;
-
-        string User_Agent = 26;
-        repeated string Via = 27;
-        string Warning = 28;
-
-        // common non-standard fields
-
-        enum X_Requested_With_Value {
-            UNUSED_X_REQUESTED_WITH_VALUE = 0;
-            XMLHTTPREQUEST = 1;
-        }
-        X_Requested_With_Value X_Requested_With = 29;
-
-        enum DNT_Value {
-            UNUSED_DNT_VALUE = 0;
-            DISABLED = 1;
-            ENABLED = 2;
-        }
-        DNT_Value DNT = 30;
-        repeated KeyValue Other = 31;
-
-        // next field number = 33
-    } // message Headers
-    Headers Header = 5;
-
-} // message Request
+// message Request
 
 message Response {
-    Status_Codes Status = 1;
+  StatusCodes status = 1;
+  message Headers {
+    oneof AccessControlAllowOrigin {
+      Wildcard access_control_allow_origin_all = 1;
+      StringList access_control_allow_origin_origins = 2;
+    }
+    enum AccessControlAllowCredentialsValue {
+      UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
+      FALSE = 1;
+      TRUE = 2;
+    }
+    AccessControlAllowCredentialsValue access_control_allow_credentials = 3;
+    repeated string access_control_expose_headers = 4;
+    message AltSvcMessage {
+      message Service {
+        string name = 1;
+        string host_name = 2;
+        uint32 port = 3;
+      }
+      repeated Service services = 1;
+      uint64 max_age = 2;
+      bool persist = 3;
+    }
+    oneof Alt_Svc {
+      Clear alt_svc_clear = 5;
+      AltSvcMessage service = 6;
+    }
+    CacheControlResponse cache_control = 18;
+    MIMEType content_type = 7;
+    google.protobuf.Timestamp date = 8;
+    oneof Expires {
+      Already expires_already = 9;
+      google.protobuf.Timestamp expires_date = 10;
+    }
+    string server = 11;
+    oneof Vary {
+      Wildcard vary_all = 12;
+      StringList vary_headers = 13;
+    }
+    enum XFrameOptionsValue {
+      UNUSED_X_FRAME_OPTIONS_VALUE = 0;
+      DENY = 1;
+      SAMEORIGIN = 2;
+    }
+    XFrameOptionsValue x_frame_options = 14;
+    string x_xss_protection = 15;
+    message SetCookieMessage {
+      string name = 1;
+      string value = 2;
+      google.protobuf.Timestamp expires = 3;
+      int64 max_age = 4;
+      string domain = 5;
+      string path = 6;
+      bool secure = 7;
+      bool http_only = 8;
+      enum SameSiteValue {
+        UNUSED_SAMESITE_VALUE = 0;
+        STRICT = 1;
+        LAX = 2;
+        NONE = 3;
+      }
+      SameSiteValue samesite = 9;
+    }
+    repeated SetCookieMessage set_cookie = 16;
+    repeated KeyValue other = 17;
+    // next field number = 19
 
-    message Headers {
-        oneof Access_Control_Allow_Origin {
-            Wildcard Access_Control_Allow_Origin_All = 1;
-            StringList Access_Control_Allow_Origin_Origins = 2;
-        }
-        enum Access_Control_Allow_Credentials_Value {
-            UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
-            FALSE = 1;
-            TRUE = 2;
-        }
-        Access_Control_Allow_Credentials_Value Access_Control_Allow_Credentials = 3;
-        repeated string Access_Control_Expose_Headers = 4;
+  }
+  // message Headers
+  Headers header = 2;
+  bytes body = 3;
+}
 
-        message Alt_Svc_Message {
-            message Service {
-                string Name = 1;
-                string Host_Name = 2;
-                uint32 Port = 3;
-            }
-            repeated Service Services = 1;
-            uint64 Max_Age = 2;
-            bool Persist = 3;
-        }
-        oneof Alt_Svc {
-            Clear Alt_Svc_Clear = 5;
-            Alt_Svc_Message Service = 6;
-        }
-
-        Cache_Control_Response Cache_Control = 18;
-
-        message Content_Type_Message {
-            oneof Content_Type_Message {
-                MIME_Types MIME_Type = 1;
-                string Other = 2;
-            }
-            KeyValue Parameter = 3;
-        }
-        Content_Type_Message Content_Type = 7;
-        google.protobuf.Timestamp Date = 8;
-        oneof Expires {
-            Already Expires_Already = 9;
-            google.protobuf.Timestamp Expires_Date = 10;
-        }
-        string Server = 11;
-        oneof Vary {
-            Wildcard Vary_All = 12;
-            StringList Vary_Headers = 13;
-        }
-        enum X_Frame_Options_Value {
-            UNUSED_X_FRAME_OPTIONS_VALUE = 0;
-            DENY = 1;
-            SAMEORIGIN = 2;
-        }
-        X_Frame_Options_Value X_Frame_Options = 14;
-        string X_XSS_Protection = 15;
-
-        message Set_Cookie_Message {
-            string Name = 1;
-            string Value = 2;
-            google.protobuf.Timestamp Expires = 3;
-            int64 Max_Age = 4;
-            string Domain = 5;
-            string Path = 6;
-            bool Secure = 7;
-            bool HttpOnly = 8;
-            enum SameSite_Value {
-                UNUSED_SAMESITE_VALUE = 0;
-                STRICT = 1;
-                LAX = 2;
-                NONE = 3;
-            }
-            SameSite_Value SameSite = 9;
-        }
-        repeated Set_Cookie_Message Set_Cookie = 16;
-        repeated KeyValue Other = 17;
-
-        // next field number = 19
-    } // message Headers
-    Headers Header = 2;
-    bytes Body = 3;
-} // message Response
+// message Response
 
 service Web {
-    // TODO: should the methods be captured here? separate request/response messages?
-    rpc DO(Request) returns (Response);
+  // TODO: should the methods be captured here? separate request/response messages?
+  rpc DO(Request) returns (stream Response);
 }
