@@ -206,7 +206,7 @@ message Response {
       DENY = 1;
       SAMEORIGIN = 2;
     }
-    XFrameOptionsValue x_frame_options = 14;
+    XFrameOptionsValue x_frame_options = 16;
     string x_xss_protection = 15;
     message SetCookieMessage {
       string name = 1;
@@ -225,7 +225,7 @@ message Response {
       }
       SameSiteValue samesite = 9;
     }
-    repeated SetCookieMessage set_cookie = 16;
+    repeated SetCookieMessage set_cookie = 14;
     repeated KeyValue other = 17;
     // next field number = 19
 
