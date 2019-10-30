@@ -158,6 +158,7 @@ func main() {
 	for n, t := range typesByName {
 		enumName := strings.ToUpper(n)
 		enumName = repl.Replace(enumName)
+		enumName = strings.Trim(enumName, "_")
 		*e = append(*e, entry{enumName, t, n})
 	}
 	sort.Sort(e)

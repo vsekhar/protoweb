@@ -1407,7 +1407,7 @@ enum MIME_Types {
     AUDIO_AC3 = 1505 [(mime_descriptor).http_string="audio/ac3"];
     AUDIO_AMR = 1506 [(mime_descriptor).http_string="audio/AMR"];
     AUDIO_AMR_WB = 1507 [(mime_descriptor).http_string="audio/AMR-WB"];
-    AUDIO_AMR_WB_PLUS_ = 1508 [(mime_descriptor).http_string="audio/amr-wb+"];
+    AUDIO_AMR_WB_PLUS = 1508 [(mime_descriptor).http_string="audio/amr-wb+"];
     AUDIO_APTX = 1509 [(mime_descriptor).http_string="audio/aptx"];
     AUDIO_ASC = 1510 [(mime_descriptor).http_string="audio/asc"];
     AUDIO_ATRAC3 = 1513 [(mime_descriptor).http_string="audio/ATRAC3"];
