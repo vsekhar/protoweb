@@ -14,21 +14,35 @@ message KeyValue {
   string value = 2;
 }
 
-// Directives, for use in oneofs only
+// StringList is used when a list of strings is needed inside
+// a oneof, since oneof's don't support repeated fields.
 message StringList {
   repeated string strings = 1;
 }
 
-// no 'repeated' in oneofs
+// Wildcard is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 enum Wildcard {
   STAR = 0;
 }
 
-// don't need UNUSED_* = 0 value for oneof use
+// Already is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 enum Already {
   ALREADY = 0;
 }
 
+// Clear is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 enum Clear {
   CLEAR = 0;
 }

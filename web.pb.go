@@ -25,7 +25,11 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// no 'repeated' in oneofs
+// Wildcard is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 type Wildcard int32
 
 const (
@@ -48,7 +52,11 @@ func (Wildcard) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{0}
 }
 
-// don't need UNUSED_* = 0 value for oneof use
+// Already is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 type Already int32
 
 const (
@@ -71,6 +79,11 @@ func (Already) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_461bb3ac99194e85, []int{1}
 }
 
+// Clear is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
 type Clear int32
 
 const (
@@ -443,7 +456,8 @@ func (m *KeyValue) GetValue() string {
 	return ""
 }
 
-// Directives, for use in oneofs only
+// StringList is used when a list of strings is needed inside
+// a oneof, since oneof's don't support repeated fields.
 type StringList struct {
 	Strings              []string `protobuf:"bytes,1,rep,name=strings,proto3" json:"strings,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
