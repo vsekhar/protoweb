@@ -14,9 +14,7 @@ endif
 all: protos
 
 protos: web.pb.go mime.pb.go status.pb.go
-
-%.pb.go: %.proto
-	protoc --go_out=plugins=grpc:. $<
+	prototool generate
 
 mimetypesall.csv: mimetypescommon.csv
 
