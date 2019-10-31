@@ -4,6 +4,18 @@
 # compatibility.                                                   #
 ####################################################################
 #
+# Categories and wildcards are encoded as their own values.
+#
+application/*,1957
+audio/*,1958
+font/*,1959
+image/*,1960
+message/*,1961
+model/*,1962
+multipart/*,1963
+text/*,1964
+video/*,1965
+#
 # Common MIME types are given a fixed assignment of low value
 # (<127) tag numbers to guarantee they receive one-byte varint
 # encoding on the wire. All other MIME types (up to 16,383)

@@ -153,6 +153,7 @@ func main() {
 		"(", "_",
 		")", "_",
 		";", "_",
+		"*", "_STAR_",
 	}
 	repl := strings.NewReplacer(replacements...)
 	for n, t := range typesByName {
@@ -208,23 +209,23 @@ package web;
 
 import "google/protobuf/descriptor.proto";
 
-message MIME_Type_Descriptor {
+message MIMETypeDescriptor {
     string http_string = 1;
 }
 
 extend google.protobuf.EnumValueOptions {
-    MIME_Type_Descriptor mime_descriptor = 7987671;
+    MIMETypeDescriptor mime_descriptor = 7987671;
 }
 
-enum MIME_Types {
+enum MIMETypes {
     MIME_TYPE_UNUSED = 0 [(mime_descriptor).http_string=""];
 {{ range $_, $entry := . }}    {{ $entry.EnumName }} = {{ $entry.Tag }} [(mime_descriptor).http_string="{{ $entry.HTTPName }}"];
 {{ end }}}
 
-message MIME_Type {
-    oneof MIME_Type {
-        MIME_Types Type = 1;
-        string Custom = 2;
+message MIMEType {
+    oneof MIMEType {
+        MIMETypes type = 1;
+        string custom = 2;
     }
 }
 `

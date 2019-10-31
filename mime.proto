@@ -1399,6 +1399,7 @@ enum MIMETypes {
     APPLICATION_ZIP = 1952 [(mime_descriptor).http_string="application/zip"];
     APPLICATION_ZLIB = 1498 [(mime_descriptor).http_string="application/zlib"];
     APPLICATION_ZSTD = 1499 [(mime_descriptor).http_string="application/zstd"];
+    APPLICATION__STAR = 1957 [(mime_descriptor).http_string="application/*"];
     AUDIO_1D_INTERLEAVED_PARITYFEC = 1500 [(mime_descriptor).http_string="audio/1d-interleaved-parityfec"];
     AUDIO_32KADPCM = 1501 [(mime_descriptor).http_string="audio/32kadpcm"];
     AUDIO_3GPP = 1502 [(mime_descriptor).http_string="audio/3gpp"];
@@ -1552,12 +1553,14 @@ enum MIMETypes {
     AUDIO_VND_VMX_CVSD = 1650 [(mime_descriptor).http_string="audio/vnd.vmx.cvsd"];
     AUDIO_VORBIS = 1651 [(mime_descriptor).http_string="audio/vorbis"];
     AUDIO_VORBIS_CONFIG = 1652 [(mime_descriptor).http_string="audio/vorbis-config"];
+    AUDIO__STAR = 1958 [(mime_descriptor).http_string="audio/*"];
     FONT_COLLECTION = 1653 [(mime_descriptor).http_string="font/collection"];
     FONT_OTF = 1654 [(mime_descriptor).http_string="font/otf"];
     FONT_SFNT = 1655 [(mime_descriptor).http_string="font/sfnt"];
     FONT_TTF = 8 [(mime_descriptor).http_string="font/ttf"];
     FONT_WOFF = 9 [(mime_descriptor).http_string="font/woff"];
     FONT_WOFF2 = 10 [(mime_descriptor).http_string="font/woff2"];
+    FONT__STAR = 1959 [(mime_descriptor).http_string="font/*"];
     IMAGE_ACES = 1659 [(mime_descriptor).http_string="image/aces"];
     IMAGE_AVCI = 1660 [(mime_descriptor).http_string="image/avci"];
     IMAGE_AVCS = 1661 [(mime_descriptor).http_string="image/avcs"];
@@ -1634,6 +1637,7 @@ enum MIMETypes {
     IMAGE_X_EMF = 1726 [(mime_descriptor).http_string="image/x-emf"];
     IMAGE_X_ICON = 17 [(mime_descriptor).http_string="image/x-icon"];
     IMAGE_X_WMF = 1727 [(mime_descriptor).http_string="image/x-wmf"];
+    IMAGE__STAR = 1960 [(mime_descriptor).http_string="image/*"];
     MESSAGE_CPIM = 1728 [(mime_descriptor).http_string="message/CPIM"];
     MESSAGE_DELIVERY_STATUS = 1729 [(mime_descriptor).http_string="message/delivery-status"];
     MESSAGE_DISPOSITION_NOTIFICATION = 1730 [(mime_descriptor).http_string="message/disposition-notification"];
@@ -1655,6 +1659,7 @@ enum MIMETypes {
     MESSAGE_TRACKING_STATUS = 1746 [(mime_descriptor).http_string="message/tracking-status"];
     MESSAGE_VND_SI_SIMP = 1747 [(mime_descriptor).http_string="message/vnd.si.simp"];
     MESSAGE_VND_WFA_WSC = 1748 [(mime_descriptor).http_string="message/vnd.wfa.wsc"];
+    MESSAGE__STAR = 1961 [(mime_descriptor).http_string="message/*"];
     MODEL_3MF = 1749 [(mime_descriptor).http_string="model/3mf"];
     MODEL_EXAMPLE = 1750 [(mime_descriptor).http_string="model/example"];
     MODEL_GLTF_BINARY = 1751 [(mime_descriptor).http_string="model/gltf-binary"];
@@ -1681,6 +1686,7 @@ enum MIMETypes {
     MODEL_X3D_PLUS_FASTINFOSET = 1773 [(mime_descriptor).http_string="model/x3d+fastinfoset"];
     MODEL_X3D_PLUS_XML = 1774 [(mime_descriptor).http_string="model/x3d+xml"];
     MODEL_X3D_VRML = 1772 [(mime_descriptor).http_string="model/x3d-vrml"];
+    MODEL__STAR = 1962 [(mime_descriptor).http_string="model/*"];
     MULTIPART_ALTERNATIVE = 1775 [(mime_descriptor).http_string="multipart/alternative"];
     MULTIPART_APPLEDOUBLE = 1776 [(mime_descriptor).http_string="multipart/appledouble"];
     MULTIPART_BYTERANGES = 1777 [(mime_descriptor).http_string="multipart/byteranges"];
@@ -1698,6 +1704,7 @@ enum MIMETypes {
     MULTIPART_VND_BINT_MED_PLUS = 1789 [(mime_descriptor).http_string="multipart/vnd.bint.med-plus"];
     MULTIPART_VOICE_MESSAGE = 1790 [(mime_descriptor).http_string="multipart/voice-message"];
     MULTIPART_X_MIXED_REPLACE = 1791 [(mime_descriptor).http_string="multipart/x-mixed-replace"];
+    MULTIPART__STAR = 1963 [(mime_descriptor).http_string="multipart/*"];
     TEXT_1D_INTERLEAVED_PARITYFEC = 1792 [(mime_descriptor).http_string="text/1d-interleaved-parityfec"];
     TEXT_CACHE_MANIFEST = 1793 [(mime_descriptor).http_string="text/cache-manifest"];
     TEXT_CALENDAR = 1794 [(mime_descriptor).http_string="text/calendar"];
@@ -1778,6 +1785,7 @@ enum MIMETypes {
     TEXT_VTT = 1865 [(mime_descriptor).http_string="text/vtt"];
     TEXT_XML = 1866 [(mime_descriptor).http_string="text/xml"];
     TEXT_XML_EXTERNAL_PARSED_ENTITY = 1867 [(mime_descriptor).http_string="text/xml-external-parsed-entity"];
+    TEXT__STAR = 1964 [(mime_descriptor).http_string="text/*"];
     VIDEO_1D_INTERLEAVED_PARITYFEC = 1868 [(mime_descriptor).http_string="video/1d-interleaved-parityfec"];
     VIDEO_3GPP = 1869 [(mime_descriptor).http_string="video/3gpp"];
     VIDEO_3GPP2 = 1870 [(mime_descriptor).http_string="video/3gpp2"];
@@ -1861,6 +1869,7 @@ enum MIMETypes {
     VIDEO_VND_VIVO = 1949 [(mime_descriptor).http_string="video/vnd.vivo"];
     VIDEO_VND_YOUTUBE_YT = 1948 [(mime_descriptor).http_string="video/vnd.youtube.yt"];
     VIDEO_VP8 = 1950 [(mime_descriptor).http_string="video/VP8"];
+    VIDEO__STAR = 1965 [(mime_descriptor).http_string="video/*"];
 }
 
 message MIMEType {
