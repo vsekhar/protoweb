@@ -48,7 +48,6 @@ func Req2Proto(req *http.Request) (*Request, error) {
 				ret.Header.Accept = new(RequestHeaders_AcceptHeaders)
 			}
 			for _, val := range values {
-				log.Printf("accept-encoding: %s", val)
 				parts := strings.Split(val, ";")
 				if len(parts) > 2 {
 					log.Fatalf("bad accept-encoding value: %s", val)

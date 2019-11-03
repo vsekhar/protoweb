@@ -56,6 +56,11 @@ func TestReq2Proto(t *testing.T) {
 	if !equalStringSlices(reqproto.Header.IfNoneMatch, header["If-None-Match"]) {
 		t.Errorf("bad header If-None-Match: %v", reqproto.Header.IfNoneMatch)
 	}
+	expectedN := len(header["Accept-Encoding"])
+	gotN := len(reqproto.Header.Accept.Encoding)
+	if expectedN != gotN {
+		t.Errorf("incorrect number of accept headers (expected %d, got %d)", expectedN, gotN)
+	}
 	for i, e := range reqproto.Header.Accept.Encoding {
 		cstr := ""
 		if e.GetWildcard() {
