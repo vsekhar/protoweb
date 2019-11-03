@@ -1,5 +1,5 @@
 GO=go
-PROTOFDIR=proto/
+PROTODIR=proto/
 PROTOS=$(wildcard $(PROTODIR)*.proto)
 
 UNAME_S := $(uname -s)
