@@ -25,7 +25,7 @@ protoformat: $(PROTOS)
 
 # this target will fail if IANA list includes MIME types not in mimetypes.csv.
 # run `make mimecheckforupdates` to print the required updates
-mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
+proto/mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
 	$(GO) run cmd/mimetool/mimetool.go \
 		-mimetypes=mimetypes.csv \
 		> $@
