@@ -15,17 +15,17 @@ import (
 // returns an error.
 func Req2Proto(req *http.Request) (*Request, error) {
 	ret := new(Request)
-	method, ok := Request_Method_value[req.Method]
+	method, ok := Method_value[req.Method]
 	if !ok {
 		return nil, fmt.Errorf("bad method: %s", req.Method)
 	}
-	ret.Method = Request_Method(method)
+	ret.Method = Method(method)
 	if req.URL.String() == "*" {
 		ret.URI = &Request_UriWildcard{}
 	} else {
 		ret.URI = &Request_UriString{UriString: req.URL.String()}
 	}
-	ret.Header = new(Request_Headers)
+	ret.Header = new(RequestHeaders)
 	for header, values := range req.Header {
 		header = strings.ToLower(header)
 		lastvalue := ""

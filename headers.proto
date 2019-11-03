@@ -1,0 +1,163 @@
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/descriptor.proto";
+
+import "mime.proto";
+
+// Wildcard is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
+enum Wildcard {
+    STAR = 0;
+}
+
+// Already is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
+enum Already {
+ALREADY = 0;
+}
+
+// Clear is a directive for use inside a oneof.
+//
+// NB: The oneof handles the unspecified case (when populated by
+// one of the other values) so we don't need a *_UNSPECIFIED=0
+// value.
+enum Clear {
+CLEAR = 0;
+}
+
+message KeyValue {
+string key = 1;
+string value = 2;
+}  
+
+enum Method {
+UNUSED_METHOD = 0;
+GET = 1;
+HEAD = 2;
+POST = 3;
+PUT = 4;
+DELETE = 5;
+CONNECT = 6;
+OPTIONS = 7;
+TRACE = 8;
+}
+  
+message HeaderDescriptor {
+    // name of header commonly appearing in HTTP spec, RFCs,
+    // and documentation. E.g. "Access-Control-Allow-Credentials".
+    string http_name = 1;
+
+    // header is used in HTTP requests
+    bool request = 2;
+
+    // header is used in HTTP responses
+    bool response = 3;
+}
+
+extend google.protobuf.FieldOptions {
+    HeaderDescriptor header_descriptor = 7982732;
+}
+
+message CacheControlRequest {
+    enum Directives {
+      UNUSED_DIRECTIVE = 0;
+      MAX_AGE = 1;
+      MAX_STALE = 2;
+      MIN_FRESH = 3;
+      NO_CACHE = 4;
+      NO_STORE = 5;
+      NO_TRANSFORM = 6;
+      ONLY_OF_CACHED = 7;
+    }
+    Directives directive = 1;
+    uint64 seconds = 2;
+  }
+  
+message RequestHeaders {
+  message AcceptHeaders {
+    message ContentType {
+    oneof content_type {
+        MIMEType type = 1;
+        Wildcard all_types = 2;
+    }
+    float q = 3;
+    }
+    repeated ContentType content_types = 1 [(header_descriptor).http_name="Accept"];
+
+    // Accept-Charset mostly ignored by browsers:
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset
+
+    message Encoding {
+    Encoding encoding = 1;
+    float q = 2;
+    }
+    repeated Encoding encoding = 2 [(header_descriptor).http_name="Accept-Encoding"];;
+}
+string accept = 1;
+string accept_charset = 2;
+string accept_datetime = 3;
+string accept_encoding = 4;
+string accept_language = 5;
+Method access_control_request_method = 6;
+
+// TODO: headers here are just names, no values
+RequestHeaders access_control_request_headers = 7;
+
+string authorization = 8;
+CacheControlRequest cache_control = 32;
+string expect = 9;
+repeated KeyValue forwarded = 10;
+string from = 11;
+string host = 12;
+string http2_settings = 13;
+string if_match = 14;
+google.protobuf.Timestamp if_modified_since = 15;
+repeated string if_none_match = 16;
+string if_range = 17;
+google.protobuf.Timestamp if_unmodified_since = 18;
+uint64 max_forwards = 19;
+string origin = 20;
+string pragma = 21;
+string proxy_authorization = 22;
+message ByteRange {
+    uint64 start = 1;
+    uint64 end = 2;
+}
+oneof Range {
+    ByteRange bytes = 23;
+}
+string referer = 24;
+enum TransferEncodingsValue {
+    UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
+    TRAILERS = 1; // only trailers is supported in HTTP/2
+}
+repeated TransferEncodingsValue te = 25;
+string user_agent = 26;
+repeated string via = 27;
+string warning = 28;
+// common non-standard fields
+
+enum XRequestedWithValue {
+    UNUSED_X_REQUESTED_WITH_VALUE = 0;
+    XMLHTTPREQUEST = 1;
+}
+XRequestedWithValue x_requested_with = 29;
+enum DNTValue {
+    UNUSED_DNT_VALUE = 0;
+    DISABLED = 1;
+    ENABLED = 2;
+}
+DNTValue dnt = 30;
+repeated KeyValue other = 31;
+// next field number = 33
+
+}
