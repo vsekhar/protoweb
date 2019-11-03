@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package web;
+
+import "request.proto";
+import "response.proto";
+
+// Frame is an extensible message for raw wire communication.
+// A protoweb connection is simply a stream of Frames between
+// two end points. The end of a connection is denoted when the
+// underlying stream or socket is closed.
+message Frame {
+  Request request = 1;
+  Response response = 2;
+}
