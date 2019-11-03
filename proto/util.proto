@@ -13,6 +13,14 @@ message KeyValue {
   string value = 2;
 }
 
-enum Wildcard { STAR = 0; }
-enum Already { ALREADY = 0; }
-enum Clear { CLEAR = 0; }
+enum Wildcard {
+  STAR = 0;
+}
+
+enum Already {
+  ALREADY = 0;
+}
+
+enum Clear {
+  CLEAR = 0;
+}

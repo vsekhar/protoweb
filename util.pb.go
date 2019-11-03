@@ -20,16 +20,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Wildcard is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
-// Wildcard is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
 type Wildcard int32
 
 const (
@@ -52,11 +42,6 @@ func (Wildcard) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_170ba741606d8a4c, []int{0}
 }
 
-// Already is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
 type Already int32
 
 const (
@@ -79,11 +64,6 @@ func (Already) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_170ba741606d8a4c, []int{1}
 }
 
-// Clear is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
 type Clear int32
 
 const (

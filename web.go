@@ -43,7 +43,13 @@ func Req2Proto(req *http.Request) (*Request, error) {
 			}
 			ret.Header.IfNoneMatch = append(ret.Header.IfNoneMatch, values...)
 		case "accept-encoding":
-			ret.Header.AcceptEncoding = lastvalue
+			for _, val := range values {
+				log.Printf("accept-encoding: %s", val)
+				// split, etc.
+				// naming.ProtoEnumName(name)
+				// enc := &Encoding{ ... }
+				// ret.Header.Accept.Encoding = append (...)
+			}
 		default:
 			for _, v := range values {
 				ret.Header.Other = append(ret.Header.Other, &KeyValue{Key: header, Value: v})

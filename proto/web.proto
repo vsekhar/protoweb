@@ -5,8 +5,7 @@ package web;
 import "request.proto";
 import "response.proto";
 
-// This line prevents updates to the local generated .go file.
-// option go_package = "github.com/vsekhar/protoweb/web";
+// TODO: benchmark raw QUIC streams against GRPC
 
 service Web {
   // TODO: should the methods be captured here? separate request/response messages?

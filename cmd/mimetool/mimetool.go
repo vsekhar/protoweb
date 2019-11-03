@@ -15,6 +15,8 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+
+	"github.com/vsekhar/protoweb/internal/naming"
 )
 
 var mimefile = flag.String("mimetypes", "", "path to file containing MIME types and numbers")
@@ -144,22 +146,8 @@ func main() {
 
 	// produce proto file
 	var e = new(entries)
-	replacements := []string{
-		"/", "_",
-		".", "_",
-		"+", "_PLUS_", // audio/AMR_WB and audio/amr_wb+ cause protoc error after replacement
-		" ", "_",
-		"-", "_",
-		"(", "_",
-		")", "_",
-		";", "_",
-		"*", "_STAR_",
-	}
-	repl := strings.NewReplacer(replacements...)
 	for n, t := range typesByName {
-		enumName := strings.ToUpper(n)
-		enumName = repl.Replace(enumName)
-		enumName = strings.Trim(enumName, "_")
+		enumName := naming.ProtoEnumName(n)
 		*e = append(*e, entry{enumName, t, n})
 	}
 	sort.Sort(e)

@@ -8,6 +8,8 @@ import (
 	"sort"
 	"strings"
 	"text/template"
+
+	"github.com/vsekhar/protoweb/internal/naming"
 )
 
 const defaultIANAURL = "https://www.iana.org/assignments/character-sets/character-sets.xml"
@@ -65,25 +67,10 @@ func main() {
 			} else {
 				record.ProtoTag = record.Value
 			}
-			replacements := []string{
-				"/", "_",
-				".", "_",
-				"+", "_PLUS_", // audio/AMR_WB and audio/amr_wb+ cause protoc error after replacement
-				" ", "_",
-				"-", "_",
-				"(", "_",
-				")", "_",
-				";", "_",
-				"*", "_STAR_",
-				":", "_",
-				"\n", "_", // thanks AMIGA_1251...
-			}
-			repl := strings.NewReplacer(replacements...)
-			record.ProtoName = strings.ToUpper(record.Name)
-			record.ProtoName = repl.Replace(record.ProtoName)
-			record.ProtoName = strings.Trim(record.ProtoName, "_")
+			record.ProtoName = naming.ProtoEnumName(record.Name)
 			for i := range record.Aliases {
-				record.Aliases[i] = repl.Replace(record.Aliases[i])
+				// Amiga-1251 and friends...
+				record.Aliases[i] = strings.ReplaceAll(record.Aliases[i], "\n", " ")
 			}
 			*records = append(*records, record)
 		}

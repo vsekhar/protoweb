@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package web;
 
+import "encoding.proto";
 import "google/protobuf/timestamp.proto";
 import "headers.proto";
 import "mime.proto";
@@ -33,16 +34,13 @@ message RequestHeaders {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset
 
     message Encoding {
-      Encoding encoding = 1;
+      Encodings encoding = 1;
       float q = 2;
     }
     repeated Encoding encoding = 2 [(header_descriptor).http_name = "Accept-Encoding"];
+    google.protobuf.Timestamp datetime = 3 [(header_descriptor).http_name = "Accept-Datetime"];
   }
-  // message AcceptHeaders
-  string accept = 1;
-  string accept_charset = 2;
-  string accept_datetime = 3;
-  string accept_encoding = 4;
+  AcceptHeaders accept = 1;
   string accept_language = 5;
   Method access_control_request_method = 6;
   // TODO: headers here are just names, no values
