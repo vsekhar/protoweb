@@ -1,7 +1,7 @@
 //
 // DO NOT EDIT: generated file
 //
-// Update this file by running: make mime.proto
+// Update this file by running: make proto/mime.proto
 //
 
 syntax = "proto3";

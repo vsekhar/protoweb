@@ -146,6 +146,7 @@ func (RequestHeaders_DNTValue) EnumDescriptor() ([]byte, []int) {
 }
 
 type RequestHeaders struct {
+	// message AcceptHeaders
 	Accept                     string `protobuf:"bytes,1,opt,name=accept,proto3" json:"accept,omitempty"`
 	AcceptCharset              string `protobuf:"bytes,2,opt,name=accept_charset,json=acceptCharset,proto3" json:"accept_charset,omitempty"`
 	AcceptDatetime             string `protobuf:"bytes,3,opt,name=accept_datetime,json=acceptDatetime,proto3" json:"accept_datetime,omitempty"`

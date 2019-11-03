@@ -1,3 +1,9 @@
+//
+// DO NOT EDIT: generated file
+//
+// Update this file by running: make proto/charset.proto
+//
+
 syntax = "proto3";
 
 package web;
@@ -7,30 +13,2192 @@ import "google/protobuf/descriptor.proto";
 message CharsetDescriptor {
   string http_name = 1;
   uint64 mibenum = 2;
-  string preferred_mime_name = 3;
-  string source = 4;
-  string preferred_alias = 5;
-  repeated string aliases = 6;
+  string preferred_alias = 3;
+  repeated string aliases = 4;
 }
 
 extend google.protobuf.EnumValueOptions {
   CharsetDescriptor charset_descriptor = 7982317;
 }
 
-// http://www.iana.org/assignments/character-sets/character-sets.xhtml
 enum Charsets {
-  CHARSET_UNSPECIFIED = 0 [
-    (charset_descriptor) = {
-      http_name: ""
-    }
-  ];
+  CHARSET_UNSPECIFIED = 0;
   UTF_8 = 1 [
     (charset_descriptor) = {
-      http_name: ""
-      mibenum: 106
+      http_name: "UTF-8"
+      preferred_alias: ""
+      aliases: "csUTF8"
     }
   ];
-  reserved 2;
-  US_ASCII = 3;
-  UTF_8_ORIG = 106;
+  US_ASCII = 3 [
+    (charset_descriptor) = {
+      http_name: "US-ASCII"
+      preferred_alias: "US-ASCII"
+      aliases: "iso_ir_6"
+      aliases: "ANSI_X3_4_1968"
+      aliases: "ANSI_X3_4_1986"
+      aliases: "ISO_646_irv_1991"
+      aliases: "ISO646_US"
+      aliases: "US_ASCII"
+      aliases: "us"
+      aliases: "IBM367"
+      aliases: "cp367"
+      aliases: "csASCII"
+    }
+  ];
+  ISO_8859_1_1987 = 4 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-1:1987"
+      preferred_alias: "ISO-8859-1"
+      aliases: "iso_ir_100"
+      aliases: "ISO_8859_1"
+      aliases: "ISO_8859_1"
+      aliases: "latin1"
+      aliases: "l1"
+      aliases: "IBM819"
+      aliases: "CP819"
+      aliases: "csISOLatin1"
+    }
+  ];
+  ISO_8859_2_1987 = 5 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-2:1987"
+      preferred_alias: "ISO-8859-2"
+      aliases: "iso_ir_101"
+      aliases: "ISO_8859_2"
+      aliases: "ISO_8859_2"
+      aliases: "latin2"
+      aliases: "l2"
+      aliases: "csISOLatin2"
+    }
+  ];
+  ISO_8859_3_1988 = 6 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-3:1988"
+      preferred_alias: "ISO-8859-3"
+      aliases: "iso_ir_109"
+      aliases: "ISO_8859_3"
+      aliases: "ISO_8859_3"
+      aliases: "latin3"
+      aliases: "l3"
+      aliases: "csISOLatin3"
+    }
+  ];
+  ISO_8859_4_1988 = 7 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-4:1988"
+      preferred_alias: "ISO-8859-4"
+      aliases: "iso_ir_110"
+      aliases: "ISO_8859_4"
+      aliases: "ISO_8859_4"
+      aliases: "latin4"
+      aliases: "l4"
+      aliases: "csISOLatin4"
+    }
+  ];
+  ISO_8859_5_1988 = 8 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-5:1988"
+      preferred_alias: "ISO-8859-5"
+      aliases: "iso_ir_144"
+      aliases: "ISO_8859_5"
+      aliases: "ISO_8859_5"
+      aliases: "cyrillic"
+      aliases: "csISOLatinCyrillic"
+    }
+  ];
+  ISO_8859_6_1987 = 9 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-6:1987"
+      preferred_alias: "ISO-8859-6"
+      aliases: "iso_ir_127"
+      aliases: "ISO_8859_6"
+      aliases: "ISO_8859_6"
+      aliases: "ECMA_114"
+      aliases: "ASMO_708"
+      aliases: "arabic"
+      aliases: "csISOLatinArabic"
+    }
+  ];
+  ISO_8859_7_1987 = 10 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-7:1987"
+      preferred_alias: "ISO-8859-7"
+      aliases: "iso_ir_126"
+      aliases: "ISO_8859_7"
+      aliases: "ISO_8859_7"
+      aliases: "ELOT_928"
+      aliases: "ECMA_118"
+      aliases: "greek"
+      aliases: "greek8"
+      aliases: "csISOLatinGreek"
+    }
+  ];
+  ISO_8859_8_1988 = 11 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-8:1988"
+      preferred_alias: "ISO-8859-8"
+      aliases: "iso_ir_138"
+      aliases: "ISO_8859_8"
+      aliases: "ISO_8859_8"
+      aliases: "hebrew"
+      aliases: "csISOLatinHebrew"
+    }
+  ];
+  ISO_8859_9_1989 = 12 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-9:1989"
+      preferred_alias: "ISO-8859-9"
+      aliases: "iso_ir_148"
+      aliases: "ISO_8859_9"
+      aliases: "ISO_8859_9"
+      aliases: "latin5"
+      aliases: "l5"
+      aliases: "csISOLatin5"
+    }
+  ];
+  ISO_8859_10 = 13 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-10"
+      preferred_alias: "ISO-8859-10"
+      aliases: "iso_ir_157"
+      aliases: "l6"
+      aliases: "ISO_8859_10_1992"
+      aliases: "csISOLatin6"
+      aliases: "latin6"
+    }
+  ];
+  ISO_6937_2_ADD = 14 [
+    (charset_descriptor) = {
+      http_name: "ISO_6937-2-add"
+      preferred_alias: ""
+      aliases: "iso_ir_142"
+      aliases: "csISOTextComm"
+    }
+  ];
+  JIS_X0201 = 15 [
+    (charset_descriptor) = {
+      http_name: "JIS_X0201"
+      preferred_alias: ""
+      aliases: "X0201"
+      aliases: "csHalfWidthKatakana"
+    }
+  ];
+  JIS_ENCODING = 16 [
+    (charset_descriptor) = {
+      http_name: "JIS_Encoding"
+      preferred_alias: ""
+      aliases: "csJISEncoding"
+    }
+  ];
+  SHIFT_JIS = 17 [
+    (charset_descriptor) = {
+      http_name: "Shift_JIS"
+      preferred_alias: "Shift_JIS"
+      aliases: "MS_Kanji"
+      aliases: "csShiftJIS"
+    }
+  ];
+  EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE = 18 [
+    (charset_descriptor) = {
+      http_name: "Extended_UNIX_Code_Packed_Format_for_Japanese"
+      preferred_alias: "EUC-JP"
+      aliases: "csEUCPkdFmtJapanese"
+      aliases: "EUC_JP"
+    }
+  ];
+  EXTENDED_UNIX_CODE_FIXED_WIDTH_FOR_JAPANESE = 19 [
+    (charset_descriptor) = {
+      http_name: "Extended_UNIX_Code_Fixed_Width_for_Japanese"
+      preferred_alias: ""
+      aliases: "csEUCFixWidJapanese"
+    }
+  ];
+  BS_4730 = 20 [
+    (charset_descriptor) = {
+      http_name: "BS_4730"
+      preferred_alias: ""
+      aliases: "iso_ir_4"
+      aliases: "ISO646_GB"
+      aliases: "gb"
+      aliases: "uk"
+      aliases: "csISO4UnitedKingdom"
+    }
+  ];
+  SEN_850200_C = 21 [
+    (charset_descriptor) = {
+      http_name: "SEN_850200_C"
+      preferred_alias: ""
+      aliases: "iso_ir_11"
+      aliases: "ISO646_SE2"
+      aliases: "se2"
+      aliases: "csISO11SwedishForNames"
+    }
+  ];
+  IT = 22 [
+    (charset_descriptor) = {
+      http_name: "IT"
+      preferred_alias: ""
+      aliases: "iso_ir_15"
+      aliases: "ISO646_IT"
+      aliases: "csISO15Italian"
+    }
+  ];
+  ES = 23 [
+    (charset_descriptor) = {
+      http_name: "ES"
+      preferred_alias: ""
+      aliases: "iso_ir_17"
+      aliases: "ISO646_ES"
+      aliases: "csISO17Spanish"
+    }
+  ];
+  DIN_66003 = 24 [
+    (charset_descriptor) = {
+      http_name: "DIN_66003"
+      preferred_alias: ""
+      aliases: "iso_ir_21"
+      aliases: "de"
+      aliases: "ISO646_DE"
+      aliases: "csISO21German"
+    }
+  ];
+  NS_4551_1 = 25 [
+    (charset_descriptor) = {
+      http_name: "NS_4551-1"
+      preferred_alias: ""
+      aliases: "iso_ir_60"
+      aliases: "ISO646_NO"
+      aliases: "no"
+      aliases: "csISO60DanishNorwegian"
+      aliases: "csISO60Norwegian1"
+    }
+  ];
+  NF_Z_62_010 = 26 [
+    (charset_descriptor) = {
+      http_name: "NF_Z_62-010"
+      preferred_alias: ""
+      aliases: "iso_ir_69"
+      aliases: "ISO646_FR"
+      aliases: "fr"
+      aliases: "csISO69French"
+    }
+  ];
+  ISO_10646_UTF_1 = 27 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-UTF-1"
+      preferred_alias: ""
+      aliases: "csISO10646UTF1"
+    }
+  ];
+  ISO_646_BASIC_1983 = 28 [
+    (charset_descriptor) = {
+      http_name: "ISO_646.basic:1983"
+      preferred_alias: ""
+      aliases: "ref"
+      aliases: "csISO646basic1983"
+    }
+  ];
+  INVARIANT = 29 [
+    (charset_descriptor) = {
+      http_name: "INVARIANT"
+      preferred_alias: ""
+      aliases: "csINVARIANT"
+    }
+  ];
+  ISO_646_IRV_1983 = 30 [
+    (charset_descriptor) = {
+      http_name: "ISO_646.irv:1983"
+      preferred_alias: ""
+      aliases: "iso_ir_2"
+      aliases: "irv"
+      aliases: "csISO2IntlRefVersion"
+    }
+  ];
+  NATS_SEFI = 31 [
+    (charset_descriptor) = {
+      http_name: "NATS-SEFI"
+      preferred_alias: ""
+      aliases: "iso_ir_8_1"
+      aliases: "csNATSSEFI"
+    }
+  ];
+  NATS_SEFI_ADD = 32 [
+    (charset_descriptor) = {
+      http_name: "NATS-SEFI-ADD"
+      preferred_alias: ""
+      aliases: "iso_ir_8_2"
+      aliases: "csNATSSEFIADD"
+    }
+  ];
+  NATS_DANO = 33 [
+    (charset_descriptor) = {
+      http_name: "NATS-DANO"
+      preferred_alias: ""
+      aliases: "iso_ir_9_1"
+      aliases: "csNATSDANO"
+    }
+  ];
+  NATS_DANO_ADD = 34 [
+    (charset_descriptor) = {
+      http_name: "NATS-DANO-ADD"
+      preferred_alias: ""
+      aliases: "iso_ir_9_2"
+      aliases: "csNATSDANOADD"
+    }
+  ];
+  SEN_850200_B = 35 [
+    (charset_descriptor) = {
+      http_name: "SEN_850200_B"
+      preferred_alias: ""
+      aliases: "iso_ir_10"
+      aliases: "FI"
+      aliases: "ISO646_FI"
+      aliases: "ISO646_SE"
+      aliases: "se"
+      aliases: "csISO10Swedish"
+    }
+  ];
+  KS_C_5601_1987 = 36 [
+    (charset_descriptor) = {
+      http_name: "KS_C_5601-1987"
+      preferred_alias: ""
+      aliases: "iso_ir_149"
+      aliases: "KS_C_5601_1989"
+      aliases: "KSC_5601"
+      aliases: "korean"
+      aliases: "csKSC56011987"
+    }
+  ];
+  ISO_2022_KR = 37 [
+    (charset_descriptor) = {
+      http_name: "ISO-2022-KR"
+      preferred_alias: "ISO-2022-KR"
+      aliases: "csISO2022KR"
+    }
+  ];
+  EUC_KR = 38 [
+    (charset_descriptor) = {
+      http_name: "EUC-KR"
+      preferred_alias: "EUC-KR"
+      aliases: "csEUCKR"
+    }
+  ];
+  ISO_2022_JP = 39 [
+    (charset_descriptor) = {
+      http_name: "ISO-2022-JP"
+      preferred_alias: "ISO-2022-JP"
+      aliases: "csISO2022JP"
+    }
+  ];
+  ISO_2022_JP_2 = 40 [
+    (charset_descriptor) = {
+      http_name: "ISO-2022-JP-2"
+      preferred_alias: "ISO-2022-JP-2"
+      aliases: "csISO2022JP2"
+    }
+  ];
+  JIS_C6220_1969_JP = 41 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6220-1969-jp"
+      preferred_alias: ""
+      aliases: "JIS_C6220_1969"
+      aliases: "iso_ir_13"
+      aliases: "katakana"
+      aliases: "x0201_7"
+      aliases: "csISO13JISC6220jp"
+    }
+  ];
+  JIS_C6220_1969_RO = 42 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6220-1969-ro"
+      preferred_alias: ""
+      aliases: "iso_ir_14"
+      aliases: "jp"
+      aliases: "ISO646_JP"
+      aliases: "csISO14JISC6220ro"
+    }
+  ];
+  PT = 43 [
+    (charset_descriptor) = {
+      http_name: "PT"
+      preferred_alias: ""
+      aliases: "iso_ir_16"
+      aliases: "ISO646_PT"
+      aliases: "csISO16Portuguese"
+    }
+  ];
+  GREEK7_OLD = 44 [
+    (charset_descriptor) = {
+      http_name: "greek7-old"
+      preferred_alias: ""
+      aliases: "iso_ir_18"
+      aliases: "csISO18Greek7Old"
+    }
+  ];
+  LATIN_GREEK = 45 [
+    (charset_descriptor) = {
+      http_name: "latin-greek"
+      preferred_alias: ""
+      aliases: "iso_ir_19"
+      aliases: "csISO19LatinGreek"
+    }
+  ];
+  NF_Z_62_010__1973 = 46 [
+    (charset_descriptor) = {
+      http_name: "NF_Z_62-010_(1973)"
+      preferred_alias: ""
+      aliases: "iso_ir_25"
+      aliases: "ISO646_FR1"
+      aliases: "csISO25French"
+    }
+  ];
+  LATIN_GREEK_1 = 47 [
+    (charset_descriptor) = {
+      http_name: "Latin-greek-1"
+      preferred_alias: ""
+      aliases: "iso_ir_27"
+      aliases: "csISO27LatinGreek1"
+    }
+  ];
+  ISO_5427 = 48 [
+    (charset_descriptor) = {
+      http_name: "ISO_5427"
+      preferred_alias: ""
+      aliases: "iso_ir_37"
+      aliases: "csISO5427Cyrillic"
+    }
+  ];
+  JIS_C6226_1978 = 49 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6226-1978"
+      preferred_alias: ""
+      aliases: "iso_ir_42"
+      aliases: "csISO42JISC62261978"
+    }
+  ];
+  BS_VIEWDATA = 50 [
+    (charset_descriptor) = {
+      http_name: "BS_viewdata"
+      preferred_alias: ""
+      aliases: "iso_ir_47"
+      aliases: "csISO47BSViewdata"
+    }
+  ];
+  INIS = 51 [
+    (charset_descriptor) = {
+      http_name: "INIS"
+      preferred_alias: ""
+      aliases: "iso_ir_49"
+      aliases: "csISO49INIS"
+    }
+  ];
+  INIS_8 = 52 [
+    (charset_descriptor) = {
+      http_name: "INIS-8"
+      preferred_alias: ""
+      aliases: "iso_ir_50"
+      aliases: "csISO50INIS8"
+    }
+  ];
+  INIS_CYRILLIC = 53 [
+    (charset_descriptor) = {
+      http_name: "INIS-cyrillic"
+      preferred_alias: ""
+      aliases: "iso_ir_51"
+      aliases: "csISO51INISCyrillic"
+    }
+  ];
+  ISO_5427_1981 = 54 [
+    (charset_descriptor) = {
+      http_name: "ISO_5427:1981"
+      preferred_alias: ""
+      aliases: "iso_ir_54"
+      aliases: "ISO5427Cyrillic1981"
+      aliases: "csISO54271981"
+    }
+  ];
+  ISO_5428_1980 = 55 [
+    (charset_descriptor) = {
+      http_name: "ISO_5428:1980"
+      preferred_alias: ""
+      aliases: "iso_ir_55"
+      aliases: "csISO5428Greek"
+    }
+  ];
+  GB_1988_80 = 56 [
+    (charset_descriptor) = {
+      http_name: "GB_1988-80"
+      preferred_alias: ""
+      aliases: "iso_ir_57"
+      aliases: "cn"
+      aliases: "ISO646_CN"
+      aliases: "csISO57GB1988"
+    }
+  ];
+  GB_2312_80 = 57 [
+    (charset_descriptor) = {
+      http_name: "GB_2312-80"
+      preferred_alias: ""
+      aliases: "iso_ir_58"
+      aliases: "chinese"
+      aliases: "csISO58GB231280"
+    }
+  ];
+  NS_4551_2 = 58 [
+    (charset_descriptor) = {
+      http_name: "NS_4551-2"
+      preferred_alias: ""
+      aliases: "ISO646_NO2"
+      aliases: "iso_ir_61"
+      aliases: "no2"
+      aliases: "csISO61Norwegian2"
+    }
+  ];
+  VIDEOTEX_SUPPL = 59 [
+    (charset_descriptor) = {
+      http_name: "videotex-suppl"
+      preferred_alias: ""
+      aliases: "iso_ir_70"
+      aliases: "csISO70VideotexSupp1"
+    }
+  ];
+  PT2 = 60 [
+    (charset_descriptor) = {
+      http_name: "PT2"
+      preferred_alias: ""
+      aliases: "iso_ir_84"
+      aliases: "ISO646_PT2"
+      aliases: "csISO84Portuguese2"
+    }
+  ];
+  ES2 = 61 [
+    (charset_descriptor) = {
+      http_name: "ES2"
+      preferred_alias: ""
+      aliases: "iso_ir_85"
+      aliases: "ISO646_ES2"
+      aliases: "csISO85Spanish2"
+    }
+  ];
+  MSZ_7795_3 = 62 [
+    (charset_descriptor) = {
+      http_name: "MSZ_7795.3"
+      preferred_alias: ""
+      aliases: "iso_ir_86"
+      aliases: "ISO646_HU"
+      aliases: "hu"
+      aliases: "csISO86Hungarian"
+    }
+  ];
+  JIS_C6226_1983 = 63 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6226-1983"
+      preferred_alias: ""
+      aliases: "iso_ir_87"
+      aliases: "x0208"
+      aliases: "JIS_X0208_1983"
+      aliases: "csISO87JISX0208"
+    }
+  ];
+  GREEK7 = 64 [
+    (charset_descriptor) = {
+      http_name: "greek7"
+      preferred_alias: ""
+      aliases: "iso_ir_88"
+      aliases: "csISO88Greek7"
+    }
+  ];
+  ASMO_449 = 65 [
+    (charset_descriptor) = {
+      http_name: "ASMO_449"
+      preferred_alias: ""
+      aliases: "ISO_9036"
+      aliases: "arabic7"
+      aliases: "iso_ir_89"
+      aliases: "csISO89ASMO449"
+    }
+  ];
+  ISO_IR_90 = 66 [
+    (charset_descriptor) = {
+      http_name: "iso-ir-90"
+      preferred_alias: ""
+      aliases: "csISO90"
+    }
+  ];
+  JIS_C6229_1984_A = 67 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-a"
+      preferred_alias: ""
+      aliases: "iso_ir_91"
+      aliases: "jp_ocr_a"
+      aliases: "csISO91JISC62291984a"
+    }
+  ];
+  JIS_C6229_1984_B = 68 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-b"
+      preferred_alias: ""
+      aliases: "iso_ir_92"
+      aliases: "ISO646_JP_OCR_B"
+      aliases: "jp_ocr_b"
+      aliases: "csISO92JISC62991984b"
+    }
+  ];
+  JIS_C6229_1984_B_ADD = 69 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-b-add"
+      preferred_alias: ""
+      aliases: "iso_ir_93"
+      aliases: "jp_ocr_b_add"
+      aliases: "csISO93JIS62291984badd"
+    }
+  ];
+  JIS_C6229_1984_HAND = 70 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-hand"
+      preferred_alias: ""
+      aliases: "iso_ir_94"
+      aliases: "jp_ocr_hand"
+      aliases: "csISO94JIS62291984hand"
+    }
+  ];
+  JIS_C6229_1984_HAND_ADD = 71 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-hand-add"
+      preferred_alias: ""
+      aliases: "iso_ir_95"
+      aliases: "jp_ocr_hand_add"
+      aliases: "csISO95JIS62291984handadd"
+    }
+  ];
+  JIS_C6229_1984_KANA = 72 [
+    (charset_descriptor) = {
+      http_name: "JIS_C6229-1984-kana"
+      preferred_alias: ""
+      aliases: "iso_ir_96"
+      aliases: "csISO96JISC62291984kana"
+    }
+  ];
+  ISO_2033_1983 = 73 [
+    (charset_descriptor) = {
+      http_name: "ISO_2033-1983"
+      preferred_alias: ""
+      aliases: "iso_ir_98"
+      aliases: "e13b"
+      aliases: "csISO2033"
+    }
+  ];
+  ANSI_X3_110_1983 = 74 [
+    (charset_descriptor) = {
+      http_name: "ANSI_X3.110-1983"
+      preferred_alias: ""
+      aliases: "iso_ir_99"
+      aliases: "CSA_T500_1983"
+      aliases: "NAPLPS"
+      aliases: "csISO99NAPLPS"
+    }
+  ];
+  T_61_7BIT = 75 [
+    (charset_descriptor) = {
+      http_name: "T.61-7bit"
+      preferred_alias: ""
+      aliases: "iso_ir_102"
+      aliases: "csISO102T617bit"
+    }
+  ];
+  T_61_8BIT = 76 [
+    (charset_descriptor) = {
+      http_name: "T.61-8bit"
+      preferred_alias: ""
+      aliases: "T_61"
+      aliases: "iso_ir_103"
+      aliases: "csISO103T618bit"
+    }
+  ];
+  ECMA_CYRILLIC = 77 [
+    (charset_descriptor) = {
+      http_name: "ECMA-cyrillic"
+      preferred_alias: ""
+      aliases: "iso_ir_111"
+      aliases: "KOI8_E"
+      aliases: "csISO111ECMACyrillic"
+    }
+  ];
+  CSA_Z243_4_1985_1 = 78 [
+    (charset_descriptor) = {
+      http_name: "CSA_Z243.4-1985-1"
+      preferred_alias: ""
+      aliases: "iso_ir_121"
+      aliases: "ISO646_CA"
+      aliases: "csa7_1"
+      aliases: "csa71"
+      aliases: "ca"
+      aliases: "csISO121Canadian1"
+    }
+  ];
+  CSA_Z243_4_1985_2 = 79 [
+    (charset_descriptor) = {
+      http_name: "CSA_Z243.4-1985-2"
+      preferred_alias: ""
+      aliases: "iso_ir_122"
+      aliases: "ISO646_CA2"
+      aliases: "csa7_2"
+      aliases: "csa72"
+      aliases: "csISO122Canadian2"
+    }
+  ];
+  CSA_Z243_4_1985_GR = 80 [
+    (charset_descriptor) = {
+      http_name: "CSA_Z243.4-1985-gr"
+      preferred_alias: ""
+      aliases: "iso_ir_123"
+      aliases: "csISO123CSAZ24341985gr"
+    }
+  ];
+  ISO_8859_6_E = 81 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-6-E"
+      preferred_alias: "ISO-8859-6-E"
+      aliases: "csISO88596E"
+      aliases: "ISO_8859_6_E"
+    }
+  ];
+  ISO_8859_6_I = 82 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-6-I"
+      preferred_alias: "ISO-8859-6-I"
+      aliases: "csISO88596I"
+      aliases: "ISO_8859_6_I"
+    }
+  ];
+  T_101_G2 = 83 [
+    (charset_descriptor) = {
+      http_name: "T.101-G2"
+      preferred_alias: ""
+      aliases: "iso_ir_128"
+      aliases: "csISO128T101G2"
+    }
+  ];
+  ISO_8859_8_E = 84 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-8-E"
+      preferred_alias: "ISO-8859-8-E"
+      aliases: "csISO88598E"
+      aliases: "ISO_8859_8_E"
+    }
+  ];
+  ISO_8859_8_I = 85 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-8-I"
+      preferred_alias: "ISO-8859-8-I"
+      aliases: "csISO88598I"
+      aliases: "ISO_8859_8_I"
+    }
+  ];
+  CSN_369103 = 86 [
+    (charset_descriptor) = {
+      http_name: "CSN_369103"
+      preferred_alias: ""
+      aliases: "iso_ir_139"
+      aliases: "csISO139CSN369103"
+    }
+  ];
+  JUS_I_B1_002 = 87 [
+    (charset_descriptor) = {
+      http_name: "JUS_I.B1.002"
+      preferred_alias: ""
+      aliases: "iso_ir_141"
+      aliases: "ISO646_YU"
+      aliases: "js"
+      aliases: "yu"
+      aliases: "csISO141JUSIB1002"
+    }
+  ];
+  IEC_P27_1 = 88 [
+    (charset_descriptor) = {
+      http_name: "IEC_P27-1"
+      preferred_alias: ""
+      aliases: "iso_ir_143"
+      aliases: "csISO143IECP271"
+    }
+  ];
+  JUS_I_B1_003_SERB = 89 [
+    (charset_descriptor) = {
+      http_name: "JUS_I.B1.003-serb"
+      preferred_alias: ""
+      aliases: "iso_ir_146"
+      aliases: "serbian"
+      aliases: "csISO146Serbian"
+    }
+  ];
+  JUS_I_B1_003_MAC = 90 [
+    (charset_descriptor) = {
+      http_name: "JUS_I.B1.003-mac"
+      preferred_alias: ""
+      aliases: "macedonian"
+      aliases: "iso_ir_147"
+      aliases: "csISO147Macedonian"
+    }
+  ];
+  GREEK_CCITT = 91 [
+    (charset_descriptor) = {
+      http_name: "greek-ccitt"
+      preferred_alias: ""
+      aliases: "iso_ir_150"
+      aliases: "csISO150"
+      aliases: "csISO150GreekCCITT"
+    }
+  ];
+  NC_NC00_10_81 = 92 [
+    (charset_descriptor) = {
+      http_name: "NC_NC00-10:81"
+      preferred_alias: ""
+      aliases: "cuba"
+      aliases: "iso_ir_151"
+      aliases: "ISO646_CU"
+      aliases: "csISO151Cuba"
+    }
+  ];
+  ISO_6937_2_25 = 93 [
+    (charset_descriptor) = {
+      http_name: "ISO_6937-2-25"
+      preferred_alias: ""
+      aliases: "iso_ir_152"
+      aliases: "csISO6937Add"
+    }
+  ];
+  GOST_19768_74 = 94 [
+    (charset_descriptor) = {
+      http_name: "GOST_19768-74"
+      preferred_alias: ""
+      aliases: "ST_SEV_358_88"
+      aliases: "iso_ir_153"
+      aliases: "csISO153GOST1976874"
+    }
+  ];
+  ISO_8859_SUPP = 95 [
+    (charset_descriptor) = {
+      http_name: "ISO_8859-supp"
+      preferred_alias: ""
+      aliases: "iso_ir_154"
+      aliases: "latin1_2_5"
+      aliases: "csISO8859Supp"
+    }
+  ];
+  ISO_10367_BOX = 96 [
+    (charset_descriptor) = {
+      http_name: "ISO_10367-box"
+      preferred_alias: ""
+      aliases: "iso_ir_155"
+      aliases: "csISO10367Box"
+    }
+  ];
+  LATIN_LAP = 97 [
+    (charset_descriptor) = {
+      http_name: "latin-lap"
+      preferred_alias: ""
+      aliases: "lap"
+      aliases: "iso_ir_158"
+      aliases: "csISO158Lap"
+    }
+  ];
+  JIS_X0212_1990 = 98 [
+    (charset_descriptor) = {
+      http_name: "JIS_X0212-1990"
+      preferred_alias: ""
+      aliases: "x0212"
+      aliases: "iso_ir_159"
+      aliases: "csISO159JISX02121990"
+    }
+  ];
+  DS_2089 = 99 [
+    (charset_descriptor) = {
+      http_name: "DS_2089"
+      preferred_alias: ""
+      aliases: "DS2089"
+      aliases: "ISO646_DK"
+      aliases: "dk"
+      aliases: "csISO646Danish"
+    }
+  ];
+  US_DK = 100 [
+    (charset_descriptor) = {
+      http_name: "us-dk"
+      preferred_alias: ""
+      aliases: "csUSDK"
+    }
+  ];
+  DK_US = 101 [
+    (charset_descriptor) = {
+      http_name: "dk-us"
+      preferred_alias: ""
+      aliases: "csDKUS"
+    }
+  ];
+  KSC5636 = 102 [
+    (charset_descriptor) = {
+      http_name: "KSC5636"
+      preferred_alias: ""
+      aliases: "ISO646_KR"
+      aliases: "csKSC5636"
+    }
+  ];
+  UNICODE_1_1_UTF_7 = 103 [
+    (charset_descriptor) = {
+      http_name: "UNICODE-1-1-UTF-7"
+      preferred_alias: ""
+      aliases: "csUnicode11UTF7"
+    }
+  ];
+  ISO_2022_CN = 104 [
+    (charset_descriptor) = {
+      http_name: "ISO-2022-CN"
+      preferred_alias: ""
+      aliases: "csISO2022CN"
+    }
+  ];
+  ISO_2022_CN_EXT = 105 [
+    (charset_descriptor) = {
+      http_name: "ISO-2022-CN-EXT"
+      preferred_alias: ""
+      aliases: "csISO2022CNEXT"
+    }
+  ];
+  ISO_8859_13 = 109 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-13"
+      preferred_alias: ""
+      aliases: "csISO885913"
+    }
+  ];
+  ISO_8859_14 = 110 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-14"
+      preferred_alias: ""
+      aliases: "iso_ir_199"
+      aliases: "ISO_8859_14_1998"
+      aliases: "ISO_8859_14"
+      aliases: "latin8"
+      aliases: "iso_celtic"
+      aliases: "l8"
+      aliases: "csISO885914"
+    }
+  ];
+  ISO_8859_15 = 111 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-15"
+      preferred_alias: ""
+      aliases: "ISO_8859_15"
+      aliases: "Latin_9"
+      aliases: "csISO885915"
+    }
+  ];
+  ISO_8859_16 = 112 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-16"
+      preferred_alias: ""
+      aliases: "iso_ir_226"
+      aliases: "ISO_8859_16_2001"
+      aliases: "ISO_8859_16"
+      aliases: "latin10"
+      aliases: "l10"
+      aliases: "csISO885916"
+    }
+  ];
+  GBK = 113 [
+    (charset_descriptor) = {
+      http_name: "GBK"
+      preferred_alias: ""
+      aliases: "CP936"
+      aliases: "MS936"
+      aliases: "windows_936"
+      aliases: "csGBK"
+    }
+  ];
+  GB18030 = 114 [
+    (charset_descriptor) = {
+      http_name: "GB18030"
+      preferred_alias: ""
+      aliases: "csGB18030"
+    }
+  ];
+  OSD_EBCDIC_DF04_15 = 115 [
+    (charset_descriptor) = {
+      http_name: "OSD_EBCDIC_DF04_15"
+      preferred_alias: ""
+      aliases: "csOSDEBCDICDF0415"
+    }
+  ];
+  OSD_EBCDIC_DF03_IRV = 116 [
+    (charset_descriptor) = {
+      http_name: "OSD_EBCDIC_DF03_IRV"
+      preferred_alias: ""
+      aliases: "csOSDEBCDICDF03IRV"
+    }
+  ];
+  OSD_EBCDIC_DF04_1 = 117 [
+    (charset_descriptor) = {
+      http_name: "OSD_EBCDIC_DF04_1"
+      preferred_alias: ""
+      aliases: "csOSDEBCDICDF041"
+    }
+  ];
+  ISO_11548_1 = 118 [
+    (charset_descriptor) = {
+      http_name: "ISO-11548-1"
+      preferred_alias: ""
+      aliases: "ISO_11548_1"
+      aliases: "ISO_TR_11548_1"
+      aliases: "csISO115481"
+    }
+  ];
+  KZ_1048 = 119 [
+    (charset_descriptor) = {
+      http_name: "KZ-1048"
+      preferred_alias: ""
+      aliases: "STRK1048_2002"
+      aliases: "RK1048"
+      aliases: "csKZ1048"
+    }
+  ];
+  ISO_10646_UCS_2 = 1000 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-UCS-2"
+      preferred_alias: ""
+      aliases: "csUnicode"
+    }
+  ];
+  ISO_10646_UCS_4 = 1001 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-UCS-4"
+      preferred_alias: ""
+      aliases: "csUCS4"
+    }
+  ];
+  ISO_10646_UCS_BASIC = 1002 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-UCS-Basic"
+      preferred_alias: ""
+      aliases: "csUnicodeASCII"
+    }
+  ];
+  ISO_10646_UNICODE_LATIN1 = 1003 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-Unicode-Latin1"
+      preferred_alias: ""
+      aliases: "csUnicodeLatin1"
+      aliases: "ISO_10646"
+    }
+  ];
+  ISO_10646_J_1 = 1004 [
+    (charset_descriptor) = {
+      http_name: "ISO-10646-J-1"
+      preferred_alias: ""
+      aliases: "csUnicodeJapanese"
+    }
+  ];
+  ISO_UNICODE_IBM_1261 = 1005 [
+    (charset_descriptor) = {
+      http_name: "ISO-Unicode-IBM-1261"
+      preferred_alias: ""
+      aliases: "csUnicodeIBM1261"
+    }
+  ];
+  ISO_UNICODE_IBM_1268 = 1006 [
+    (charset_descriptor) = {
+      http_name: "ISO-Unicode-IBM-1268"
+      preferred_alias: ""
+      aliases: "csUnicodeIBM1268"
+    }
+  ];
+  ISO_UNICODE_IBM_1276 = 1007 [
+    (charset_descriptor) = {
+      http_name: "ISO-Unicode-IBM-1276"
+      preferred_alias: ""
+      aliases: "csUnicodeIBM1276"
+    }
+  ];
+  ISO_UNICODE_IBM_1264 = 1008 [
+    (charset_descriptor) = {
+      http_name: "ISO-Unicode-IBM-1264"
+      preferred_alias: ""
+      aliases: "csUnicodeIBM1264"
+    }
+  ];
+  ISO_UNICODE_IBM_1265 = 1009 [
+    (charset_descriptor) = {
+      http_name: "ISO-Unicode-IBM-1265"
+      preferred_alias: ""
+      aliases: "csUnicodeIBM1265"
+    }
+  ];
+  UNICODE_1_1 = 1010 [
+    (charset_descriptor) = {
+      http_name: "UNICODE-1-1"
+      preferred_alias: ""
+      aliases: "csUnicode11"
+    }
+  ];
+  SCSU = 1011 [
+    (charset_descriptor) = {
+      http_name: "SCSU"
+      preferred_alias: ""
+      aliases: "csSCSU"
+    }
+  ];
+  UTF_7 = 1012 [
+    (charset_descriptor) = {
+      http_name: "UTF-7"
+      preferred_alias: ""
+      aliases: "csUTF7"
+    }
+  ];
+  UTF_16BE = 1013 [
+    (charset_descriptor) = {
+      http_name: "UTF-16BE"
+      preferred_alias: ""
+      aliases: "csUTF16BE"
+    }
+  ];
+  UTF_16LE = 1014 [
+    (charset_descriptor) = {
+      http_name: "UTF-16LE"
+      preferred_alias: ""
+      aliases: "csUTF16LE"
+    }
+  ];
+  UTF_16 = 1015 [
+    (charset_descriptor) = {
+      http_name: "UTF-16"
+      preferred_alias: ""
+      aliases: "csUTF16"
+    }
+  ];
+  CESU_8 = 1016 [
+    (charset_descriptor) = {
+      http_name: "CESU-8"
+      preferred_alias: ""
+      aliases: "csCESU8"
+      aliases: "csCESU_8"
+    }
+  ];
+  UTF_32 = 1017 [
+    (charset_descriptor) = {
+      http_name: "UTF-32"
+      preferred_alias: ""
+      aliases: "csUTF32"
+    }
+  ];
+  UTF_32BE = 1018 [
+    (charset_descriptor) = {
+      http_name: "UTF-32BE"
+      preferred_alias: ""
+      aliases: "csUTF32BE"
+    }
+  ];
+  UTF_32LE = 1019 [
+    (charset_descriptor) = {
+      http_name: "UTF-32LE"
+      preferred_alias: ""
+      aliases: "csUTF32LE"
+    }
+  ];
+  BOCU_1 = 1020 [
+    (charset_descriptor) = {
+      http_name: "BOCU-1"
+      preferred_alias: ""
+      aliases: "csBOCU1"
+      aliases: "csBOCU_1"
+    }
+  ];
+  ISO_8859_1_WINDOWS_3_0_LATIN_1 = 2000 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-1-Windows-3.0-Latin-1"
+      preferred_alias: ""
+      aliases: "csWindows30Latin1"
+    }
+  ];
+  ISO_8859_1_WINDOWS_3_1_LATIN_1 = 2001 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-1-Windows-3.1-Latin-1"
+      preferred_alias: ""
+      aliases: "csWindows31Latin1"
+    }
+  ];
+  ISO_8859_2_WINDOWS_LATIN_2 = 2002 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-2-Windows-Latin-2"
+      preferred_alias: ""
+      aliases: "csWindows31Latin2"
+    }
+  ];
+  ISO_8859_9_WINDOWS_LATIN_5 = 2003 [
+    (charset_descriptor) = {
+      http_name: "ISO-8859-9-Windows-Latin-5"
+      preferred_alias: ""
+      aliases: "csWindows31Latin5"
+    }
+  ];
+  HP_ROMAN8 = 2004 [
+    (charset_descriptor) = {
+      http_name: "hp-roman8"
+      preferred_alias: ""
+      aliases: "roman8"
+      aliases: "r8"
+      aliases: "csHPRoman8"
+    }
+  ];
+  ADOBE_STANDARD_ENCODING = 2005 [
+    (charset_descriptor) = {
+      http_name: "Adobe-Standard-Encoding"
+      preferred_alias: ""
+      aliases: "csAdobeStandardEncoding"
+    }
+  ];
+  VENTURA_US = 2006 [
+    (charset_descriptor) = {
+      http_name: "Ventura-US"
+      preferred_alias: ""
+      aliases: "csVenturaUS"
+    }
+  ];
+  VENTURA_INTERNATIONAL = 2007 [
+    (charset_descriptor) = {
+      http_name: "Ventura-International"
+      preferred_alias: ""
+      aliases: "csVenturaInternational"
+    }
+  ];
+  DEC_MCS = 2008 [
+    (charset_descriptor) = {
+      http_name: "DEC-MCS"
+      preferred_alias: ""
+      aliases: "dec"
+      aliases: "csDECMCS"
+    }
+  ];
+  IBM850 = 2009 [
+    (charset_descriptor) = {
+      http_name: "IBM850"
+      preferred_alias: ""
+      aliases: "cp850"
+      aliases: "850"
+      aliases: "csPC850Multilingual"
+    }
+  ];
+  IBM852 = 2010 [
+    (charset_descriptor) = {
+      http_name: "IBM852"
+      preferred_alias: ""
+      aliases: "cp852"
+      aliases: "852"
+      aliases: "csPCp852"
+    }
+  ];
+  IBM437 = 2011 [
+    (charset_descriptor) = {
+      http_name: "IBM437"
+      preferred_alias: ""
+      aliases: "cp437"
+      aliases: "437"
+      aliases: "csPC8CodePage437"
+    }
+  ];
+  PC8_DANISH_NORWEGIAN = 2012 [
+    (charset_descriptor) = {
+      http_name: "PC8-Danish-Norwegian"
+      preferred_alias: ""
+      aliases: "csPC8DanishNorwegian"
+    }
+  ];
+  IBM862 = 2013 [
+    (charset_descriptor) = {
+      http_name: "IBM862"
+      preferred_alias: ""
+      aliases: "cp862"
+      aliases: "862"
+      aliases: "csPC862LatinHebrew"
+    }
+  ];
+  PC8_TURKISH = 2014 [
+    (charset_descriptor) = {
+      http_name: "PC8-Turkish"
+      preferred_alias: ""
+      aliases: "csPC8Turkish"
+    }
+  ];
+  IBM_SYMBOLS = 2015 [
+    (charset_descriptor) = {
+      http_name: "IBM-Symbols"
+      preferred_alias: ""
+      aliases: "csIBMSymbols"
+    }
+  ];
+  IBM_THAI = 2016 [
+    (charset_descriptor) = {
+      http_name: "IBM-Thai"
+      preferred_alias: ""
+      aliases: "csIBMThai"
+    }
+  ];
+  HP_LEGAL = 2017 [
+    (charset_descriptor) = {
+      http_name: "HP-Legal"
+      preferred_alias: ""
+      aliases: "csHPLegal"
+    }
+  ];
+  HP_PI_FONT = 2018 [
+    (charset_descriptor) = {
+      http_name: "HP-Pi-font"
+      preferred_alias: ""
+      aliases: "csHPPiFont"
+    }
+  ];
+  HP_MATH8 = 2019 [
+    (charset_descriptor) = {
+      http_name: "HP-Math8"
+      preferred_alias: ""
+      aliases: "csHPMath8"
+    }
+  ];
+  ADOBE_SYMBOL_ENCODING = 2020 [
+    (charset_descriptor) = {
+      http_name: "Adobe-Symbol-Encoding"
+      preferred_alias: ""
+      aliases: "csHPPSMath"
+    }
+  ];
+  HP_DESKTOP = 2021 [
+    (charset_descriptor) = {
+      http_name: "HP-DeskTop"
+      preferred_alias: ""
+      aliases: "csHPDesktop"
+    }
+  ];
+  VENTURA_MATH = 2022 [
+    (charset_descriptor) = {
+      http_name: "Ventura-Math"
+      preferred_alias: ""
+      aliases: "csVenturaMath"
+    }
+  ];
+  MICROSOFT_PUBLISHING = 2023 [
+    (charset_descriptor) = {
+      http_name: "Microsoft-Publishing"
+      preferred_alias: ""
+      aliases: "csMicrosoftPublishing"
+    }
+  ];
+  WINDOWS_31J = 2024 [
+    (charset_descriptor) = {
+      http_name: "Windows-31J"
+      preferred_alias: ""
+      aliases: "csWindows31J"
+    }
+  ];
+  GB2312 = 2025 [
+    (charset_descriptor) = {
+      http_name: "GB2312"
+      preferred_alias: "GB2312"
+      aliases: "csGB2312"
+    }
+  ];
+  BIG5 = 2026 [
+    (charset_descriptor) = {
+      http_name: "Big5"
+      preferred_alias: "Big5"
+      aliases: "csBig5"
+    }
+  ];
+  MACINTOSH = 2027 [
+    (charset_descriptor) = {
+      http_name: "macintosh"
+      preferred_alias: ""
+      aliases: "mac"
+      aliases: "csMacintosh"
+    }
+  ];
+  IBM037 = 2028 [
+    (charset_descriptor) = {
+      http_name: "IBM037"
+      preferred_alias: ""
+      aliases: "cp037"
+      aliases: "ebcdic_cp_us"
+      aliases: "ebcdic_cp_ca"
+      aliases: "ebcdic_cp_wt"
+      aliases: "ebcdic_cp_nl"
+      aliases: "csIBM037"
+    }
+  ];
+  IBM038 = 2029 [
+    (charset_descriptor) = {
+      http_name: "IBM038"
+      preferred_alias: ""
+      aliases: "EBCDIC_INT"
+      aliases: "cp038"
+      aliases: "csIBM038"
+    }
+  ];
+  IBM273 = 2030 [
+    (charset_descriptor) = {
+      http_name: "IBM273"
+      preferred_alias: ""
+      aliases: "CP273"
+      aliases: "csIBM273"
+    }
+  ];
+  IBM274 = 2031 [
+    (charset_descriptor) = {
+      http_name: "IBM274"
+      preferred_alias: ""
+      aliases: "EBCDIC_BE"
+      aliases: "CP274"
+      aliases: "csIBM274"
+    }
+  ];
+  IBM275 = 2032 [
+    (charset_descriptor) = {
+      http_name: "IBM275"
+      preferred_alias: ""
+      aliases: "EBCDIC_BR"
+      aliases: "cp275"
+      aliases: "csIBM275"
+    }
+  ];
+  IBM277 = 2033 [
+    (charset_descriptor) = {
+      http_name: "IBM277"
+      preferred_alias: ""
+      aliases: "EBCDIC_CP_DK"
+      aliases: "EBCDIC_CP_NO"
+      aliases: "csIBM277"
+    }
+  ];
+  IBM278 = 2034 [
+    (charset_descriptor) = {
+      http_name: "IBM278"
+      preferred_alias: ""
+      aliases: "CP278"
+      aliases: "ebcdic_cp_fi"
+      aliases: "ebcdic_cp_se"
+      aliases: "csIBM278"
+    }
+  ];
+  IBM280 = 2035 [
+    (charset_descriptor) = {
+      http_name: "IBM280"
+      preferred_alias: ""
+      aliases: "CP280"
+      aliases: "ebcdic_cp_it"
+      aliases: "csIBM280"
+    }
+  ];
+  IBM281 = 2036 [
+    (charset_descriptor) = {
+      http_name: "IBM281"
+      preferred_alias: ""
+      aliases: "EBCDIC_JP_E"
+      aliases: "cp281"
+      aliases: "csIBM281"
+    }
+  ];
+  IBM284 = 2037 [
+    (charset_descriptor) = {
+      http_name: "IBM284"
+      preferred_alias: ""
+      aliases: "CP284"
+      aliases: "ebcdic_cp_es"
+      aliases: "csIBM284"
+    }
+  ];
+  IBM285 = 2038 [
+    (charset_descriptor) = {
+      http_name: "IBM285"
+      preferred_alias: ""
+      aliases: "CP285"
+      aliases: "ebcdic_cp_gb"
+      aliases: "csIBM285"
+    }
+  ];
+  IBM290 = 2039 [
+    (charset_descriptor) = {
+      http_name: "IBM290"
+      preferred_alias: ""
+      aliases: "cp290"
+      aliases: "EBCDIC_JP_kana"
+      aliases: "csIBM290"
+    }
+  ];
+  IBM297 = 2040 [
+    (charset_descriptor) = {
+      http_name: "IBM297"
+      preferred_alias: ""
+      aliases: "cp297"
+      aliases: "ebcdic_cp_fr"
+      aliases: "csIBM297"
+    }
+  ];
+  IBM420 = 2041 [
+    (charset_descriptor) = {
+      http_name: "IBM420"
+      preferred_alias: ""
+      aliases: "cp420"
+      aliases: "ebcdic_cp_ar1"
+      aliases: "csIBM420"
+    }
+  ];
+  IBM423 = 2042 [
+    (charset_descriptor) = {
+      http_name: "IBM423"
+      preferred_alias: ""
+      aliases: "cp423"
+      aliases: "ebcdic_cp_gr"
+      aliases: "csIBM423"
+    }
+  ];
+  IBM424 = 2043 [
+    (charset_descriptor) = {
+      http_name: "IBM424"
+      preferred_alias: ""
+      aliases: "cp424"
+      aliases: "ebcdic_cp_he"
+      aliases: "csIBM424"
+    }
+  ];
+  IBM500 = 2044 [
+    (charset_descriptor) = {
+      http_name: "IBM500"
+      preferred_alias: ""
+      aliases: "CP500"
+      aliases: "ebcdic_cp_be"
+      aliases: "ebcdic_cp_ch"
+      aliases: "csIBM500"
+    }
+  ];
+  IBM851 = 2045 [
+    (charset_descriptor) = {
+      http_name: "IBM851"
+      preferred_alias: ""
+      aliases: "cp851"
+      aliases: "851"
+      aliases: "csIBM851"
+    }
+  ];
+  IBM855 = 2046 [
+    (charset_descriptor) = {
+      http_name: "IBM855"
+      preferred_alias: ""
+      aliases: "cp855"
+      aliases: "855"
+      aliases: "csIBM855"
+    }
+  ];
+  IBM857 = 2047 [
+    (charset_descriptor) = {
+      http_name: "IBM857"
+      preferred_alias: ""
+      aliases: "cp857"
+      aliases: "857"
+      aliases: "csIBM857"
+    }
+  ];
+  IBM860 = 2048 [
+    (charset_descriptor) = {
+      http_name: "IBM860"
+      preferred_alias: ""
+      aliases: "cp860"
+      aliases: "860"
+      aliases: "csIBM860"
+    }
+  ];
+  IBM861 = 2049 [
+    (charset_descriptor) = {
+      http_name: "IBM861"
+      preferred_alias: ""
+      aliases: "cp861"
+      aliases: "861"
+      aliases: "cp_is"
+      aliases: "csIBM861"
+    }
+  ];
+  IBM863 = 2050 [
+    (charset_descriptor) = {
+      http_name: "IBM863"
+      preferred_alias: ""
+      aliases: "cp863"
+      aliases: "863"
+      aliases: "csIBM863"
+    }
+  ];
+  IBM864 = 2051 [
+    (charset_descriptor) = {
+      http_name: "IBM864"
+      preferred_alias: ""
+      aliases: "cp864"
+      aliases: "csIBM864"
+    }
+  ];
+  IBM865 = 2052 [
+    (charset_descriptor) = {
+      http_name: "IBM865"
+      preferred_alias: ""
+      aliases: "cp865"
+      aliases: "865"
+      aliases: "csIBM865"
+    }
+  ];
+  IBM868 = 2053 [
+    (charset_descriptor) = {
+      http_name: "IBM868"
+      preferred_alias: ""
+      aliases: "CP868"
+      aliases: "cp_ar"
+      aliases: "csIBM868"
+    }
+  ];
+  IBM869 = 2054 [
+    (charset_descriptor) = {
+      http_name: "IBM869"
+      preferred_alias: ""
+      aliases: "cp869"
+      aliases: "869"
+      aliases: "cp_gr"
+      aliases: "csIBM869"
+    }
+  ];
+  IBM870 = 2055 [
+    (charset_descriptor) = {
+      http_name: "IBM870"
+      preferred_alias: ""
+      aliases: "CP870"
+      aliases: "ebcdic_cp_roece"
+      aliases: "ebcdic_cp_yu"
+      aliases: "csIBM870"
+    }
+  ];
+  IBM871 = 2056 [
+    (charset_descriptor) = {
+      http_name: "IBM871"
+      preferred_alias: ""
+      aliases: "CP871"
+      aliases: "ebcdic_cp_is"
+      aliases: "csIBM871"
+    }
+  ];
+  IBM880 = 2057 [
+    (charset_descriptor) = {
+      http_name: "IBM880"
+      preferred_alias: ""
+      aliases: "cp880"
+      aliases: "EBCDIC_Cyrillic"
+      aliases: "csIBM880"
+    }
+  ];
+  IBM891 = 2058 [
+    (charset_descriptor) = {
+      http_name: "IBM891"
+      preferred_alias: ""
+      aliases: "cp891"
+      aliases: "csIBM891"
+    }
+  ];
+  IBM903 = 2059 [
+    (charset_descriptor) = {
+      http_name: "IBM903"
+      preferred_alias: ""
+      aliases: "cp903"
+      aliases: "csIBM903"
+    }
+  ];
+  IBM904 = 2060 [
+    (charset_descriptor) = {
+      http_name: "IBM904"
+      preferred_alias: ""
+      aliases: "cp904"
+      aliases: "904"
+      aliases: "csIBBM904"
+    }
+  ];
+  IBM905 = 2061 [
+    (charset_descriptor) = {
+      http_name: "IBM905"
+      preferred_alias: ""
+      aliases: "CP905"
+      aliases: "ebcdic_cp_tr"
+      aliases: "csIBM905"
+    }
+  ];
+  IBM918 = 2062 [
+    (charset_descriptor) = {
+      http_name: "IBM918"
+      preferred_alias: ""
+      aliases: "CP918"
+      aliases: "ebcdic_cp_ar2"
+      aliases: "csIBM918"
+    }
+  ];
+  IBM1026 = 2063 [
+    (charset_descriptor) = {
+      http_name: "IBM1026"
+      preferred_alias: ""
+      aliases: "CP1026"
+      aliases: "csIBM1026"
+    }
+  ];
+  EBCDIC_AT_DE = 2064 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-AT-DE"
+      preferred_alias: ""
+      aliases: "csIBMEBCDICATDE"
+    }
+  ];
+  EBCDIC_AT_DE_A = 2065 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-AT-DE-A"
+      preferred_alias: ""
+      aliases: "csEBCDICATDEA"
+    }
+  ];
+  EBCDIC_CA_FR = 2066 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-CA-FR"
+      preferred_alias: ""
+      aliases: "csEBCDICCAFR"
+    }
+  ];
+  EBCDIC_DK_NO = 2067 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-DK-NO"
+      preferred_alias: ""
+      aliases: "csEBCDICDKNO"
+    }
+  ];
+  EBCDIC_DK_NO_A = 2068 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-DK-NO-A"
+      preferred_alias: ""
+      aliases: "csEBCDICDKNOA"
+    }
+  ];
+  EBCDIC_FI_SE = 2069 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-FI-SE"
+      preferred_alias: ""
+      aliases: "csEBCDICFISE"
+    }
+  ];
+  EBCDIC_FI_SE_A = 2070 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-FI-SE-A"
+      preferred_alias: ""
+      aliases: "csEBCDICFISEA"
+    }
+  ];
+  EBCDIC_FR = 2071 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-FR"
+      preferred_alias: ""
+      aliases: "csEBCDICFR"
+    }
+  ];
+  EBCDIC_IT = 2072 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-IT"
+      preferred_alias: ""
+      aliases: "csEBCDICIT"
+    }
+  ];
+  EBCDIC_PT = 2073 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-PT"
+      preferred_alias: ""
+      aliases: "csEBCDICPT"
+    }
+  ];
+  EBCDIC_ES = 2074 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-ES"
+      preferred_alias: ""
+      aliases: "csEBCDICES"
+    }
+  ];
+  EBCDIC_ES_A = 2075 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-ES-A"
+      preferred_alias: ""
+      aliases: "csEBCDICESA"
+    }
+  ];
+  EBCDIC_ES_S = 2076 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-ES-S"
+      preferred_alias: ""
+      aliases: "csEBCDICESS"
+    }
+  ];
+  EBCDIC_UK = 2077 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-UK"
+      preferred_alias: ""
+      aliases: "csEBCDICUK"
+    }
+  ];
+  EBCDIC_US = 2078 [
+    (charset_descriptor) = {
+      http_name: "EBCDIC-US"
+      preferred_alias: ""
+      aliases: "csEBCDICUS"
+    }
+  ];
+  UNKNOWN_8BIT = 2079 [
+    (charset_descriptor) = {
+      http_name: "UNKNOWN-8BIT"
+      preferred_alias: ""
+      aliases: "csUnknown8BiT"
+    }
+  ];
+  MNEMONIC = 2080 [
+    (charset_descriptor) = {
+      http_name: "MNEMONIC"
+      preferred_alias: ""
+      aliases: "csMnemonic"
+    }
+  ];
+  MNEM = 2081 [
+    (charset_descriptor) = {
+      http_name: "MNEM"
+      preferred_alias: ""
+      aliases: "csMnem"
+    }
+  ];
+  VISCII = 2082 [
+    (charset_descriptor) = {
+      http_name: "VISCII"
+      preferred_alias: ""
+      aliases: "csVISCII"
+    }
+  ];
+  VIQR = 2083 [
+    (charset_descriptor) = {
+      http_name: "VIQR"
+      preferred_alias: ""
+      aliases: "csVIQR"
+    }
+  ];
+  KOI8_R = 2084 [
+    (charset_descriptor) = {
+      http_name: "KOI8-R"
+      preferred_alias: "KOI8-R"
+      aliases: "csKOI8R"
+    }
+  ];
+  HZ_GB_2312 = 2085 [
+    (charset_descriptor) = {
+      http_name: "HZ-GB-2312"
+      preferred_alias: ""
+    }
+  ];
+  IBM866 = 2086 [
+    (charset_descriptor) = {
+      http_name: "IBM866"
+      preferred_alias: ""
+      aliases: "cp866"
+      aliases: "866"
+      aliases: "csIBM866"
+    }
+  ];
+  IBM775 = 2087 [
+    (charset_descriptor) = {
+      http_name: "IBM775"
+      preferred_alias: ""
+      aliases: "cp775"
+      aliases: "csPC775Baltic"
+    }
+  ];
+  KOI8_U = 2088 [
+    (charset_descriptor) = {
+      http_name: "KOI8-U"
+      preferred_alias: ""
+      aliases: "csKOI8U"
+    }
+  ];
+  IBM00858 = 2089 [
+    (charset_descriptor) = {
+      http_name: "IBM00858"
+      preferred_alias: ""
+      aliases: "CCSID00858"
+      aliases: "CP00858"
+      aliases: "PC_Multilingual_850_PLUS_euro"
+      aliases: "csIBM00858"
+    }
+  ];
+  IBM00924 = 2090 [
+    (charset_descriptor) = {
+      http_name: "IBM00924"
+      preferred_alias: ""
+      aliases: "CCSID00924"
+      aliases: "CP00924"
+      aliases: "ebcdic_Latin9__euro"
+      aliases: "csIBM00924"
+    }
+  ];
+  IBM01140 = 2091 [
+    (charset_descriptor) = {
+      http_name: "IBM01140"
+      preferred_alias: ""
+      aliases: "CCSID01140"
+      aliases: "CP01140"
+      aliases: "ebcdic_us_37_PLUS_euro"
+      aliases: "csIBM01140"
+    }
+  ];
+  IBM01141 = 2092 [
+    (charset_descriptor) = {
+      http_name: "IBM01141"
+      preferred_alias: ""
+      aliases: "CCSID01141"
+      aliases: "CP01141"
+      aliases: "ebcdic_de_273_PLUS_euro"
+      aliases: "csIBM01141"
+    }
+  ];
+  IBM01142 = 2093 [
+    (charset_descriptor) = {
+      http_name: "IBM01142"
+      preferred_alias: ""
+      aliases: "CCSID01142"
+      aliases: "CP01142"
+      aliases: "ebcdic_dk_277_PLUS_euro"
+      aliases: "ebcdic_no_277_PLUS_euro"
+      aliases: "csIBM01142"
+    }
+  ];
+  IBM01143 = 2094 [
+    (charset_descriptor) = {
+      http_name: "IBM01143"
+      preferred_alias: ""
+      aliases: "CCSID01143"
+      aliases: "CP01143"
+      aliases: "ebcdic_fi_278_PLUS_euro"
+      aliases: "ebcdic_se_278_PLUS_euro"
+      aliases: "csIBM01143"
+    }
+  ];
+  IBM01144 = 2095 [
+    (charset_descriptor) = {
+      http_name: "IBM01144"
+      preferred_alias: ""
+      aliases: "CCSID01144"
+      aliases: "CP01144"
+      aliases: "ebcdic_it_280_PLUS_euro"
+      aliases: "csIBM01144"
+    }
+  ];
+  IBM01145 = 2096 [
+    (charset_descriptor) = {
+      http_name: "IBM01145"
+      preferred_alias: ""
+      aliases: "CCSID01145"
+      aliases: "CP01145"
+      aliases: "ebcdic_es_284_PLUS_euro"
+      aliases: "csIBM01145"
+    }
+  ];
+  IBM01146 = 2097 [
+    (charset_descriptor) = {
+      http_name: "IBM01146"
+      preferred_alias: ""
+      aliases: "CCSID01146"
+      aliases: "CP01146"
+      aliases: "ebcdic_gb_285_PLUS_euro"
+      aliases: "csIBM01146"
+    }
+  ];
+  IBM01147 = 2098 [
+    (charset_descriptor) = {
+      http_name: "IBM01147"
+      preferred_alias: ""
+      aliases: "CCSID01147"
+      aliases: "CP01147"
+      aliases: "ebcdic_fr_297_PLUS_euro"
+      aliases: "csIBM01147"
+    }
+  ];
+  IBM01148 = 2099 [
+    (charset_descriptor) = {
+      http_name: "IBM01148"
+      preferred_alias: ""
+      aliases: "CCSID01148"
+      aliases: "CP01148"
+      aliases: "ebcdic_international_500_PLUS_euro"
+      aliases: "csIBM01148"
+    }
+  ];
+  IBM01149 = 2100 [
+    (charset_descriptor) = {
+      http_name: "IBM01149"
+      preferred_alias: ""
+      aliases: "CCSID01149"
+      aliases: "CP01149"
+      aliases: "ebcdic_is_871_PLUS_euro"
+      aliases: "csIBM01149"
+    }
+  ];
+  BIG5_HKSCS = 2101 [
+    (charset_descriptor) = {
+      http_name: "Big5-HKSCS"
+      preferred_alias: ""
+      aliases: "csBig5HKSCS"
+    }
+  ];
+  IBM1047 = 2102 [
+    (charset_descriptor) = {
+      http_name: "IBM1047"
+      preferred_alias: ""
+      aliases: "IBM_1047"
+      aliases: "csIBM1047"
+    }
+  ];
+  PTCP154 = 2103 [
+    (charset_descriptor) = {
+      http_name: "PTCP154"
+      preferred_alias: ""
+      aliases: "csPTCP154"
+      aliases: "PT154"
+      aliases: "CP154"
+      aliases: "Cyrillic_Asian"
+    }
+  ];
+  AMIGA_1251 = 2104 [
+    (charset_descriptor) = {
+      http_name: "Amiga-1251"
+      preferred_alias: ""
+      aliases: "Ami1251"
+      aliases: "Amiga1251"
+      aliases: "Ami_1251"
+      aliases: "csAmiga1251__Aliases_are_provided_for_historical_reasons_and_should_not_be_used__[Malyshev]"
+    }
+  ];
+  KOI7_SWITCHED = 2105 [
+    (charset_descriptor) = {
+      http_name: "KOI7-switched"
+      preferred_alias: ""
+      aliases: "csKOI7switched"
+    }
+  ];
+  BRF = 2106 [
+    (charset_descriptor) = {
+      http_name: "BRF"
+      preferred_alias: ""
+      aliases: "csBRF"
+    }
+  ];
+  TSCII = 2107 [
+    (charset_descriptor) = {
+      http_name: "TSCII"
+      preferred_alias: ""
+      aliases: "csTSCII"
+    }
+  ];
+  CP51932 = 2108 [
+    (charset_descriptor) = {
+      http_name: "CP51932"
+      preferred_alias: ""
+      aliases: "csCP51932"
+    }
+  ];
+  WINDOWS_874 = 2109 [
+    (charset_descriptor) = {
+      http_name: "windows-874"
+      preferred_alias: ""
+      aliases: "cswindows874"
+    }
+  ];
+  WINDOWS_1250 = 2250 [
+    (charset_descriptor) = {
+      http_name: "windows-1250"
+      preferred_alias: ""
+      aliases: "cswindows1250"
+    }
+  ];
+  WINDOWS_1251 = 2251 [
+    (charset_descriptor) = {
+      http_name: "windows-1251"
+      preferred_alias: ""
+      aliases: "cswindows1251"
+    }
+  ];
+  WINDOWS_1252 = 2252 [
+    (charset_descriptor) = {
+      http_name: "windows-1252"
+      preferred_alias: ""
+      aliases: "cswindows1252"
+    }
+  ];
+  WINDOWS_1253 = 2253 [
+    (charset_descriptor) = {
+      http_name: "windows-1253"
+      preferred_alias: ""
+      aliases: "cswindows1253"
+    }
+  ];
+  WINDOWS_1254 = 2254 [
+    (charset_descriptor) = {
+      http_name: "windows-1254"
+      preferred_alias: ""
+      aliases: "cswindows1254"
+    }
+  ];
+  WINDOWS_1255 = 2255 [
+    (charset_descriptor) = {
+      http_name: "windows-1255"
+      preferred_alias: ""
+      aliases: "cswindows1255"
+    }
+  ];
+  WINDOWS_1256 = 2256 [
+    (charset_descriptor) = {
+      http_name: "windows-1256"
+      preferred_alias: ""
+      aliases: "cswindows1256"
+    }
+  ];
+  WINDOWS_1257 = 2257 [
+    (charset_descriptor) = {
+      http_name: "windows-1257"
+      preferred_alias: ""
+      aliases: "cswindows1257"
+    }
+  ];
+  WINDOWS_1258 = 2258 [
+    (charset_descriptor) = {
+      http_name: "windows-1258"
+      preferred_alias: ""
+      aliases: "cswindows1258"
+    }
+  ];
+  TIS_620 = 2259 [
+    (charset_descriptor) = {
+      http_name: "TIS-620"
+      preferred_alias: ""
+      aliases: "csTIS620"
+      aliases: "ISO_8859_11"
+    }
+  ];
+  CP50220 = 2260 [
+    (charset_descriptor) = {
+      http_name: "CP50220"
+      preferred_alias: ""
+      aliases: "csCP50220"
+    }
+  ];
+}
+
+message Charset {
+  oneof Charset {
+    Charsets charset = 1;
+    string custom = 2;
+  }
 }

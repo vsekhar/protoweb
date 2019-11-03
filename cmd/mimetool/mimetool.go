@@ -201,7 +201,7 @@ func (e *entries) Swap(i, j int) {
 const protoTemplate = `//
 // DO NOT EDIT: generated file
 //
-// Update this file by running: make mime.proto
+// Update this file by running: make proto/mime.proto
 //
 syntax = "proto3";
 
@@ -209,23 +209,26 @@ package web;
 
 import "google/protobuf/descriptor.proto";
 
+import "charset.proto";
+
 message MIMETypeDescriptor {
-    string http_string = 1;
+  string http_string = 1;
 }
 
 extend google.protobuf.EnumValueOptions {
-    MIMETypeDescriptor mime_descriptor = 7987671;
+  MIMETypeDescriptor mime_descriptor = 7987671;
 }
 
 enum MIMETypes {
-    MIME_TYPE_UNUSED = 0 [(mime_descriptor).http_string=""];
-{{ range $_, $entry := . }}    {{ $entry.EnumName }} = {{ $entry.Tag }} [(mime_descriptor).http_string="{{ $entry.HTTPName }}"];
+  MIME_TYPE_UNUSED = 0 [(mime_descriptor).http_string=""];
+{{ range $_, $entry := . }}  {{ $entry.EnumName }} = {{ $entry.Tag }} [(mime_descriptor).http_string="{{ $entry.HTTPName }}"];
 {{ end }}}
 
 message MIMEType {
-    oneof MIMEType {
-        MIMETypes type = 1;
-        string custom = 2;
-    }
+  oneof MIMEType {
+    MIMETypes type = 1;
+    string custom = 2;
+  }
+  Charsets charset = 3;
 }
 `

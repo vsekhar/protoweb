@@ -30,13 +30,17 @@ proto/mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
 		-mimetypes=mimetypes.csv \
 		> $@
 
+proto/charset.proto: cmd/charsettool/charsettool.go
+	$(GO) run cmd/charsettool/charsettool.go \
+		> $@
+
 test: all
 	$(GO) test
 
 bench: all
 	$(GO) test -benchmem  -run=^$ github.com/vsekhar/protoweb -bench .
 
-dist: all test protolint protocheck protoformat
+dist: all test protolint protoformat protocheck
 
 # manually trigger check for updates to mime types from IANA list
 mimecheckforupdates:
