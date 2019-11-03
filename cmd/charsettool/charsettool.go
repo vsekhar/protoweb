@@ -112,7 +112,8 @@ enum Charsets {
   CHARSET_UNSPECIFIED = 0;
 {{ range $_, $record := . }}  {{ $record.ProtoName }} = {{ $record.ProtoTag }} [
     (charset_descriptor) = {
-      http_name: "{{ $record.Name }}"
+	  http_name: "{{ $record.Name }}"
+	  mibenum: {{ $record.Value }}
       preferred_alias: "{{ $record.PreferredAlias }}"
 {{ range $_, $alias := $record.Aliases }}      aliases: "{{ $alias }}"
 {{ end }}    }

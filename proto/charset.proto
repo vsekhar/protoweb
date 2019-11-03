@@ -26,6 +26,7 @@ enum Charsets {
   UTF_8 = 1 [
     (charset_descriptor) = {
       http_name: "UTF-8"
+      mibenum: 106
       preferred_alias: ""
       aliases: "csUTF8"
     }
@@ -33,6 +34,7 @@ enum Charsets {
   US_ASCII = 3 [
     (charset_descriptor) = {
       http_name: "US-ASCII"
+      mibenum: 3
       preferred_alias: "US-ASCII"
       aliases: "iso-ir-6"
       aliases: "ANSI_X3.4-1968"
@@ -49,6 +51,7 @@ enum Charsets {
   ISO_8859_1_1987 = 4 [
     (charset_descriptor) = {
       http_name: "ISO_8859-1:1987"
+      mibenum: 4
       preferred_alias: "ISO-8859-1"
       aliases: "iso-ir-100"
       aliases: "ISO_8859-1"
@@ -63,6 +66,7 @@ enum Charsets {
   ISO_8859_2_1987 = 5 [
     (charset_descriptor) = {
       http_name: "ISO_8859-2:1987"
+      mibenum: 5
       preferred_alias: "ISO-8859-2"
       aliases: "iso-ir-101"
       aliases: "ISO_8859-2"
@@ -75,6 +79,7 @@ enum Charsets {
   ISO_8859_3_1988 = 6 [
     (charset_descriptor) = {
       http_name: "ISO_8859-3:1988"
+      mibenum: 6
       preferred_alias: "ISO-8859-3"
       aliases: "iso-ir-109"
       aliases: "ISO_8859-3"
@@ -87,6 +92,7 @@ enum Charsets {
   ISO_8859_4_1988 = 7 [
     (charset_descriptor) = {
       http_name: "ISO_8859-4:1988"
+      mibenum: 7
       preferred_alias: "ISO-8859-4"
       aliases: "iso-ir-110"
       aliases: "ISO_8859-4"
@@ -99,6 +105,7 @@ enum Charsets {
   ISO_8859_5_1988 = 8 [
     (charset_descriptor) = {
       http_name: "ISO_8859-5:1988"
+      mibenum: 8
       preferred_alias: "ISO-8859-5"
       aliases: "iso-ir-144"
       aliases: "ISO_8859-5"
@@ -110,6 +117,7 @@ enum Charsets {
   ISO_8859_6_1987 = 9 [
     (charset_descriptor) = {
       http_name: "ISO_8859-6:1987"
+      mibenum: 9
       preferred_alias: "ISO-8859-6"
       aliases: "iso-ir-127"
       aliases: "ISO_8859-6"
@@ -123,6 +131,7 @@ enum Charsets {
   ISO_8859_7_1987 = 10 [
     (charset_descriptor) = {
       http_name: "ISO_8859-7:1987"
+      mibenum: 10
       preferred_alias: "ISO-8859-7"
       aliases: "iso-ir-126"
       aliases: "ISO_8859-7"
@@ -137,6 +146,7 @@ enum Charsets {
   ISO_8859_8_1988 = 11 [
     (charset_descriptor) = {
       http_name: "ISO_8859-8:1988"
+      mibenum: 11
       preferred_alias: "ISO-8859-8"
       aliases: "iso-ir-138"
       aliases: "ISO_8859-8"
@@ -148,6 +158,7 @@ enum Charsets {
   ISO_8859_9_1989 = 12 [
     (charset_descriptor) = {
       http_name: "ISO_8859-9:1989"
+      mibenum: 12
       preferred_alias: "ISO-8859-9"
       aliases: "iso-ir-148"
       aliases: "ISO_8859-9"
@@ -160,6 +171,7 @@ enum Charsets {
   ISO_8859_10 = 13 [
     (charset_descriptor) = {
       http_name: "ISO-8859-10"
+      mibenum: 13
       preferred_alias: "ISO-8859-10"
       aliases: "iso-ir-157"
       aliases: "l6"
@@ -171,6 +183,7 @@ enum Charsets {
   ISO_6937_2_ADD = 14 [
     (charset_descriptor) = {
       http_name: "ISO_6937-2-add"
+      mibenum: 14
       preferred_alias: ""
       aliases: "iso-ir-142"
       aliases: "csISOTextComm"
@@ -179,6 +192,7 @@ enum Charsets {
   JIS_X0201 = 15 [
     (charset_descriptor) = {
       http_name: "JIS_X0201"
+      mibenum: 15
       preferred_alias: ""
       aliases: "X0201"
       aliases: "csHalfWidthKatakana"
@@ -187,6 +201,7 @@ enum Charsets {
   JIS_ENCODING = 16 [
     (charset_descriptor) = {
       http_name: "JIS_Encoding"
+      mibenum: 16
       preferred_alias: ""
       aliases: "csJISEncoding"
     }
@@ -194,6 +209,7 @@ enum Charsets {
   SHIFT_JIS = 17 [
     (charset_descriptor) = {
       http_name: "Shift_JIS"
+      mibenum: 17
       preferred_alias: "Shift_JIS"
       aliases: "MS_Kanji"
       aliases: "csShiftJIS"
@@ -202,6 +218,7 @@ enum Charsets {
   EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE = 18 [
     (charset_descriptor) = {
       http_name: "Extended_UNIX_Code_Packed_Format_for_Japanese"
+      mibenum: 18
       preferred_alias: "EUC-JP"
       aliases: "csEUCPkdFmtJapanese"
       aliases: "EUC-JP"
@@ -210,6 +227,7 @@ enum Charsets {
   EXTENDED_UNIX_CODE_FIXED_WIDTH_FOR_JAPANESE = 19 [
     (charset_descriptor) = {
       http_name: "Extended_UNIX_Code_Fixed_Width_for_Japanese"
+      mibenum: 19
       preferred_alias: ""
       aliases: "csEUCFixWidJapanese"
     }
@@ -217,6 +235,7 @@ enum Charsets {
   BS_4730 = 20 [
     (charset_descriptor) = {
       http_name: "BS_4730"
+      mibenum: 20
       preferred_alias: ""
       aliases: "iso-ir-4"
       aliases: "ISO646-GB"
@@ -228,6 +247,7 @@ enum Charsets {
   SEN_850200_C = 21 [
     (charset_descriptor) = {
       http_name: "SEN_850200_C"
+      mibenum: 21
       preferred_alias: ""
       aliases: "iso-ir-11"
       aliases: "ISO646-SE2"
@@ -238,6 +258,7 @@ enum Charsets {
   IT = 22 [
     (charset_descriptor) = {
       http_name: "IT"
+      mibenum: 22
       preferred_alias: ""
       aliases: "iso-ir-15"
       aliases: "ISO646-IT"
@@ -247,6 +268,7 @@ enum Charsets {
   ES = 23 [
     (charset_descriptor) = {
       http_name: "ES"
+      mibenum: 23
       preferred_alias: ""
       aliases: "iso-ir-17"
       aliases: "ISO646-ES"
@@ -256,6 +278,7 @@ enum Charsets {
   DIN_66003 = 24 [
     (charset_descriptor) = {
       http_name: "DIN_66003"
+      mibenum: 24
       preferred_alias: ""
       aliases: "iso-ir-21"
       aliases: "de"
@@ -266,6 +289,7 @@ enum Charsets {
   NS_4551_1 = 25 [
     (charset_descriptor) = {
       http_name: "NS_4551-1"
+      mibenum: 25
       preferred_alias: ""
       aliases: "iso-ir-60"
       aliases: "ISO646-NO"
@@ -277,6 +301,7 @@ enum Charsets {
   NF_Z_62_010 = 26 [
     (charset_descriptor) = {
       http_name: "NF_Z_62-010"
+      mibenum: 26
       preferred_alias: ""
       aliases: "iso-ir-69"
       aliases: "ISO646-FR"
@@ -287,6 +312,7 @@ enum Charsets {
   ISO_10646_UTF_1 = 27 [
     (charset_descriptor) = {
       http_name: "ISO-10646-UTF-1"
+      mibenum: 27
       preferred_alias: ""
       aliases: "csISO10646UTF1"
     }
@@ -294,6 +320,7 @@ enum Charsets {
   ISO_646_BASIC_1983 = 28 [
     (charset_descriptor) = {
       http_name: "ISO_646.basic:1983"
+      mibenum: 28
       preferred_alias: ""
       aliases: "ref"
       aliases: "csISO646basic1983"
@@ -302,6 +329,7 @@ enum Charsets {
   INVARIANT = 29 [
     (charset_descriptor) = {
       http_name: "INVARIANT"
+      mibenum: 29
       preferred_alias: ""
       aliases: "csINVARIANT"
     }
@@ -309,6 +337,7 @@ enum Charsets {
   ISO_646_IRV_1983 = 30 [
     (charset_descriptor) = {
       http_name: "ISO_646.irv:1983"
+      mibenum: 30
       preferred_alias: ""
       aliases: "iso-ir-2"
       aliases: "irv"
@@ -318,6 +347,7 @@ enum Charsets {
   NATS_SEFI = 31 [
     (charset_descriptor) = {
       http_name: "NATS-SEFI"
+      mibenum: 31
       preferred_alias: ""
       aliases: "iso-ir-8-1"
       aliases: "csNATSSEFI"
@@ -326,6 +356,7 @@ enum Charsets {
   NATS_SEFI_ADD = 32 [
     (charset_descriptor) = {
       http_name: "NATS-SEFI-ADD"
+      mibenum: 32
       preferred_alias: ""
       aliases: "iso-ir-8-2"
       aliases: "csNATSSEFIADD"
@@ -334,6 +365,7 @@ enum Charsets {
   NATS_DANO = 33 [
     (charset_descriptor) = {
       http_name: "NATS-DANO"
+      mibenum: 33
       preferred_alias: ""
       aliases: "iso-ir-9-1"
       aliases: "csNATSDANO"
@@ -342,6 +374,7 @@ enum Charsets {
   NATS_DANO_ADD = 34 [
     (charset_descriptor) = {
       http_name: "NATS-DANO-ADD"
+      mibenum: 34
       preferred_alias: ""
       aliases: "iso-ir-9-2"
       aliases: "csNATSDANOADD"
@@ -350,6 +383,7 @@ enum Charsets {
   SEN_850200_B = 35 [
     (charset_descriptor) = {
       http_name: "SEN_850200_B"
+      mibenum: 35
       preferred_alias: ""
       aliases: "iso-ir-10"
       aliases: "FI"
@@ -362,6 +396,7 @@ enum Charsets {
   KS_C_5601_1987 = 36 [
     (charset_descriptor) = {
       http_name: "KS_C_5601-1987"
+      mibenum: 36
       preferred_alias: ""
       aliases: "iso-ir-149"
       aliases: "KS_C_5601-1989"
@@ -373,6 +408,7 @@ enum Charsets {
   ISO_2022_KR = 37 [
     (charset_descriptor) = {
       http_name: "ISO-2022-KR"
+      mibenum: 37
       preferred_alias: "ISO-2022-KR"
       aliases: "csISO2022KR"
     }
@@ -380,6 +416,7 @@ enum Charsets {
   EUC_KR = 38 [
     (charset_descriptor) = {
       http_name: "EUC-KR"
+      mibenum: 38
       preferred_alias: "EUC-KR"
       aliases: "csEUCKR"
     }
@@ -387,6 +424,7 @@ enum Charsets {
   ISO_2022_JP = 39 [
     (charset_descriptor) = {
       http_name: "ISO-2022-JP"
+      mibenum: 39
       preferred_alias: "ISO-2022-JP"
       aliases: "csISO2022JP"
     }
@@ -394,6 +432,7 @@ enum Charsets {
   ISO_2022_JP_2 = 40 [
     (charset_descriptor) = {
       http_name: "ISO-2022-JP-2"
+      mibenum: 40
       preferred_alias: "ISO-2022-JP-2"
       aliases: "csISO2022JP2"
     }
@@ -401,6 +440,7 @@ enum Charsets {
   JIS_C6220_1969_JP = 41 [
     (charset_descriptor) = {
       http_name: "JIS_C6220-1969-jp"
+      mibenum: 41
       preferred_alias: ""
       aliases: "JIS_C6220-1969"
       aliases: "iso-ir-13"
@@ -412,6 +452,7 @@ enum Charsets {
   JIS_C6220_1969_RO = 42 [
     (charset_descriptor) = {
       http_name: "JIS_C6220-1969-ro"
+      mibenum: 42
       preferred_alias: ""
       aliases: "iso-ir-14"
       aliases: "jp"
@@ -422,6 +463,7 @@ enum Charsets {
   PT = 43 [
     (charset_descriptor) = {
       http_name: "PT"
+      mibenum: 43
       preferred_alias: ""
       aliases: "iso-ir-16"
       aliases: "ISO646-PT"
@@ -431,6 +473,7 @@ enum Charsets {
   GREEK7_OLD = 44 [
     (charset_descriptor) = {
       http_name: "greek7-old"
+      mibenum: 44
       preferred_alias: ""
       aliases: "iso-ir-18"
       aliases: "csISO18Greek7Old"
@@ -439,6 +482,7 @@ enum Charsets {
   LATIN_GREEK = 45 [
     (charset_descriptor) = {
       http_name: "latin-greek"
+      mibenum: 45
       preferred_alias: ""
       aliases: "iso-ir-19"
       aliases: "csISO19LatinGreek"
@@ -447,6 +491,7 @@ enum Charsets {
   NF_Z_62_010__1973 = 46 [
     (charset_descriptor) = {
       http_name: "NF_Z_62-010_(1973)"
+      mibenum: 46
       preferred_alias: ""
       aliases: "iso-ir-25"
       aliases: "ISO646-FR1"
@@ -456,6 +501,7 @@ enum Charsets {
   LATIN_GREEK_1 = 47 [
     (charset_descriptor) = {
       http_name: "Latin-greek-1"
+      mibenum: 47
       preferred_alias: ""
       aliases: "iso-ir-27"
       aliases: "csISO27LatinGreek1"
@@ -464,6 +510,7 @@ enum Charsets {
   ISO_5427 = 48 [
     (charset_descriptor) = {
       http_name: "ISO_5427"
+      mibenum: 48
       preferred_alias: ""
       aliases: "iso-ir-37"
       aliases: "csISO5427Cyrillic"
@@ -472,6 +519,7 @@ enum Charsets {
   JIS_C6226_1978 = 49 [
     (charset_descriptor) = {
       http_name: "JIS_C6226-1978"
+      mibenum: 49
       preferred_alias: ""
       aliases: "iso-ir-42"
       aliases: "csISO42JISC62261978"
@@ -480,6 +528,7 @@ enum Charsets {
   BS_VIEWDATA = 50 [
     (charset_descriptor) = {
       http_name: "BS_viewdata"
+      mibenum: 50
       preferred_alias: ""
       aliases: "iso-ir-47"
       aliases: "csISO47BSViewdata"
@@ -488,6 +537,7 @@ enum Charsets {
   INIS = 51 [
     (charset_descriptor) = {
       http_name: "INIS"
+      mibenum: 51
       preferred_alias: ""
       aliases: "iso-ir-49"
       aliases: "csISO49INIS"
@@ -496,6 +546,7 @@ enum Charsets {
   INIS_8 = 52 [
     (charset_descriptor) = {
       http_name: "INIS-8"
+      mibenum: 52
       preferred_alias: ""
       aliases: "iso-ir-50"
       aliases: "csISO50INIS8"
@@ -504,6 +555,7 @@ enum Charsets {
   INIS_CYRILLIC = 53 [
     (charset_descriptor) = {
       http_name: "INIS-cyrillic"
+      mibenum: 53
       preferred_alias: ""
       aliases: "iso-ir-51"
       aliases: "csISO51INISCyrillic"
@@ -512,6 +564,7 @@ enum Charsets {
   ISO_5427_1981 = 54 [
     (charset_descriptor) = {
       http_name: "ISO_5427:1981"
+      mibenum: 54
       preferred_alias: ""
       aliases: "iso-ir-54"
       aliases: "ISO5427Cyrillic1981"
@@ -521,6 +574,7 @@ enum Charsets {
   ISO_5428_1980 = 55 [
     (charset_descriptor) = {
       http_name: "ISO_5428:1980"
+      mibenum: 55
       preferred_alias: ""
       aliases: "iso-ir-55"
       aliases: "csISO5428Greek"
@@ -529,6 +583,7 @@ enum Charsets {
   GB_1988_80 = 56 [
     (charset_descriptor) = {
       http_name: "GB_1988-80"
+      mibenum: 56
       preferred_alias: ""
       aliases: "iso-ir-57"
       aliases: "cn"
@@ -539,6 +594,7 @@ enum Charsets {
   GB_2312_80 = 57 [
     (charset_descriptor) = {
       http_name: "GB_2312-80"
+      mibenum: 57
       preferred_alias: ""
       aliases: "iso-ir-58"
       aliases: "chinese"
@@ -548,6 +604,7 @@ enum Charsets {
   NS_4551_2 = 58 [
     (charset_descriptor) = {
       http_name: "NS_4551-2"
+      mibenum: 58
       preferred_alias: ""
       aliases: "ISO646-NO2"
       aliases: "iso-ir-61"
@@ -558,6 +615,7 @@ enum Charsets {
   VIDEOTEX_SUPPL = 59 [
     (charset_descriptor) = {
       http_name: "videotex-suppl"
+      mibenum: 59
       preferred_alias: ""
       aliases: "iso-ir-70"
       aliases: "csISO70VideotexSupp1"
@@ -566,6 +624,7 @@ enum Charsets {
   PT2 = 60 [
     (charset_descriptor) = {
       http_name: "PT2"
+      mibenum: 60
       preferred_alias: ""
       aliases: "iso-ir-84"
       aliases: "ISO646-PT2"
@@ -575,6 +634,7 @@ enum Charsets {
   ES2 = 61 [
     (charset_descriptor) = {
       http_name: "ES2"
+      mibenum: 61
       preferred_alias: ""
       aliases: "iso-ir-85"
       aliases: "ISO646-ES2"
@@ -584,6 +644,7 @@ enum Charsets {
   MSZ_7795_3 = 62 [
     (charset_descriptor) = {
       http_name: "MSZ_7795.3"
+      mibenum: 62
       preferred_alias: ""
       aliases: "iso-ir-86"
       aliases: "ISO646-HU"
@@ -594,6 +655,7 @@ enum Charsets {
   JIS_C6226_1983 = 63 [
     (charset_descriptor) = {
       http_name: "JIS_C6226-1983"
+      mibenum: 63
       preferred_alias: ""
       aliases: "iso-ir-87"
       aliases: "x0208"
@@ -604,6 +666,7 @@ enum Charsets {
   GREEK7 = 64 [
     (charset_descriptor) = {
       http_name: "greek7"
+      mibenum: 64
       preferred_alias: ""
       aliases: "iso-ir-88"
       aliases: "csISO88Greek7"
@@ -612,6 +675,7 @@ enum Charsets {
   ASMO_449 = 65 [
     (charset_descriptor) = {
       http_name: "ASMO_449"
+      mibenum: 65
       preferred_alias: ""
       aliases: "ISO_9036"
       aliases: "arabic7"
@@ -622,6 +686,7 @@ enum Charsets {
   ISO_IR_90 = 66 [
     (charset_descriptor) = {
       http_name: "iso-ir-90"
+      mibenum: 66
       preferred_alias: ""
       aliases: "csISO90"
     }
@@ -629,6 +694,7 @@ enum Charsets {
   JIS_C6229_1984_A = 67 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-a"
+      mibenum: 67
       preferred_alias: ""
       aliases: "iso-ir-91"
       aliases: "jp-ocr-a"
@@ -638,6 +704,7 @@ enum Charsets {
   JIS_C6229_1984_B = 68 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-b"
+      mibenum: 68
       preferred_alias: ""
       aliases: "iso-ir-92"
       aliases: "ISO646-JP-OCR-B"
@@ -648,6 +715,7 @@ enum Charsets {
   JIS_C6229_1984_B_ADD = 69 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-b-add"
+      mibenum: 69
       preferred_alias: ""
       aliases: "iso-ir-93"
       aliases: "jp-ocr-b-add"
@@ -657,6 +725,7 @@ enum Charsets {
   JIS_C6229_1984_HAND = 70 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-hand"
+      mibenum: 70
       preferred_alias: ""
       aliases: "iso-ir-94"
       aliases: "jp-ocr-hand"
@@ -666,6 +735,7 @@ enum Charsets {
   JIS_C6229_1984_HAND_ADD = 71 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-hand-add"
+      mibenum: 71
       preferred_alias: ""
       aliases: "iso-ir-95"
       aliases: "jp-ocr-hand-add"
@@ -675,6 +745,7 @@ enum Charsets {
   JIS_C6229_1984_KANA = 72 [
     (charset_descriptor) = {
       http_name: "JIS_C6229-1984-kana"
+      mibenum: 72
       preferred_alias: ""
       aliases: "iso-ir-96"
       aliases: "csISO96JISC62291984kana"
@@ -683,6 +754,7 @@ enum Charsets {
   ISO_2033_1983 = 73 [
     (charset_descriptor) = {
       http_name: "ISO_2033-1983"
+      mibenum: 73
       preferred_alias: ""
       aliases: "iso-ir-98"
       aliases: "e13b"
@@ -692,6 +764,7 @@ enum Charsets {
   ANSI_X3_110_1983 = 74 [
     (charset_descriptor) = {
       http_name: "ANSI_X3.110-1983"
+      mibenum: 74
       preferred_alias: ""
       aliases: "iso-ir-99"
       aliases: "CSA_T500-1983"
@@ -702,6 +775,7 @@ enum Charsets {
   T_61_7BIT = 75 [
     (charset_descriptor) = {
       http_name: "T.61-7bit"
+      mibenum: 75
       preferred_alias: ""
       aliases: "iso-ir-102"
       aliases: "csISO102T617bit"
@@ -710,6 +784,7 @@ enum Charsets {
   T_61_8BIT = 76 [
     (charset_descriptor) = {
       http_name: "T.61-8bit"
+      mibenum: 76
       preferred_alias: ""
       aliases: "T.61"
       aliases: "iso-ir-103"
@@ -719,6 +794,7 @@ enum Charsets {
   ECMA_CYRILLIC = 77 [
     (charset_descriptor) = {
       http_name: "ECMA-cyrillic"
+      mibenum: 77
       preferred_alias: ""
       aliases: "iso-ir-111"
       aliases: "KOI8-E"
@@ -728,6 +804,7 @@ enum Charsets {
   CSA_Z243_4_1985_1 = 78 [
     (charset_descriptor) = {
       http_name: "CSA_Z243.4-1985-1"
+      mibenum: 78
       preferred_alias: ""
       aliases: "iso-ir-121"
       aliases: "ISO646-CA"
@@ -740,6 +817,7 @@ enum Charsets {
   CSA_Z243_4_1985_2 = 79 [
     (charset_descriptor) = {
       http_name: "CSA_Z243.4-1985-2"
+      mibenum: 79
       preferred_alias: ""
       aliases: "iso-ir-122"
       aliases: "ISO646-CA2"
@@ -751,6 +829,7 @@ enum Charsets {
   CSA_Z243_4_1985_GR = 80 [
     (charset_descriptor) = {
       http_name: "CSA_Z243.4-1985-gr"
+      mibenum: 80
       preferred_alias: ""
       aliases: "iso-ir-123"
       aliases: "csISO123CSAZ24341985gr"
@@ -759,6 +838,7 @@ enum Charsets {
   ISO_8859_6_E = 81 [
     (charset_descriptor) = {
       http_name: "ISO_8859-6-E"
+      mibenum: 81
       preferred_alias: "ISO-8859-6-E"
       aliases: "csISO88596E"
       aliases: "ISO-8859-6-E"
@@ -767,6 +847,7 @@ enum Charsets {
   ISO_8859_6_I = 82 [
     (charset_descriptor) = {
       http_name: "ISO_8859-6-I"
+      mibenum: 82
       preferred_alias: "ISO-8859-6-I"
       aliases: "csISO88596I"
       aliases: "ISO-8859-6-I"
@@ -775,6 +856,7 @@ enum Charsets {
   T_101_G2 = 83 [
     (charset_descriptor) = {
       http_name: "T.101-G2"
+      mibenum: 83
       preferred_alias: ""
       aliases: "iso-ir-128"
       aliases: "csISO128T101G2"
@@ -783,6 +865,7 @@ enum Charsets {
   ISO_8859_8_E = 84 [
     (charset_descriptor) = {
       http_name: "ISO_8859-8-E"
+      mibenum: 84
       preferred_alias: "ISO-8859-8-E"
       aliases: "csISO88598E"
       aliases: "ISO-8859-8-E"
@@ -791,6 +874,7 @@ enum Charsets {
   ISO_8859_8_I = 85 [
     (charset_descriptor) = {
       http_name: "ISO_8859-8-I"
+      mibenum: 85
       preferred_alias: "ISO-8859-8-I"
       aliases: "csISO88598I"
       aliases: "ISO-8859-8-I"
@@ -799,6 +883,7 @@ enum Charsets {
   CSN_369103 = 86 [
     (charset_descriptor) = {
       http_name: "CSN_369103"
+      mibenum: 86
       preferred_alias: ""
       aliases: "iso-ir-139"
       aliases: "csISO139CSN369103"
@@ -807,6 +892,7 @@ enum Charsets {
   JUS_I_B1_002 = 87 [
     (charset_descriptor) = {
       http_name: "JUS_I.B1.002"
+      mibenum: 87
       preferred_alias: ""
       aliases: "iso-ir-141"
       aliases: "ISO646-YU"
@@ -818,6 +904,7 @@ enum Charsets {
   IEC_P27_1 = 88 [
     (charset_descriptor) = {
       http_name: "IEC_P27-1"
+      mibenum: 88
       preferred_alias: ""
       aliases: "iso-ir-143"
       aliases: "csISO143IECP271"
@@ -826,6 +913,7 @@ enum Charsets {
   JUS_I_B1_003_SERB = 89 [
     (charset_descriptor) = {
       http_name: "JUS_I.B1.003-serb"
+      mibenum: 89
       preferred_alias: ""
       aliases: "iso-ir-146"
       aliases: "serbian"
@@ -835,6 +923,7 @@ enum Charsets {
   JUS_I_B1_003_MAC = 90 [
     (charset_descriptor) = {
       http_name: "JUS_I.B1.003-mac"
+      mibenum: 90
       preferred_alias: ""
       aliases: "macedonian"
       aliases: "iso-ir-147"
@@ -844,6 +933,7 @@ enum Charsets {
   GREEK_CCITT = 91 [
     (charset_descriptor) = {
       http_name: "greek-ccitt"
+      mibenum: 91
       preferred_alias: ""
       aliases: "iso-ir-150"
       aliases: "csISO150"
@@ -853,6 +943,7 @@ enum Charsets {
   NC_NC00_10_81 = 92 [
     (charset_descriptor) = {
       http_name: "NC_NC00-10:81"
+      mibenum: 92
       preferred_alias: ""
       aliases: "cuba"
       aliases: "iso-ir-151"
@@ -863,6 +954,7 @@ enum Charsets {
   ISO_6937_2_25 = 93 [
     (charset_descriptor) = {
       http_name: "ISO_6937-2-25"
+      mibenum: 93
       preferred_alias: ""
       aliases: "iso-ir-152"
       aliases: "csISO6937Add"
@@ -871,6 +963,7 @@ enum Charsets {
   GOST_19768_74 = 94 [
     (charset_descriptor) = {
       http_name: "GOST_19768-74"
+      mibenum: 94
       preferred_alias: ""
       aliases: "ST_SEV_358-88"
       aliases: "iso-ir-153"
@@ -880,6 +973,7 @@ enum Charsets {
   ISO_8859_SUPP = 95 [
     (charset_descriptor) = {
       http_name: "ISO_8859-supp"
+      mibenum: 95
       preferred_alias: ""
       aliases: "iso-ir-154"
       aliases: "latin1-2-5"
@@ -889,6 +983,7 @@ enum Charsets {
   ISO_10367_BOX = 96 [
     (charset_descriptor) = {
       http_name: "ISO_10367-box"
+      mibenum: 96
       preferred_alias: ""
       aliases: "iso-ir-155"
       aliases: "csISO10367Box"
@@ -897,6 +992,7 @@ enum Charsets {
   LATIN_LAP = 97 [
     (charset_descriptor) = {
       http_name: "latin-lap"
+      mibenum: 97
       preferred_alias: ""
       aliases: "lap"
       aliases: "iso-ir-158"
@@ -906,6 +1002,7 @@ enum Charsets {
   JIS_X0212_1990 = 98 [
     (charset_descriptor) = {
       http_name: "JIS_X0212-1990"
+      mibenum: 98
       preferred_alias: ""
       aliases: "x0212"
       aliases: "iso-ir-159"
@@ -915,6 +1012,7 @@ enum Charsets {
   DS_2089 = 99 [
     (charset_descriptor) = {
       http_name: "DS_2089"
+      mibenum: 99
       preferred_alias: ""
       aliases: "DS2089"
       aliases: "ISO646-DK"
@@ -925,6 +1023,7 @@ enum Charsets {
   US_DK = 100 [
     (charset_descriptor) = {
       http_name: "us-dk"
+      mibenum: 100
       preferred_alias: ""
       aliases: "csUSDK"
     }
@@ -932,6 +1031,7 @@ enum Charsets {
   DK_US = 101 [
     (charset_descriptor) = {
       http_name: "dk-us"
+      mibenum: 101
       preferred_alias: ""
       aliases: "csDKUS"
     }
@@ -939,6 +1039,7 @@ enum Charsets {
   KSC5636 = 102 [
     (charset_descriptor) = {
       http_name: "KSC5636"
+      mibenum: 102
       preferred_alias: ""
       aliases: "ISO646-KR"
       aliases: "csKSC5636"
@@ -947,6 +1048,7 @@ enum Charsets {
   UNICODE_1_1_UTF_7 = 103 [
     (charset_descriptor) = {
       http_name: "UNICODE-1-1-UTF-7"
+      mibenum: 103
       preferred_alias: ""
       aliases: "csUnicode11UTF7"
     }
@@ -954,6 +1056,7 @@ enum Charsets {
   ISO_2022_CN = 104 [
     (charset_descriptor) = {
       http_name: "ISO-2022-CN"
+      mibenum: 104
       preferred_alias: ""
       aliases: "csISO2022CN"
     }
@@ -961,6 +1064,7 @@ enum Charsets {
   ISO_2022_CN_EXT = 105 [
     (charset_descriptor) = {
       http_name: "ISO-2022-CN-EXT"
+      mibenum: 105
       preferred_alias: ""
       aliases: "csISO2022CNEXT"
     }
@@ -968,6 +1072,7 @@ enum Charsets {
   ISO_8859_13 = 109 [
     (charset_descriptor) = {
       http_name: "ISO-8859-13"
+      mibenum: 109
       preferred_alias: ""
       aliases: "csISO885913"
     }
@@ -975,6 +1080,7 @@ enum Charsets {
   ISO_8859_14 = 110 [
     (charset_descriptor) = {
       http_name: "ISO-8859-14"
+      mibenum: 110
       preferred_alias: ""
       aliases: "iso-ir-199"
       aliases: "ISO_8859-14:1998"
@@ -988,6 +1094,7 @@ enum Charsets {
   ISO_8859_15 = 111 [
     (charset_descriptor) = {
       http_name: "ISO-8859-15"
+      mibenum: 111
       preferred_alias: ""
       aliases: "ISO_8859-15"
       aliases: "Latin-9"
@@ -997,6 +1104,7 @@ enum Charsets {
   ISO_8859_16 = 112 [
     (charset_descriptor) = {
       http_name: "ISO-8859-16"
+      mibenum: 112
       preferred_alias: ""
       aliases: "iso-ir-226"
       aliases: "ISO_8859-16:2001"
@@ -1009,6 +1117,7 @@ enum Charsets {
   GBK = 113 [
     (charset_descriptor) = {
       http_name: "GBK"
+      mibenum: 113
       preferred_alias: ""
       aliases: "CP936"
       aliases: "MS936"
@@ -1019,6 +1128,7 @@ enum Charsets {
   GB18030 = 114 [
     (charset_descriptor) = {
       http_name: "GB18030"
+      mibenum: 114
       preferred_alias: ""
       aliases: "csGB18030"
     }
@@ -1026,6 +1136,7 @@ enum Charsets {
   OSD_EBCDIC_DF04_15 = 115 [
     (charset_descriptor) = {
       http_name: "OSD_EBCDIC_DF04_15"
+      mibenum: 115
       preferred_alias: ""
       aliases: "csOSDEBCDICDF0415"
     }
@@ -1033,6 +1144,7 @@ enum Charsets {
   OSD_EBCDIC_DF03_IRV = 116 [
     (charset_descriptor) = {
       http_name: "OSD_EBCDIC_DF03_IRV"
+      mibenum: 116
       preferred_alias: ""
       aliases: "csOSDEBCDICDF03IRV"
     }
@@ -1040,6 +1152,7 @@ enum Charsets {
   OSD_EBCDIC_DF04_1 = 117 [
     (charset_descriptor) = {
       http_name: "OSD_EBCDIC_DF04_1"
+      mibenum: 117
       preferred_alias: ""
       aliases: "csOSDEBCDICDF041"
     }
@@ -1047,6 +1160,7 @@ enum Charsets {
   ISO_11548_1 = 118 [
     (charset_descriptor) = {
       http_name: "ISO-11548-1"
+      mibenum: 118
       preferred_alias: ""
       aliases: "ISO_11548-1"
       aliases: "ISO_TR_11548-1"
@@ -1056,6 +1170,7 @@ enum Charsets {
   KZ_1048 = 119 [
     (charset_descriptor) = {
       http_name: "KZ-1048"
+      mibenum: 119
       preferred_alias: ""
       aliases: "STRK1048-2002"
       aliases: "RK1048"
@@ -1065,6 +1180,7 @@ enum Charsets {
   ISO_10646_UCS_2 = 1000 [
     (charset_descriptor) = {
       http_name: "ISO-10646-UCS-2"
+      mibenum: 1000
       preferred_alias: ""
       aliases: "csUnicode"
     }
@@ -1072,6 +1188,7 @@ enum Charsets {
   ISO_10646_UCS_4 = 1001 [
     (charset_descriptor) = {
       http_name: "ISO-10646-UCS-4"
+      mibenum: 1001
       preferred_alias: ""
       aliases: "csUCS4"
     }
@@ -1079,6 +1196,7 @@ enum Charsets {
   ISO_10646_UCS_BASIC = 1002 [
     (charset_descriptor) = {
       http_name: "ISO-10646-UCS-Basic"
+      mibenum: 1002
       preferred_alias: ""
       aliases: "csUnicodeASCII"
     }
@@ -1086,6 +1204,7 @@ enum Charsets {
   ISO_10646_UNICODE_LATIN1 = 1003 [
     (charset_descriptor) = {
       http_name: "ISO-10646-Unicode-Latin1"
+      mibenum: 1003
       preferred_alias: ""
       aliases: "csUnicodeLatin1"
       aliases: "ISO-10646"
@@ -1094,6 +1213,7 @@ enum Charsets {
   ISO_10646_J_1 = 1004 [
     (charset_descriptor) = {
       http_name: "ISO-10646-J-1"
+      mibenum: 1004
       preferred_alias: ""
       aliases: "csUnicodeJapanese"
     }
@@ -1101,6 +1221,7 @@ enum Charsets {
   ISO_UNICODE_IBM_1261 = 1005 [
     (charset_descriptor) = {
       http_name: "ISO-Unicode-IBM-1261"
+      mibenum: 1005
       preferred_alias: ""
       aliases: "csUnicodeIBM1261"
     }
@@ -1108,6 +1229,7 @@ enum Charsets {
   ISO_UNICODE_IBM_1268 = 1006 [
     (charset_descriptor) = {
       http_name: "ISO-Unicode-IBM-1268"
+      mibenum: 1006
       preferred_alias: ""
       aliases: "csUnicodeIBM1268"
     }
@@ -1115,6 +1237,7 @@ enum Charsets {
   ISO_UNICODE_IBM_1276 = 1007 [
     (charset_descriptor) = {
       http_name: "ISO-Unicode-IBM-1276"
+      mibenum: 1007
       preferred_alias: ""
       aliases: "csUnicodeIBM1276"
     }
@@ -1122,6 +1245,7 @@ enum Charsets {
   ISO_UNICODE_IBM_1264 = 1008 [
     (charset_descriptor) = {
       http_name: "ISO-Unicode-IBM-1264"
+      mibenum: 1008
       preferred_alias: ""
       aliases: "csUnicodeIBM1264"
     }
@@ -1129,6 +1253,7 @@ enum Charsets {
   ISO_UNICODE_IBM_1265 = 1009 [
     (charset_descriptor) = {
       http_name: "ISO-Unicode-IBM-1265"
+      mibenum: 1009
       preferred_alias: ""
       aliases: "csUnicodeIBM1265"
     }
@@ -1136,6 +1261,7 @@ enum Charsets {
   UNICODE_1_1 = 1010 [
     (charset_descriptor) = {
       http_name: "UNICODE-1-1"
+      mibenum: 1010
       preferred_alias: ""
       aliases: "csUnicode11"
     }
@@ -1143,6 +1269,7 @@ enum Charsets {
   SCSU = 1011 [
     (charset_descriptor) = {
       http_name: "SCSU"
+      mibenum: 1011
       preferred_alias: ""
       aliases: "csSCSU"
     }
@@ -1150,6 +1277,7 @@ enum Charsets {
   UTF_7 = 1012 [
     (charset_descriptor) = {
       http_name: "UTF-7"
+      mibenum: 1012
       preferred_alias: ""
       aliases: "csUTF7"
     }
@@ -1157,6 +1285,7 @@ enum Charsets {
   UTF_16BE = 1013 [
     (charset_descriptor) = {
       http_name: "UTF-16BE"
+      mibenum: 1013
       preferred_alias: ""
       aliases: "csUTF16BE"
     }
@@ -1164,6 +1293,7 @@ enum Charsets {
   UTF_16LE = 1014 [
     (charset_descriptor) = {
       http_name: "UTF-16LE"
+      mibenum: 1014
       preferred_alias: ""
       aliases: "csUTF16LE"
     }
@@ -1171,6 +1301,7 @@ enum Charsets {
   UTF_16 = 1015 [
     (charset_descriptor) = {
       http_name: "UTF-16"
+      mibenum: 1015
       preferred_alias: ""
       aliases: "csUTF16"
     }
@@ -1178,6 +1309,7 @@ enum Charsets {
   CESU_8 = 1016 [
     (charset_descriptor) = {
       http_name: "CESU-8"
+      mibenum: 1016
       preferred_alias: ""
       aliases: "csCESU8"
       aliases: "csCESU-8"
@@ -1186,6 +1318,7 @@ enum Charsets {
   UTF_32 = 1017 [
     (charset_descriptor) = {
       http_name: "UTF-32"
+      mibenum: 1017
       preferred_alias: ""
       aliases: "csUTF32"
     }
@@ -1193,6 +1326,7 @@ enum Charsets {
   UTF_32BE = 1018 [
     (charset_descriptor) = {
       http_name: "UTF-32BE"
+      mibenum: 1018
       preferred_alias: ""
       aliases: "csUTF32BE"
     }
@@ -1200,6 +1334,7 @@ enum Charsets {
   UTF_32LE = 1019 [
     (charset_descriptor) = {
       http_name: "UTF-32LE"
+      mibenum: 1019
       preferred_alias: ""
       aliases: "csUTF32LE"
     }
@@ -1207,6 +1342,7 @@ enum Charsets {
   BOCU_1 = 1020 [
     (charset_descriptor) = {
       http_name: "BOCU-1"
+      mibenum: 1020
       preferred_alias: ""
       aliases: "csBOCU1"
       aliases: "csBOCU-1"
@@ -1215,6 +1351,7 @@ enum Charsets {
   ISO_8859_1_WINDOWS_3_0_LATIN_1 = 2000 [
     (charset_descriptor) = {
       http_name: "ISO-8859-1-Windows-3.0-Latin-1"
+      mibenum: 2000
       preferred_alias: ""
       aliases: "csWindows30Latin1"
     }
@@ -1222,6 +1359,7 @@ enum Charsets {
   ISO_8859_1_WINDOWS_3_1_LATIN_1 = 2001 [
     (charset_descriptor) = {
       http_name: "ISO-8859-1-Windows-3.1-Latin-1"
+      mibenum: 2001
       preferred_alias: ""
       aliases: "csWindows31Latin1"
     }
@@ -1229,6 +1367,7 @@ enum Charsets {
   ISO_8859_2_WINDOWS_LATIN_2 = 2002 [
     (charset_descriptor) = {
       http_name: "ISO-8859-2-Windows-Latin-2"
+      mibenum: 2002
       preferred_alias: ""
       aliases: "csWindows31Latin2"
     }
@@ -1236,6 +1375,7 @@ enum Charsets {
   ISO_8859_9_WINDOWS_LATIN_5 = 2003 [
     (charset_descriptor) = {
       http_name: "ISO-8859-9-Windows-Latin-5"
+      mibenum: 2003
       preferred_alias: ""
       aliases: "csWindows31Latin5"
     }
@@ -1243,6 +1383,7 @@ enum Charsets {
   HP_ROMAN8 = 2004 [
     (charset_descriptor) = {
       http_name: "hp-roman8"
+      mibenum: 2004
       preferred_alias: ""
       aliases: "roman8"
       aliases: "r8"
@@ -1252,6 +1393,7 @@ enum Charsets {
   ADOBE_STANDARD_ENCODING = 2005 [
     (charset_descriptor) = {
       http_name: "Adobe-Standard-Encoding"
+      mibenum: 2005
       preferred_alias: ""
       aliases: "csAdobeStandardEncoding"
     }
@@ -1259,6 +1401,7 @@ enum Charsets {
   VENTURA_US = 2006 [
     (charset_descriptor) = {
       http_name: "Ventura-US"
+      mibenum: 2006
       preferred_alias: ""
       aliases: "csVenturaUS"
     }
@@ -1266,6 +1409,7 @@ enum Charsets {
   VENTURA_INTERNATIONAL = 2007 [
     (charset_descriptor) = {
       http_name: "Ventura-International"
+      mibenum: 2007
       preferred_alias: ""
       aliases: "csVenturaInternational"
     }
@@ -1273,6 +1417,7 @@ enum Charsets {
   DEC_MCS = 2008 [
     (charset_descriptor) = {
       http_name: "DEC-MCS"
+      mibenum: 2008
       preferred_alias: ""
       aliases: "dec"
       aliases: "csDECMCS"
@@ -1281,6 +1426,7 @@ enum Charsets {
   IBM850 = 2009 [
     (charset_descriptor) = {
       http_name: "IBM850"
+      mibenum: 2009
       preferred_alias: ""
       aliases: "cp850"
       aliases: "850"
@@ -1290,6 +1436,7 @@ enum Charsets {
   IBM852 = 2010 [
     (charset_descriptor) = {
       http_name: "IBM852"
+      mibenum: 2010
       preferred_alias: ""
       aliases: "cp852"
       aliases: "852"
@@ -1299,6 +1446,7 @@ enum Charsets {
   IBM437 = 2011 [
     (charset_descriptor) = {
       http_name: "IBM437"
+      mibenum: 2011
       preferred_alias: ""
       aliases: "cp437"
       aliases: "437"
@@ -1308,6 +1456,7 @@ enum Charsets {
   PC8_DANISH_NORWEGIAN = 2012 [
     (charset_descriptor) = {
       http_name: "PC8-Danish-Norwegian"
+      mibenum: 2012
       preferred_alias: ""
       aliases: "csPC8DanishNorwegian"
     }
@@ -1315,6 +1464,7 @@ enum Charsets {
   IBM862 = 2013 [
     (charset_descriptor) = {
       http_name: "IBM862"
+      mibenum: 2013
       preferred_alias: ""
       aliases: "cp862"
       aliases: "862"
@@ -1324,6 +1474,7 @@ enum Charsets {
   PC8_TURKISH = 2014 [
     (charset_descriptor) = {
       http_name: "PC8-Turkish"
+      mibenum: 2014
       preferred_alias: ""
       aliases: "csPC8Turkish"
     }
@@ -1331,6 +1482,7 @@ enum Charsets {
   IBM_SYMBOLS = 2015 [
     (charset_descriptor) = {
       http_name: "IBM-Symbols"
+      mibenum: 2015
       preferred_alias: ""
       aliases: "csIBMSymbols"
     }
@@ -1338,6 +1490,7 @@ enum Charsets {
   IBM_THAI = 2016 [
     (charset_descriptor) = {
       http_name: "IBM-Thai"
+      mibenum: 2016
       preferred_alias: ""
       aliases: "csIBMThai"
     }
@@ -1345,6 +1498,7 @@ enum Charsets {
   HP_LEGAL = 2017 [
     (charset_descriptor) = {
       http_name: "HP-Legal"
+      mibenum: 2017
       preferred_alias: ""
       aliases: "csHPLegal"
     }
@@ -1352,6 +1506,7 @@ enum Charsets {
   HP_PI_FONT = 2018 [
     (charset_descriptor) = {
       http_name: "HP-Pi-font"
+      mibenum: 2018
       preferred_alias: ""
       aliases: "csHPPiFont"
     }
@@ -1359,6 +1514,7 @@ enum Charsets {
   HP_MATH8 = 2019 [
     (charset_descriptor) = {
       http_name: "HP-Math8"
+      mibenum: 2019
       preferred_alias: ""
       aliases: "csHPMath8"
     }
@@ -1366,6 +1522,7 @@ enum Charsets {
   ADOBE_SYMBOL_ENCODING = 2020 [
     (charset_descriptor) = {
       http_name: "Adobe-Symbol-Encoding"
+      mibenum: 2020
       preferred_alias: ""
       aliases: "csHPPSMath"
     }
@@ -1373,6 +1530,7 @@ enum Charsets {
   HP_DESKTOP = 2021 [
     (charset_descriptor) = {
       http_name: "HP-DeskTop"
+      mibenum: 2021
       preferred_alias: ""
       aliases: "csHPDesktop"
     }
@@ -1380,6 +1538,7 @@ enum Charsets {
   VENTURA_MATH = 2022 [
     (charset_descriptor) = {
       http_name: "Ventura-Math"
+      mibenum: 2022
       preferred_alias: ""
       aliases: "csVenturaMath"
     }
@@ -1387,6 +1546,7 @@ enum Charsets {
   MICROSOFT_PUBLISHING = 2023 [
     (charset_descriptor) = {
       http_name: "Microsoft-Publishing"
+      mibenum: 2023
       preferred_alias: ""
       aliases: "csMicrosoftPublishing"
     }
@@ -1394,6 +1554,7 @@ enum Charsets {
   WINDOWS_31J = 2024 [
     (charset_descriptor) = {
       http_name: "Windows-31J"
+      mibenum: 2024
       preferred_alias: ""
       aliases: "csWindows31J"
     }
@@ -1401,6 +1562,7 @@ enum Charsets {
   GB2312 = 2025 [
     (charset_descriptor) = {
       http_name: "GB2312"
+      mibenum: 2025
       preferred_alias: "GB2312"
       aliases: "csGB2312"
     }
@@ -1408,6 +1570,7 @@ enum Charsets {
   BIG5 = 2026 [
     (charset_descriptor) = {
       http_name: "Big5"
+      mibenum: 2026
       preferred_alias: "Big5"
       aliases: "csBig5"
     }
@@ -1415,6 +1578,7 @@ enum Charsets {
   MACINTOSH = 2027 [
     (charset_descriptor) = {
       http_name: "macintosh"
+      mibenum: 2027
       preferred_alias: ""
       aliases: "mac"
       aliases: "csMacintosh"
@@ -1423,6 +1587,7 @@ enum Charsets {
   IBM037 = 2028 [
     (charset_descriptor) = {
       http_name: "IBM037"
+      mibenum: 2028
       preferred_alias: ""
       aliases: "cp037"
       aliases: "ebcdic-cp-us"
@@ -1435,6 +1600,7 @@ enum Charsets {
   IBM038 = 2029 [
     (charset_descriptor) = {
       http_name: "IBM038"
+      mibenum: 2029
       preferred_alias: ""
       aliases: "EBCDIC-INT"
       aliases: "cp038"
@@ -1444,6 +1610,7 @@ enum Charsets {
   IBM273 = 2030 [
     (charset_descriptor) = {
       http_name: "IBM273"
+      mibenum: 2030
       preferred_alias: ""
       aliases: "CP273"
       aliases: "csIBM273"
@@ -1452,6 +1619,7 @@ enum Charsets {
   IBM274 = 2031 [
     (charset_descriptor) = {
       http_name: "IBM274"
+      mibenum: 2031
       preferred_alias: ""
       aliases: "EBCDIC-BE"
       aliases: "CP274"
@@ -1461,6 +1629,7 @@ enum Charsets {
   IBM275 = 2032 [
     (charset_descriptor) = {
       http_name: "IBM275"
+      mibenum: 2032
       preferred_alias: ""
       aliases: "EBCDIC-BR"
       aliases: "cp275"
@@ -1470,6 +1639,7 @@ enum Charsets {
   IBM277 = 2033 [
     (charset_descriptor) = {
       http_name: "IBM277"
+      mibenum: 2033
       preferred_alias: ""
       aliases: "EBCDIC-CP-DK"
       aliases: "EBCDIC-CP-NO"
@@ -1479,6 +1649,7 @@ enum Charsets {
   IBM278 = 2034 [
     (charset_descriptor) = {
       http_name: "IBM278"
+      mibenum: 2034
       preferred_alias: ""
       aliases: "CP278"
       aliases: "ebcdic-cp-fi"
@@ -1489,6 +1660,7 @@ enum Charsets {
   IBM280 = 2035 [
     (charset_descriptor) = {
       http_name: "IBM280"
+      mibenum: 2035
       preferred_alias: ""
       aliases: "CP280"
       aliases: "ebcdic-cp-it"
@@ -1498,6 +1670,7 @@ enum Charsets {
   IBM281 = 2036 [
     (charset_descriptor) = {
       http_name: "IBM281"
+      mibenum: 2036
       preferred_alias: ""
       aliases: "EBCDIC-JP-E"
       aliases: "cp281"
@@ -1507,6 +1680,7 @@ enum Charsets {
   IBM284 = 2037 [
     (charset_descriptor) = {
       http_name: "IBM284"
+      mibenum: 2037
       preferred_alias: ""
       aliases: "CP284"
       aliases: "ebcdic-cp-es"
@@ -1516,6 +1690,7 @@ enum Charsets {
   IBM285 = 2038 [
     (charset_descriptor) = {
       http_name: "IBM285"
+      mibenum: 2038
       preferred_alias: ""
       aliases: "CP285"
       aliases: "ebcdic-cp-gb"
@@ -1525,6 +1700,7 @@ enum Charsets {
   IBM290 = 2039 [
     (charset_descriptor) = {
       http_name: "IBM290"
+      mibenum: 2039
       preferred_alias: ""
       aliases: "cp290"
       aliases: "EBCDIC-JP-kana"
@@ -1534,6 +1710,7 @@ enum Charsets {
   IBM297 = 2040 [
     (charset_descriptor) = {
       http_name: "IBM297"
+      mibenum: 2040
       preferred_alias: ""
       aliases: "cp297"
       aliases: "ebcdic-cp-fr"
@@ -1543,6 +1720,7 @@ enum Charsets {
   IBM420 = 2041 [
     (charset_descriptor) = {
       http_name: "IBM420"
+      mibenum: 2041
       preferred_alias: ""
       aliases: "cp420"
       aliases: "ebcdic-cp-ar1"
@@ -1552,6 +1730,7 @@ enum Charsets {
   IBM423 = 2042 [
     (charset_descriptor) = {
       http_name: "IBM423"
+      mibenum: 2042
       preferred_alias: ""
       aliases: "cp423"
       aliases: "ebcdic-cp-gr"
@@ -1561,6 +1740,7 @@ enum Charsets {
   IBM424 = 2043 [
     (charset_descriptor) = {
       http_name: "IBM424"
+      mibenum: 2043
       preferred_alias: ""
       aliases: "cp424"
       aliases: "ebcdic-cp-he"
@@ -1570,6 +1750,7 @@ enum Charsets {
   IBM500 = 2044 [
     (charset_descriptor) = {
       http_name: "IBM500"
+      mibenum: 2044
       preferred_alias: ""
       aliases: "CP500"
       aliases: "ebcdic-cp-be"
@@ -1580,6 +1761,7 @@ enum Charsets {
   IBM851 = 2045 [
     (charset_descriptor) = {
       http_name: "IBM851"
+      mibenum: 2045
       preferred_alias: ""
       aliases: "cp851"
       aliases: "851"
@@ -1589,6 +1771,7 @@ enum Charsets {
   IBM855 = 2046 [
     (charset_descriptor) = {
       http_name: "IBM855"
+      mibenum: 2046
       preferred_alias: ""
       aliases: "cp855"
       aliases: "855"
@@ -1598,6 +1781,7 @@ enum Charsets {
   IBM857 = 2047 [
     (charset_descriptor) = {
       http_name: "IBM857"
+      mibenum: 2047
       preferred_alias: ""
       aliases: "cp857"
       aliases: "857"
@@ -1607,6 +1791,7 @@ enum Charsets {
   IBM860 = 2048 [
     (charset_descriptor) = {
       http_name: "IBM860"
+      mibenum: 2048
       preferred_alias: ""
       aliases: "cp860"
       aliases: "860"
@@ -1616,6 +1801,7 @@ enum Charsets {
   IBM861 = 2049 [
     (charset_descriptor) = {
       http_name: "IBM861"
+      mibenum: 2049
       preferred_alias: ""
       aliases: "cp861"
       aliases: "861"
@@ -1626,6 +1812,7 @@ enum Charsets {
   IBM863 = 2050 [
     (charset_descriptor) = {
       http_name: "IBM863"
+      mibenum: 2050
       preferred_alias: ""
       aliases: "cp863"
       aliases: "863"
@@ -1635,6 +1822,7 @@ enum Charsets {
   IBM864 = 2051 [
     (charset_descriptor) = {
       http_name: "IBM864"
+      mibenum: 2051
       preferred_alias: ""
       aliases: "cp864"
       aliases: "csIBM864"
@@ -1643,6 +1831,7 @@ enum Charsets {
   IBM865 = 2052 [
     (charset_descriptor) = {
       http_name: "IBM865"
+      mibenum: 2052
       preferred_alias: ""
       aliases: "cp865"
       aliases: "865"
@@ -1652,6 +1841,7 @@ enum Charsets {
   IBM868 = 2053 [
     (charset_descriptor) = {
       http_name: "IBM868"
+      mibenum: 2053
       preferred_alias: ""
       aliases: "CP868"
       aliases: "cp-ar"
@@ -1661,6 +1851,7 @@ enum Charsets {
   IBM869 = 2054 [
     (charset_descriptor) = {
       http_name: "IBM869"
+      mibenum: 2054
       preferred_alias: ""
       aliases: "cp869"
       aliases: "869"
@@ -1671,6 +1862,7 @@ enum Charsets {
   IBM870 = 2055 [
     (charset_descriptor) = {
       http_name: "IBM870"
+      mibenum: 2055
       preferred_alias: ""
       aliases: "CP870"
       aliases: "ebcdic-cp-roece"
@@ -1681,6 +1873,7 @@ enum Charsets {
   IBM871 = 2056 [
     (charset_descriptor) = {
       http_name: "IBM871"
+      mibenum: 2056
       preferred_alias: ""
       aliases: "CP871"
       aliases: "ebcdic-cp-is"
@@ -1690,6 +1883,7 @@ enum Charsets {
   IBM880 = 2057 [
     (charset_descriptor) = {
       http_name: "IBM880"
+      mibenum: 2057
       preferred_alias: ""
       aliases: "cp880"
       aliases: "EBCDIC-Cyrillic"
@@ -1699,6 +1893,7 @@ enum Charsets {
   IBM891 = 2058 [
     (charset_descriptor) = {
       http_name: "IBM891"
+      mibenum: 2058
       preferred_alias: ""
       aliases: "cp891"
       aliases: "csIBM891"
@@ -1707,6 +1902,7 @@ enum Charsets {
   IBM903 = 2059 [
     (charset_descriptor) = {
       http_name: "IBM903"
+      mibenum: 2059
       preferred_alias: ""
       aliases: "cp903"
       aliases: "csIBM903"
@@ -1715,6 +1911,7 @@ enum Charsets {
   IBM904 = 2060 [
     (charset_descriptor) = {
       http_name: "IBM904"
+      mibenum: 2060
       preferred_alias: ""
       aliases: "cp904"
       aliases: "904"
@@ -1724,6 +1921,7 @@ enum Charsets {
   IBM905 = 2061 [
     (charset_descriptor) = {
       http_name: "IBM905"
+      mibenum: 2061
       preferred_alias: ""
       aliases: "CP905"
       aliases: "ebcdic-cp-tr"
@@ -1733,6 +1931,7 @@ enum Charsets {
   IBM918 = 2062 [
     (charset_descriptor) = {
       http_name: "IBM918"
+      mibenum: 2062
       preferred_alias: ""
       aliases: "CP918"
       aliases: "ebcdic-cp-ar2"
@@ -1742,6 +1941,7 @@ enum Charsets {
   IBM1026 = 2063 [
     (charset_descriptor) = {
       http_name: "IBM1026"
+      mibenum: 2063
       preferred_alias: ""
       aliases: "CP1026"
       aliases: "csIBM1026"
@@ -1750,6 +1950,7 @@ enum Charsets {
   EBCDIC_AT_DE = 2064 [
     (charset_descriptor) = {
       http_name: "EBCDIC-AT-DE"
+      mibenum: 2064
       preferred_alias: ""
       aliases: "csIBMEBCDICATDE"
     }
@@ -1757,6 +1958,7 @@ enum Charsets {
   EBCDIC_AT_DE_A = 2065 [
     (charset_descriptor) = {
       http_name: "EBCDIC-AT-DE-A"
+      mibenum: 2065
       preferred_alias: ""
       aliases: "csEBCDICATDEA"
     }
@@ -1764,6 +1966,7 @@ enum Charsets {
   EBCDIC_CA_FR = 2066 [
     (charset_descriptor) = {
       http_name: "EBCDIC-CA-FR"
+      mibenum: 2066
       preferred_alias: ""
       aliases: "csEBCDICCAFR"
     }
@@ -1771,6 +1974,7 @@ enum Charsets {
   EBCDIC_DK_NO = 2067 [
     (charset_descriptor) = {
       http_name: "EBCDIC-DK-NO"
+      mibenum: 2067
       preferred_alias: ""
       aliases: "csEBCDICDKNO"
     }
@@ -1778,6 +1982,7 @@ enum Charsets {
   EBCDIC_DK_NO_A = 2068 [
     (charset_descriptor) = {
       http_name: "EBCDIC-DK-NO-A"
+      mibenum: 2068
       preferred_alias: ""
       aliases: "csEBCDICDKNOA"
     }
@@ -1785,6 +1990,7 @@ enum Charsets {
   EBCDIC_FI_SE = 2069 [
     (charset_descriptor) = {
       http_name: "EBCDIC-FI-SE"
+      mibenum: 2069
       preferred_alias: ""
       aliases: "csEBCDICFISE"
     }
@@ -1792,6 +1998,7 @@ enum Charsets {
   EBCDIC_FI_SE_A = 2070 [
     (charset_descriptor) = {
       http_name: "EBCDIC-FI-SE-A"
+      mibenum: 2070
       preferred_alias: ""
       aliases: "csEBCDICFISEA"
     }
@@ -1799,6 +2006,7 @@ enum Charsets {
   EBCDIC_FR = 2071 [
     (charset_descriptor) = {
       http_name: "EBCDIC-FR"
+      mibenum: 2071
       preferred_alias: ""
       aliases: "csEBCDICFR"
     }
@@ -1806,6 +2014,7 @@ enum Charsets {
   EBCDIC_IT = 2072 [
     (charset_descriptor) = {
       http_name: "EBCDIC-IT"
+      mibenum: 2072
       preferred_alias: ""
       aliases: "csEBCDICIT"
     }
@@ -1813,6 +2022,7 @@ enum Charsets {
   EBCDIC_PT = 2073 [
     (charset_descriptor) = {
       http_name: "EBCDIC-PT"
+      mibenum: 2073
       preferred_alias: ""
       aliases: "csEBCDICPT"
     }
@@ -1820,6 +2030,7 @@ enum Charsets {
   EBCDIC_ES = 2074 [
     (charset_descriptor) = {
       http_name: "EBCDIC-ES"
+      mibenum: 2074
       preferred_alias: ""
       aliases: "csEBCDICES"
     }
@@ -1827,6 +2038,7 @@ enum Charsets {
   EBCDIC_ES_A = 2075 [
     (charset_descriptor) = {
       http_name: "EBCDIC-ES-A"
+      mibenum: 2075
       preferred_alias: ""
       aliases: "csEBCDICESA"
     }
@@ -1834,6 +2046,7 @@ enum Charsets {
   EBCDIC_ES_S = 2076 [
     (charset_descriptor) = {
       http_name: "EBCDIC-ES-S"
+      mibenum: 2076
       preferred_alias: ""
       aliases: "csEBCDICESS"
     }
@@ -1841,6 +2054,7 @@ enum Charsets {
   EBCDIC_UK = 2077 [
     (charset_descriptor) = {
       http_name: "EBCDIC-UK"
+      mibenum: 2077
       preferred_alias: ""
       aliases: "csEBCDICUK"
     }
@@ -1848,6 +2062,7 @@ enum Charsets {
   EBCDIC_US = 2078 [
     (charset_descriptor) = {
       http_name: "EBCDIC-US"
+      mibenum: 2078
       preferred_alias: ""
       aliases: "csEBCDICUS"
     }
@@ -1855,6 +2070,7 @@ enum Charsets {
   UNKNOWN_8BIT = 2079 [
     (charset_descriptor) = {
       http_name: "UNKNOWN-8BIT"
+      mibenum: 2079
       preferred_alias: ""
       aliases: "csUnknown8BiT"
     }
@@ -1862,6 +2078,7 @@ enum Charsets {
   MNEMONIC = 2080 [
     (charset_descriptor) = {
       http_name: "MNEMONIC"
+      mibenum: 2080
       preferred_alias: ""
       aliases: "csMnemonic"
     }
@@ -1869,6 +2086,7 @@ enum Charsets {
   MNEM = 2081 [
     (charset_descriptor) = {
       http_name: "MNEM"
+      mibenum: 2081
       preferred_alias: ""
       aliases: "csMnem"
     }
@@ -1876,6 +2094,7 @@ enum Charsets {
   VISCII = 2082 [
     (charset_descriptor) = {
       http_name: "VISCII"
+      mibenum: 2082
       preferred_alias: ""
       aliases: "csVISCII"
     }
@@ -1883,6 +2102,7 @@ enum Charsets {
   VIQR = 2083 [
     (charset_descriptor) = {
       http_name: "VIQR"
+      mibenum: 2083
       preferred_alias: ""
       aliases: "csVIQR"
     }
@@ -1890,6 +2110,7 @@ enum Charsets {
   KOI8_R = 2084 [
     (charset_descriptor) = {
       http_name: "KOI8-R"
+      mibenum: 2084
       preferred_alias: "KOI8-R"
       aliases: "csKOI8R"
     }
@@ -1897,12 +2118,14 @@ enum Charsets {
   HZ_GB_2312 = 2085 [
     (charset_descriptor) = {
       http_name: "HZ-GB-2312"
+      mibenum: 2085
       preferred_alias: ""
     }
   ];
   IBM866 = 2086 [
     (charset_descriptor) = {
       http_name: "IBM866"
+      mibenum: 2086
       preferred_alias: ""
       aliases: "cp866"
       aliases: "866"
@@ -1912,6 +2135,7 @@ enum Charsets {
   IBM775 = 2087 [
     (charset_descriptor) = {
       http_name: "IBM775"
+      mibenum: 2087
       preferred_alias: ""
       aliases: "cp775"
       aliases: "csPC775Baltic"
@@ -1920,6 +2144,7 @@ enum Charsets {
   KOI8_U = 2088 [
     (charset_descriptor) = {
       http_name: "KOI8-U"
+      mibenum: 2088
       preferred_alias: ""
       aliases: "csKOI8U"
     }
@@ -1927,6 +2152,7 @@ enum Charsets {
   IBM00858 = 2089 [
     (charset_descriptor) = {
       http_name: "IBM00858"
+      mibenum: 2089
       preferred_alias: ""
       aliases: "CCSID00858"
       aliases: "CP00858"
@@ -1937,6 +2163,7 @@ enum Charsets {
   IBM00924 = 2090 [
     (charset_descriptor) = {
       http_name: "IBM00924"
+      mibenum: 2090
       preferred_alias: ""
       aliases: "CCSID00924"
       aliases: "CP00924"
@@ -1947,6 +2174,7 @@ enum Charsets {
   IBM01140 = 2091 [
     (charset_descriptor) = {
       http_name: "IBM01140"
+      mibenum: 2091
       preferred_alias: ""
       aliases: "CCSID01140"
       aliases: "CP01140"
@@ -1957,6 +2185,7 @@ enum Charsets {
   IBM01141 = 2092 [
     (charset_descriptor) = {
       http_name: "IBM01141"
+      mibenum: 2092
       preferred_alias: ""
       aliases: "CCSID01141"
       aliases: "CP01141"
@@ -1967,6 +2196,7 @@ enum Charsets {
   IBM01142 = 2093 [
     (charset_descriptor) = {
       http_name: "IBM01142"
+      mibenum: 2093
       preferred_alias: ""
       aliases: "CCSID01142"
       aliases: "CP01142"
@@ -1978,6 +2208,7 @@ enum Charsets {
   IBM01143 = 2094 [
     (charset_descriptor) = {
       http_name: "IBM01143"
+      mibenum: 2094
       preferred_alias: ""
       aliases: "CCSID01143"
       aliases: "CP01143"
@@ -1989,6 +2220,7 @@ enum Charsets {
   IBM01144 = 2095 [
     (charset_descriptor) = {
       http_name: "IBM01144"
+      mibenum: 2095
       preferred_alias: ""
       aliases: "CCSID01144"
       aliases: "CP01144"
@@ -1999,6 +2231,7 @@ enum Charsets {
   IBM01145 = 2096 [
     (charset_descriptor) = {
       http_name: "IBM01145"
+      mibenum: 2096
       preferred_alias: ""
       aliases: "CCSID01145"
       aliases: "CP01145"
@@ -2009,6 +2242,7 @@ enum Charsets {
   IBM01146 = 2097 [
     (charset_descriptor) = {
       http_name: "IBM01146"
+      mibenum: 2097
       preferred_alias: ""
       aliases: "CCSID01146"
       aliases: "CP01146"
@@ -2019,6 +2253,7 @@ enum Charsets {
   IBM01147 = 2098 [
     (charset_descriptor) = {
       http_name: "IBM01147"
+      mibenum: 2098
       preferred_alias: ""
       aliases: "CCSID01147"
       aliases: "CP01147"
@@ -2029,6 +2264,7 @@ enum Charsets {
   IBM01148 = 2099 [
     (charset_descriptor) = {
       http_name: "IBM01148"
+      mibenum: 2099
       preferred_alias: ""
       aliases: "CCSID01148"
       aliases: "CP01148"
@@ -2039,6 +2275,7 @@ enum Charsets {
   IBM01149 = 2100 [
     (charset_descriptor) = {
       http_name: "IBM01149"
+      mibenum: 2100
       preferred_alias: ""
       aliases: "CCSID01149"
       aliases: "CP01149"
@@ -2049,6 +2286,7 @@ enum Charsets {
   BIG5_HKSCS = 2101 [
     (charset_descriptor) = {
       http_name: "Big5-HKSCS"
+      mibenum: 2101
       preferred_alias: ""
       aliases: "csBig5HKSCS"
     }
@@ -2056,6 +2294,7 @@ enum Charsets {
   IBM1047 = 2102 [
     (charset_descriptor) = {
       http_name: "IBM1047"
+      mibenum: 2102
       preferred_alias: ""
       aliases: "IBM-1047"
       aliases: "csIBM1047"
@@ -2064,6 +2303,7 @@ enum Charsets {
   PTCP154 = 2103 [
     (charset_descriptor) = {
       http_name: "PTCP154"
+      mibenum: 2103
       preferred_alias: ""
       aliases: "csPTCP154"
       aliases: "PT154"
@@ -2074,6 +2314,7 @@ enum Charsets {
   AMIGA_1251 = 2104 [
     (charset_descriptor) = {
       http_name: "Amiga-1251"
+      mibenum: 2104
       preferred_alias: ""
       aliases: "Ami1251"
       aliases: "Amiga1251"
@@ -2084,6 +2325,7 @@ enum Charsets {
   KOI7_SWITCHED = 2105 [
     (charset_descriptor) = {
       http_name: "KOI7-switched"
+      mibenum: 2105
       preferred_alias: ""
       aliases: "csKOI7switched"
     }
@@ -2091,6 +2333,7 @@ enum Charsets {
   BRF = 2106 [
     (charset_descriptor) = {
       http_name: "BRF"
+      mibenum: 2106
       preferred_alias: ""
       aliases: "csBRF"
     }
@@ -2098,6 +2341,7 @@ enum Charsets {
   TSCII = 2107 [
     (charset_descriptor) = {
       http_name: "TSCII"
+      mibenum: 2107
       preferred_alias: ""
       aliases: "csTSCII"
     }
@@ -2105,6 +2349,7 @@ enum Charsets {
   CP51932 = 2108 [
     (charset_descriptor) = {
       http_name: "CP51932"
+      mibenum: 2108
       preferred_alias: ""
       aliases: "csCP51932"
     }
@@ -2112,6 +2357,7 @@ enum Charsets {
   WINDOWS_874 = 2109 [
     (charset_descriptor) = {
       http_name: "windows-874"
+      mibenum: 2109
       preferred_alias: ""
       aliases: "cswindows874"
     }
@@ -2119,6 +2365,7 @@ enum Charsets {
   WINDOWS_1250 = 2250 [
     (charset_descriptor) = {
       http_name: "windows-1250"
+      mibenum: 2250
       preferred_alias: ""
       aliases: "cswindows1250"
     }
@@ -2126,6 +2373,7 @@ enum Charsets {
   WINDOWS_1251 = 2251 [
     (charset_descriptor) = {
       http_name: "windows-1251"
+      mibenum: 2251
       preferred_alias: ""
       aliases: "cswindows1251"
     }
@@ -2133,6 +2381,7 @@ enum Charsets {
   WINDOWS_1252 = 2252 [
     (charset_descriptor) = {
       http_name: "windows-1252"
+      mibenum: 2252
       preferred_alias: ""
       aliases: "cswindows1252"
     }
@@ -2140,6 +2389,7 @@ enum Charsets {
   WINDOWS_1253 = 2253 [
     (charset_descriptor) = {
       http_name: "windows-1253"
+      mibenum: 2253
       preferred_alias: ""
       aliases: "cswindows1253"
     }
@@ -2147,6 +2397,7 @@ enum Charsets {
   WINDOWS_1254 = 2254 [
     (charset_descriptor) = {
       http_name: "windows-1254"
+      mibenum: 2254
       preferred_alias: ""
       aliases: "cswindows1254"
     }
@@ -2154,6 +2405,7 @@ enum Charsets {
   WINDOWS_1255 = 2255 [
     (charset_descriptor) = {
       http_name: "windows-1255"
+      mibenum: 2255
       preferred_alias: ""
       aliases: "cswindows1255"
     }
@@ -2161,6 +2413,7 @@ enum Charsets {
   WINDOWS_1256 = 2256 [
     (charset_descriptor) = {
       http_name: "windows-1256"
+      mibenum: 2256
       preferred_alias: ""
       aliases: "cswindows1256"
     }
@@ -2168,6 +2421,7 @@ enum Charsets {
   WINDOWS_1257 = 2257 [
     (charset_descriptor) = {
       http_name: "windows-1257"
+      mibenum: 2257
       preferred_alias: ""
       aliases: "cswindows1257"
     }
@@ -2175,6 +2429,7 @@ enum Charsets {
   WINDOWS_1258 = 2258 [
     (charset_descriptor) = {
       http_name: "windows-1258"
+      mibenum: 2258
       preferred_alias: ""
       aliases: "cswindows1258"
     }
@@ -2182,6 +2437,7 @@ enum Charsets {
   TIS_620 = 2259 [
     (charset_descriptor) = {
       http_name: "TIS-620"
+      mibenum: 2259
       preferred_alias: ""
       aliases: "csTIS620"
       aliases: "ISO-8859-11"
@@ -2190,6 +2446,7 @@ enum Charsets {
   CP50220 = 2260 [
     (charset_descriptor) = {
       http_name: "CP50220"
+      mibenum: 2260
       preferred_alias: ""
       aliases: "csCP50220"
     }
