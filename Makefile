@@ -1,5 +1,5 @@
 GO=go
-PROTOS=$(wildcard *.proto)
+PROTOS=$(wildcard proto/*.proto)
 
 UNAME_S := $(uname -s)
 CHROME :=
@@ -20,6 +20,9 @@ protos: $(PROTOS)
 protolint: $(PROTOS)
 	prototool lint
 
+protoformat: $(PROTOS)
+	prototool format -w
+
 # this target will fail if IANA list includes MIME types not in mimetypes.csv.
 # run `make mimecheckforupdates` to print the required updates
 mime.proto: mimetypes.csv cmd/mimetool/mimetool.go
@@ -33,7 +36,7 @@ test: all
 bench: all
 	$(GO) test -benchmem  -run=^$ github.com/vsekhar/protoweb -bench .
 
-dist: all test protolint protocheck
+dist: all test protolint protocheck protoformat
 
 # manually trigger check for updates to mime types from IANA list
 mimecheckforupdates:

@@ -41,13 +41,13 @@ generate:
       output: .
 
     - name: descriptor_set
-      output: .
+      output: protoweb.bin
       file_suffix: bin
       include_imports: false
       include_source_info: false
 
     - name: descriptor_set
-      output: .
+      output: protoweb_debug.bin
       file_suffix: debug.bin
       include_imports: true
       include_source_info: true

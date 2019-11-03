@@ -3,29 +3,28 @@ syntax = "proto3";
 package web;
 
 import "google/protobuf/descriptor.proto";
-  
+
 message HeaderDescriptor {
-    // name of header commonly appearing in HTTP spec, RFCs,
-    // and documentation. E.g. "Access-Control-Allow-Credentials".
-    string http_name = 1;
+  // name of header commonly appearing in HTTP spec, RFCs,
+  // and documentation. E.g. "Access-Control-Allow-Credentials".
+  string http_name = 1;
 }
 
 extend google.protobuf.FieldOptions {
-    HeaderDescriptor header_descriptor = 7982732;
+  HeaderDescriptor header_descriptor = 7982732;
 }
 
 message CacheControlRequest {
-    enum Directives {
-      UNUSED_DIRECTIVE = 0;
-      MAX_AGE = 1;
-      MAX_STALE = 2;
-      MIN_FRESH = 3;
-      NO_CACHE = 4;
-      NO_STORE = 5;
-      NO_TRANSFORM = 6;
-      ONLY_OF_CACHED = 7;
-    }
-    Directives directive = 1;
-    uint64 seconds = 2;
+  enum Directives {
+    UNUSED_DIRECTIVE = 0;
+    MAX_AGE = 1;
+    MAX_STALE = 2;
+    MIN_FRESH = 3;
+    NO_CACHE = 4;
+    NO_STORE = 5;
+    NO_TRANSFORM = 6;
+    ONLY_OF_CACHED = 7;
   }
-
+  Directives directive = 1;
+  uint64 seconds = 2;
+}

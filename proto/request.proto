@@ -3,42 +3,40 @@ syntax = "proto3";
 package web;
 
 import "google/protobuf/timestamp.proto";
-
-import "mime.proto";
 import "headers.proto";
+import "mime.proto";
 import "util.proto";
 
 enum Method {
-    UNUSED_METHOD = 0;
-    GET = 1;
-    HEAD = 2;
-    POST = 3;
-    PUT = 4;
-    DELETE = 5;
-    CONNECT = 6;
-    OPTIONS = 7;
-    TRACE = 8;
-}    
+  UNUSED_METHOD = 0;
+  GET = 1;
+  HEAD = 2;
+  POST = 3;
+  PUT = 4;
+  DELETE = 5;
+  CONNECT = 6;
+  OPTIONS = 7;
+  TRACE = 8;
+}
 
 message RequestHeaders {
-    message AcceptHeaders {
-      message ContentType {
+  message AcceptHeaders {
+    message ContentType {
       oneof content_type {
-          MIMEType type = 1;
-          Wildcard all_types = 2;
+        MIMEType type = 1;
+        Wildcard all_types = 2;
       }
       float q = 3;
-      }
-      repeated ContentType content_types = 1 [(header_descriptor).http_name="Accept"];
-  
-      // Accept-Charset mostly ignored by browsers:
-      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset
-  
-      message Encoding {
+    }
+    repeated ContentType content_types = 1 [(header_descriptor).http_name = "Accept"];
+    // Accept-Charset mostly ignored by browsers:
+    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset
+
+    message Encoding {
       Encoding encoding = 1;
       float q = 2;
-      }
-      repeated Encoding encoding = 2 [(header_descriptor).http_name="Accept-Encoding"];;
+    }
+    repeated Encoding encoding = 2 [(header_descriptor).http_name = "Accept-Encoding"];
   }
   string accept = 1;
   string accept_charset = 2;
@@ -46,10 +44,8 @@ message RequestHeaders {
   string accept_encoding = 4;
   string accept_language = 5;
   Method access_control_request_method = 6;
-  
   // TODO: headers here are just names, no values
   RequestHeaders access_control_request_headers = 7;
-  
   string authorization = 8;
   CacheControlRequest cache_control = 32;
   string expect = 9;
@@ -67,47 +63,46 @@ message RequestHeaders {
   string pragma = 21;
   string proxy_authorization = 22;
   message ByteRange {
-      uint64 start = 1;
-      uint64 end = 2;
+    uint64 start = 1;
+    uint64 end = 2;
   }
   oneof Range {
-      ByteRange bytes = 23;
+    ByteRange bytes = 23;
   }
   string referer = 24;
   enum TransferEncodingsValue {
-      UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
-      TRAILERS = 1; // only trailers is supported in HTTP/2
+    UNUSED_TRANSFER_ENCODINGS_VALUE = 0;
+    TRAILERS = 1; // only trailers is supported in HTTP/2
   }
   repeated TransferEncodingsValue te = 25;
   string user_agent = 26;
   repeated string via = 27;
   string warning = 28;
   // common non-standard fields
-  
+
   enum XRequestedWithValue {
-      UNUSED_X_REQUESTED_WITH_VALUE = 0;
-      XMLHTTPREQUEST = 1;
+    UNUSED_X_REQUESTED_WITH_VALUE = 0;
+    XMLHTTPREQUEST = 1;
   }
   XRequestedWithValue x_requested_with = 29;
   enum DNTValue {
-      UNUSED_DNT_VALUE = 0;
-      DISABLED = 1;
-      ENABLED = 2;
+    UNUSED_DNT_VALUE = 0;
+    DISABLED = 1;
+    ENABLED = 2;
   }
   DNTValue dnt = 30;
   repeated KeyValue other = 31;
   // next field number = 33
-  
-  }  
+
+}
 
 message Request {
-    Method method = 1;
-    // TODO: separate absolute vs. relative?
-    oneof URI {
-      Wildcard uri_wildcard = 2; // server-wide "*" request, i.e. OPTIONS
-      string uri_string = 3;
-    }
-    repeated KeyValue query = 4;
-    RequestHeaders header = 5;
+  Method method = 1;
+  // TODO: separate absolute vs. relative?
+  oneof URI {
+    Wildcard uri_wildcard = 2; // server-wide "*" request, i.e. OPTIONS
+    string uri_string = 3;
   }
-  
+  repeated KeyValue query = 4;
+  RequestHeaders header = 5;
+}

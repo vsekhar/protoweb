@@ -5,14 +5,14 @@ package web;
 // StringList is used when a list of strings is needed inside
 // a oneof, since oneof's don't support repeated fields.
 message StringList {
-    repeated string strings = 1;
+  repeated string strings = 1;
 }
 
 message KeyValue {
-    string key = 1;
-    string value = 2;
-}  
-  
+  string key = 1;
+  string value = 2;
+}
+
 // Wildcard is a directive for use inside a oneof.
 //
 // NB: The oneof handles the unspecified case (when populated by
@@ -24,7 +24,7 @@ message KeyValue {
 // one of the other values) so we don't need a *_UNSPECIFIED=0
 // value.
 enum Wildcard {
-    STAR = 0;
+  STAR = 0;
 }
 
 // Already is a directive for use inside a oneof.
