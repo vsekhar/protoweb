@@ -2,8 +2,8 @@ GO=go
 PROTODIR=proto/
 PROTOS=$(wildcard $(PROTODIR)*.proto)
 
-UNAME_S := $(uname -s)
-CHROME :=
+UNAME_S=$(shell uname -s)
+CHROME=
 ifeq ($(UNAME_S),Darwin)
 	CHROME += /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 endif
@@ -54,6 +54,5 @@ protocheck:
 	prototool break check
 
 captureheaders: testdata/capture/capture.js
-	echo $(UNAME_S) && \
 	cd testdata && \
 	node capture/capture.js --chromepath=$(CHROME)
