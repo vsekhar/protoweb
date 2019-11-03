@@ -1,5 +1,6 @@
 GO=go
-PROTOS=$(wildcard proto/*.proto)
+PROTOFDIR=proto/
+PROTOS=$(wildcard $(PROTODIR)*.proto)
 
 UNAME_S := $(uname -s)
 CHROME :=

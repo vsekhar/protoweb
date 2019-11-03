@@ -3,7 +3,7 @@ syntax = "proto3";
 package web;
 
 enum Encodings {
-  ENCODINGS_UNSPECIFIED = 0; // equivalent to '*'
+  ENCODINGS_UNSPECIFIED = 0;
   IDENTITY = 1;
   GZIP = 2;
   COMPRESS = 3;

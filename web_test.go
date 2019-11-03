@@ -8,8 +8,10 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/pem"
+	fmt "fmt"
 	"math/big"
 	"net/http"
+	"strings"
 	"testing"
 
 	proto "github.com/golang/protobuf/proto"
@@ -36,7 +38,8 @@ func TestReq2Proto(t *testing.T) {
 	}
 
 	header := map[string][]string{
-		"If-None-Match": {`W/"67ab43"`, "54ed21", "7892dd"},
+		"If-None-Match":   {`W/"67ab43"`, "54ed21", "7892dd"},
+		"Accept-Encoding": {"deflate", "gzip;q=1.0", "*;q=0.5"},
 	}
 	for n, vs := range header {
 		for _, v := range vs {
@@ -52,6 +55,23 @@ func TestReq2Proto(t *testing.T) {
 	}
 	if !equalStringSlices(reqproto.Header.IfNoneMatch, header["If-None-Match"]) {
 		t.Errorf("bad header If-None-Match: %v", reqproto.Header.IfNoneMatch)
+	}
+	for i, e := range reqproto.Header.Accept.Encoding {
+		cstr := ""
+		if e.GetWildcard() {
+			cstr += "*"
+		} else {
+			k := e.GetValue()
+			cstr += web.Encodings_name[int32(k)]
+		}
+		if q := e.GetQ(); q > 0 {
+			cstr += fmt.Sprintf(";q=%.1f", q)
+		}
+		expected := strings.ToLower(header["Accept-Encoding"][i])
+		got := strings.ToLower(cstr)
+		if got != expected {
+			t.Errorf("bad encoding (expected '%s', got '%v')", expected, got)
+		}
 	}
 }
 

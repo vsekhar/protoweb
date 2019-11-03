@@ -12,8 +12,8 @@ message Response {
   StatusCodes status = 1;
   message Headers {
     oneof AccessControlAllowOrigin {
-      Wildcard access_control_allow_origin_all = 1;
-      StringList access_control_allow_origin_origins = 2;
+      StringList access_control_allow_origin_origins = 1;
+      bool access_control_allow_origin_all = 2;
     }
     enum AccessControlAllowCredentialsValue {
       UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
@@ -33,20 +33,20 @@ message Response {
       bool persist = 3;
     }
     oneof Alt_Svc {
-      Clear alt_svc_clear = 5;
-      AltSvcMessage service = 6;
+      AltSvcMessage service = 5;
+      bool alt_svc_clear = 6;
     }
     CacheControlResponse cache_control = 18;
     MIMEType content_type = 7;
     google.protobuf.Timestamp date = 8;
     oneof Expires {
-      Already expires_already = 9;
-      google.protobuf.Timestamp expires_date = 10;
+      google.protobuf.Timestamp expires_date = 9;
+      bool expires_already = 10;
     }
     string server = 11;
     oneof Vary {
-      Wildcard vary_all = 12;
-      StringList vary_headers = 13;
+      StringList vary_headers = 12;
+      bool vary_all = 13;
     }
     enum XFrameOptionsValue {
       UNUSED_X_FRAME_OPTIONS_VALUE = 0;

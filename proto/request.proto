@@ -25,7 +25,7 @@ message RequestHeaders {
     message ContentType {
       oneof content_type {
         MIMEType type = 1;
-        Wildcard all_types = 2;
+        bool all_types = 2;
       }
       float q = 3;
     }
@@ -34,8 +34,11 @@ message RequestHeaders {
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Charset
 
     message Encoding {
-      Encodings encoding = 1;
-      float q = 2;
+      oneof encoding {
+        Encodings value = 1;
+        bool wildcard = 2;
+      }
+      float q = 3;
     }
     repeated Encoding encoding = 2 [(header_descriptor).http_name = "Accept-Encoding"];
     google.protobuf.Timestamp datetime = 3 [(header_descriptor).http_name = "Accept-Datetime"];
@@ -99,8 +102,8 @@ message Request {
   Method method = 1;
   // TODO: separate absolute vs. relative?
   oneof URI {
-    Wildcard uri_wildcard = 2; // server-wide "*" request, i.e. OPTIONS
-    string uri_string = 3;
+    string uri_string = 2;
+    bool wildcard = 3; // server-wide "*" request, i.e. OPTIONS
   }
   repeated KeyValue query = 4;
   RequestHeaders header = 5;

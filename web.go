@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"github.com/vsekhar/protoweb/internal/naming"
 )
 
 // Req2Proto converts an http.Request into a Request protobuffer or
@@ -21,7 +22,7 @@ func Req2Proto(req *http.Request) (*Request, error) {
 	}
 	ret.Method = Method(method)
 	if req.URL.String() == "*" {
-		ret.URI = &Request_UriWildcard{}
+		ret.URI = &Request_Wildcard{Wildcard: true}
 	} else {
 		ret.URI = &Request_UriString{UriString: req.URL.String()}
 	}
@@ -43,12 +44,36 @@ func Req2Proto(req *http.Request) (*Request, error) {
 			}
 			ret.Header.IfNoneMatch = append(ret.Header.IfNoneMatch, values...)
 		case "accept-encoding":
+			if ret.Header.Accept == nil {
+				ret.Header.Accept = new(RequestHeaders_AcceptHeaders)
+			}
 			for _, val := range values {
 				log.Printf("accept-encoding: %s", val)
-				// split, etc.
-				// naming.ProtoEnumName(name)
-				// enc := &Encoding{ ... }
-				// ret.Header.Accept.Encoding = append (...)
+				parts := strings.Split(val, ";")
+				if len(parts) > 2 {
+					log.Fatalf("bad accept-encoding value: %s", val)
+				}
+				enc := &RequestHeaders_AcceptHeaders_Encoding{}
+				if parts[0] == "*" {
+					enc.Encoding = &RequestHeaders_AcceptHeaders_Encoding_Wildcard{Wildcard: true}
+				} else {
+					parts[0] = naming.ProtoEnumName(parts[0])
+					if encenum, ok := Encodings_value[parts[0]]; ok {
+						enc.Encoding = &RequestHeaders_AcceptHeaders_Encoding_Value{
+							Value: Encodings(encenum),
+						}
+					} else {
+						log.Fatalf("unknown accept-encoding value: %s", val)
+					}
+				}
+				if len(parts) > 1 {
+					parts[1] = strings.ToLower(parts[1])
+					n, err := fmt.Sscanf(parts[1], "q=%f", &enc.Q)
+					if err != nil || n != 1 {
+						log.Fatalf("bad accept-encoding value: %s", val)
+					}
+				}
+				ret.Header.Accept.Encoding = append(ret.Header.Accept.Encoding, enc)
 			}
 		default:
 			for _, v := range values {
