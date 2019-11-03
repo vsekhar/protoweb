@@ -13,34 +13,6 @@ message KeyValue {
   string value = 2;
 }
 
-// Wildcard is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
-// Wildcard is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
-enum Wildcard {
-  STAR = 0;
-}
-
-// Already is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
-enum Already {
-  ALREADY = 0;
-}
-
-// Clear is a directive for use inside a oneof.
-//
-// NB: The oneof handles the unspecified case (when populated by
-// one of the other values) so we don't need a *_UNSPECIFIED=0
-// value.
-enum Clear {
-  CLEAR = 0;
-}
+enum Wildcard { STAR = 0; }
+enum Already { ALREADY = 0; }
+enum Clear { CLEAR = 0; }
