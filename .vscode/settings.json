@@ -1,0 +1,9 @@
+{
+    "protoc": {
+        // "path": "/path/to/protoc",
+        "options": [
+            "--proto_path=${workspaceRoot}/proto",
+            "--go_out=."
+        ]
+    }
+}
