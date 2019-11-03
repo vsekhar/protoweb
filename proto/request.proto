@@ -38,6 +38,7 @@ message RequestHeaders {
     }
     repeated Encoding encoding = 2 [(header_descriptor).http_name = "Accept-Encoding"];
   }
+  // message AcceptHeaders
   string accept = 1;
   string accept_charset = 2;
   string accept_datetime = 3;

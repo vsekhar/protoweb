@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/descriptor.proto";
+
+message CharsetDescriptor {
+  string http_name = 1;
+  uint64 mibenum = 2;
+  string preferred_mime_name = 3;
+  string source = 4;
+  string preferred_alias = 5;
+  repeated string aliases = 6;
+}
+
+extend google.protobuf.EnumValueOptions {
+  CharsetDescriptor charset_descriptor = 7982317;
+}
+
+// http://www.iana.org/assignments/character-sets/character-sets.xhtml
+enum Charsets {
+  CHARSET_UNSPECIFIED = 0 [
+    (charset_descriptor) = {
+      http_name: ""
+    }
+  ];
+  UTF_8 = 1 [
+    (charset_descriptor) = {
+      http_name: ""
+      mibenum: 106
+    }
+  ];
+  reserved 2;
+  US_ASCII = 3;
+  UTF_8_ORIG = 106;
+}

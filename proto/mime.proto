@@ -8,6 +8,7 @@ syntax = "proto3";
 
 package web;
 
+import "charset.proto";
 import "google/protobuf/descriptor.proto";
 
 message MIMETypeDescriptor {
@@ -1878,4 +1879,5 @@ message MIMEType {
     MIMETypes type = 1;
     string custom = 2;
   }
+  Charsets charset = 3;
 }
