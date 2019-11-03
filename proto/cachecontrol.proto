@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package web;
+
+message CacheControlResponse {
+    enum Directives {
+      UNUSED_DIRECTIVE = 0;
+      MUST_REVALIDATE = 1;
+      NO_CACHE = 2;
+      NO_STORE = 3;
+      NO_TRANSFORM = 4;
+      PUBLIC = 5;
+      PRIVATE = 6;
+      PROXY_REVALIDATE = 7;
+      MAX_AGE = 8;
+      S_MAXAGE = 9;
+    }
+    Directives directive = 1;
+    uint64 seconds = 2;
+  }
+  

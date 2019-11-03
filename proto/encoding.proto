@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package web;
+
+enum Encodings {
+    ENCODINGS_UNSPECIFIED = 0; // equivalent to '*'
+    IDENTITY = 1;
+    GZIP = 2;
+    COMPRESS = 3;
+    DEFLATE = 4;
+    BR = 5;
+  }
+  

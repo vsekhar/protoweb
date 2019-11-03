@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/timestamp.proto";
+
+import "cachecontrol.proto";
+import "mime.proto";
+import "status.proto";
+import "util.proto";
+
+message Response {
+    StatusCodes status = 1;
+    message Headers {
+      oneof AccessControlAllowOrigin {
+        Wildcard access_control_allow_origin_all = 1;
+        StringList access_control_allow_origin_origins = 2;
+      }
+      enum AccessControlAllowCredentialsValue {
+        UNUSED_ACCESS_CONTROL_ALLOW_CREDENTIALS_VALUE = 0;
+        FALSE = 1;
+        TRUE = 2;
+      }
+      AccessControlAllowCredentialsValue access_control_allow_credentials = 3;
+      repeated string access_control_expose_headers = 4;
+      message AltSvcMessage {
+        message Service {
+          string name = 1;
+          string host_name = 2;
+          uint32 port = 3;
+        }
+        repeated Service services = 1;
+        uint64 max_age = 2;
+        bool persist = 3;
+      }
+      oneof Alt_Svc {
+        Clear alt_svc_clear = 5;
+        AltSvcMessage service = 6;
+      }
+      CacheControlResponse cache_control = 18;
+      MIMEType content_type = 7;
+      google.protobuf.Timestamp date = 8;
+      oneof Expires {
+        Already expires_already = 9;
+        google.protobuf.Timestamp expires_date = 10;
+      }
+      string server = 11;
+      oneof Vary {
+        Wildcard vary_all = 12;
+        StringList vary_headers = 13;
+      }
+      enum XFrameOptionsValue {
+        UNUSED_X_FRAME_OPTIONS_VALUE = 0;
+        DENY = 1;
+        SAMEORIGIN = 2;
+      }
+      XFrameOptionsValue x_frame_options = 16;
+      string x_xss_protection = 15;
+      message SetCookieMessage {
+        string name = 1;
+        string value = 2;
+        google.protobuf.Timestamp expires = 3;
+        int64 max_age = 4;
+        string domain = 5;
+        string path = 6;
+        bool secure = 7;
+        bool http_only = 8;
+        enum SameSiteValue {
+          UNUSED_SAMESITE_VALUE = 0;
+          STRICT = 1;
+          LAX = 2;
+          NONE = 3;
+        }
+        SameSiteValue samesite = 9;
+      }
+      repeated SetCookieMessage set_cookie = 14;
+      repeated KeyValue other = 17;
+      // next field number = 19
+  
+    }
+    // message Headers
+    Headers header = 2;
+    bytes body = 3;
+  }
+  
