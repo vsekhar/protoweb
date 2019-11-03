@@ -721,8 +721,6 @@ func (m *RequestHeaders_ByteRange) GetEnd() uint64 {
 
 type Request struct {
 	Method Method `protobuf:"varint,1,opt,name=method,proto3,enum=web.Method" json:"method,omitempty"`
-	// TODO: separate absolute vs. relative?
-	//
 	// Types that are valid to be assigned to URI:
 	//	*Request_UriString
 	//	*Request_Wildcard

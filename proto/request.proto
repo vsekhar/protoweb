@@ -100,7 +100,6 @@ message RequestHeaders {
 
 message Request {
   Method method = 1;
-  // TODO: separate absolute vs. relative?
   oneof URI {
     string uri_string = 2;
     bool wildcard = 3; // server-wide "*" request, i.e. OPTIONS
