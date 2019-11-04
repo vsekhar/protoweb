@@ -1,30 +1,30 @@
-const puppeteer = require('puppeteer');
-var argv = require('minimist')(process.argv.slice(2));
+const HCCrawler = require('headless-chrome-crawler');
 
 (async () => {
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath: argv['chromepath']
-    });
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1366, height: 768});
-    page.on('response', async (response) => {
-      if (response.status() >= 300 && response.status() < 400) {
-        // ignore redirects
-        return;
+  const crawler = await HCCrawler.launch({
+    customCrawl: (async (page, crawl) => {
+      page.on('requestfinished', request => {
+        for (h in request.headers) {
+          console.log(h + "=" + request.headers[h]);
+        }
+      });
+      return crawl();
+    }),
+    onSuccess: (result => {
+      for (h in result.response.headers) {
+        console.log(h + "=" + result.response.headers[h]);
       }
-      reqheaders = response.request().headers();
-      for (header in reqheaders) {
-        console.log(header + "=" + reqheaders[header]);
-      }
-      respheaders = response.headers();
-      for (header in respheaders) {
-        console.log(header + "=" + respheaders[header]);
-      }
-    });
-    await page.goto('https://nytimes.com', {
-      waitUntil: 'networkidle2'
-    });
-  
-    await browser.close();
-  })();
+    }),
+    onError: (error => {
+      console.log(error);
+    }),
+  });
+
+  await crawler.queue({
+    url: 'https://nytimes.com',
+    maxDepth: 2,
+  });
+  // TODO: load sites.txt and enqueue
+  await crawler.onIdle();
+  await crawler.close();
+})();
