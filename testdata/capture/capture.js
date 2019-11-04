@@ -1,5 +1,8 @@
 const HCCrawler = require('headless-chrome-crawler');
 
+const sitesFilename = __dirname + "/sites.txt";
+const maxDepth = 2;
+
 (async () => {
   const crawler = await HCCrawler.launch({
     customCrawl: (async (page, crawl) => {
@@ -20,11 +23,14 @@ const HCCrawler = require('headless-chrome-crawler');
     }),
   });
 
-  await crawler.queue({
-    url: 'https://nytimes.com',
-    maxDepth: 2,
+  var lineReader = require('readline').createInterface({
+    input: require('fs').createReadStream(sitesFilename)
   });
-  // TODO: load sites.txt and enqueue
+
+  lineReader.on('line', function (line) {
+    crawler.queue({url: line, maxDepth: maxDepth})
+  });
+
   await crawler.onIdle();
   await crawler.close();
 })();
