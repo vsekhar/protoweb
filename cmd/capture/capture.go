@@ -91,6 +91,7 @@ func main() {
 			if strings.HasPrefix(strings.ToLower(h), "x-google") {
 				continue
 			}
+			// TODO: handle multiple headers better (is vs an array?)
 			headers <- []string{url, strings.ToLower(h), vs.(string)}
 		}
 	}
