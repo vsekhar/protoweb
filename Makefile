@@ -53,6 +53,9 @@ mimecheckforupdates:
 protocheck:
 	prototool break check
 
-captureheaders: testdata/capture/capture.js
-	cd testdata && \
-	node capture/capture.js --chromepath=$(CHROME)
+testdata/headers.csv: testdata/seeds.txt cmd/capture/capture.go
+	$(GO) run cmd/capture/capture.go \
+		-sitesfile=testdata/seeds.txt \
+		-headersfile=testdata/headers.csv \
+		-jobs=3 \
+		-depth=2
