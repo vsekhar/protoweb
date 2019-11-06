@@ -16,6 +16,7 @@
                 "-headersfile=${workspaceRoot}/testdata/headers.csv",
                 "-depth=2",
                 "-jobs=3",
+                "-progress=10",
             ],
         }
     ]

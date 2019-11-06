@@ -15,6 +15,7 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/chromedp/cdproto"
 	"github.com/chromedp/cdproto/network"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
@@ -27,6 +28,8 @@ var headersFilename = flag.String("headersfile", "", "CSV file to write headers 
 var jobs = flag.Uint("jobs", 1, "number of simultaneous jobs (Chrome processes) to use to fetch URLs")
 var depth = flag.Uint("depth", 1, "depth to traverse (1=seads only, 0=unlimited)")
 var timeout = flag.Uint("timeout", 10, "timeout per URL in seconds")
+var verbose = flag.Bool("verbose", false, "verbose output")
+var progress = flag.Uint("progress", 0, "report progress every n URLs (0=disable)")
 
 type urlEntry struct {
 	url   string
@@ -52,9 +55,34 @@ func eTLDPlusOne(domain string) (string, error) {
 	return domain[1+strings.LastIndex(domain[:i], "."):], nil
 }
 
+type printFunc func(string, ...interface{})
+
+type progressReporter struct {
+	every  uint
+	print  printFunc
+	prefix string
+
+	mu sync.Mutex
+	n  uint
+}
+
+func newProgressReporter(every uint, print printFunc, prefix string) *progressReporter {
+	return &progressReporter{every: every, print: print}
+}
+
+func (pr *progressReporter) Done(url string) {
+	pr.mu.Lock()
+	defer pr.mu.Unlock()
+	pr.n++
+	if pr.every > 0 && pr.n%pr.every == 0 {
+		pr.print("...%s: %d @ '%s'", pr.prefix, pr.n, url)
+	}
+}
+
 func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	log.SetFlags(log.LstdFlags | log.Llongfile)
 	flag.Parse()
+	pr := newProgressReporter(*progress, log.Printf, "")
 
 	urls := make(chan urlEntry, 10000)
 	headers := make(chan []string, 1000)
@@ -79,17 +107,25 @@ func main() {
 	scanner := bufio.NewScanner(sitesFile)
 	for scanner.Scan() {
 		q := urlEntry{url: scanner.Text(), depth: 1}
-		log.Printf("enqueueing %s", q.url)
+		if *verbose {
+			log.Printf("enqueueing seed %s", q.url)
+		}
 		urls <- q
 	}
 
 	fetcher := func(i int) {
 		defer wg.Done()
-		defer log.Printf("terminating fetcher")
+		if *verbose {
+			defer log.Printf("terminating fetcher")
+		}
 
+		logFunc := func(string, ...interface{}) {}
+		if *verbose {
+			logFunc = log.Printf
+		}
 		browser, closeBrowser := chromedp.NewContext(
 			context.Background(),
-			chromedp.WithLogf(log.Printf),
+			chromedp.WithLogf(logFunc),
 		)
 		defer closeBrowser()
 		// start the browser so that tabs (not browsers) are created below
@@ -98,27 +134,28 @@ func main() {
 		}
 
 		loadURL := func(u urlEntry) {
+			if *verbose {
+				log.Printf("%d: fetching %s @ depth %d", i, u.url, u.depth)
+			}
 			tab, closeTab := chromedp.NewContext(browser)
 			defer closeTab()
+
 			// Listen and handle events
 			loadedChan := make(chan struct{}, 100)
 			chromedp.ListenTarget(tab, func(event interface{}) {
 				switch x := event.(type) {
 				case *network.EventResponseReceived:
-
 					// Enqueue all the headers for output
 					if x.Response.Status == 200 {
 						url := x.Response.URL
 						enqueueHeaders(url, x.Response.RequestHeaders)
 						enqueueHeaders(url, x.Response.Headers)
 					}
-
 				case *page.EventLoadEventFired:
 					loadedChan <- struct{}{}
 				}
 			})
 
-			log.Printf("%d: fetching %s @ depth %d", i, u.url, u.depth)
 			err := chromedp.Run(tab,
 				network.Enable(),
 				// chromedp.Navigate(url.url),
@@ -133,20 +170,18 @@ func main() {
 					select {
 					case <-loadedChan:
 						// If we have depth left, enqueue all the URLs on the page
-						log.Printf("%d loaded: %s", i, u.url)
+						if *verbose {
+							log.Printf("%d loaded: %s", i, u.url)
+						}
 						if u.depth < *depth {
 							body, err := page.GetResourceContent(frameID, u.url).Do(ctx)
 							if err != nil {
+								if x, ok := err.(*cdproto.Error); ok && x.Code == -32000 {
+									// "No resource with given URL found (-32000)"
+									break
+								}
 								return err
 							}
-							// requestID := x.RequestID
-							// c := chromedp.FromContext(tab)
-							// https://github.com/chromedp/chromedp/issues/326#issuecomment-495788351
-							// body, err := network.GetResponseBody(requestID).Do(cdp.WithExecutor(tab, c.Target))
-							// if err != nil {
-							//	log.Printf("%d terminating: %s", i, err)
-							//	return
-							// }
 							n, err := html.Parse(bytes.NewReader(body))
 							if err != nil {
 								return err
@@ -156,7 +191,9 @@ func main() {
 								if n.Type == html.ElementNode && n.Data == "a" {
 									for _, a := range n.Attr {
 										if a.Key == "href" && (strings.HasPrefix(a.Val, "http://") || strings.HasPrefix(a.Val, "https://")) {
-											log.Printf("%d enqueueing: %s", i, a.Val)
+											if *verbose {
+												log.Printf("%d enqueueing: %s", i, a.Val)
+											}
 											urls <- urlEntry{url: a.Val, depth: u.depth + 1}
 										}
 									}
@@ -178,9 +215,7 @@ func main() {
 				log.Print(err)
 				return
 			}
-			if u.depth < *depth {
-				// add links to urls with url.depth+1
-			}
+			pr.Done(u.url)
 		}
 
 		for {

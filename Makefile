@@ -58,4 +58,5 @@ testdata/headers.csv: testdata/seeds.txt cmd/capture/capture.go
 		-sitesfile=testdata/seeds.txt \
 		-headersfile=testdata/headers.csv \
 		-jobs=3 \
-		-depth=2
+		-depth=2 \
+		-progress=25
