@@ -8,4 +8,13 @@ os:
   - linux
   - osx
 
+addons:
+  apt:
+    update: true
+  chrome: stable
+
+before_install:
+  - sudo apt-get -y install protobuf-compiler
+  - go get github.com/uber/prototool@v1.9.0
+
 script: make dist
