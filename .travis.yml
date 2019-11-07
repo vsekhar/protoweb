@@ -16,5 +16,6 @@ addons:
 before_install:
   - sudo apt-get -y install protobuf-compiler
   - go get github.com/uber/prototool@v1.9.0
+  - export PATH=$PATH:$GOPATH/bin
 
 script: make dist
