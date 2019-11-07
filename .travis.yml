@@ -11,11 +11,17 @@ os:
 addons:
   apt:
     update: true
+    install: protobuf-compiler
   chrome: stable
 
 before_install:
-  - sudo apt-get -y install protobuf-compiler
-  - go install github.com/uber/prototool@v1.9.0
+  - go get github.com/uber/prototool@v1.9.0
+
+install:
+  - export GOBIN="$(go env GOPATH)/bin"
+  - export PATH="$PATH:$GOBIN"
+  - go version
+  - go env 
 
 script:
   - make dist
