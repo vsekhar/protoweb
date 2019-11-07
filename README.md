@@ -1,5 +1,7 @@
 # Protoweb
 
+[![Build Status](https://travis-ci.org/vsekhar/protoweb.svg?branch=master)](https://travis-ci.org/vsekhar/protoweb)
+
 Protoweb is a thought experiment to evaluate a QUIC + Protobuf implementation of web standards.
 
 ## But why?
@@ -24,12 +26,14 @@ The library can be imported as is via Go programs.
 
 For development, testing and distribution packaging, some tools need to be installed.
 
-Install `protoc`. For Debian/Ubuntu:
+Install the protocol buffer compiler. For Debian/Ubuntu:
 
     $ sudo apt install protobuf-compiler
 
-Install `prototool` (do this from outside the repo directory to avoid mangling go.mod):
+Install some Go protobuf tools:
 
+    $ go get github.com/golang/protobuf/protoc-gen-go
+    $ go get google.golang.org/grpc
     $ go get github.com/uber/prototool/cmd/prototool
 
-[Install Google Chrome](https://www.google.com/chrome/) to capture test data.
+To recapture header testdata, [install Google Chrome](https://www.google.com/chrome/).
