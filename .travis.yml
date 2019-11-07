@@ -21,7 +21,9 @@ install:
   - export GOBIN="$(go env GOPATH)/bin"
   - export PATH="$PATH:$GOBIN"
   - go version
-  - go env 
+  - go env
+  - echo $PATH
 
 script:
+  - echo $PATH
   - make dist
