@@ -1,0 +1,11 @@
+language: go
+
+go:
+  - 1.13
+  - master
+
+os:
+  - linux
+  - osx
+
+script: make dist
