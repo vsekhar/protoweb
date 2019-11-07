@@ -12,12 +12,12 @@ addons:
   apt:
     update: true
     install: protobuf-compiler
-  chrome: stable
+#  chrome: stable # not needed unless capturing new set of headers
 
 install:
   - go get -u github.com/uber/prototool@v1.9.0
 
 script:
   - echo $PATH
-  - ls $GOBIN
+  - ls $GOPATH/bin
   - make dist
