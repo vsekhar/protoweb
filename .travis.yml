@@ -3,10 +3,15 @@ language: go
 go:
   - 1.13.x
   - master
+go_import_path: github.com/vsekhar/protoweb
 
 os:
   - linux
   - osx
+
+matrix:
+  allow_failures:
+    - go: master
 
 addons:
   apt:
@@ -15,9 +20,7 @@ addons:
 #  chrome: stable # not needed unless capturing new set of headers
 
 install:
-  - go get -u github.com/uber/prototool@v1.9.0
+  - go get -u github.com/uber/prototool/cmd/prototool@v1.9.0
 
 script:
-  - echo $PATH
-  - ls $GOPATH/bin
   - make dist
