@@ -24,7 +24,7 @@ import (
 )
 
 var sitesFilename = flag.String("sitesfile", "", "file containing seed URLs, one per line")
-var headersFilename = flag.String("headersfile", "", "CSV file to write headers to: {URL},{headername},{headervalue}")
+var headersFilename = flag.String("headersfile", "", "CSV file to write headers to: {request,response},{URL},{headername},{headervalue}")
 var jobs = flag.Uint("jobs", 1, "number of simultaneous jobs (Chrome processes) to use to fetch URLs")
 var depth = flag.Uint("depth", 1, "depth to traverse (1=seads only, 0=unlimited)")
 var timeout = flag.Uint("timeout", 10, "timeout per URL in seconds")
@@ -86,13 +86,15 @@ func main() {
 
 	urls := make(chan urlEntry, 10000)
 	headers := make(chan []string, 1000)
-	enqueueHeaders := func(url string, hmap map[string]interface{}) {
+	enqueueHeaders := func(dir, url string, hmap map[string]interface{}) {
 		for h, vs := range hmap {
 			if strings.HasPrefix(strings.ToLower(h), "x-google") {
 				continue
 			}
-			// TODO: handle multiple headers better (is vs an array?)
-			headers <- []string{url, strings.ToLower(h), vs.(string)}
+			valueStrings := strings.Split(vs.(string), "\n")
+			for _, value := range valueStrings {
+				headers <- []string{dir, url, strings.ToLower(h), value}
+			}
 		}
 	}
 	var wg sync.WaitGroup
@@ -149,8 +151,8 @@ func main() {
 					// Enqueue all the headers for output
 					if x.Response.Status == 200 {
 						url := x.Response.URL
-						enqueueHeaders(url, x.Response.RequestHeaders)
-						enqueueHeaders(url, x.Response.Headers)
+						enqueueHeaders("request", url, x.Response.RequestHeaders)
+						enqueueHeaders("response", url, x.Response.Headers)
 					}
 				case *page.EventLoadEventFired:
 					loadedChan <- struct{}{}
@@ -255,8 +257,11 @@ func main() {
 			log.Print(err)
 		}
 	}()
+	if err := headerCsv.Write([]string{"etldplusone,direction,url,headername,headervalue"}); err != nil {
+		log.Fatal(err)
+	}
 	for headerline := range headers {
-		requestURL := headerline[0]
+		requestURL := headerline[1]
 		if strings.HasPrefix(requestURL, "data:") {
 			continue
 		}

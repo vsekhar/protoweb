@@ -53,10 +53,12 @@ mimecheckforupdates:
 protocheck:
 	prototool break check
 
+.PRECIOUS: testdata/headers.csv
+
 testdata/headers.csv: testdata/seeds.txt cmd/capture/capture.go
 	$(GO) run cmd/capture/capture.go \
 		-sitesfile=testdata/seeds.txt \
 		-headersfile=testdata/headers.csv \
-		-jobs=3 \
+		-jobs=16 \
 		-depth=2 \
 		-progress=25

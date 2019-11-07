@@ -31,4 +31,5 @@ Install `protoc`. For Debian/Ubuntu:
 Install `prototool` (do this from outside the repo directory to avoid mangling go.mod):
 
     $ go get github.com/uber/prototool/cmd/prototool
-    
+
+[Install Google Chrome](https://www.google.com/chrome/) to capture test data.
