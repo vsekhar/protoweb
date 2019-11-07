@@ -20,7 +20,7 @@ addons:
 #  chrome: stable # not needed unless capturing new set of headers
 
 install:
-  - go get -u github.com/uber/prototool/cmd/prototool
+  - go get github.com/uber/prototool/cmd/prototool
 
 script:
   - make dist
