@@ -1,0 +1,108 @@
+// Maybe this is useful? Not sure.
+
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/descriptor.proto";
+
+message HPACKStaticTableDescriptor {
+  string http_name = 1;
+  string http_value = 2;
+}
+
+extend google.protobuf.EnumValueOptions {
+  HPACKStaticTableDescriptor hpack_descriptor = 7988297;
+}
+
+// https://tools.ietf.org/html/draft-ietf-httpbis-header-compression-07#appendix-B
+enum HTTP2StaticTable {
+  HTTP2_STATIC_TABLE_UNSPECIFIED = 0 [(hpack_descriptor).http_name = ""];
+  AUTHORITY = 1 [(hpack_descriptor).http_name = "authority"];
+  METHOD_GET = 2 [
+    (hpack_descriptor) = {
+      http_name: "method"
+      http_value: "GET"
+    }
+  ];
+  METHOD_POST = 3 [
+    (hpack_descriptor) = {
+      http_name: "method"
+      http_value: "POST"
+    }
+  ];
+  PATH_ROOT = 4 [
+    (hpack_descriptor) = {
+      http_name: "path"
+      http_value: "/"
+    }
+  ];
+  PATH_INDEX_HTML = 5 [
+    (hpack_descriptor) = {
+      http_name: "path"
+      http_value: "/index.html"
+    }
+  ];
+  SCHEME_HTTP = 6 [
+    (hpack_descriptor) = {
+      http_name: "scheme"
+      http_value: "http"
+    }
+  ];
+  SCHEME_HTTPS = 7 [
+    (hpack_descriptor) = {
+      http_name: "scheme"
+      http_value: "https"
+    }
+  ];
+  STATUS_200 = 8 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "200"
+    }
+  ];
+  STATUS_204 = 9 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "204"
+    }
+  ];
+  STATUS_206 = 10 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "206"
+    }
+  ];
+  STATUS_304 = 11 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "304"
+    }
+  ];
+  STATUS_400 = 12 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "400"
+    }
+  ];
+  STATUS_404 = 13 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "404"
+    }
+  ];
+  STATUS_500 = 14 [
+    (hpack_descriptor) = {
+      http_name: "status"
+      http_value: "500"
+    }
+  ];
+  ACCEPT_CHARSET = 15 [(hpack_descriptor).http_name = "accept-charset"];
+  ACCEPT_ENCODING = 16 [(hpack_descriptor).http_name = "accept-encoding"];
+  ACCEPT_LANGUAGE = 17 [(hpack_descriptor).http_name = "accept-language"];
+  ACCEPT_RANGES = 18 [(hpack_descriptor).http_name = "accept-ranges"];
+  ACCEPT = 19 [(hpack_descriptor).http_name = "accept"];
+  ACCESS_CONTROL_ALLOW_ORIGIN = 20 [(hpack_descriptor).http_name = "access-control-allow-origin"];
+  AGE = 21 [(hpack_descriptor).http_name = "age"];
+  ALLOW = 22 [(hpack_descriptor).http_name = "allow"];
+}
