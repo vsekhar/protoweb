@@ -1,0 +1,58 @@
+//
+// * This file defines handling of the user-agent field.
+// *
+// * User agent strings tend to be long. Here's an example from Chrome 74:
+// *
+// *   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"
+// *
+// * This string is 115 characters long and is sent with every request from a client. It is usually
+// * parsed to check for specific strings or versions that indicate features a site may require.
+//
+
+// TODO: connection headers, followed by request headers, similar
+// to H2. Send UA string once. Can we do better? Need to ascertain
+// performance of protobuf.Merge().
+//
+// TODO: keep last Header message sent on wire, only
+// send updates.
+
+// Protostreaming:
+//  * Message diffing: trade CPU/memory for bytes on wire
+//  * Send diffs transparently
+//  * Maybe just huffman code the strings?
+//  * Some protos may have lots of repeated non-string fields
+
+syntax = "proto3";
+
+package web;
+
+import "google/protobuf/descriptor.proto";
+
+message UserAgentDescriptor {
+  string http_name = 1;
+}
+
+extend google.protobuf.EnumValueOptions {
+  UserAgentDescriptor user_agent_descriptor = 7981885;
+}
+
+enum CommonUserAgents {
+  COMMON_USER_AGENTS_UNSPECIFIED = 0 [(user_agent_descriptor).http_name = ""];
+  MOZILLA = 1 [(user_agent_descriptor).http_name = "Mozilla"];
+  APPLE_WEBKIT = 2 [(user_agent_descriptor).http_name = "AppleWebKit"];
+  SAFARI = 3 [(user_agent_descriptor).http_name = "Safari"];
+  CHROME = 4 [(user_agent_descriptor).http_name = "Chrome"];
+  CRIOS = 5 [(user_agent_descriptor).http_name = "CriOS"];
+}
+
+message UserAgent {
+  message UserAgentEntry {
+    oneof UserAgent {
+      CommonUserAgents common = 1;
+      string other = 2;
+    }
+    repeated uint64 version_numbers = 3;
+    string version_string = 4;
+  }
+  repeated string addenda = 3;
+}
