@@ -7,7 +7,8 @@ require (
 	github.com/chromedp/chromedp v0.5.1
 	github.com/golang/protobuf v1.3.2
 	github.com/lucas-clemente/quic-go v0.12.1
-	github.com/uber/prototool v1.9.0 // indirect
-	golang.org/x/net v0.0.0-20191009170851-d66e71096ffb
+	golang.org/x/net v0.7.0
+	google.golang.org/genproto v0.0.0-20191009194640-548a555dbc03 // indirect
 	google.golang.org/grpc v1.25.0
+	gopkg.in/yaml.v2 v2.2.4 // indirect
 )
